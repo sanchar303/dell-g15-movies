@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Dell G15</title>
-  <meta name="description" content="My Files Media Explorer by Sanchar Koirala — Fast, responsive 1080p and 4K personal cinema explorer with adaptive audio and video streaming.">
-  <meta name="keywords" content="My Files, Media Explorer, Sanchar Koirala, Movie Streaming, Personal Media Library">
+  <meta name="description" content="My Files Media Explorer by Sanchar Koirala — Adaptive HLS cinema streaming with multi-quality video, audio tracks, subtitles, and Samsung One UI 9 navigation.">
+  <meta name="keywords" content="My Files, Media Explorer, Sanchar Koirala, HLS Movie Streaming, Personal Cinema">
   <meta name="author" content="Sanchar Koirala">
   <meta name="publisher" content="Sanchar Koirala">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -21,15 +21,15 @@
   <!-- Open Graph / Social SEO -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="My Files">
-  <meta property="og:title" content="My Files — Personal Media Explorer">
-  <meta property="og:description" content="Fast, responsive 1080p and 4K personal cinema explorer by Sanchar Koirala.">
+  <meta property="og:title" content="My Files — Personal Cinema &amp; Media Explorer">
+  <meta property="og:description" content="Adaptive HLS cinema streaming with multi-quality video, audio tracks, and subtitles by Sanchar Koirala.">
   <meta property="og:image" content="favicon.png">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card SEO -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="My Files — Personal Media Explorer">
-  <meta name="twitter:description" content="Fast, responsive 1080p and 4K personal cinema explorer by Sanchar Koirala.">
+  <meta name="twitter:title" content="My Files — Personal Cinema &amp; Media Explorer">
+  <meta name="twitter:description" content="Adaptive HLS cinema streaming with multi-quality video, audio tracks, and subtitles by Sanchar Koirala.">
   <meta name="twitter:image" content="favicon.png">
 
   <!-- Favicon & App Icons -->
@@ -44,8 +44,8 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "My Files",
-    "alternateName": "Personal Media Explorer",
-    "description": "Fast, responsive 1080p and 4K personal cinema explorer by Sanchar Koirala.",
+    "alternateName": "Personal Cinema & Media Explorer",
+    "description": "Adaptive HLS cinema streaming with multi-quality video, audio tracks, and subtitles by Sanchar Koirala.",
     "author": {
       "@type": "Person",
       "name": "Sanchar Koirala"
@@ -56,9 +56,9 @@
 
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
 
   <style>
-    /* Samsung One UI 9 Dark & Light Tokens */
     :root[data-theme="dark"] {
       --bg: #000000;
       --surface: #17171a;
@@ -104,7 +104,6 @@
       transition: background 0.2s ease, color 0.2s ease;
     }
 
-    /* One UI Custom Div Button */
     .ui-btn {
       background: var(--surface);
       border: 1px solid var(--stroke);
@@ -119,23 +118,10 @@
       gap: 6px;
       transition: transform 0.14s ease, background 0.14s ease, color 0.14s ease;
     }
-    .ui-btn:hover:not(.disabled) {
-      background: var(--surface-hover);
-    }
-    .ui-btn:active:not(.disabled) {
-      transform: scale(0.96);
-    }
-    .ui-btn.active {
-      background: var(--blue-soft);
-      color: var(--blue);
-      border-color: transparent;
-    }
-    .ui-btn.disabled {
-      opacity: 0.32;
-      pointer-events: none;
-    }
+    .ui-btn:hover:not(.disabled) { background: var(--surface-hover); }
+    .ui-btn:active:not(.disabled) { transform: scale(0.96); }
+    .ui-btn.disabled { opacity: 0.32; pointer-events: none; }
 
-    /* One UI Top App Bar */
     .app-bar {
       padding: 14px 20px 10px;
       display: flex;
@@ -144,17 +130,8 @@
       flex-shrink: 0;
     }
 
-    .icon-btn {
-      width: 38px;
-      height: 38px;
-      flex-shrink: 0;
-    }
-
-    .pill-btn {
-      height: 38px;
-      padding: 0 15px;
-      flex-shrink: 0;
-    }
+    .icon-btn { width: 38px; height: 38px; flex-shrink: 0; }
+    .pill-btn { height: 38px; padding: 0 15px; flex-shrink: 0; }
 
     .crumb-strip {
       flex: 1;
@@ -185,11 +162,7 @@
       color: var(--text);
       background: var(--surface-2);
     }
-    .crumb-arrow {
-      color: var(--text-2);
-      opacity: 0.45;
-      font-size: 12px;
-    }
+    .crumb-arrow { color: var(--text-2); opacity: 0.45; font-size: 12px; }
 
     .search-field {
       width: 240px;
@@ -203,9 +176,7 @@
       gap: 8px;
       flex-shrink: 0;
     }
-    .search-field:focus-within {
-      border-color: var(--blue);
-    }
+    .search-field:focus-within { border-color: var(--blue); }
     .search-field input {
       background: transparent;
       border: none;
@@ -217,7 +188,6 @@
     }
     .search-field input::placeholder { color: var(--text-2); }
 
-    /* Workspace Layout */
     .workspace {
       flex: 1;
       display: flex;
@@ -227,7 +197,6 @@
       position: relative;
     }
 
-    /* One UI Left Category Rail */
     .side-rail {
       width: 250px;
       background: var(--surface);
@@ -264,13 +233,8 @@
       color: var(--text);
       transition: 0.14s ease;
     }
-    .rail-row:hover {
-      background: var(--surface-2);
-    }
-    .rail-row.active {
-      background: var(--blue-soft);
-      color: var(--blue);
-    }
+    .rail-row:hover { background: var(--surface-2); }
+    .rail-row.active { background: var(--blue-soft); color: var(--blue); }
     .rail-left {
       display: flex;
       align-items: center;
@@ -282,13 +246,8 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .rail-meta {
-      font-size: 11.5px;
-      color: var(--text-2);
-      flex-shrink: 0;
-    }
+    .rail-meta { font-size: 11.5px; color: var(--text-2); flex-shrink: 0; }
 
-    /* Main Content Container */
     .content-area {
       flex: 1;
       overflow-y: auto;
@@ -297,7 +256,6 @@
     .content-area::-webkit-scrollbar { width: 5px; }
     .content-area::-webkit-scrollbar-thumb { background: var(--stroke); border-radius: 99px; }
 
-    /* One UI Viewing Header */
     .view-hero {
       padding: 10px 6px 18px;
       display: flex;
@@ -330,7 +288,6 @@
       justify-content: space-between;
     }
 
-    /* One UI Detailed List Card (Default Samsung My Files Look) */
     .oneui-group {
       background: var(--surface);
       border: 1px solid var(--stroke);
@@ -358,14 +315,9 @@
       height: 1px;
       background: var(--stroke);
     }
-    .oneui-row:hover {
-      background: var(--surface-hover);
-    }
-    .oneui-row:active {
-      transform: scale(0.992);
-    }
+    .oneui-row:hover { background: var(--surface-hover); }
+    .oneui-row:active { transform: scale(0.992); }
 
-    /* Uniform Samsung My Files Golden Folder Icon */
     .sam-folder {
       width: 42px;
       height: 42px;
@@ -389,10 +341,7 @@
       flex-shrink: 0;
     }
 
-    .row-body {
-      flex: 1;
-      min-width: 0;
-    }
+    .row-body { flex: 1; min-width: 0; }
     .row-title {
       font-weight: 600;
       font-size: 14.5px;
@@ -411,6 +360,10 @@
       flex-wrap: wrap;
     }
     .dot-sep { opacity: 0.45; }
+    .resume-tag {
+      color: var(--blue);
+      font-weight: 700;
+    }
 
     .row-actions {
       display: flex;
@@ -421,7 +374,7 @@
 
     .chip-action {
       height: 32px;
-      padding: 0 12px;
+      padding: 0 13px;
       border-radius: 999px;
       background: var(--surface-2);
       color: var(--text);
@@ -433,12 +386,8 @@
       cursor: pointer;
       transition: 0.14s;
     }
-    .chip-action:hover {
-      background: var(--blue);
-      color: #fff;
-    }
+    .chip-action:hover { background: var(--blue); color: #fff; }
 
-    /* Uniform Grid View (Every folder & file card has identical dimensions) */
     .uniform-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -459,13 +408,8 @@
       box-shadow: var(--shadow);
       transition: transform 0.15s ease, background 0.15s ease;
     }
-    .grid-tile:hover {
-      background: var(--surface-hover);
-      transform: translateY(-2px);
-    }
-    .grid-tile:active {
-      transform: scale(0.985);
-    }
+    .grid-tile:hover { background: var(--surface-hover); transform: translateY(-2px); }
+    .grid-tile:active { transform: scale(0.985); }
     .tile-top {
       display: flex;
       align-items: center;
@@ -497,7 +441,6 @@
       justify-content: space-between;
     }
 
-    /* Offline / Empty Card */
     .state-box {
       max-width: 380px;
       margin: 70px auto;
@@ -521,7 +464,7 @@
       flex-shrink: 0;
     }
 
-    /* One UI Fullscreen Cinema Player */
+    /* Fullscreen Customizable Cinema Player */
     .player-screen {
       display: none;
       position: fixed;
@@ -533,13 +476,14 @@
     .player-screen.open { display: flex; }
 
     .player-header {
-      padding: 14px 20px;
+      padding: 12px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      background: rgba(18, 18, 20, 0.92);
+      gap: 10px;
+      background: rgba(18, 18, 20, 0.94);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
     }
     .player-name {
       font-weight: 700;
@@ -548,29 +492,30 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      min-width: 140px;
       flex: 1;
     }
     .player-pills {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
+      gap: 7px;
+      flex-wrap: wrap;
     }
     .p-pill {
-      height: 34px;
-      padding: 0 14px;
+      height: 33px;
+      padding: 0 13px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.11);
       color: #fff;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       cursor: pointer;
       transition: 0.14s;
     }
-    .p-pill:hover { background: rgba(255, 255, 255, 0.2); }
+    .p-pill:hover { background: rgba(255, 255, 255, 0.22); }
     .p-pill.blue { background: #0381fe; }
 
     .video-stage {
@@ -585,31 +530,51 @@
     video {
       width: 100%;
       height: 100%;
-      max-height: calc(100dvh - 132px);
+      max-height: calc(100dvh - 134px);
       outline: none;
+      object-fit: contain;
     }
 
-    .loader-circle {
+    video::cue {
+      background: rgba(0, 0, 0, 0.72);
+      color: #ffffff;
+      font-family: "One UI Sans", "Inter", sans-serif;
+    }
+
+    .loader-box {
       position: absolute;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      pointer-events: none;
+    }
+    .loader-box.show { display: flex; }
+    .loader-circle {
       width: 44px;
       height: 44px;
       border-radius: 50%;
       border: 3px solid rgba(255, 255, 255, 0.16);
       border-top-color: #3e8bff;
       animation: spin 0.75s linear infinite;
-      pointer-events: none;
-      display: none;
     }
-    .loader-circle.show { display: block; }
+    .loader-label {
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #e4e4e7;
+      font-size: 12px;
+      font-weight: 600;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .player-controls {
-      padding: 12px 20px 16px;
+      padding: 10px 18px 14px;
       background: rgba(18, 18, 20, 0.96);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
     }
     .seek-area {
       height: 18px;
@@ -647,22 +612,23 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
     .ctrl-group {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      flex-wrap: wrap;
     }
     .clock-text {
       font-family: ui-monospace, Consolas, monospace;
-      font-size: 12.5px;
+      font-size: 12px;
       color: #d4d4d8;
-      padding: 0 6px;
+      padding: 0 5px;
     }
     .vol-range {
-      width: 82px;
+      width: 78px;
       accent-color: #3e8bff;
       cursor: pointer;
     }
@@ -714,7 +680,7 @@
 <body>
 
   <header class="app-bar">
-    <div class="ui-btn icon-btn mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Categories">☰</div>
+    <div class="ui-btn icon-btn mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Folders">☰</div>
     <div class="ui-btn icon-btn disabled" id="btnBack" role="button" tabindex="0" onclick="goBack()" title="Back">←</div>
     <div class="ui-btn icon-btn disabled" id="btnUp" role="button" tabindex="0" onclick="goUp()" title="Up">↑</div>
     <div class="ui-btn icon-btn" role="button" tabindex="0" onclick="refreshCurrent()" title="Refresh">↻</div>
@@ -752,21 +718,26 @@
     <span>© 2026 Sanchar Koirala | All rights reserved</span>
   </footer>
 
-  <!-- Fullscreen Video Player -->
+  <!-- Fullscreen Customizable Cinema Player -->
   <div class="player-screen" id="playerScreen">
     <div class="player-header">
       <div class="player-name" id="playerName">Video</div>
       <div class="player-pills">
-        <div class="p-pill" id="modeBtn" role="button" tabindex="0" onclick="toggleStreamMode()">Quality: Auto</div>
+        <div class="p-pill" id="qualityBtn" role="button" tabindex="0" onclick="cycleQuality()">Quality: Auto</div>
         <div class="p-pill" id="audioBtn" role="button" tabindex="0" onclick="cycleAudioTrack()" style="display:none;">Audio: Track 1</div>
-        <div class="p-pill blue" role="button" tabindex="0" onclick="openExternalVLC()">VLC / MX</div>
+        <div class="p-pill" id="subBtn" role="button" tabindex="0" onclick="cycleSubtitle()" style="display:none;">CC: Off</div>
+        <div class="p-pill" id="nextEpBtn" role="button" tabindex="0" onclick="playNextEpisode()" style="display:none;">Next Ep</div>
+        <div class="p-pill blue" role="button" tabindex="0" onclick="openExternalVLC()">VLC</div>
         <div class="p-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
       </div>
     </div>
 
     <div class="video-stage" onclick="togglePlayPause()">
-      <video id="videoEl" playsinline preload="auto"></video>
-      <div class="loader-circle" id="loaderCircle"></div>
+      <video id="videoEl" playsinline preload="auto" crossorigin="anonymous"></video>
+      <div class="loader-box" id="loaderBox">
+        <div class="loader-circle"></div>
+        <div class="loader-label" id="loaderLabel">Preparing stream...</div>
+      </div>
     </div>
 
     <div class="player-controls">
@@ -787,7 +758,9 @@
         </div>
 
         <div class="ctrl-group">
-          <input type="range" class="vol-range" id="volRange" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
+          <div class="p-pill" id="speedBtn" role="button" tabindex="0" onclick="cycleSpeed()">1x</div>
+          <div class="p-pill" id="fitBtn" role="button" tabindex="0" onclick="cycleFit()">Fit</div>
+          <input type="range" class="vol-range hide-sm" id="volRange" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
           <div class="p-pill" role="button" tabindex="0" onclick="toggleFullscreen()">Fullscreen</div>
         </div>
       </div>
@@ -820,14 +793,34 @@
   let currentItems = [];
   let sortBy = 'name';
   let sortAsc = true;
-  let viewMode = 'list'; // One UI My Files defaults to clean detailed list
+  let viewMode = 'list';
   let searchTimer = null;
 
+  let activeIndex = -1;
   let activeMedia = null;
-  let activeProbe = { duration: 0, strategy: 'remux', audioTracks: [] };
+  let activeProbe = { duration: 0, audioTracks: [], subtitleTracks: [] };
+  let activeSessionId = '';
+  let activeQuality = localStorage.getItem('oneui_stream_quality') || 'auto';
   let activeAudioTrack = 0;
-  let streamMode = 'auto'; // 'auto' or 'transcode'
+  let activeSubIndex = -1;
   let streamOffsetSec = 0;
+  let hlsInstance = null;
+  let lastSavedTick = 0;
+
+  const QUALITIES = [
+    { id: 'auto', label: 'Auto' },
+    { id: '1080p', label: '1080p HD' },
+    { id: '720p', label: '720p Smooth' },
+    { id: '480p', label: '480p Saver' }
+  ];
+  const SPEEDS = [1, 1.25, 1.5, 2, 0.75];
+  const FITS = [
+    { id: 'contain', label: 'Fit' },
+    { id: 'cover', label: 'Fill' },
+    { id: 'fill', label: 'Stretch' }
+  ];
+  let speedIdx = 0;
+  let fitIdx = 0;
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
@@ -855,7 +848,13 @@
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(t._timer);
-    t._timer = setTimeout(() => t.classList.remove('show'), 2400);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  function setLoader(show, text = 'Preparing stream...') {
+    const box = document.getElementById('loaderBox');
+    document.getElementById('loaderLabel').textContent = text;
+    box.classList.toggle('show', show);
   }
 
   function renderState(title, msg) {
@@ -872,8 +871,9 @@
   async function apiFetch(endpoint) {
     if (!API_BASE) throw new Error('Offline');
     const res = await fetch(`${API_BASE}${endpoint}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    return data;
   }
 
   db.ref('server-js/url').on('value', (snap) => {
@@ -970,6 +970,14 @@
     return filename.replace(/\.[^/.]+$/, '').replace(/\./g, ' ');
   }
 
+  function getSavedProgress(path) {
+    try {
+      return JSON.parse(localStorage.getItem('oneui_prog_' + path) || 'null');
+    } catch (e) {
+      return null;
+    }
+  }
+
   function renderContent() {
     const area = document.getElementById('contentArea');
     const folders = sortList(currentItems.filter(i => i.type === 'folder'));
@@ -1045,6 +1053,8 @@
       if (viewMode === 'list') {
         html += `<div class="oneui-group">`;
         files.forEach((m, idx) => {
+          const prog = getSavedProgress(m.path);
+          const resumeBadge = prog && prog.pos > 15 ? `<span class="dot-sep">•</span><span class="resume-tag">Resume ${formatClock(prog.pos)}</span>` : '';
           html += `
             <div class="oneui-row" role="button" tabindex="0" onclick="openMedia(${idx})">
               <div class="sam-video">${VIDEO_ICON}</div>
@@ -1056,11 +1066,12 @@
                   <span>${escapeHtml(m.sizeLabel)}</span>
                   <span class="dot-sep hide-sm">•</span>
                   <span class="hide-sm">${escapeHtml(m.modified)}</span>
+                  ${resumeBadge}
                 </div>
               </div>
               <div class="row-actions" onclick="event.stopPropagation()">
                 <div class="chip-action hide-sm" role="button" tabindex="0" onclick="downloadM3U(${idx})">VLC</div>
-                <div class="chip-action" role="button" tabindex="0" onclick="openMedia(${idx})">Play</div>
+                <div class="chip-action" role="button" tabindex="0" onclick="openMedia(${idx})">${prog && prog.pos > 15 ? 'Resume' : 'Play'}</div>
               </div>
             </div>
           `;
@@ -1091,32 +1102,41 @@
     area.innerHTML = html;
   }
 
-  // Smart Player with Automatic HEVC Transcode & Error Recovery
-  async function openMedia(idx) {
+  async function openMedia(idx, forceStartZero = false) {
     const item = window._renderedFiles[idx];
     if (!item || !API_BASE) return;
 
+    activeIndex = idx;
     activeMedia = item;
     activeAudioTrack = 0;
-    streamMode = 'auto';
-    streamOffsetSec = 0;
+    activeSubIndex = -1;
+
+    const saved = !forceStartZero ? getSavedProgress(item.path) : null;
+    const initialStart = saved && saved.pos > 15 && (!saved.dur || saved.pos < saved.dur - 30) ? Math.floor(saved.pos) : 0;
+    streamOffsetSec = initialStart;
 
     const screen = document.getElementById('playerScreen');
-    const loader = document.getElementById('loaderCircle');
     const audioBtn = document.getElementById('audioBtn');
+    const subBtn = document.getElementById('subBtn');
+    const nextBtn = document.getElementById('nextEpBtn');
 
+    const qObj = QUALITIES.find(q => q.id === activeQuality) || QUALITIES[0];
+    document.getElementById('qualityBtn').textContent = `Quality: ${qObj.label}`;
     document.getElementById('playerName').textContent = cleanTitle(item.name);
-    document.getElementById('modeBtn').textContent = 'Quality: Auto';
     document.getElementById('seekProgress').style.width = '0%';
     document.getElementById('clockText').textContent = '00:00 / --:--';
+
     audioBtn.style.display = 'none';
-    loader.classList.add('show');
+    subBtn.style.display = 'none';
+    nextBtn.style.display = idx + 1 < window._renderedFiles.length ? 'inline-flex' : 'none';
+
+    setLoader(true, 'Analyzing media...');
     screen.classList.add('open');
 
     try {
       activeProbe = await apiFetch(`/api/probe?path=${encodeURIComponent(item.path)}`);
     } catch (e) {
-      activeProbe = { duration: 0, strategy: 'transcode', audioTracks: [] };
+      activeProbe = { duration: 0, audioTracks: [], subtitleTracks: [] };
     }
 
     if (activeProbe.audioTracks && activeProbe.audioTracks.length > 1) {
@@ -1124,41 +1144,96 @@
       audioBtn.textContent = `Audio: ${activeProbe.audioTracks[0].label}`;
     }
 
-    startStream(0);
+    if (activeProbe.subtitleTracks && activeProbe.subtitleTracks.length > 0) {
+      subBtn.style.display = 'inline-flex';
+      subBtn.textContent = 'CC: Off';
+    }
+
+    if (initialStart > 0) {
+      showToast(`Resuming at ${formatClock(initialStart)}`);
+    }
+
+    await startHlsSession(initialStart);
   }
 
-  function startStream(seekSeconds) {
+  async function startHlsSession(startSec) {
+    if (!activeMedia || !API_BASE) return;
+    setLoader(true, 'Buffering stream...');
+
     const video = document.getElementById('videoEl');
-    const loader = document.getElementById('loaderCircle');
-    loader.classList.add('show');
+    if (hlsInstance) {
+      hlsInstance.destroy();
+      hlsInstance = null;
+    }
+    video.pause();
 
-    const encoded = encodePath(activeMedia.path);
-    const effectiveStrategy = streamMode === 'transcode' ? 'transcode' : activeProbe.strategy;
+    try {
+      const qs = new URLSearchParams({
+        path: activeMedia.path,
+        start: String(Math.max(0, Math.floor(startSec))),
+        atrack: String(activeAudioTrack),
+        quality: activeQuality,
+        prev: activeSessionId || ''
+      });
 
-    if (effectiveStrategy === 'direct' && activeAudioTrack === 0) {
-      if (!video.src || !video.src.includes(`/stream/${encoded}`)) {
-        streamOffsetSec = 0;
-        video.src = `${API_BASE}/stream/${encoded}?mode=direct`;
-        video.load();
+      const sess = await apiFetch(`/api/session?${qs.toString()}`);
+      activeSessionId = sess.sessionId;
+      streamOffsetSec = Math.max(0, Math.floor(startSec));
+      if (sess.duration && !activeProbe.duration) {
+        activeProbe.duration = sess.duration;
       }
-      if (seekSeconds > 0) video.currentTime = seekSeconds;
-      video.play().catch(() => {});
-    } else {
-      streamOffsetSec = Math.max(0, Math.floor(seekSeconds));
-      video.src = `${API_BASE}/stream/${encoded}?t=${streamOffsetSec}&atrack=${activeAudioTrack}&mode=${streamMode}`;
-      video.load();
-      video.play().catch(() => {});
+
+      const fullPlaylistUrl = `${API_BASE}${sess.playlistUrl}`;
+
+      if (window.Hls && Hls.isSupported()) {
+        hlsInstance = new Hls({
+          enableWorker: true,
+          maxBufferLength: 30,
+          maxMaxBufferLength: 60,
+          manifestLoadingMaxRetry: 6,
+          levelLoadingMaxRetry: 6,
+          fragLoadingMaxRetry: 8
+        });
+        hlsInstance.loadSource(fullPlaylistUrl);
+        hlsInstance.attachMedia(video);
+        hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.playbackRate = SPEEDS[speedIdx];
+          video.play().catch(() => {});
+        });
+        hlsInstance.on(Hls.Events.ERROR, (_, data) => {
+          if (data.fatal) {
+            if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+              hlsInstance.startLoad();
+            } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+              hlsInstance.recoverMediaError();
+            } else {
+              setLoader(false);
+              showToast('Stream interrupted — try 720p Smooth');
+            }
+          }
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = fullPlaylistUrl;
+        video.load();
+        video.play().catch(() => {});
+      }
+    } catch (e) {
+      setLoader(false);
+      showToast(`Stream error: ${e.message}`);
     }
   }
 
-  function toggleStreamMode() {
+  function cycleQuality() {
     if (!activeMedia) return;
     const video = document.getElementById('videoEl');
     const cur = streamOffsetSec + (video.currentTime || 0);
-    streamMode = streamMode === 'auto' ? 'transcode' : 'auto';
-    document.getElementById('modeBtn').textContent = streamMode === 'transcode' ? 'Quality: 1080p Fast' : 'Quality: Auto';
-    showToast(streamMode === 'transcode' ? 'Switched to 1080p Fast Stream' : 'Switched to Auto Quality');
-    startStream(cur);
+    const idx = QUALITIES.findIndex(q => q.id === activeQuality);
+    const next = QUALITIES[(idx + 1) % QUALITIES.length];
+    activeQuality = next.id;
+    localStorage.setItem('oneui_stream_quality', activeQuality);
+    document.getElementById('qualityBtn').textContent = `Quality: ${next.label}`;
+    showToast(`Quality: ${next.label}`);
+    startHlsSession(cur);
   }
 
   function cycleAudioTrack() {
@@ -1169,22 +1244,64 @@
     const tr = activeProbe.audioTracks[activeAudioTrack];
     document.getElementById('audioBtn').textContent = `Audio: ${tr.label}`;
     showToast(`Audio: ${tr.label}`);
-    startStream(cur);
+    startHlsSession(cur);
+  }
+
+  function cycleSubtitle() {
+    if (!activeProbe.subtitleTracks || activeProbe.subtitleTracks.length === 0) return;
+    const video = document.getElementById('videoEl');
+    video.querySelectorAll('track').forEach(t => t.remove());
+
+    activeSubIndex++;
+    if (activeSubIndex >= activeProbe.subtitleTracks.length) {
+      activeSubIndex = -1;
+      document.getElementById('subBtn').textContent = 'CC: Off';
+      showToast('Subtitles Off');
+      return;
+    }
+
+    const sub = activeProbe.subtitleTracks[activeSubIndex];
+    const track = document.createElement('track');
+    track.kind = 'subtitles';
+    track.label = sub.label;
+    track.default = true;
+    track.src = `${API_BASE}/api/subtitle?path=${encodeURIComponent(activeMedia.path)}&strack=${sub.index}`;
+    video.appendChild(track);
+    if (video.textTracks && video.textTracks[0]) {
+      video.textTracks[0].mode = 'showing';
+    }
+    document.getElementById('subBtn').textContent = `CC: ${sub.label}`;
+    showToast(`Subtitles: ${sub.label}`);
+  }
+
+  function cycleSpeed() {
+    const video = document.getElementById('videoEl');
+    speedIdx = (speedIdx + 1) % SPEEDS.length;
+    const spd = SPEEDS[speedIdx];
+    video.playbackRate = spd;
+    document.getElementById('speedBtn').textContent = `${spd}x`;
+    showToast(`Speed ${spd}x`);
+  }
+
+  function cycleFit() {
+    const video = document.getElementById('videoEl');
+    fitIdx = (fitIdx + 1) % FITS.length;
+    const f = FITS[fitIdx];
+    video.style.objectFit = f.id;
+    document.getElementById('fitBtn').textContent = f.label;
+    showToast(`Screen: ${f.label}`);
+  }
+
+  function playNextEpisode() {
+    if (activeIndex + 1 < window._renderedFiles.length) {
+      openMedia(activeIndex + 1, true);
+    }
   }
 
   const videoEl = document.getElementById('videoEl');
 
-  // Automatic fallback if browser rejects raw stream codec
-  videoEl.addEventListener('error', () => {
-    if (activeMedia && streamMode !== 'transcode') {
-      streamMode = 'transcode';
-      document.getElementById('modeBtn').textContent = 'Quality: 1080p Fast';
-      startStream(streamOffsetSec);
-    }
-  });
-
   videoEl.addEventListener('playing', () => {
-    document.getElementById('loaderCircle').classList.remove('show');
+    setLoader(false);
     document.getElementById('playBtn').textContent = 'Pause';
   });
 
@@ -1193,45 +1310,50 @@
   });
 
   videoEl.addEventListener('waiting', () => {
-    document.getElementById('loaderCircle').classList.add('show');
+    setLoader(true, 'Buffering...');
   });
 
   videoEl.addEventListener('timeupdate', () => {
-    const total = activeProbe.duration || (isFinite(videoEl.duration) ? videoEl.duration : 0);
+    const total = activeProbe.duration || (isFinite(videoEl.duration) ? streamOffsetSec + videoEl.duration : 0);
     const current = streamOffsetSec + (videoEl.currentTime || 0);
     document.getElementById('clockText').textContent = `${formatClock(current)} / ${total > 0 ? formatClock(total) : '--:--'}`;
+
     if (total > 0) {
       const pct = Math.min(100, Math.max(0, (current / total) * 100));
       document.getElementById('seekProgress').style.width = `${pct}%`;
     }
+
+    if (activeMedia && Math.abs(current - lastSavedTick) >= 5) {
+      lastSavedTick = current;
+      localStorage.setItem('oneui_prog_' + activeMedia.path, JSON.stringify({ pos: current, dur: total }));
+    }
   });
 
+  function jumpToPosition(targetSec) {
+    const relTarget = targetSec - streamOffsetSec;
+    if (relTarget >= 0 && videoEl.seekable && videoEl.seekable.length > 0) {
+      const bufEnd = videoEl.seekable.end(videoEl.seekable.length - 1);
+      if (relTarget <= bufEnd) {
+        videoEl.currentTime = relTarget;
+        return;
+      }
+    }
+    startHlsSession(targetSec);
+  }
+
   function seekFromBar(e) {
-    const total = activeProbe.duration || (isFinite(videoEl.duration) ? videoEl.duration : 0);
+    const total = activeProbe.duration || (isFinite(videoEl.duration) ? streamOffsetSec + videoEl.duration : 0);
     if (!total || total <= 0) return;
     const rect = document.getElementById('seekArea').getBoundingClientRect();
     const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
-    const targetSec = ratio * total;
-    const effectiveStrategy = streamMode === 'transcode' ? 'transcode' : activeProbe.strategy;
-
-    if (effectiveStrategy === 'direct' && activeAudioTrack === 0) {
-      videoEl.currentTime = targetSec;
-    } else {
-      startStream(targetSec);
-    }
+    jumpToPosition(ratio * total);
   }
 
   function skipBy(delta) {
-    const total = activeProbe.duration || (isFinite(videoEl.duration) ? videoEl.duration : 0);
+    const total = activeProbe.duration || 0;
     const current = streamOffsetSec + (videoEl.currentTime || 0);
-    const target = Math.max(0, total > 0 ? Math.min(total - 1, current + delta) : current + delta);
-    const effectiveStrategy = streamMode === 'transcode' ? 'transcode' : activeProbe.strategy;
-
-    if (effectiveStrategy === 'direct' && activeAudioTrack === 0) {
-      videoEl.currentTime = target;
-    } else {
-      startStream(target);
-    }
+    const target = Math.max(0, total > 0 ? Math.min(total - 2, current + delta) : current + delta);
+    jumpToPosition(target);
   }
 
   function togglePlayPause() {
@@ -1251,13 +1373,25 @@
   }
 
   function closePlayer() {
+    if (hlsInstance) {
+      hlsInstance.destroy();
+      hlsInstance = null;
+    }
     videoEl.pause();
+    videoEl.querySelectorAll('track').forEach(t => t.remove());
     videoEl.removeAttribute('src');
     videoEl.load();
+
+    if (activeSessionId && API_BASE) {
+      fetch(`${API_BASE}/api/stop?id=${encodeURIComponent(activeSessionId)}`).catch(() => {});
+      activeSessionId = '';
+    }
+
     activeMedia = null;
-    document.getElementById('loaderCircle').classList.remove('show');
+    setLoader(false);
     document.getElementById('playerScreen').classList.remove('open');
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    renderContent();
   }
 
   function openExternalVLC() {
@@ -1358,10 +1492,6 @@
     const r = s % 60;
     if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(r).padStart(2, '0')}`;
     return `${String(m).padStart(2, '0')}:${String(r).padStart(2, '0')}`;
-  }
-
-  function encodePath(p) {
-    return p.split('/').map(encodeURIComponent).join('/');
   }
 
   function escapeHtml(s) {
