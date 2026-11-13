@@ -309,7 +309,6 @@
       </div>
     </div>
 
-    <!-- PIN Unlock Gate -->
     <div id="gateView" class="gate">
       <h2>Host Access</h2>
       <div class="input-pill neu-inset" style="max-width:260px; margin:0 auto;">
@@ -318,7 +317,6 @@
       </div>
     </div>
 
-    <!-- Host Dashboard -->
     <div id="dashView" style="display:none;">
       <div class="well neu-inset">
         <div class="well-head">
@@ -357,7 +355,7 @@
   <div class="toast" id="toast"></div>
 
 <script>
-  const ADMIN_PIN = "3030";
+  const ADMIN_PIN = "799702";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDpCAXfhldRc1nCZDWlWNRbcMFjqAh8uPc",
@@ -447,9 +445,7 @@
     }
     document.getElementById('statusBadge').textContent = 'Checking';
     try {
-      const res = await fetch(`${url.replace(/\/+$/, '')}/api/ping`, {
-        headers: { 'Bypass-Tunnel-Reminder': 'true' }
-      });
+      const res = await fetch(`${url.replace(/\/+$/, '')}/api/ping`);
       if (!res.ok) throw new Error();
       const info = await res.json();
       document.getElementById('statusBadge').textContent = info.ffmpeg ? 'Online · Audio Ready' : 'Online · No FFmpeg';

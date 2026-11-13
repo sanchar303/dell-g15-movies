@@ -117,7 +117,6 @@
       transition: background 0.25s ease, color 0.25s ease;
     }
 
-    /* Neumorphic Primitives */
     .neu-card {
       background: var(--surface-elevated);
       border: 1px solid var(--sheen-border);
@@ -167,7 +166,6 @@
       pointer-events: none;
     }
 
-    /* Top Header */
     .topbar {
       padding: 14px 20px;
       display: flex;
@@ -275,7 +273,6 @@
     }
     .text-pill { height: 36px; padding: 0 14px; }
 
-    /* Main Layout */
     .shell {
       flex: 1;
       display: flex;
@@ -285,7 +282,6 @@
       position: relative;
     }
 
-    /* Custom Explorer Sidebar */
     .rail {
       width: 245px;
       border-radius: 26px;
@@ -344,7 +340,6 @@
       flex-shrink: 0;
     }
 
-    /* Content Viewport */
     .viewport {
       flex: 1;
       border-radius: 28px;
@@ -366,7 +361,6 @@
       justify-content: space-between;
     }
 
-    /* Adaptive Folder Cards (Scales cleanly between small single-movie folders & huge multi-season folders) */
     .folder-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
@@ -452,7 +446,6 @@
       color: var(--accent);
     }
 
-    /* Movie Cards Grid */
     .media-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -519,7 +512,6 @@
       color: var(--muted);
     }
 
-    /* Compact List View */
     .list-stack {
       display: flex;
       flex-direction: column;
@@ -550,7 +542,6 @@
       flex-shrink: 0;
     }
 
-    /* Empty / Offline State */
     .center-state {
       max-width: 380px;
       margin: 70px auto;
@@ -570,7 +561,6 @@
       line-height: 1.5;
     }
 
-    /* Footer */
     footer {
       padding: 8px 20px 12px;
       display: flex;
@@ -581,7 +571,6 @@
       flex-shrink: 0;
     }
 
-    /* Custom Cinema Theatre Overlay */
     .theatre {
       display: none;
       position: fixed;
@@ -664,7 +653,6 @@
     .spinner-ring.show { display: block; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Custom Precision Scrubber & Controls */
     .player-dock {
       padding: 12px 20px 16px;
       background: rgba(14, 17, 24, 0.95);
@@ -733,7 +721,6 @@
       cursor: pointer;
     }
 
-    /* Toast */
     .toast {
       position: fixed;
       bottom: 28px;
@@ -779,7 +766,6 @@
 </head>
 <body>
 
-  <!-- Top Bar -->
   <header class="topbar">
     <div class="brand" role="button" tabindex="0" onclick="navigateTo('')">
       <div class="brand-logo">CV</div>
@@ -807,7 +793,6 @@
     </div>
   </header>
 
-  <!-- Main Workspace -->
   <main class="shell">
     <aside class="rail neu-card" id="rail">
       <div class="rail-label">Library</div>
@@ -829,7 +814,6 @@
     <span>© 2026 Sanchar Koirala | All rights reserved</span>
   </footer>
 
-  <!-- Custom Cinema Theatre Overlay -->
   <div class="theatre" id="theatre">
     <div class="theatre-bar">
       <div class="theatre-title" id="theatreTitle">Title</div>
@@ -896,13 +880,11 @@
   let viewMode = 'grid';
   let searchTimer = null;
 
-  // Player state
   let activeMedia = null;
   let activeProbe = { duration: 0, needsRemux: false, audioTracks: [] };
   let activeAudioTrack = 0;
   let streamOffsetSec = 0;
 
-  // Theme persistence
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('cinevault_theme', theme);
@@ -917,7 +899,6 @@
 
   applyTheme(localStorage.getItem('cinevault_theme') || 'dark');
 
-  // Keyboard support for custom div buttons
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
@@ -946,14 +927,11 @@
 
   async function apiFetch(endpoint) {
     if (!API_BASE) throw new Error('Offline');
-    const res = await fetch(`${API_BASE}${endpoint}`, {
-      headers: { 'Bypass-Tunnel-Reminder': 'true' }
-    });
+    const res = await fetch(`${API_BASE}${endpoint}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   }
 
-  // Real-time Firebase listener on server-js/url
   db.ref('server-js/url').on('value', (snap) => {
     const raw = snap.val();
     const clean = raw ? String(raw).trim().replace(/\/+$/, '') : '';
@@ -1068,7 +1046,6 @@
       if (viewMode === 'grid') {
         html += `<div class="folder-grid">`;
         folders.forEach(f => {
-          // Differentiate large multi-episode/multi-GB collections from small single-item folders
           const isLarge = f.count >= 3 || f.size >= 15 * 1024 * 1024 * 1024;
           html += `
             <div class="folder-card neu-card ${isLarge ? 'is-large' : ''}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
@@ -1148,7 +1125,6 @@
     vp.innerHTML = html;
   }
 
-  // Player Engine (Supports both direct range MP4 & FFmpeg AAC-remuxed MKV with instant seeking)
   async function openMedia(idx) {
     const item = window._renderedFiles[idx];
     if (!item || !API_BASE) return;
