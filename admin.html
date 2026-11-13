@@ -1,317 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Server-JS Admin Controller</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>CineVault — Host Control</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Sanchar Koirala">
+  <meta name="theme-color" content="#14171f" id="metaThemeColor">
 
-<!-- Favicon & Mobile App Icons -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-<link rel="shortcut icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-<meta name="theme-color" content="#191919">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
-<style>
-  :root {
-    --bg: #070b14;
-    --card: rgba(17, 25, 40, 0.72);
-    --border: rgba(255, 255, 255, 0.09);
-    --accent: #38bdf8;
-    --accent-glow: rgba(56, 189, 248, 0.25);
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --ok: #4ade80;
-    --err: #f87171;
-  }
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
 
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at 15% 15%, #13223f 0%, var(--bg) 55%);
-    color: var(--text);
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
+  <style>
+    :root[data-theme="dark"] {
+      --bg: #14171f;
+      --surface-elevated: linear-gradient(145deg, #1e2330, #141821);
+      --surface-inset: #11141b;
+      --shadow-light: rgba(255, 255, 255, 0.045);
+      --shadow-dark: rgba(0, 0, 0, 0.72);
+      --inset-light: rgba(255, 255, 255, 0.035);
+      --inset-dark: rgba(0, 0, 0, 0.78);
+      --sheen-top: rgba(255, 255, 255, 0.14);
+      --sheen-border: rgba(255, 255, 255, 0.06);
+      --text: #f1f5f9;
+      --muted: #8b95a7;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --danger: #f87171;
+    }
 
-  .panel {
-    width: 100%;
-    max-width: 520px;
-    background: var(--card);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 28px 26px;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  }
+    :root[data-theme="light"] {
+      --bg: #e6ebf2;
+      --surface-elevated: linear-gradient(145deg, #f3f6fb, #dce2ec);
+      --surface-inset: #dde3ec;
+      --shadow-light: rgba(255, 255, 255, 0.92);
+      --shadow-dark: rgba(163, 177, 198, 0.62);
+      --inset-light: rgba(255, 255, 255, 0.9);
+      --inset-dark: rgba(163, 177, 198, 0.65);
+      --sheen-top: rgba(255, 255, 255, 0.98);
+      --sheen-border: rgba(255, 255, 255, 0.7);
+      --text: #18202c;
+      --muted: #5d6a7e;
+      --accent: #0284c7;
+      --accent-2: #4f46e5;
+      --danger: #dc2626;
+    }
 
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 22px;
-    gap: 12px;
-  }
-  .title-wrap h1 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.3px;
-  }
-  .title-wrap p {
-    margin: 4px 0 0;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 6px 13px;
-    border-radius: 999px;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid var(--border);
-    font-size: 12px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #facc15;
-    box-shadow: 0 0 8px #facc15;
-  }
-  .dot.online { background: var(--ok); box-shadow: 0 0 10px var(--ok); }
-  .dot.offline { background: var(--err); box-shadow: 0 0 10px var(--err); }
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
 
-  .box {
-    background: rgba(9, 14, 26, 0.65);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 14px 16px;
-    margin-bottom: 18px;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.45);
-  }
-  .box-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted);
-    margin-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .current-url {
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    font-size: 13px;
-    color: var(--accent);
-    word-break: break-all;
-  }
+    .neu-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--sheen-border);
+      border-top-color: var(--sheen-top);
+      box-shadow: -8px -8px 18px var(--shadow-light), 10px 10px 24px var(--shadow-dark);
+    }
 
-  .input-group { margin-bottom: 16px; }
-  .input-group label {
-    display: block;
-    font-size: 12.5px;
-    color: var(--muted);
-    margin-bottom: 8px;
-    font-weight: 500;
-  }
-  .input-row {
-    display: flex;
-    align-items: center;
-    background: rgba(9, 14, 26, 0.8);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 4px 6px 4px 16px;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .input-row:focus-within {
-    border-color: var(--accent);
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 3px var(--accent-glow);
-  }
-  .input-row input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--text);
-    font-size: 13.5px;
-    font-family: inherit;
-    min-width: 0;
-  }
+    .neu-inset {
+      background: var(--surface-inset);
+      border: 1px solid var(--sheen-border);
+      box-shadow: inset 4px 4px 9px var(--inset-dark), inset -3px -3px 8px var(--inset-light);
+    }
 
-  .mini-pill {
-    padding: 7px 13px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.07);
-    color: var(--text);
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.15s;
-  }
-  .mini-pill:hover { background: rgba(255, 255, 255, 0.14); }
+    .neu-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--sheen-border);
+      border-top-color: var(--sheen-top);
+      box-shadow: -4px -4px 10px var(--shadow-light), 5px 5px 12px var(--shadow-dark);
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, color 0.16s ease;
+    }
 
-  .actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .btn-pill {
-    padding: 13px 18px;
-    border-radius: 999px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 13.5px;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
-  }
-  .btn-pill:active { transform: scale(0.98); }
-  .btn-primary {
-    grid-column: 1 / -1;
-    background: linear-gradient(135deg, #38bdf8, #0284c7);
-    color: #04101d;
-    box-shadow: 0 8px 22px rgba(2, 132, 199, 0.4);
-  }
-  .btn-primary:hover { box-shadow: 0 10px 28px rgba(56, 189, 248, 0.55); }
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border);
-    color: var(--text);
-  }
-  .btn-secondary:hover { background: rgba(255, 255, 255, 0.11); }
-  .btn-danger {
-    background: rgba(248, 113, 113, 0.12);
-    border: 1px solid rgba(248, 113, 113, 0.28);
-    color: var(--err);
-  }
-  .btn-danger:hover { background: rgba(248, 113, 113, 0.2); }
+    .neu-btn:hover {
+      transform: translateY(-1px);
+      color: var(--accent);
+    }
 
-  .cmd-helper {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .cmd-line {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(9, 14, 26, 0.7);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 8px 12px;
-    margin-top: 8px;
-    font-family: ui-monospace, Consolas, monospace;
-    color: #cbd5e1;
-    gap: 8px;
-  }
+    .neu-btn:active {
+      transform: translateY(0);
+      background: var(--surface-inset);
+      box-shadow: inset 3px 3px 7px var(--inset-dark), inset -2px -2px 6px var(--inset-light);
+    }
 
-  .lock-screen { text-align: center; padding: 12px 0; }
-  .lock-screen h2 { margin: 0 0 6px; font-size: 19px; }
-  .lock-screen p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+    .neu-btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #ffffff;
+      border-top-color: rgba(255, 255, 255, 0.45);
+    }
+    .neu-btn.primary:hover { color: #ffffff; }
 
-  footer {
-    margin-top: 22px;
-    font-size: 12px;
-    color: var(--muted);
-    text-align: center;
-  }
+    .neu-btn.danger { color: var(--danger); }
 
-  .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%) translateY(14px);
-    background: #1e293b;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    padding: 10px 18px;
-    border-radius: 999px;
-    font-size: 13px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s ease;
-    z-index: 99;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-</style>
+    .panel {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 30px;
+      padding: 28px;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      gap: 12px;
+    }
+
+    .title-group h1 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .title-group span {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .top-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-pill {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .theme-pill {
+      width: 36px;
+      height: 36px;
+    }
+
+    .well {
+      border-radius: 20px;
+      padding: 15px 18px;
+      margin-bottom: 18px;
+    }
+    .well-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .well-val {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 13px;
+      color: var(--accent);
+      word-break: break-all;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      margin: 0 0 8px 6px;
+    }
+
+    .input-pill {
+      height: 46px;
+      border-radius: 999px;
+      padding: 4px 6px 4px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .input-pill input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 13.5px;
+      font-family: inherit;
+      min-width: 0;
+    }
+    .input-pill input::placeholder { color: var(--muted); }
+
+    .mini-btn {
+      height: 34px;
+      padding: 0 14px;
+      font-size: 12px;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn-full {
+      grid-column: 1 / -1;
+      height: 46px;
+    }
+    .btn-half {
+      height: 42px;
+    }
+
+    .cmd-section {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--sheen-border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cmd-row {
+      border-radius: 16px;
+      padding: 8px 10px 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .gate {
+      text-align: center;
+      padding: 10px 0;
+    }
+    .gate h2 {
+      margin: 0 0 18px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(14px);
+      background: var(--surface-elevated);
+      color: var(--text);
+      border: 1px solid var(--sheen-top);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      z-index: 99;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  </style>
 </head>
 <body>
 
-  <div class="panel">
-    <!-- Admin PIN Gate -->
-    <div id="lockView" class="lock-screen">
-      <div style="font-size:32px; margin-bottom:8px;">🔐</div>
-      <h2>Admin Tunnel Control</h2>
-      <p>Enter your Admin PIN to manage <b>server-js/url</b></p>
-      <div class="input-row" style="max-width:260px; margin:0 auto 14px;">
-        <input type="password" id="pinInput" placeholder="Enter PIN" inputmode="numeric" onkeydown="if(event.key==='Enter') unlockAdmin()">
-        <div class="mini-pill" role="button" tabindex="0" onclick="unlockAdmin()">Unlock</div>
+  <div class="panel neu-card">
+    <div class="top-row">
+      <div class="title-group">
+        <h1>CineVault Host</h1>
+        <span>server-js / url</span>
+      </div>
+      <div class="top-controls">
+        <div class="status-pill neu-inset" id="statusBadge">Locked</div>
+        <div class="neu-btn theme-pill" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Toggle Theme">☀</div>
       </div>
     </div>
 
-    <!-- Main Admin Controls -->
-    <div id="adminView" style="display:none;">
-      <div class="header">
-        <div class="title-wrap">
-          <h1>🎬 Movie Server Admin</h1>
-          <p>RTDB Node: <code>server-js / url</code></p>
+    <!-- PIN Unlock Gate -->
+    <div id="gateView" class="gate">
+      <h2>Host Access</h2>
+      <div class="input-pill neu-inset" style="max-width:260px; margin:0 auto;">
+        <input type="password" id="pinInput" placeholder="PIN" inputmode="numeric" onkeydown="if(event.key==='Enter') unlock()">
+        <div class="neu-btn mini-btn primary" role="button" tabindex="0" onclick="unlock()">Enter</div>
+      </div>
+    </div>
+
+    <!-- Host Dashboard -->
+    <div id="dashView" style="display:none;">
+      <div class="well neu-inset">
+        <div class="well-head">
+          <span>Active Endpoint</span>
+          <span id="timeStamp"></span>
         </div>
-        <div class="pill">
-          <div class="dot" id="statusDot"></div>
-          <span id="statusText">Checking...</span>
-        </div>
+        <div class="well-val" id="currentEndpoint">Loading...</div>
       </div>
 
-      <div class="box">
-        <div class="box-label">
-          <span>Active Tunnel URL in Firebase</span>
-          <span id="updatedLabel"></span>
-        </div>
-        <div class="current-url" id="activeUrlDisplay">Loading...</div>
+      <label class="field-label" for="urlInput">Tunnel URL</label>
+      <div class="input-pill neu-inset">
+        <input type="url" id="urlInput" placeholder="https://xxxx.trycloudflare.com" onkeydown="if(event.key==='Enter') publishUrl()">
+        <div class="neu-btn mini-btn" role="button" tabindex="0" onclick="pasteUrl()">Paste</div>
       </div>
 
-      <div class="input-group">
-        <label for="urlInput">New Cloudflared / Tunnel URL</label>
-        <div class="input-row">
-          <input type="url" id="urlInput" placeholder="https://xxxx-xxxx.trycloudflare.com" onkeydown="if(event.key==='Enter') saveTunnelUrl()">
-          <div class="mini-pill" role="button" tabindex="0" onclick="pasteFromClipboard()">Paste</div>
-        </div>
+      <div class="btn-grid">
+        <div class="neu-btn btn-full primary" role="button" tabindex="0" onclick="publishUrl()">Publish Endpoint</div>
+        <div class="neu-btn btn-half" role="button" tabindex="0" onclick="verifyEndpoint(activeUrl)">Verify Host</div>
+        <div class="neu-btn btn-half danger" role="button" tabindex="0" onclick="markOffline()">Set Offline</div>
       </div>
 
-      <div class="actions">
-        <div class="btn-pill btn-primary" role="button" tabindex="0" onclick="saveTunnelUrl()">🚀 Publish Live Tunnel URL</div>
-        <div class="btn-pill btn-secondary" role="button" tabindex="0" onclick="pingServer(currentSavedUrl)">📡 Test Connection</div>
-        <div class="btn-pill btn-danger" role="button" tabindex="0" onclick="setOffline()">⏹ Set Offline</div>
-      </div>
-
-      <div class="cmd-helper">
-        <div>Quick PC Terminal Commands:</div>
-        <div class="cmd-line">
+      <div class="cmd-section">
+        <div class="cmd-row neu-inset">
           <span>python server.py</span>
-          <div class="mini-pill" role="button" tabindex="0" onclick="copyText('python server.py')">Copy</div>
+          <div class="neu-btn mini-btn" role="button" tabindex="0" onclick="copyCmd('python server.py')">Copy</div>
         </div>
-        <div class="cmd-line">
+        <div class="cmd-row neu-inset">
           <span>cloudflared tunnel --url http://localhost:8000</span>
-          <div class="mini-pill" role="button" tabindex="0" onclick="copyText('cloudflared tunnel --url http://localhost:8000')">Copy</div>
+          <div class="neu-btn mini-btn" role="button" tabindex="0" onclick="copyCmd('cloudflared tunnel --url http://localhost:8000')">Copy</div>
         </div>
       </div>
     </div>
@@ -321,7 +357,7 @@
   <div class="toast" id="toast"></div>
 
 <script>
-  const ADMIN_PIN = "799702";
+  const ADMIN_PIN = "3030";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDpCAXfhldRc1nCZDWlWNRbcMFjqAh8uPc",
@@ -335,128 +371,127 @@
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
-  const serverRef = db.ref('server-js');
+  const nodeRef = db.ref('server-js');
 
-  let currentSavedUrl = '';
+  let activeUrl = '';
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('cinevault_theme', theme);
+    document.getElementById('btnTheme').textContent = theme === 'dark' ? '☀' : '☾';
+    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#14171f' : '#e6ebf2');
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  }
+
+  applyTheme(localStorage.getItem('cinevault_theme') || 'dark');
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
 
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(t._timer);
-    t._timer = setTimeout(() => t.classList.remove('show'), 2600);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2400);
   }
 
-  function unlockAdmin() {
-    const entered = document.getElementById('pinInput').value.trim();
-    if (entered === ADMIN_PIN) {
-      localStorage.setItem('sk_movie_admin_unlocked', '1');
-      showAdminDashboard();
+  function unlock() {
+    if (document.getElementById('pinInput').value.trim() === ADMIN_PIN) {
+      localStorage.setItem('cinevault_admin', '1');
+      openDash();
     } else {
-      showToast('Incorrect Admin PIN');
+      showToast('Invalid PIN');
     }
   }
 
-  function showAdminDashboard() {
-    document.getElementById('lockView').style.display = 'none';
-    document.getElementById('adminView').style.display = 'block';
-    listenToFirebase();
+  function openDash() {
+    document.getElementById('gateView').style.display = 'none';
+    document.getElementById('dashView').style.display = 'block';
+    document.getElementById('statusBadge').textContent = 'Syncing';
+    bindDatabase();
   }
 
-  if (localStorage.getItem('sk_movie_admin_unlocked') === '1') {
-    showAdminDashboard();
+  if (localStorage.getItem('cinevault_admin') === '1') {
+    openDash();
   }
 
-  function setStatus(state, text) {
-    document.getElementById('statusDot').className = 'dot ' + state;
-    document.getElementById('statusText').textContent = text;
-  }
-
-  function listenToFirebase() {
-    serverRef.on('value', (snap) => {
+  function bindDatabase() {
+    nodeRef.on('value', (snap) => {
       const data = snap.val() || {};
-      currentSavedUrl = data.url ? String(data.url).trim() : '';
-      document.getElementById('activeUrlDisplay').textContent = currentSavedUrl || '(Empty — Server marked offline)';
-      document.getElementById('updatedLabel').textContent = data.updatedAt || '';
+      activeUrl = data.url ? String(data.url).trim() : '';
+      document.getElementById('currentEndpoint').textContent = activeUrl || 'Offline';
+      document.getElementById('timeStamp').textContent = data.updatedAt || '';
 
-      if (currentSavedUrl) {
-        document.getElementById('urlInput').value = currentSavedUrl;
-        pingServer(currentSavedUrl);
+      if (activeUrl) {
+        document.getElementById('urlInput').value = activeUrl;
+        verifyEndpoint(activeUrl);
       } else {
-        setStatus('offline', 'Offline');
+        document.getElementById('statusBadge').textContent = 'Offline';
       }
     });
   }
 
-  async function pingServer(url) {
+  async function verifyEndpoint(url) {
     if (!url) {
-      setStatus('offline', 'No URL Set');
+      document.getElementById('statusBadge').textContent = 'Offline';
       return;
     }
-    setStatus('', 'Pinging PC...');
+    document.getElementById('statusBadge').textContent = 'Checking';
     try {
-      const res = await fetch(`${url.replace(/\/+$/, '')}/api/list`, {
+      const res = await fetch(`${url.replace(/\/+$/, '')}/api/ping`, {
         headers: { 'Bypass-Tunnel-Reminder': 'true' }
       });
-      if (!res.ok) throw new Error('Bad response');
-      const json = await res.json();
-      const count = (json.items || []).length;
-      setStatus('online', `Online (${count} root items)`);
+      if (!res.ok) throw new Error();
+      const info = await res.json();
+      document.getElementById('statusBadge').textContent = info.ffmpeg ? 'Online · Audio Ready' : 'Online · No FFmpeg';
     } catch (e) {
-      setStatus('offline', 'Unreachable');
+      document.getElementById('statusBadge').textContent = 'Unreachable';
     }
   }
 
-  async function saveTunnelUrl() {
+  async function publishUrl() {
     let raw = document.getElementById('urlInput').value.trim();
     if (!raw) {
-      showToast('Please paste your tunnel URL first');
+      showToast('Enter tunnel URL');
       return;
     }
-    if (!/^https?:\/\//i.test(raw)) {
-      raw = 'https://' + raw;
-    }
-    const cleanUrl = raw.replace(/\/+$/, '');
-    const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (!/^https?:\/\//i.test(raw)) raw = 'https://' + raw;
+    const clean = raw.replace(/\/+$/, '');
+    const stamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-    try {
-      await serverRef.update({
-        url: cleanUrl,
-        updatedAt: `Updated ${now}`
-      });
-      showToast('Live tunnel URL published to Firebase!');
-    } catch (e) {
-      showToast('Firebase write failed: ' + e.message);
-    }
+    await nodeRef.update({ url: clean, updatedAt: stamp });
+    showToast('Endpoint published');
   }
 
-  async function setOffline() {
-    try {
-      await serverRef.update({
-        url: '',
-        updatedAt: 'Marked offline'
-      });
-      document.getElementById('urlInput').value = '';
-      showToast('Server marked offline for viewers');
-    } catch (e) {
-      showToast('Error: ' + e.message);
-    }
+  async function markOffline() {
+    await nodeRef.update({ url: '', updatedAt: '' });
+    document.getElementById('urlInput').value = '';
+    showToast('Marked offline');
   }
 
-  async function pasteFromClipboard() {
+  async function pasteUrl() {
     try {
-      const text = await navigator.clipboard.readText();
-      if (text) {
-        document.getElementById('urlInput').value = text.trim();
-        showToast('Pasted from clipboard');
+      const txt = await navigator.clipboard.readText();
+      if (txt) {
+        document.getElementById('urlInput').value = txt.trim();
+        showToast('Pasted');
       }
     } catch (e) {
-      showToast('Clipboard access blocked — paste manually');
+      showToast('Paste manually');
     }
   }
 
-  function copyText(txt) {
-    navigator.clipboard.writeText(txt).then(() => showToast('Command copied!'));
+  function copyCmd(cmd) {
+    navigator.clipboard.writeText(cmd).then(() => showToast('Copied'));
   }
 </script>
 </body>
