@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>CineVault — Host Control</title>
+  <title>Admin</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="author" content="Sanchar Koirala">
-  <meta name="theme-color" content="#14171f" id="metaThemeColor">
+  <meta name="theme-color" content="#000000" id="metaThemeColor">
 
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
@@ -18,37 +18,29 @@
 
   <style>
     :root[data-theme="dark"] {
-      --bg: #14171f;
-      --surface-elevated: linear-gradient(145deg, #1e2330, #141821);
-      --surface-inset: #11141b;
-      --shadow-light: rgba(255, 255, 255, 0.045);
-      --shadow-dark: rgba(0, 0, 0, 0.72);
-      --inset-light: rgba(255, 255, 255, 0.035);
-      --inset-dark: rgba(0, 0, 0, 0.78);
-      --sheen-top: rgba(255, 255, 255, 0.14);
-      --sheen-border: rgba(255, 255, 255, 0.06);
-      --text: #f1f5f9;
-      --muted: #8b95a7;
-      --accent: #38bdf8;
-      --accent-2: #818cf8;
-      --danger: #f87171;
+      --bg: #000000;
+      --surface: #17171a;
+      --surface-2: #222226;
+      --surface-hover: #2a2a2f;
+      --stroke: rgba(255, 255, 255, 0.08);
+      --text: #fafafa;
+      --text-2: #9a9aa2;
+      --blue: #3e8bff;
+      --danger: #ff5c5c;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
     }
 
     :root[data-theme="light"] {
-      --bg: #e6ebf2;
-      --surface-elevated: linear-gradient(145deg, #f3f6fb, #dce2ec);
-      --surface-inset: #dde3ec;
-      --shadow-light: rgba(255, 255, 255, 0.92);
-      --shadow-dark: rgba(163, 177, 198, 0.62);
-      --inset-light: rgba(255, 255, 255, 0.9);
-      --inset-dark: rgba(163, 177, 198, 0.65);
-      --sheen-top: rgba(255, 255, 255, 0.98);
-      --sheen-border: rgba(255, 255, 255, 0.7);
-      --text: #18202c;
-      --muted: #5d6a7e;
-      --accent: #0284c7;
-      --accent-2: #4f46e5;
+      --bg: #f4f4f6;
+      --surface: #ffffff;
+      --surface-2: #ececf0;
+      --surface-hover: #e4e4e9;
+      --stroke: rgba(0, 0, 0, 0.07);
+      --text: #111114;
+      --text-2: #666670;
+      --blue: #0381fe;
       --danger: #dc2626;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
     * {
@@ -62,151 +54,130 @@
       min-height: 100dvh;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-family: "One UI Sans", "SamsungOne", "Inter", system-ui, -apple-system, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      transition: background 0.25s ease, color 0.25s ease;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .neu-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--sheen-border);
-      border-top-color: var(--sheen-top);
-      box-shadow: -8px -8px 18px var(--shadow-light), 10px 10px 24px var(--shadow-dark);
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
     }
 
-    .neu-inset {
-      background: var(--surface-inset);
-      border: 1px solid var(--sheen-border);
-      box-shadow: inset 4px 4px 9px var(--inset-dark), inset -3px -3px 8px var(--inset-light);
+    .head-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      gap: 12px;
     }
 
-    .neu-btn {
-      background: var(--surface-elevated);
-      border: 1px solid var(--sheen-border);
-      border-top-color: var(--sheen-top);
-      box-shadow: -4px -4px 10px var(--shadow-light), 5px 5px 12px var(--shadow-dark);
+    .head-title h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .head-title span {
+      font-size: 12px;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    .head-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-chip {
+      padding: 6px 13px;
       border-radius: 999px;
+      background: var(--surface-2);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .ui-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--text);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, color 0.16s ease;
+      gap: 6px;
+      transition: transform 0.14s ease, background 0.14s ease;
     }
+    .ui-btn:hover { background: var(--surface-hover); }
+    .ui-btn:active { transform: scale(0.96); }
 
-    .neu-btn:hover {
-      transform: translateY(-1px);
-      color: var(--accent);
-    }
-
-    .neu-btn:active {
-      transform: translateY(0);
-      background: var(--surface-inset);
-      box-shadow: inset 3px 3px 7px var(--inset-dark), inset -2px -2px 6px var(--inset-light);
-    }
-
-    .neu-btn.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    .ui-btn.primary {
+      background: var(--blue);
       color: #ffffff;
-      border-top-color: rgba(255, 255, 255, 0.45);
+      border-color: transparent;
     }
-    .neu-btn.primary:hover { color: #ffffff; }
+    .ui-btn.primary:hover { filter: brightness(1.08); }
+    .ui-btn.danger { color: var(--danger); }
 
-    .neu-btn.danger { color: var(--danger); }
+    .icon-btn { width: 36px; height: 36px; }
+    .mini-btn { height: 34px; padding: 0 14px; font-size: 12px; }
 
-    .panel {
-      width: 100%;
-      max-width: 480px;
-      border-radius: 30px;
-      padding: 28px;
-    }
-
-    .top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      gap: 12px;
-    }
-
-    .title-group h1 {
-      margin: 0;
-      font-size: 19px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
-    .title-group span {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .top-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .status-pill {
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .theme-pill {
-      width: 36px;
-      height: 36px;
-    }
-
-    .well {
+    .endpoint-box {
+      background: var(--surface-2);
       border-radius: 20px;
-      padding: 15px 18px;
+      padding: 14px 16px;
       margin-bottom: 18px;
     }
-    .well-head {
+    .endpoint-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--muted);
-      margin-bottom: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-2);
+      margin-bottom: 5px;
     }
-    .well-val {
+    .endpoint-url {
       font-family: ui-monospace, Consolas, monospace;
       font-size: 13px;
-      color: var(--accent);
+      color: var(--blue);
       word-break: break-all;
     }
 
-    .field-label {
+    .label {
       display: block;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--muted);
-      margin: 0 0 8px 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-2);
+      margin: 0 0 8px 4px;
     }
 
-    .input-pill {
+    .input-wrap {
       height: 46px;
+      background: var(--surface-2);
+      border: 1px solid var(--stroke);
       border-radius: 999px;
-      padding: 4px 6px 4px 18px;
+      padding: 4px 6px 4px 16px;
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
-    .input-pill input {
+    .input-wrap:focus-within { border-color: var(--blue); }
+    .input-wrap input {
       flex: 1;
       background: transparent;
       border: none;
@@ -216,61 +187,51 @@
       font-family: inherit;
       min-width: 0;
     }
-    .input-pill input::placeholder { color: var(--muted); }
+    .input-wrap input::placeholder { color: var(--text-2); }
 
-    .mini-btn {
-      height: 34px;
-      padding: 0 14px;
-      font-size: 12px;
-    }
-
-    .btn-grid {
+    .grid-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .btn-full {
-      grid-column: 1 / -1;
-      height: 46px;
-    }
-    .btn-half {
-      height: 42px;
-    }
-
-    .cmd-section {
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--sheen-border);
-      display: flex;
-      flex-direction: column;
       gap: 10px;
     }
-    .cmd-row {
+    .btn-full { grid-column: 1 / -1; height: 44px; }
+    .btn-half { height: 40px; }
+
+    .cmd-list {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--stroke);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cmd-item {
+      background: var(--surface-2);
       border-radius: 16px;
-      padding: 8px 10px 8px 14px;
+      padding: 7px 8px 7px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       font-family: ui-monospace, Consolas, monospace;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-2);
     }
 
     .gate {
       text-align: center;
-      padding: 10px 0;
+      padding: 8px 0;
     }
     .gate h2 {
-      margin: 0 0 18px;
-      font-size: 18px;
-      font-weight: 800;
+      margin: 0 0 16px;
+      font-size: 17px;
+      font-weight: 700;
     }
 
     footer {
-      margin-top: 22px;
+      margin-top: 20px;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-2);
       text-align: center;
     }
 
@@ -279,14 +240,14 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(14px);
-      background: var(--surface-elevated);
+      background: var(--surface-2);
       color: var(--text);
-      border: 1px solid var(--sheen-top);
+      border: 1px solid var(--stroke);
       padding: 10px 20px;
       border-radius: 999px;
       font-size: 12.5px;
       font-weight: 600;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+      box-shadow: var(--shadow);
       opacity: 0;
       pointer-events: none;
       transition: all 0.2s ease;
@@ -297,55 +258,55 @@
 </head>
 <body>
 
-  <div class="panel neu-card">
-    <div class="top-row">
-      <div class="title-group">
-        <h1>CineVault Host</h1>
+  <div class="card">
+    <div class="head-row">
+      <div class="head-title">
+        <h1>Host Control</h1>
         <span>server-js / url</span>
       </div>
-      <div class="top-controls">
-        <div class="status-pill neu-inset" id="statusBadge">Locked</div>
-        <div class="neu-btn theme-pill" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Toggle Theme">☀</div>
+      <div class="head-right">
+        <div class="status-chip" id="statusChip">Locked</div>
+        <div class="ui-btn icon-btn" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Theme">☀</div>
       </div>
     </div>
 
     <div id="gateView" class="gate">
-      <h2>Host Access</h2>
-      <div class="input-pill neu-inset" style="max-width:260px; margin:0 auto;">
+      <h2>Enter PIN</h2>
+      <div class="input-wrap" style="max-width:250px; margin:0 auto;">
         <input type="password" id="pinInput" placeholder="PIN" inputmode="numeric" onkeydown="if(event.key==='Enter') unlock()">
-        <div class="neu-btn mini-btn primary" role="button" tabindex="0" onclick="unlock()">Enter</div>
+        <div class="ui-btn mini-btn primary" role="button" tabindex="0" onclick="unlock()">Unlock</div>
       </div>
     </div>
 
     <div id="dashView" style="display:none;">
-      <div class="well neu-inset">
-        <div class="well-head">
-          <span>Active Endpoint</span>
+      <div class="endpoint-box">
+        <div class="endpoint-meta">
+          <span>Active Tunnel</span>
           <span id="timeStamp"></span>
         </div>
-        <div class="well-val" id="currentEndpoint">Loading...</div>
+        <div class="endpoint-url" id="currentEndpoint">Loading...</div>
       </div>
 
-      <label class="field-label" for="urlInput">Tunnel URL</label>
-      <div class="input-pill neu-inset">
+      <label class="label" for="urlInput">Tunnel URL</label>
+      <div class="input-wrap">
         <input type="url" id="urlInput" placeholder="https://xxxx.trycloudflare.com" onkeydown="if(event.key==='Enter') publishUrl()">
-        <div class="neu-btn mini-btn" role="button" tabindex="0" onclick="pasteUrl()">Paste</div>
+        <div class="ui-btn mini-btn" role="button" tabindex="0" onclick="pasteUrl()">Paste</div>
       </div>
 
-      <div class="btn-grid">
-        <div class="neu-btn btn-full primary" role="button" tabindex="0" onclick="publishUrl()">Publish Endpoint</div>
-        <div class="neu-btn btn-half" role="button" tabindex="0" onclick="verifyEndpoint(activeUrl)">Verify Host</div>
-        <div class="neu-btn btn-half danger" role="button" tabindex="0" onclick="markOffline()">Set Offline</div>
+      <div class="grid-actions">
+        <div class="ui-btn btn-full primary" role="button" tabindex="0" onclick="publishUrl()">Publish URL</div>
+        <div class="ui-btn btn-half" role="button" tabindex="0" onclick="verifyEndpoint(activeUrl)">Test Server</div>
+        <div class="ui-btn btn-half danger" role="button" tabindex="0" onclick="markOffline()">Set Offline</div>
       </div>
 
-      <div class="cmd-section">
-        <div class="cmd-row neu-inset">
+      <div class="cmd-list">
+        <div class="cmd-item">
           <span>python server.py</span>
-          <div class="neu-btn mini-btn" role="button" tabindex="0" onclick="copyCmd('python server.py')">Copy</div>
+          <div class="ui-btn mini-btn" role="button" tabindex="0" onclick="copyCmd('python server.py')">Copy</div>
         </div>
-        <div class="cmd-row neu-inset">
+        <div class="cmd-item">
           <span>cloudflared tunnel --url http://localhost:8000</span>
-          <div class="neu-btn mini-btn" role="button" tabindex="0" onclick="copyCmd('cloudflared tunnel --url http://localhost:8000')">Copy</div>
+          <div class="ui-btn mini-btn" role="button" tabindex="0" onclick="copyCmd('cloudflared tunnel --url http://localhost:8000')">Copy</div>
         </div>
       </div>
     </div>
@@ -355,7 +316,7 @@
   <div class="toast" id="toast"></div>
 
 <script>
-  const ADMIN_PIN = "799702";
+  const ADMIN_HASH = "048801438c526607";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDpCAXfhldRc1nCZDWlWNRbcMFjqAh8uPc",
@@ -373,19 +334,32 @@
 
   let activeUrl = '';
 
+  function hashPin(str) {
+    let a = 1, b = 0, h = 5381;
+    for (let i = 0; i < str.length; i++) {
+      const c = str.charCodeAt(i);
+      a = (a + c) % 65521;
+      b = (b + a) % 65521;
+      h = (((h << 5) + h) + c) >>> 0;
+    }
+    const p1 = (((b << 16) | a) >>> 0).toString(16).padStart(8, '0');
+    const p2 = h.toString(16).padStart(8, '0');
+    return p1 + p2;
+  }
+
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('cinevault_theme', theme);
+    localStorage.setItem('oneui_files_theme', theme);
     document.getElementById('btnTheme').textContent = theme === 'dark' ? '☀' : '☾';
-    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#14171f' : '#e6ebf2');
+    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#000000' : '#f4f4f6');
   }
 
   function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
   }
 
-  applyTheme(localStorage.getItem('cinevault_theme') || 'dark');
+  applyTheme(localStorage.getItem('oneui_files_theme') || 'dark');
 
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
@@ -403,22 +377,23 @@
   }
 
   function unlock() {
-    if (document.getElementById('pinInput').value.trim() === ADMIN_PIN) {
-      localStorage.setItem('cinevault_admin', '1');
+    const entered = document.getElementById('pinInput').value.trim();
+    if (hashPin(entered) === ADMIN_HASH) {
+      localStorage.setItem('oneui_host_auth', ADMIN_HASH);
       openDash();
     } else {
-      showToast('Invalid PIN');
+      showToast('Wrong PIN');
     }
   }
 
   function openDash() {
     document.getElementById('gateView').style.display = 'none';
     document.getElementById('dashView').style.display = 'block';
-    document.getElementById('statusBadge').textContent = 'Syncing';
+    document.getElementById('statusChip').textContent = 'Syncing';
     bindDatabase();
   }
 
-  if (localStorage.getItem('cinevault_admin') === '1') {
+  if (localStorage.getItem('oneui_host_auth') === ADMIN_HASH) {
     openDash();
   }
 
@@ -433,31 +408,31 @@
         document.getElementById('urlInput').value = activeUrl;
         verifyEndpoint(activeUrl);
       } else {
-        document.getElementById('statusBadge').textContent = 'Offline';
+        document.getElementById('statusChip').textContent = 'Offline';
       }
     });
   }
 
   async function verifyEndpoint(url) {
     if (!url) {
-      document.getElementById('statusBadge').textContent = 'Offline';
+      document.getElementById('statusChip').textContent = 'Offline';
       return;
     }
-    document.getElementById('statusBadge').textContent = 'Checking';
+    document.getElementById('statusChip').textContent = 'Checking';
     try {
       const res = await fetch(`${url.replace(/\/+$/, '')}/api/ping`);
       if (!res.ok) throw new Error();
       const info = await res.json();
-      document.getElementById('statusBadge').textContent = info.ffmpeg ? 'Online · Audio Ready' : 'Online · No FFmpeg';
+      document.getElementById('statusChip').textContent = info.ffmpeg ? `Online · ${info.encoder}` : 'Online';
     } catch (e) {
-      document.getElementById('statusBadge').textContent = 'Unreachable';
+      document.getElementById('statusChip').textContent = 'Unreachable';
     }
   }
 
   async function publishUrl() {
     let raw = document.getElementById('urlInput').value.trim();
     if (!raw) {
-      showToast('Enter tunnel URL');
+      showToast('Enter URL');
       return;
     }
     if (!/^https?:\/\//i.test(raw)) raw = 'https://' + raw;
@@ -465,13 +440,13 @@
     const stamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     await nodeRef.update({ url: clean, updatedAt: stamp });
-    showToast('Endpoint published');
+    showToast('Published');
   }
 
   async function markOffline() {
     await nodeRef.update({ url: '', updatedAt: '' });
     document.getElementById('urlInput').value = '';
-    showToast('Marked offline');
+    showToast('Offline');
   }
 
   async function pasteUrl() {

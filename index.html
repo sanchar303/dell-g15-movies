@@ -5,31 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>CineVault — Private Cinema &amp; Media Library by Sanchar Koirala</title>
-  <meta name="description" content="CineVault by Sanchar Koirala — High-definition personal movie vault and adaptive media explorer for seamless 1080p and 4K streaming across devices.">
-  <meta name="keywords" content="CineVault, Sanchar Koirala, Movie Vault, Personal Media Server, 4K Movie Streaming, Cinema Explorer">
+  <title>Dell G15</title>
+  <meta name="description" content="My Files Media Explorer by Sanchar Koirala — Fast, responsive 1080p and 4K personal cinema explorer with adaptive audio and video streaming.">
+  <meta name="keywords" content="My Files, Media Explorer, Sanchar Koirala, Movie Streaming, Personal Media Library">
   <meta name="author" content="Sanchar Koirala">
   <meta name="publisher" content="Sanchar Koirala">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
-  <meta name="application-name" content="CineVault">
+  <meta name="application-name" content="My Files">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="CineVault">
-  <meta name="theme-color" content="#14171f" id="metaThemeColor">
+  <meta name="apple-mobile-web-app-title" content="My Files">
+  <meta name="theme-color" content="#000000" id="metaThemeColor">
 
   <!-- Open Graph / Social SEO -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="CineVault">
-  <meta property="og:title" content="CineVault — Private Cinema &amp; Media Library">
-  <meta property="og:description" content="High-definition personal movie vault and adaptive media explorer for seamless 1080p and 4K streaming.">
+  <meta property="og:site_name" content="My Files">
+  <meta property="og:title" content="My Files — Personal Media Explorer">
+  <meta property="og:description" content="Fast, responsive 1080p and 4K personal cinema explorer by Sanchar Koirala.">
   <meta property="og:image" content="favicon.png">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card SEO -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CineVault — Private Cinema &amp; Media Library">
-  <meta name="twitter:description" content="High-definition personal movie vault and adaptive media explorer by Sanchar Koirala.">
+  <meta name="twitter:title" content="My Files — Personal Media Explorer">
+  <meta name="twitter:description" content="Fast, responsive 1080p and 4K personal cinema explorer by Sanchar Koirala.">
   <meta name="twitter:image" content="favicon.png">
 
   <!-- Favicon & App Icons -->
@@ -38,14 +38,14 @@
   <link rel="shortcut icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Structured Data (JSON-LD for Google Search Console) -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "CineVault",
-    "alternateName": "CineVault Media Explorer",
-    "description": "High-definition personal movie vault and adaptive media explorer by Sanchar Koirala.",
+    "name": "My Files",
+    "alternateName": "Personal Media Explorer",
+    "description": "Fast, responsive 1080p and 4K personal cinema explorer by Sanchar Koirala.",
     "author": {
       "@type": "Person",
       "name": "Sanchar Koirala"
@@ -58,44 +58,31 @@
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
 
   <style>
+    /* Samsung One UI 9 Dark & Light Tokens */
     :root[data-theme="dark"] {
-      --bg: #14171f;
-      --surface: #191d27;
-      --surface-elevated: linear-gradient(145deg, #1e2330, #141821);
-      --surface-inset: #11141b;
-      --shadow-light: rgba(255, 255, 255, 0.045);
-      --shadow-dark: rgba(0, 0, 0, 0.72);
-      --inset-light: rgba(255, 255, 255, 0.035);
-      --inset-dark: rgba(0, 0, 0, 0.78);
-      --sheen-top: rgba(255, 255, 255, 0.14);
-      --sheen-border: rgba(255, 255, 255, 0.06);
-      --text: #f1f5f9;
-      --muted: #8b95a7;
-      --accent: #38bdf8;
-      --accent-2: #818cf8;
-      --accent-soft: rgba(56, 189, 248, 0.14);
-      --folder-gold: linear-gradient(145deg, #fbbf24, #d97706);
-      --folder-big: linear-gradient(145deg, #38bdf8, #6366f1);
+      --bg: #000000;
+      --surface: #17171a;
+      --surface-2: #222226;
+      --surface-hover: #2a2a2f;
+      --stroke: rgba(255, 255, 255, 0.08);
+      --text: #fafafa;
+      --text-2: #9a9aa2;
+      --blue: #3e8bff;
+      --blue-soft: rgba(62, 139, 255, 0.16);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
     }
 
     :root[data-theme="light"] {
-      --bg: #e6ebf2;
-      --surface: #e6ebf2;
-      --surface-elevated: linear-gradient(145deg, #f3f6fb, #dce2ec);
-      --surface-inset: #dde3ec;
-      --shadow-light: rgba(255, 255, 255, 0.92);
-      --shadow-dark: rgba(163, 177, 198, 0.62);
-      --inset-light: rgba(255, 255, 255, 0.9);
-      --inset-dark: rgba(163, 177, 198, 0.65);
-      --sheen-top: rgba(255, 255, 255, 0.98);
-      --sheen-border: rgba(255, 255, 255, 0.7);
-      --text: #18202c;
-      --muted: #5d6a7e;
-      --accent: #0284c7;
-      --accent-2: #4f46e5;
-      --accent-soft: rgba(2, 132, 199, 0.12);
-      --folder-gold: linear-gradient(145deg, #f59e0b, #d97706);
-      --folder-big: linear-gradient(145deg, #0284c7, #4f46e5);
+      --bg: #f4f4f6;
+      --surface: #ffffff;
+      --surface-2: #ececf0;
+      --surface-hover: #e4e4e9;
+      --stroke: rgba(0, 0, 0, 0.07);
+      --text: #111114;
+      --text-2: #666670;
+      --blue: #0381fe;
+      --blue-soft: rgba(3, 129, 254, 0.12);
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
     }
 
     * {
@@ -108,316 +95,393 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-      font-size: 13.5px;
+      font-family: "One UI Sans", "SamsungOne", "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 14px;
       height: 100dvh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: background 0.25s ease, color 0.25s ease;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
-    .neu-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--sheen-border);
-      border-top-color: var(--sheen-top);
-      box-shadow: -6px -6px 14px var(--shadow-light), 8px 8px 18px var(--shadow-dark);
-    }
-
-    .neu-inset {
-      background: var(--surface-inset);
-      border: 1px solid var(--sheen-border);
-      box-shadow: inset 4px 4px 9px var(--inset-dark), inset -3px -3px 8px var(--inset-light);
-    }
-
-    .neu-btn {
-      background: var(--surface-elevated);
-      border: 1px solid var(--sheen-border);
-      border-top-color: var(--sheen-top);
-      box-shadow: -4px -4px 10px var(--shadow-light), 5px 5px 12px var(--shadow-dark);
+    /* One UI Custom Div Button */
+    .ui-btn {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
       border-radius: 999px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      font-weight: 600;
-      font-size: 12.5px;
-      color: var(--text);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, color 0.16s ease;
+      gap: 6px;
+      transition: transform 0.14s ease, background 0.14s ease, color 0.14s ease;
     }
-
-    .neu-btn:hover:not(.disabled) {
-      transform: translateY(-1px);
-      color: var(--accent);
+    .ui-btn:hover:not(.disabled) {
+      background: var(--surface-hover);
     }
-
-    .neu-btn:active:not(.disabled),
-    .neu-btn.active {
-      transform: translateY(0);
-      background: var(--surface-inset);
-      box-shadow: inset 3px 3px 7px var(--inset-dark), inset -2px -2px 6px var(--inset-light);
-      color: var(--accent);
+    .ui-btn:active:not(.disabled) {
+      transform: scale(0.96);
     }
-
-    .neu-btn.disabled {
-      opacity: 0.38;
-      cursor: default;
+    .ui-btn.active {
+      background: var(--blue-soft);
+      color: var(--blue);
+      border-color: transparent;
+    }
+    .ui-btn.disabled {
+      opacity: 0.32;
       pointer-events: none;
     }
 
-    .topbar {
-      padding: 14px 20px;
+    /* One UI Top App Bar */
+    .app-bar {
+      padding: 14px 20px 10px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       flex-shrink: 0;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      cursor: pointer;
-      padding-right: 6px;
-    }
-
-    .brand-logo {
+    .icon-btn {
       width: 38px;
       height: 38px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 16px;
-      box-shadow: -3px -3px 8px var(--shadow-light), 4px 4px 12px var(--shadow-dark), inset 0 1px 1px rgba(255,255,255,0.45);
-    }
-
-    .brand-name {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
-
-    .nav-cluster {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .icon-pill {
-      width: 36px;
-      height: 36px;
-      padding: 0;
       flex-shrink: 0;
     }
 
-    .crumb-bar {
+    .pill-btn {
+      height: 38px;
+      padding: 0 15px;
+      flex-shrink: 0;
+    }
+
+    .crumb-strip {
       flex: 1;
       height: 38px;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
       border-radius: 999px;
       padding: 0 14px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       overflow-x: auto;
       white-space: nowrap;
-      min-width: 120px;
+      min-width: 100px;
     }
-    .crumb-bar::-webkit-scrollbar { display: none; }
+    .crumb-strip::-webkit-scrollbar { display: none; }
 
-    .crumb {
-      padding: 4px 11px;
+    .crumb-item {
+      padding: 5px 10px;
       border-radius: 999px;
-      cursor: pointer;
+      font-size: 13px;
       font-weight: 600;
-      font-size: 12.5px;
-      color: var(--muted);
-      transition: 0.15s;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: 0.14s;
     }
-    .crumb:hover, .crumb.current {
+    .crumb-item:hover, .crumb-item.current {
       color: var(--text);
-      background: var(--accent-soft);
+      background: var(--surface-2);
     }
-    .crumb-sep { color: var(--muted); opacity: 0.5; font-size: 11px; }
+    .crumb-arrow {
+      color: var(--text-2);
+      opacity: 0.45;
+      font-size: 12px;
+    }
 
-    .search-pill {
+    .search-field {
       width: 240px;
       height: 38px;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
       border-radius: 999px;
-      padding: 0 15px;
+      padding: 0 14px;
       display: flex;
       align-items: center;
       gap: 8px;
       flex-shrink: 0;
     }
-    .search-pill input {
+    .search-field:focus-within {
+      border-color: var(--blue);
+    }
+    .search-field input {
       background: transparent;
       border: none;
       outline: none;
       color: var(--text);
+      font-size: 13.5px;
       width: 100%;
-      font-size: 13px;
       font-family: inherit;
     }
-    .search-pill input::placeholder { color: var(--muted); }
+    .search-field input::placeholder { color: var(--text-2); }
 
-    .toolbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .text-pill { height: 36px; padding: 0 14px; }
-
-    .shell {
+    /* Workspace Layout */
+    .workspace {
       flex: 1;
       display: flex;
-      gap: 18px;
-      padding: 4px 20px 14px;
+      gap: 16px;
+      padding: 6px 20px 12px;
       overflow: hidden;
       position: relative;
     }
 
-    .rail {
-      width: 245px;
+    /* One UI Left Category Rail */
+    .side-rail {
+      width: 250px;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
       border-radius: 26px;
-      padding: 16px 12px;
+      padding: 14px 10px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
       overflow-y: auto;
       flex-shrink: 0;
     }
-    .rail::-webkit-scrollbar { width: 4px; }
-    .rail::-webkit-scrollbar-thumb { background: var(--sheen-border); border-radius: 99px; }
+    .side-rail::-webkit-scrollbar { width: 4px; }
+    .side-rail::-webkit-scrollbar-thumb { background: var(--stroke); border-radius: 99px; }
 
-    .rail-label {
-      font-size: 11px;
+    .rail-header {
+      font-size: 11.5px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--muted);
-      padding: 6px 12px 2px;
+      color: var(--text-2);
+      padding: 8px 14px 4px;
+      letter-spacing: 0.4px;
     }
 
-    .rail-item {
-      padding: 10px 13px;
-      border-radius: 16px;
+    .rail-row {
+      padding: 11px 14px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 12.5px;
-      color: var(--muted);
-      transition: 0.16s ease;
+      font-size: 13px;
+      color: var(--text);
+      transition: 0.14s ease;
     }
-    .rail-item:hover { color: var(--text); background: var(--accent-soft); }
-    .rail-item.active {
-      color: var(--accent);
-      background: var(--surface-inset);
-      box-shadow: inset 3px 3px 7px var(--inset-dark), inset -2px -2px 6px var(--inset-light);
+    .rail-row:hover {
+      background: var(--surface-2);
     }
-    .rail-name {
+    .rail-row.active {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+    .rail-left {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
       overflow: hidden;
     }
-    .rail-name span {
+    .rail-left span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .rail-size {
-      font-size: 11px;
-      opacity: 0.75;
+    .rail-meta {
+      font-size: 11.5px;
+      color: var(--text-2);
       flex-shrink: 0;
     }
 
-    .viewport {
+    /* Main Content Container */
+    .content-area {
       flex: 1;
-      border-radius: 28px;
-      padding: 20px;
       overflow-y: auto;
+      padding-right: 4px;
     }
-    .viewport::-webkit-scrollbar { width: 6px; }
-    .viewport::-webkit-scrollbar-thumb { background: var(--sheen-border); border-radius: 99px; }
+    .content-area::-webkit-scrollbar { width: 5px; }
+    .content-area::-webkit-scrollbar-thumb { background: var(--stroke); border-radius: 99px; }
 
-    .section-head {
-      font-size: 12px;
+    /* One UI Viewing Header */
+    .view-hero {
+      padding: 10px 6px 18px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-title {
+      margin: 0;
+      font-size: 26px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--muted);
-      margin: 0 0 14px 4px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    .group-label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-2);
+      padding: 4px 6px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .folder-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
-      gap: 16px;
-      margin-bottom: 26px;
+    /* One UI Detailed List Card (Default Samsung My Files Look) */
+    .oneui-group {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
     }
 
-    .folder-card {
-      border-radius: 22px;
-      padding: 16px 18px;
-      cursor: pointer;
+    .oneui-row {
+      padding: 14px 18px;
       display: flex;
       align-items: center;
       gap: 14px;
+      cursor: pointer;
       position: relative;
-      overflow: hidden;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transition: background 0.14s ease, transform 0.12s ease;
     }
-    .folder-card.is-large {
-      grid-column: span 1;
+    .oneui-row:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 72px;
+      right: 18px;
+      bottom: 0;
+      height: 1px;
+      background: var(--stroke);
     }
-    @media (min-width: 1100px) {
-      .folder-card.is-large {
-        grid-column: span 2;
-      }
+    .oneui-row:hover {
+      background: var(--surface-hover);
     }
-    .folder-card:hover {
-      transform: translateY(-3px);
-    }
-    .folder-card:active {
-      transform: scale(0.985);
+    .oneui-row:active {
+      transform: scale(0.992);
     }
 
-    .folder-orb {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      background: var(--folder-gold);
+    /* Uniform Samsung My Files Golden Folder Icon */
+    .sam-folder {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255, 184, 0, 0.14);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.55);
-    }
-    .folder-card.is-large .folder-orb {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      background: var(--folder-big);
     }
 
-    .folder-info {
+    .sam-video {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .row-body {
       flex: 1;
       min-width: 0;
     }
-    .folder-title {
+    .row-title {
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .row-details {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .dot-sep { opacity: 0.45; }
+
+    .row-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .chip-action {
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: 0.14s;
+    }
+    .chip-action:hover {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* Uniform Grid View (Every folder & file card has identical dimensions) */
+    .uniform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .grid-tile {
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 142px;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .grid-tile:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+    }
+    .grid-tile:active {
+      transform: scale(0.985);
+    }
+    .tile-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .tile-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--text-2);
+      font-size: 11px;
       font-weight: 700;
+    }
+    .tile-name {
+      font-weight: 600;
       font-size: 13.5px;
       line-height: 1.35;
       display: -webkit-box;
@@ -426,140 +490,26 @@
       overflow: hidden;
       word-break: break-word;
     }
-    .folder-meta {
-      margin-top: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .badge-pill {
-      padding: 3px 9px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      background: var(--surface-inset);
-      color: var(--muted);
-      box-shadow: inset 2px 2px 4px var(--inset-dark), inset -1px -1px 3px var(--inset-light);
-    }
-    .folder-card.is-large .badge-pill.accent {
-      color: var(--accent);
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 18px;
-    }
-
-    .media-card {
-      border-radius: 24px;
-      padding: 18px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-    .media-card:hover {
-      transform: translateY(-4px);
-    }
-    .media-card:active {
-      transform: scale(0.985);
-    }
-
-    .media-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .play-orb {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      box-shadow: -3px -3px 8px var(--shadow-light), 4px 4px 12px var(--shadow-dark), inset 0 1px 2px rgba(255, 255, 255, 0.5);
-      transition: transform 0.18s ease;
-    }
-    .media-card:hover .play-orb {
-      transform: scale(1.08);
-    }
-
-    .media-title {
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 1.4;
-      word-break: break-word;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .media-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
+    .tile-sub {
       font-size: 11.5px;
-      color: var(--muted);
+      color: var(--text-2);
+      display: flex;
+      justify-content: space-between;
     }
 
-    .list-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .list-row {
-      border-radius: 18px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-    .list-row:hover { transform: translateX(3px); }
-    .list-name {
-      flex: 1;
-      font-weight: 600;
-      font-size: 13.5px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .list-tags {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .center-state {
+    /* Offline / Empty Card */
+    .state-box {
       max-width: 380px;
       margin: 70px auto;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
       border-radius: 28px;
-      padding: 32px 26px;
+      padding: 32px 24px;
       text-align: center;
+      box-shadow: var(--shadow);
     }
-    .center-state h2 {
-      margin: 0 0 8px;
-      font-size: 17px;
-      font-weight: 700;
-    }
-    .center-state p {
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
+    .state-box h2 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
+    .state-box p { margin: 0 0 20px; color: var(--text-2); font-size: 13.5px; }
 
     footer {
       padding: 8px 20px 12px;
@@ -567,63 +517,63 @@
       align-items: center;
       justify-content: space-between;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-2);
       flex-shrink: 0;
     }
 
-    .theatre {
+    /* One UI Fullscreen Cinema Player */
+    .player-screen {
       display: none;
       position: fixed;
       inset: 0;
-      background: #07090d;
+      background: #000000;
       z-index: 100;
       flex-direction: column;
     }
-    .theatre.open { display: flex; }
+    .player-screen.open { display: flex; }
 
-    .theatre-bar {
+    .player-header {
       padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background: rgba(14, 17, 24, 0.9);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      z-index: 10;
+      background: rgba(18, 18, 20, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .theatre-title {
+    .player-name {
       font-weight: 700;
       font-size: 14.5px;
-      color: #f8fafc;
+      color: #fff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       flex: 1;
     }
-    .theatre-actions {
+    .player-pills {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-shrink: 0;
     }
-    .dark-pill {
-      padding: 8px 15px;
+    .p-pill {
+      height: 34px;
+      padding: 0 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
       font-size: 12.5px;
       font-weight: 600;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: 0.15s;
+      cursor: pointer;
+      transition: 0.14s;
     }
-    .dark-pill:hover { background: rgba(255, 255, 255, 0.16); }
+    .p-pill:hover { background: rgba(255, 255, 255, 0.2); }
+    .p-pill.blue { background: #0381fe; }
 
-    .stage {
+    .video-stage {
       flex: 1;
       position: relative;
       display: flex;
@@ -635,89 +585,85 @@
     video {
       width: 100%;
       height: 100%;
-      max-height: calc(100dvh - 134px);
+      max-height: calc(100dvh - 132px);
       outline: none;
     }
 
-    .spinner-ring {
+    .loader-circle {
       position: absolute;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.15);
-      border-top-color: #38bdf8;
-      animation: spin 0.8s linear infinite;
+      border: 3px solid rgba(255, 255, 255, 0.16);
+      border-top-color: #3e8bff;
+      animation: spin 0.75s linear infinite;
       pointer-events: none;
       display: none;
     }
-    .spinner-ring.show { display: block; }
+    .loader-circle.show { display: block; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .player-dock {
+    .player-controls {
       padding: 12px 20px 16px;
-      background: rgba(14, 17, 24, 0.95);
-      border-top: 1px solid rgba(255,255,255,0.07);
+      background: rgba(18, 18, 20, 0.96);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
-    .timeline-wrap {
+    .seek-area {
       height: 18px;
       display: flex;
       align-items: center;
       cursor: pointer;
     }
-    .timeline-track {
+    .seek-bar {
       width: 100%;
-      height: 6px;
+      height: 5px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.18);
       position: relative;
-      overflow: visible;
-      transition: height 0.15s;
     }
-    .timeline-wrap:hover .timeline-track { height: 8px; }
-    .timeline-fill {
+    .seek-area:hover .seek-bar { height: 7px; }
+    .seek-progress {
       height: 100%;
       width: 0%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      background: #3e8bff;
       position: relative;
     }
-    .timeline-thumb {
+    .seek-knob {
       position: absolute;
-      right: -7px;
+      right: -6px;
       top: 50%;
       transform: translateY(-50%);
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
     }
 
-    .dock-controls {
+    .ctrl-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
-    .dock-left, .dock-right {
+    .ctrl-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
-    .time-readout {
+    .clock-text {
       font-family: ui-monospace, Consolas, monospace;
       font-size: 12.5px;
-      color: #cbd5e1;
+      color: #d4d4d8;
       padding: 0 6px;
     }
-    .vol-slider {
-      width: 84px;
-      accent-color: #38bdf8;
+    .vol-range {
+      width: 82px;
+      accent-color: #3e8bff;
       cursor: pointer;
     }
 
@@ -726,14 +672,14 @@
       bottom: 28px;
       left: 50%;
       transform: translateX(-50%) translateY(14px);
-      background: var(--surface-elevated);
+      background: var(--surface-2);
       color: var(--text);
-      border: 1px solid var(--sheen-top);
+      border: 1px solid var(--stroke);
       padding: 10px 20px;
       border-radius: 999px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+      box-shadow: var(--shadow);
       opacity: 0;
       pointer-events: none;
       transition: all 0.2s ease;
@@ -744,69 +690,61 @@
     .mobile-only { display: none; }
 
     @media (max-width: 860px) {
-      .topbar { padding: 12px 14px; gap: 8px; flex-wrap: wrap; }
-      .brand-name { display: none; }
-      .crumb-bar { order: 3; flex-basis: 100%; height: 34px; }
-      .search-pill { flex: 1; width: auto; height: 36px; }
-      .shell { padding: 0 14px 10px; }
-      .rail {
+      .app-bar { padding: 12px 14px 8px; flex-wrap: wrap; }
+      .crumb-strip { order: 3; flex-basis: 100%; height: 36px; }
+      .search-field { flex: 1; width: auto; }
+      .workspace { padding: 4px 14px 10px; }
+      .side-rail {
         position: absolute;
         top: 0; bottom: 10px; left: 14px;
         z-index: 30;
         transform: translateX(-120%);
-        transition: transform 0.22s ease;
+        transition: transform 0.2s ease;
+        box-shadow: 12px 0 32px rgba(0, 0, 0, 0.6);
       }
-      .rail.open { transform: translateX(0); }
+      .side-rail.open { transform: translateX(0); }
       .mobile-only { display: inline-flex; }
-      .viewport { padding: 14px; border-radius: 22px; }
-      .folder-grid, .media-grid { grid-template-columns: 1fr; gap: 12px; }
+      .uniform-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .grid-tile { height: 134px; padding: 14px; }
+      .hide-sm { display: none; }
       footer { flex-direction: column; gap: 4px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="brand" role="button" tabindex="0" onclick="navigateTo('')">
-      <div class="brand-logo">CV</div>
-      <div class="brand-name">CineVault</div>
+  <header class="app-bar">
+    <div class="ui-btn icon-btn mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Categories">☰</div>
+    <div class="ui-btn icon-btn disabled" id="btnBack" role="button" tabindex="0" onclick="goBack()" title="Back">←</div>
+    <div class="ui-btn icon-btn disabled" id="btnUp" role="button" tabindex="0" onclick="goUp()" title="Up">↑</div>
+    <div class="ui-btn icon-btn" role="button" tabindex="0" onclick="refreshCurrent()" title="Refresh">↻</div>
+
+    <div class="crumb-strip" id="crumbStrip"></div>
+
+    <div class="search-field">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search" oninput="handleSearch(this.value)">
     </div>
 
-    <div class="nav-cluster">
-      <div class="neu-btn icon-pill mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Folders">☰</div>
-      <div class="neu-btn icon-pill disabled" id="btnBack" role="button" tabindex="0" onclick="goBack()" title="Back">←</div>
-      <div class="neu-btn icon-pill disabled" id="btnUp" role="button" tabindex="0" onclick="goUp()" title="Up">↑</div>
-      <div class="neu-btn icon-pill" role="button" tabindex="0" onclick="refreshCurrent()" title="Refresh">↻</div>
-    </div>
-
-    <div class="crumb-bar neu-inset" id="crumbBar"></div>
-
-    <div class="search-pill neu-inset">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="searchInput" placeholder="Search titles..." oninput="handleSearch(this.value)">
-    </div>
-
-    <div class="toolbar-actions">
-      <div class="neu-btn text-pill" id="btnSort" role="button" tabindex="0" onclick="cycleSort()">Name</div>
-      <div class="neu-btn text-pill" id="btnView" role="button" tabindex="0" onclick="toggleView()">List</div>
-      <div class="neu-btn icon-pill" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Toggle Theme">☀</div>
-    </div>
+    <div class="ui-btn pill-btn" id="btnSort" role="button" tabindex="0" onclick="cycleSort()">Name</div>
+    <div class="ui-btn pill-btn" id="btnView" role="button" tabindex="0" onclick="toggleView()">Grid</div>
+    <div class="ui-btn icon-btn" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Theme">☀</div>
   </header>
 
-  <main class="shell">
-    <aside class="rail neu-card" id="rail">
-      <div class="rail-label">Library</div>
-      <div class="rail-item active" id="railRoot" role="button" tabindex="0" onclick="navigateTo('')">
-        <div class="rail-name">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          <span>All Media</span>
+  <main class="workspace">
+    <aside class="side-rail" id="sideRail">
+      <div class="rail-header">Storage</div>
+      <div class="rail-row active" id="railRoot" role="button" tabindex="0" onclick="navigateTo('')">
+        <div class="rail-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--blue)"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span>Internal Storage</span>
         </div>
       </div>
-      <div class="rail-label" style="margin-top:8px;">Collections</div>
+      <div class="rail-header" style="margin-top:8px;">Folders</div>
       <div id="railFolders"></div>
     </aside>
 
-    <section class="viewport neu-inset" id="viewport"></section>
+    <section class="content-area" id="contentArea"></section>
   </main>
 
   <footer>
@@ -814,41 +752,43 @@
     <span>© 2026 Sanchar Koirala | All rights reserved</span>
   </footer>
 
-  <div class="theatre" id="theatre">
-    <div class="theatre-bar">
-      <div class="theatre-title" id="theatreTitle">Title</div>
-      <div class="theatre-actions">
-        <div class="dark-pill" id="audioTrackBtn" role="button" tabindex="0" onclick="cycleAudioTrack()" style="display:none;">Audio: Track 1</div>
-        <div class="dark-pill" role="button" tabindex="0" onclick="copyStreamUrl()">Copy Link</div>
-        <div class="dark-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
+  <!-- Fullscreen Video Player -->
+  <div class="player-screen" id="playerScreen">
+    <div class="player-header">
+      <div class="player-name" id="playerName">Video</div>
+      <div class="player-pills">
+        <div class="p-pill" id="modeBtn" role="button" tabindex="0" onclick="toggleStreamMode()">Quality: Auto</div>
+        <div class="p-pill" id="audioBtn" role="button" tabindex="0" onclick="cycleAudioTrack()" style="display:none;">Audio: Track 1</div>
+        <div class="p-pill blue" role="button" tabindex="0" onclick="openExternalVLC()">VLC / MX</div>
+        <div class="p-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
       </div>
     </div>
 
-    <div class="stage" onclick="togglePlayPause()">
+    <div class="video-stage" onclick="togglePlayPause()">
       <video id="videoEl" playsinline preload="auto"></video>
-      <div class="spinner-ring" id="bufferSpinner"></div>
+      <div class="loader-circle" id="loaderCircle"></div>
     </div>
 
-    <div class="player-dock">
-      <div class="timeline-wrap" id="timelineWrap" onclick="seekFromTimeline(event)">
-        <div class="timeline-track">
-          <div class="timeline-fill" id="timelineFill">
-            <div class="timeline-thumb"></div>
+    <div class="player-controls">
+      <div class="seek-area" id="seekArea" onclick="seekFromBar(event)">
+        <div class="seek-bar">
+          <div class="seek-progress" id="seekProgress">
+            <div class="seek-knob"></div>
           </div>
         </div>
       </div>
 
-      <div class="dock-controls">
-        <div class="dock-left">
-          <div class="dark-pill" id="playPauseBtn" role="button" tabindex="0" onclick="togglePlayPause()">Pause</div>
-          <div class="dark-pill" role="button" tabindex="0" onclick="skipSeconds(-10)">-10s</div>
-          <div class="dark-pill" role="button" tabindex="0" onclick="skipSeconds(10)">+10s</div>
-          <div class="time-readout" id="timeReadout">00:00 / 00:00</div>
+      <div class="ctrl-row">
+        <div class="ctrl-group">
+          <div class="p-pill" id="playBtn" role="button" tabindex="0" onclick="togglePlayPause()">Pause</div>
+          <div class="p-pill" role="button" tabindex="0" onclick="skipBy(-10)">-10s</div>
+          <div class="p-pill" role="button" tabindex="0" onclick="skipBy(10)">+10s</div>
+          <div class="clock-text" id="clockText">00:00 / 00:00</div>
         </div>
 
-        <div class="dock-right">
-          <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
-          <div class="dark-pill" role="button" tabindex="0" onclick="toggleFullscreen()">Fullscreen</div>
+        <div class="ctrl-group">
+          <input type="range" class="vol-range" id="volRange" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
+          <div class="p-pill" role="button" tabindex="0" onclick="toggleFullscreen()">Fullscreen</div>
         </div>
       </div>
     </div>
@@ -870,6 +810,9 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
+  const FOLDER_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#FFB800"><path d="M10.41 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.59-2z"/></svg>`;
+  const VIDEO_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+
   let API_BASE = '';
   let currentPath = '';
   let historyStack = [''];
@@ -877,27 +820,28 @@
   let currentItems = [];
   let sortBy = 'name';
   let sortAsc = true;
-  let viewMode = 'grid';
+  let viewMode = 'list'; // One UI My Files defaults to clean detailed list
   let searchTimer = null;
 
   let activeMedia = null;
-  let activeProbe = { duration: 0, needsRemux: false, audioTracks: [] };
+  let activeProbe = { duration: 0, strategy: 'remux', audioTracks: [] };
   let activeAudioTrack = 0;
+  let streamMode = 'auto'; // 'auto' or 'transcode'
   let streamOffsetSec = 0;
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('cinevault_theme', theme);
+    localStorage.setItem('oneui_files_theme', theme);
     document.getElementById('btnTheme').textContent = theme === 'dark' ? '☀' : '☾';
-    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#14171f' : '#e6ebf2');
+    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#000000' : '#f4f4f6');
   }
 
   function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
   }
 
-  applyTheme(localStorage.getItem('cinevault_theme') || 'dark');
+  applyTheme(localStorage.getItem('oneui_files_theme') || 'dark');
 
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
@@ -914,12 +858,12 @@
     t._timer = setTimeout(() => t.classList.remove('show'), 2400);
   }
 
-  function renderOffline(title, subtitle) {
-    document.getElementById('viewport').innerHTML = `
-      <div class="center-state neu-card">
+  function renderState(title, msg) {
+    document.getElementById('contentArea').innerHTML = `
+      <div class="state-box">
         <h2>${escapeHtml(title)}</h2>
-        <p>${escapeHtml(subtitle)}</p>
-        <div class="neu-btn text-pill" role="button" tabindex="0" onclick="refreshCurrent()">Retry</div>
+        <p>${escapeHtml(msg)}</p>
+        <div class="ui-btn pill-btn" role="button" tabindex="0" onclick="refreshCurrent()">Retry</div>
       </div>
     `;
     document.getElementById('footerStats').textContent = 'Offline';
@@ -937,7 +881,7 @@
     const clean = raw ? String(raw).trim().replace(/\/+$/, '') : '';
     if (!clean) {
       API_BASE = '';
-      renderOffline('Server Offline', 'Waiting for host stream.');
+      renderState('Server Offline', 'Host stream is not active.');
       return;
     }
     if (API_BASE !== clean) {
@@ -978,38 +922,38 @@
         el.classList.toggle('active', el.dataset.path === path);
       });
 
-      renderViewport();
+      renderContent();
     } catch (e) {
-      renderOffline('Host Unreachable', 'Unable to reach media server.');
+      renderState('Unreachable', 'Cannot connect to host server.');
     }
   }
 
   function renderRailFolders(folders) {
-    const el = document.getElementById('railFolders');
-    el.innerHTML = folders.map(f => `
-      <div class="rail-item rail-folder" data-path="${escapeHtml(f.path)}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
-        <div class="rail-name">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#fbbf24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+    const box = document.getElementById('railFolders');
+    box.innerHTML = folders.map(f => `
+      <div class="rail-row rail-folder" data-path="${escapeHtml(f.path)}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
+        <div class="rail-left">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="#FFB800"><path d="M10.41 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.59-2z"/></svg>
           <span title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</span>
         </div>
-        <span class="rail-size">${escapeHtml(f.sizeLabel)}</span>
+        <span class="rail-meta">${escapeHtml(f.sizeLabel)}</span>
       </div>
     `).join('');
   }
 
   function renderBreadcrumbs() {
-    const bar = document.getElementById('crumbBar');
+    const strip = document.getElementById('crumbStrip');
     const parts = currentPath ? currentPath.split('/') : [];
-    let html = `<div class="crumb ${parts.length === 0 ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('')">All Media</div>`;
+    let html = `<div class="crumb-item ${parts.length === 0 ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('')">Internal storage</div>`;
     let acc = '';
     parts.forEach((p, idx) => {
       acc += (idx === 0 ? '' : '/') + p;
       const target = acc;
       const isLast = idx === parts.length - 1;
-      html += `<span class="crumb-sep">/</span><div class="crumb ${isLast ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(target)}')">${escapeHtml(p)}</div>`;
+      html += `<span class="crumb-arrow">›</span><div class="crumb-item ${isLast ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(target)}')">${escapeHtml(p)}</div>`;
     });
-    bar.innerHTML = html;
-    bar.scrollLeft = bar.scrollWidth;
+    strip.innerHTML = html;
+    strip.scrollLeft = strip.scrollWidth;
   }
 
   function sortList(items) {
@@ -1026,53 +970,68 @@
     return filename.replace(/\.[^/.]+$/, '').replace(/\./g, ' ');
   }
 
-  function renderViewport() {
-    const vp = document.getElementById('viewport');
+  function renderContent() {
+    const area = document.getElementById('contentArea');
     const folders = sortList(currentItems.filter(i => i.type === 'folder'));
     const files = sortList(currentItems.filter(i => i.type === 'file'));
-    const totalCount = folders.length + files.length;
+    const total = folders.length + files.length;
 
-    document.getElementById('footerStats').textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'items'}`;
+    const parts = currentPath ? currentPath.split('/') : [];
+    const heading = parts.length ? parts[parts.length - 1] : 'Internal storage';
+    const totalBytes = [...folders, ...files].reduce((acc, x) => acc + (x.size || 0), 0);
 
-    if (totalCount === 0) {
-      vp.innerHTML = `<div class="center-state neu-card"><h2>Empty Folder</h2><p>No playable media found here.</p></div>`;
+    document.getElementById('footerStats').textContent = `${total} ${total === 1 ? 'item' : 'items'}`;
+
+    if (total === 0) {
+      area.innerHTML = `<div class="state-box"><h2>No files</h2><p>This folder contains no playable videos.</p></div>`;
       return;
     }
 
-    let html = '';
+    let html = `
+      <div class="view-hero">
+        <div>
+          <h1 class="hero-title">${escapeHtml(heading)}</h1>
+          <div class="hero-sub">${folders.length} folders · ${files.length} videos · ${formatBytes(totalBytes)}</div>
+        </div>
+      </div>
+    `;
 
     if (folders.length > 0) {
-      html += `<div class="section-head"><span>Collections</span><span>${folders.length}</span></div>`;
-      if (viewMode === 'grid') {
-        html += `<div class="folder-grid">`;
+      html += `<div class="group-label"><span>Folders</span><span>${folders.length}</span></div>`;
+      if (viewMode === 'list') {
+        html += `<div class="oneui-group">`;
         folders.forEach(f => {
-          const isLarge = f.count >= 3 || f.size >= 15 * 1024 * 1024 * 1024;
           html += `
-            <div class="folder-card neu-card ${isLarge ? 'is-large' : ''}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
-              <div class="folder-orb">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-              </div>
-              <div class="folder-info">
-                <div class="folder-title" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
-                <div class="folder-meta">
-                  <span class="badge-pill accent">${escapeHtml(f.typeLabel)}</span>
-                  <span class="badge-pill">${escapeHtml(f.sizeLabel)}</span>
+            <div class="oneui-row" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
+              <div class="sam-folder">${FOLDER_ICON}</div>
+              <div class="row-body">
+                <div class="row-title" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
+                <div class="row-details">
+                  <span>${escapeHtml(f.typeLabel)}</span>
+                  <span class="dot-sep">•</span>
+                  <span>${escapeHtml(f.sizeLabel)}</span>
+                  <span class="dot-sep hide-sm">•</span>
+                  <span class="hide-sm">${escapeHtml(f.modified)}</span>
                 </div>
               </div>
+              <span style="color:var(--text-2); font-size:16px;">›</span>
             </div>
           `;
         });
         html += `</div>`;
       } else {
-        html += `<div class="list-stack" style="margin-bottom:24px;">`;
+        html += `<div class="uniform-grid">`;
         folders.forEach(f => {
           html += `
-            <div class="list-row neu-card" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fbbf24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-              <div class="list-name" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
-              <div class="list-tags">
-                <span class="badge-pill">${escapeHtml(f.typeLabel)}</span>
-                <span class="badge-pill">${escapeHtml(f.sizeLabel)}</span>
+            <div class="grid-tile" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
+              <div class="tile-top">
+                <div class="sam-folder">${FOLDER_ICON}</div>
+                <span class="tile-badge">${escapeHtml(f.typeLabel)}</span>
+              </div>
+              <div class="tile-name" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
+              <div class="tile-sub">
+                <span>${escapeHtml(f.sizeLabel)}</span>
+                <span>${escapeHtml(f.modified)}</span>
               </div>
             </div>
           `;
@@ -1082,37 +1041,44 @@
     }
 
     if (files.length > 0) {
-      html += `<div class="section-head"><span>Videos</span><span>${files.length}</span></div>`;
-      if (viewMode === 'grid') {
-        html += `<div class="media-grid">`;
+      html += `<div class="group-label"><span>Videos</span><span>${files.length}</span></div>`;
+      if (viewMode === 'list') {
+        html += `<div class="oneui-group">`;
         files.forEach((m, idx) => {
           html += `
-            <div class="media-card neu-card" role="button" tabindex="0" onclick="openMedia(${idx})">
-              <div class="media-top">
-                <div class="play-orb">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <div class="oneui-row" role="button" tabindex="0" onclick="openMedia(${idx})">
+              <div class="sam-video">${VIDEO_ICON}</div>
+              <div class="row-body">
+                <div class="row-title" title="${escapeHtml(m.name)}">${escapeHtml(cleanTitle(m.name))}</div>
+                <div class="row-details">
+                  <span>${escapeHtml(m.ext)}</span>
+                  <span class="dot-sep">•</span>
+                  <span>${escapeHtml(m.sizeLabel)}</span>
+                  <span class="dot-sep hide-sm">•</span>
+                  <span class="hide-sm">${escapeHtml(m.modified)}</span>
                 </div>
-                <span class="badge-pill">${escapeHtml(m.ext)} • ${escapeHtml(m.sizeLabel)}</span>
               </div>
-              <div class="media-title" title="${escapeHtml(m.name)}">${escapeHtml(cleanTitle(m.name))}</div>
-              <div class="media-bottom">
-                <span>${escapeHtml(m.modified)}</span>
-                <span style="color:var(--accent); font-weight:700;">Watch</span>
+              <div class="row-actions" onclick="event.stopPropagation()">
+                <div class="chip-action hide-sm" role="button" tabindex="0" onclick="downloadM3U(${idx})">VLC</div>
+                <div class="chip-action" role="button" tabindex="0" onclick="openMedia(${idx})">Play</div>
               </div>
             </div>
           `;
         });
         html += `</div>`;
       } else {
-        html += `<div class="list-stack">`;
+        html += `<div class="uniform-grid">`;
         files.forEach((m, idx) => {
           html += `
-            <div class="list-row neu-card" role="button" tabindex="0" onclick="openMedia(${idx})">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent)"><path d="M8 5v14l11-7z"/></svg>
-              <div class="list-name" title="${escapeHtml(m.name)}">${escapeHtml(cleanTitle(m.name))}</div>
-              <div class="list-tags">
-                <span class="badge-pill">${escapeHtml(m.ext)}</span>
-                <span class="badge-pill">${escapeHtml(m.sizeLabel)}</span>
+            <div class="grid-tile" role="button" tabindex="0" onclick="openMedia(${idx})">
+              <div class="tile-top">
+                <div class="sam-video">${VIDEO_ICON}</div>
+                <span class="tile-badge">${escapeHtml(m.ext)}</span>
+              </div>
+              <div class="tile-name" title="${escapeHtml(m.name)}">${escapeHtml(cleanTitle(m.name))}</div>
+              <div class="tile-sub">
+                <span>${escapeHtml(m.sizeLabel)}</span>
+                <span>${escapeHtml(m.modified)}</span>
               </div>
             </div>
           `;
@@ -1122,32 +1088,35 @@
     }
 
     window._renderedFiles = files;
-    vp.innerHTML = html;
+    area.innerHTML = html;
   }
 
+  // Smart Player with Automatic HEVC Transcode & Error Recovery
   async function openMedia(idx) {
     const item = window._renderedFiles[idx];
     if (!item || !API_BASE) return;
 
     activeMedia = item;
     activeAudioTrack = 0;
+    streamMode = 'auto';
     streamOffsetSec = 0;
 
-    const theatre = document.getElementById('theatre');
-    const spinner = document.getElementById('bufferSpinner');
-    const audioBtn = document.getElementById('audioTrackBtn');
+    const screen = document.getElementById('playerScreen');
+    const loader = document.getElementById('loaderCircle');
+    const audioBtn = document.getElementById('audioBtn');
 
-    document.getElementById('theatreTitle').textContent = cleanTitle(item.name);
-    document.getElementById('timelineFill').style.width = '0%';
-    document.getElementById('timeReadout').textContent = '00:00 / --:--';
+    document.getElementById('playerName').textContent = cleanTitle(item.name);
+    document.getElementById('modeBtn').textContent = 'Quality: Auto';
+    document.getElementById('seekProgress').style.width = '0%';
+    document.getElementById('clockText').textContent = '00:00 / --:--';
     audioBtn.style.display = 'none';
-    spinner.classList.add('show');
-    theatre.classList.add('open');
+    loader.classList.add('show');
+    screen.classList.add('open');
 
     try {
       activeProbe = await apiFetch(`/api/probe?path=${encodeURIComponent(item.path)}`);
     } catch (e) {
-      activeProbe = { duration: 0, needsRemux: true, audioTracks: [] };
+      activeProbe = { duration: 0, strategy: 'transcode', audioTracks: [] };
     }
 
     if (activeProbe.audioTracks && activeProbe.audioTracks.length > 1) {
@@ -1155,91 +1124,113 @@
       audioBtn.textContent = `Audio: ${activeProbe.audioTracks[0].label}`;
     }
 
-    startPlaybackStream(0);
+    startStream(0);
   }
 
-  function startPlaybackStream(seekSeconds) {
+  function startStream(seekSeconds) {
     const video = document.getElementById('videoEl');
-    const spinner = document.getElementById('bufferSpinner');
-    spinner.classList.add('show');
+    const loader = document.getElementById('loaderCircle');
+    loader.classList.add('show');
 
     const encoded = encodePath(activeMedia.path);
-    if (activeProbe.needsRemux || activeAudioTrack > 0) {
-      streamOffsetSec = Math.max(0, Math.floor(seekSeconds));
-      video.src = `${API_BASE}/stream/${encoded}?t=${streamOffsetSec}&atrack=${activeAudioTrack}`;
-      video.load();
-      video.play().catch(() => {});
-    } else {
+    const effectiveStrategy = streamMode === 'transcode' ? 'transcode' : activeProbe.strategy;
+
+    if (effectiveStrategy === 'direct' && activeAudioTrack === 0) {
       if (!video.src || !video.src.includes(`/stream/${encoded}`)) {
         streamOffsetSec = 0;
-        video.src = `${API_BASE}/stream/${encoded}`;
+        video.src = `${API_BASE}/stream/${encoded}?mode=direct`;
         video.load();
       }
-      if (seekSeconds > 0) {
-        video.currentTime = seekSeconds;
-      }
+      if (seekSeconds > 0) video.currentTime = seekSeconds;
+      video.play().catch(() => {});
+    } else {
+      streamOffsetSec = Math.max(0, Math.floor(seekSeconds));
+      video.src = `${API_BASE}/stream/${encoded}?t=${streamOffsetSec}&atrack=${activeAudioTrack}&mode=${streamMode}`;
+      video.load();
       video.play().catch(() => {});
     }
+  }
+
+  function toggleStreamMode() {
+    if (!activeMedia) return;
+    const video = document.getElementById('videoEl');
+    const cur = streamOffsetSec + (video.currentTime || 0);
+    streamMode = streamMode === 'auto' ? 'transcode' : 'auto';
+    document.getElementById('modeBtn').textContent = streamMode === 'transcode' ? 'Quality: 1080p Fast' : 'Quality: Auto';
+    showToast(streamMode === 'transcode' ? 'Switched to 1080p Fast Stream' : 'Switched to Auto Quality');
+    startStream(cur);
   }
 
   function cycleAudioTrack() {
     if (!activeProbe.audioTracks || activeProbe.audioTracks.length <= 1) return;
     const video = document.getElementById('videoEl');
-    const currentPos = streamOffsetSec + (video.currentTime || 0);
+    const cur = streamOffsetSec + (video.currentTime || 0);
     activeAudioTrack = (activeAudioTrack + 1) % activeProbe.audioTracks.length;
-    const track = activeProbe.audioTracks[activeAudioTrack];
-    document.getElementById('audioTrackBtn').textContent = `Audio: ${track.label}`;
-    showToast(`Switched audio to ${track.label}`);
-    startPlaybackStream(currentPos);
+    const tr = activeProbe.audioTracks[activeAudioTrack];
+    document.getElementById('audioBtn').textContent = `Audio: ${tr.label}`;
+    showToast(`Audio: ${tr.label}`);
+    startStream(cur);
   }
 
   const videoEl = document.getElementById('videoEl');
 
+  // Automatic fallback if browser rejects raw stream codec
+  videoEl.addEventListener('error', () => {
+    if (activeMedia && streamMode !== 'transcode') {
+      streamMode = 'transcode';
+      document.getElementById('modeBtn').textContent = 'Quality: 1080p Fast';
+      startStream(streamOffsetSec);
+    }
+  });
+
   videoEl.addEventListener('playing', () => {
-    document.getElementById('bufferSpinner').classList.remove('show');
-    document.getElementById('playPauseBtn').textContent = 'Pause';
+    document.getElementById('loaderCircle').classList.remove('show');
+    document.getElementById('playBtn').textContent = 'Pause';
   });
 
   videoEl.addEventListener('pause', () => {
-    document.getElementById('playPauseBtn').textContent = 'Play';
+    document.getElementById('playBtn').textContent = 'Play';
   });
 
   videoEl.addEventListener('waiting', () => {
-    document.getElementById('bufferSpinner').classList.add('show');
+    document.getElementById('loaderCircle').classList.add('show');
   });
 
   videoEl.addEventListener('timeupdate', () => {
     const total = activeProbe.duration || (isFinite(videoEl.duration) ? videoEl.duration : 0);
     const current = streamOffsetSec + (videoEl.currentTime || 0);
-    document.getElementById('timeReadout').textContent = `${formatClock(current)} / ${total > 0 ? formatClock(total) : '--:--'}`;
+    document.getElementById('clockText').textContent = `${formatClock(current)} / ${total > 0 ? formatClock(total) : '--:--'}`;
     if (total > 0) {
       const pct = Math.min(100, Math.max(0, (current / total) * 100));
-      document.getElementById('timelineFill').style.width = `${pct}%`;
+      document.getElementById('seekProgress').style.width = `${pct}%`;
     }
   });
 
-  function seekFromTimeline(e) {
+  function seekFromBar(e) {
     const total = activeProbe.duration || (isFinite(videoEl.duration) ? videoEl.duration : 0);
     if (!total || total <= 0) return;
-    const rect = document.getElementById('timelineWrap').getBoundingClientRect();
+    const rect = document.getElementById('seekArea').getBoundingClientRect();
     const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
     const targetSec = ratio * total;
+    const effectiveStrategy = streamMode === 'transcode' ? 'transcode' : activeProbe.strategy;
 
-    if (activeProbe.needsRemux || activeAudioTrack > 0) {
-      startPlaybackStream(targetSec);
-    } else {
+    if (effectiveStrategy === 'direct' && activeAudioTrack === 0) {
       videoEl.currentTime = targetSec;
+    } else {
+      startStream(targetSec);
     }
   }
 
-  function skipSeconds(delta) {
+  function skipBy(delta) {
     const total = activeProbe.duration || (isFinite(videoEl.duration) ? videoEl.duration : 0);
     const current = streamOffsetSec + (videoEl.currentTime || 0);
     const target = Math.max(0, total > 0 ? Math.min(total - 1, current + delta) : current + delta);
-    if (activeProbe.needsRemux || activeAudioTrack > 0) {
-      startPlaybackStream(target);
-    } else {
+    const effectiveStrategy = streamMode === 'transcode' ? 'transcode' : activeProbe.strategy;
+
+    if (effectiveStrategy === 'direct' && activeAudioTrack === 0) {
       videoEl.currentTime = target;
+    } else {
+      startStream(target);
     }
   }
 
@@ -1254,9 +1245,9 @@
   }
 
   function toggleFullscreen() {
-    const theatre = document.getElementById('theatre');
+    const scr = document.getElementById('playerScreen');
     if (document.fullscreenElement) document.exitFullscreen();
-    else theatre.requestFullscreen().catch(() => {});
+    else scr.requestFullscreen().catch(() => {});
   }
 
   function closePlayer() {
@@ -1264,19 +1255,26 @@
     videoEl.removeAttribute('src');
     videoEl.load();
     activeMedia = null;
-    document.getElementById('bufferSpinner').classList.remove('show');
-    document.getElementById('theatre').classList.remove('open');
+    document.getElementById('loaderCircle').classList.remove('show');
+    document.getElementById('playerScreen').classList.remove('open');
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
   }
 
-  function copyStreamUrl() {
+  function openExternalVLC() {
     if (!activeMedia || !API_BASE) return;
-    const url = `${API_BASE}/stream/${encodePath(activeMedia.path)}`;
-    navigator.clipboard.writeText(url).then(() => showToast('Stream URL copied'));
+    window.location.href = `${API_BASE}/api/playlist?path=${encodeURIComponent(activeMedia.path)}`;
+    showToast('Playlist downloaded — open with VLC or MX Player');
+  }
+
+  function downloadM3U(idx) {
+    const item = window._renderedFiles[idx];
+    if (!item || !API_BASE) return;
+    window.location.href = `${API_BASE}/api/playlist?path=${encodeURIComponent(item.path)}`;
+    showToast('Playlist downloaded — open with VLC or MX Player');
   }
 
   function navigateTo(path) {
-    document.getElementById('rail').classList.remove('open');
+    document.getElementById('sideRail').classList.remove('open');
     loadFolder(path, true);
   }
 
@@ -1307,25 +1305,25 @@
   function cycleSort() {
     const modes = [
       { key: 'name', asc: true, label: 'Name' },
-      { key: 'size', asc: false, label: 'Largest' },
-      { key: 'mtime', asc: false, label: 'Newest' }
+      { key: 'size', asc: false, label: 'Size' },
+      { key: 'mtime', asc: false, label: 'Date' }
     ];
-    const currentIdx = modes.findIndex(m => m.key === sortBy);
-    const next = modes[(currentIdx + 1) % modes.length];
+    const idx = modes.findIndex(m => m.key === sortBy);
+    const next = modes[(idx + 1) % modes.length];
     sortBy = next.key;
     sortAsc = next.asc;
     document.getElementById('btnSort').textContent = next.label;
-    renderViewport();
+    renderContent();
   }
 
   function toggleView() {
-    viewMode = viewMode === 'grid' ? 'list' : 'grid';
-    document.getElementById('btnView').textContent = viewMode === 'grid' ? 'List' : 'Grid';
-    renderViewport();
+    viewMode = viewMode === 'list' ? 'grid' : 'list';
+    document.getElementById('btnView').textContent = viewMode === 'list' ? 'Grid' : 'List';
+    renderContent();
   }
 
   function toggleRail() {
-    document.getElementById('rail').classList.toggle('open');
+    document.getElementById('sideRail').classList.toggle('open');
   }
 
   function handleSearch(val) {
@@ -1338,10 +1336,19 @@
       try {
         const data = await apiFetch(`/api/search?q=${encodeURIComponent(val)}`);
         currentItems = data.items || [];
-        document.getElementById('crumbBar').innerHTML = `<div class="crumb current">Search: ${escapeHtml(val)}</div>`;
-        renderViewport();
+        document.getElementById('crumbStrip').innerHTML = `<div class="crumb-item current">Search: ${escapeHtml(val)}</div>`;
+        renderContent();
       } catch (e) {}
     }, 220);
+  }
+
+  function formatBytes(bytes) {
+    if (!bytes) return '0 KB';
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let i = 0;
+    let n = bytes;
+    while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
+    return `${n.toFixed(i > 1 ? 2 : 0)} ${units[i]}`;
   }
 
   function formatClock(sec) {
@@ -1366,13 +1373,13 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (!document.getElementById('theatre').classList.contains('open')) return;
+    if (!document.getElementById('playerScreen').classList.contains('open')) return;
     if (e.key === 'Escape') closePlayer();
     else if (e.key === ' ' && document.activeElement.getAttribute('role') !== 'button') {
       e.preventDefault();
       togglePlayPause();
-    } else if (e.key === 'ArrowRight') skipSeconds(10);
-    else if (e.key === 'ArrowLeft') skipSeconds(-10);
+    } else if (e.key === 'ArrowRight') skipBy(10);
+    else if (e.key === 'ArrowLeft') skipBy(-10);
     else if (e.key.toLowerCase() === 'f') toggleFullscreen();
   });
 </script>
