@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Dell G15 Movies</title>
-  <meta name="description" content="My Files Media Explorer by Sanchar Koirala — Adaptive HLS cinema streaming with multi-audio selection, folder episode playlists, and Samsung One UI 9 navigation.">
+  <title>Dell G15 Movise</title>
+  <meta name="description" content="My Files Media Explorer by Sanchar Koirala — Federated HLS cinema streaming across live community servers with multi-audio selection and folder playlists.">
   <meta name="keywords" content="My Files, Media Explorer, Sanchar Koirala, HLS Movie Streaming, Personal Cinema">
   <meta name="author" content="Sanchar Koirala">
   <meta name="publisher" content="Sanchar Koirala">
@@ -22,15 +22,15 @@
   <!-- Open Graph / Social SEO -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="My Files">
-  <meta property="og:title" content="My Files — Personal Cinema &amp; Media Explorer">
-  <meta property="og:description" content="Adaptive HLS cinema streaming with multi-audio selection and folder playlists by Sanchar Koirala.">
+  <meta property="og:title" content="My Files — Global Cinema &amp; Media Explorer">
+  <meta property="og:description" content="Federated HLS cinema streaming across live servers with multi-audio selection and folder playlists by Sanchar Koirala.">
   <meta property="og:image" content="favicon.png">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card SEO -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="My Files — Personal Cinema &amp; Media Explorer">
-  <meta name="twitter:description" content="Adaptive HLS cinema streaming with multi-audio selection and folder playlists by Sanchar Koirala.">
+  <meta name="twitter:title" content="My Files — Global Cinema &amp; Media Explorer">
+  <meta name="twitter:description" content="Federated HLS cinema streaming across live servers with multi-audio selection and folder playlists by Sanchar Koirala.">
   <meta name="twitter:image" content="favicon.png">
 
   <!-- Favicon & App Icons -->
@@ -45,8 +45,8 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "My Files",
-    "alternateName": "Personal Cinema & Media Explorer",
-    "description": "Adaptive HLS cinema streaming with multi-audio selection and folder playlists by Sanchar Koirala.",
+    "alternateName": "Global Cinema & Media Explorer",
+    "description": "Federated HLS cinema streaming across live servers with multi-audio selection and folder playlists by Sanchar Koirala.",
     "author": {
       "@type": "Person",
       "name": "Sanchar Koirala"
@@ -70,6 +70,7 @@
       --text-2: #9a9aa4;
       --blue: #3e8bff;
       --blue-soft: rgba(62, 139, 255, 0.16);
+      --green: #22c55e;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
     }
 
@@ -83,6 +84,7 @@
       --text-2: #666670;
       --blue: #0381fe;
       --blue-soft: rgba(3, 129, 254, 0.12);
+      --green: #16a34a;
       --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
     }
 
@@ -147,6 +149,42 @@
     .icon-btn { width: 38px; height: 38px; flex-shrink: 0; }
     .pill-btn { height: 38px; padding: 0 15px; flex-shrink: 0; }
 
+    .server-pill {
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      flex-shrink: 0;
+      max-width: 210px;
+      transition: 0.14s ease;
+    }
+    .server-pill:hover { background: var(--surface-hover); border-color: var(--blue); }
+    .server-pill-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      flex-shrink: 0;
+    }
+    .live-dot.offline {
+      background: #ef4444;
+      box-shadow: none;
+    }
+
     .crumb-strip {
       flex: 1;
       height: 38px;
@@ -159,7 +197,7 @@
       gap: 4px;
       overflow-x: auto;
       white-space: nowrap;
-      min-width: 100px;
+      min-width: 90px;
     }
     .crumb-strip::-webkit-scrollbar { display: none; }
 
@@ -179,7 +217,7 @@
     .crumb-arrow { color: var(--text-2); opacity: 0.45; font-size: 12px; }
 
     .search-field {
-      width: 230px;
+      width: 210px;
       height: 38px;
       background: var(--surface);
       border: 1px solid var(--stroke);
@@ -213,7 +251,7 @@
     }
 
     .side-rail {
-      width: 250px;
+      width: 260px;
       background: var(--surface);
       border: 1px solid var(--stroke);
       border-radius: 26px;
@@ -233,10 +271,13 @@
       color: var(--text-2);
       padding: 8px 14px 4px;
       letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .rail-row {
-      padding: 11px 14px;
+      padding: 10px 14px;
       border-radius: 18px;
       display: flex;
       align-items: center;
@@ -255,13 +296,14 @@
       align-items: center;
       gap: 10px;
       overflow: hidden;
+      min-width: 0;
     }
     .rail-left span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .rail-meta { font-size: 11.5px; color: var(--text-2); flex-shrink: 0; }
+    .rail-meta { font-size: 11px; color: var(--text-2); flex-shrink: 0; }
 
     .content-area {
       flex: 1;
@@ -455,7 +497,7 @@
     }
 
     .state-box {
-      max-width: 380px;
+      max-width: 400px;
       margin: 60px auto;
       background: var(--surface);
       border: 1px solid var(--stroke);
@@ -465,7 +507,7 @@
       box-shadow: var(--shadow);
     }
     .state-box h2 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
-    .state-box p { margin: 0 0 20px; color: var(--text-2); font-size: 13.5px; }
+    .state-box p { margin: 0 0 20px; color: var(--text-2); font-size: 13.5px; line-height: 1.45; }
 
     footer {
       padding: 7px 18px 10px;
@@ -531,7 +573,6 @@
       min-width: 0;
     }
 
-    /* Non-interactive Auto Quality Indicator Pill */
     .quality-badge {
       padding: 4px 10px;
       border-radius: 999px;
@@ -621,7 +662,6 @@
       overflow: hidden;
     }
 
-    /* Completely non-interactive video surface so taps never toggle playback */
     video {
       width: 100%;
       height: 100%;
@@ -757,7 +797,6 @@
       margin: 0;
     }
 
-    /* Folder Episode / Video List Alongside Video */
     .episode-pane {
       width: 300px;
       flex-shrink: 0;
@@ -868,7 +907,6 @@
       font-weight: 700;
     }
 
-    /* Custom Glassmorphic Popup Modal (Audio Track & Speed Selector) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -885,7 +923,7 @@
 
     .modal-sheet {
       width: 100%;
-      max-width: 390px;
+      max-width: 410px;
       max-height: 76dvh;
       background: #18181d;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1008,13 +1046,11 @@
 
     .mobile-only { display: none; }
 
-    /* ============================================================
-       RESPONSIVE MOBILE PORTRAIT & LANDSCAPE FIT
-       ============================================================ */
     @media (max-width: 900px) {
       .app-bar { padding: 10px 12px 6px; flex-wrap: wrap; gap: 7px; }
       .crumb-strip { order: 3; flex-basis: 100%; height: 34px; }
-      .search-field { flex: 1; width: auto; height: 36px; }
+      .search-field { flex: 1; width: auto; height: 36px; min-width: 110px; }
+      .server-pill { height: 36px; padding: 0 11px; max-width: 155px; font-size: 12px; }
       .icon-btn { width: 36px; height: 36px; }
       .pill-btn { height: 36px; padding: 0 12px; font-size: 12.5px; }
       .workspace { padding: 4px 12px 8px; }
@@ -1034,7 +1070,6 @@
       footer { flex-direction: column; gap: 3px; text-align: center; font-size: 11px; padding: 6px 12px 8px; }
     }
 
-    /* Mobile Portrait Player: Video + Controls pinned cleanly at top, Folder Episodes list below */
     @media (max-width: 900px) and (orientation: portrait) {
       .player-header {
         padding: 8px 12px;
@@ -1042,9 +1077,7 @@
         gap: 6px;
         min-height: 0;
       }
-      .player-title-wrap {
-        flex-basis: 100%;
-      }
+      .player-title-wrap { flex-basis: 100%; }
       .player-pills {
         width: 100%;
         justify-content: flex-start;
@@ -1054,29 +1087,17 @@
       .player-pills::-webkit-scrollbar { display: none; }
       .p-pill { height: 31px; padding: 0 11px; font-size: 11.5px; }
 
-      .player-workspace {
-        flex-direction: column;
-      }
-      .player-main {
-        flex: none;
-      }
-      .player-workspace.no-episodes .player-main {
-        flex: 1;
-      }
+      .player-workspace { flex-direction: column; }
+      .player-main { flex: none; }
+      .player-workspace.no-episodes .player-main { flex: 1; }
       .player-workspace:not(.no-episodes) .video-stage {
         flex: none;
         width: 100%;
         aspect-ratio: 16 / 9;
         max-height: 34dvh;
       }
-      .player-controls {
-        padding: 8px 12px 10px;
-        gap: 7px;
-      }
-      .ctrl-row {
-        flex-wrap: wrap;
-        gap: 6px;
-      }
+      .player-controls { padding: 8px 12px 10px; gap: 7px; }
+      .ctrl-row { flex-wrap: wrap; gap: 6px; }
       .vol-range { width: 58px; }
 
       .episode-pane.show {
@@ -1088,35 +1109,23 @@
       }
     }
 
-    /* Mobile Landscape Player: Video + Controls on Left, Episodes Alongside on Right, Zero Clipping */
     @media (orientation: landscape) and (max-height: 560px) {
       .app-bar { padding: 6px 12px; gap: 6px; }
       .crumb-strip { order: 0; flex-basis: auto; height: 34px; }
       footer { display: none; }
 
-      .player-header {
-        padding: 5px 12px;
-        min-height: 40px;
-        gap: 8px;
-      }
+      .player-header { padding: 5px 12px; min-height: 40px; gap: 8px; }
       .player-name { font-size: 13px; }
       .p-pill { height: 29px; padding: 0 10px; font-size: 11px; }
 
-      .player-workspace {
-        flex-direction: row;
-      }
-      .player-controls {
-        padding: 5px 12px 7px;
-        gap: 4px;
-      }
+      .player-workspace { flex-direction: row; }
+      .player-controls { padding: 5px 12px 7px; gap: 4px; }
       .seek-area { height: 15px; }
       .clock-text { font-size: 11px; }
       .vol-box { height: 29px; padding: 0 8px 0 6px; }
       .vol-range { width: 54px; }
 
-      .episode-pane {
-        width: 235px;
-      }
+      .episode-pane { width: 235px; }
       .ep-pane-head { padding: 8px 10px; }
       .ep-card { padding: 8px 9px; border-radius: 12px; }
     }
@@ -1125,10 +1134,16 @@
 <body>
 
   <header class="app-bar">
-    <div class="ui-btn icon-btn mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Folders">☰</div>
+    <div class="ui-btn icon-btn mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Servers & Folders">☰</div>
     <div class="ui-btn icon-btn disabled" id="btnBack" role="button" tabindex="0" onclick="goBack()" title="Back">←</div>
     <div class="ui-btn icon-btn disabled" id="btnUp" role="button" tabindex="0" onclick="goUp()" title="Up">↑</div>
     <div class="ui-btn icon-btn" role="button" tabindex="0" onclick="refreshCurrent()" title="Refresh">↻</div>
+
+    <div class="server-pill" id="serverPill" role="button" tabindex="0" onclick="openServersPopup()" title="Switch Active Server">
+      <span class="live-dot offline" id="serverPillDot"></span>
+      <span class="server-pill-name" id="serverPillName">Offline</span>
+      <span style="opacity:0.65;">▾</span>
+    </div>
 
     <div class="crumb-strip" id="crumbStrip"></div>
 
@@ -1144,11 +1159,17 @@
 
   <main class="workspace">
     <aside class="side-rail" id="sideRail">
-      <div class="rail-header">Storage</div>
+      <div class="rail-header">
+        <span>Online Servers</span>
+        <span id="onlineServersCount">0</span>
+      </div>
+      <div id="railServers"></div>
+
+      <div class="rail-header" style="margin-top:8px;">Current Library</div>
       <div class="rail-row active" id="railRoot" role="button" tabindex="0" onclick="navigateTo('')">
         <div class="rail-left">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--blue)"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          <span>Internal Storage</span>
+          <span>Root Directory</span>
         </div>
       </div>
       <div class="rail-header" style="margin-top:8px;">Folders</div>
@@ -1223,7 +1244,6 @@
         </div>
       </div>
 
-      <!-- Folder Videos / Episodes List Alongside Video -->
       <aside class="episode-pane" id="episodePane">
         <div class="ep-pane-head">
           <div class="ep-pane-title" id="epPaneTitle">Folder Videos</div>
@@ -1234,7 +1254,7 @@
     </div>
   </div>
 
-  <!-- Custom Popup Modal (Audio Track / Speed Selection) -->
+  <!-- Custom Popup Modal (Servers, Audio Track & Speed Selection) -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -1264,7 +1284,11 @@
   const FOLDER_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#FFB800"><path d="M10.41 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.59-2z"/></svg>`;
   const VIDEO_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
 
+  let onlineServers = [];
+  let selectedServerId = '';
   let API_BASE = '';
+  let serverTimeOffsetMs = 0;
+
   let currentPath = '';
   let historyStack = [''];
   let historyIndex = 0;
@@ -1294,7 +1318,7 @@
   ];
 
   /* ============================================================
-     MOBILE AUTO-ROTATION & VIEWPORT SYNC (ACCELEROMETER + ORIENTATION)
+     MOBILE AUTO-ROTATION & VIEWPORT SYNC
      ============================================================ */
   function syncViewportLayout() {
     document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
@@ -1394,22 +1418,183 @@
     return data;
   }
 
-  db.ref('server-js/url').on('value', (snap) => {
-    const raw = snap.val();
-    const clean = raw ? String(raw).trim().replace(/\/+$/, '') : '';
-    if (!clean) {
-      API_BASE = '';
-      renderState('Server Offline', 'Host stream is not active.');
-      return;
-    }
-    if (API_BASE !== clean) {
-      API_BASE = clean;
-      historyStack = [''];
-      historyIndex = 0;
-      loadFolder('', false);
-    }
+  /* ============================================================
+     FEDERATED MULTI-SERVER DIRECTORY (FIREBASE RTDB)
+     ============================================================ */
+  db.ref('.info/serverTimeOffset').on('value', (snap) => {
+    serverTimeOffsetMs = snap.val() || 0;
   });
 
+  let latestServersObj = {};
+  let latestLegacyObj = null;
+
+  function reconcileServers() {
+    const nowSec = Math.floor((Date.now() + serverTimeOffsetMs) / 1000);
+    const list = [];
+
+    if (latestServersObj && typeof latestServersObj === 'object') {
+      Object.entries(latestServersObj).forEach(([key, srv]) => {
+        if (!srv || !srv.url) return;
+        const cleanUrl = String(srv.url).trim().replace(/\/+$/, '');
+        if (!cleanUrl) return;
+        const lastSeen = Number(srv.lastSeen || 0);
+        if (lastSeen > 0 && (nowSec - lastSeen) > 85) return;
+        list.push({
+          id: srv.id || key,
+          name: srv.name || key,
+          url: cleanUrl,
+          videoCount: Number(srv.videoCount || 0),
+          totalSizeLabel: srv.totalSizeLabel || '',
+          encoder: srv.encoder || '',
+          updatedAt: srv.updatedAt || ''
+        });
+      });
+    }
+
+    if (list.length === 0 && latestLegacyObj && latestLegacyObj.url) {
+      const cleanLegacy = String(latestLegacyObj.url).trim().replace(/\/+$/, '');
+      if (cleanLegacy) {
+        list.push({
+          id: 'default-host',
+          name: 'Primary Host',
+          url: cleanLegacy,
+          videoCount: 0,
+          totalSizeLabel: '',
+          encoder: '',
+          updatedAt: latestLegacyObj.updatedAt || ''
+        });
+      }
+    }
+
+    list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+    onlineServers = list;
+    renderServersRailAndPill();
+
+    if (onlineServers.length === 0) {
+      selectedServerId = '';
+      API_BASE = '';
+      renderRailFolders([]);
+      renderState('No Active Servers Online', 'Run MyFilesServer.exe on any PC to share movies and appear live here.');
+      return;
+    }
+
+    const currentMatch = onlineServers.find(s => s.id === selectedServerId);
+    if (!currentMatch) {
+      const nextSrv = onlineServers[0];
+      switchToServer(nextSrv.id, false);
+    } else if (API_BASE !== currentMatch.url) {
+      API_BASE = currentMatch.url;
+      loadFolder(currentPath, false);
+    }
+  }
+
+  db.ref('servers').on('value', (snap) => {
+    latestServersObj = snap.val() || {};
+    reconcileServers();
+  });
+
+  db.ref('server-js').on('value', (snap) => {
+    latestLegacyObj = snap.val();
+    reconcileServers();
+  });
+
+  setInterval(reconcileServers, 15000);
+
+  function renderServersRailAndPill() {
+    document.getElementById('onlineServersCount').textContent = String(onlineServers.length);
+    const pillDot = document.getElementById('serverPillDot');
+    const pillName = document.getElementById('serverPillName');
+
+    const activeSrv = onlineServers.find(s => s.id === selectedServerId);
+    if (!activeSrv) {
+      pillDot.classList.add('offline');
+      pillName.textContent = 'No Servers';
+    } else {
+      pillDot.classList.remove('offline');
+      pillName.textContent = onlineServers.length > 1
+        ? `${activeSrv.name} (${onlineServers.length})`
+        : activeSrv.name;
+    }
+
+    const railBox = document.getElementById('railServers');
+    if (onlineServers.length === 0) {
+      railBox.innerHTML = `<div style="padding:8px 14px; font-size:12px; color:var(--text-2);">No servers online</div>`;
+      return;
+    }
+
+    railBox.innerHTML = onlineServers.map(srv => {
+      const isCur = srv.id === selectedServerId;
+      const badge = srv.videoCount > 0 ? `${srv.videoCount} vid` : 'Live';
+      return `
+        <div class="rail-row ${isCur ? 'active' : ''}" role="button" tabindex="0" onclick="switchToServer('${escapeJs(srv.id)}', true)">
+          <div class="rail-left">
+            <span class="live-dot"></span>
+            <span title="${escapeHtml(srv.name)}">${escapeHtml(srv.name)}</span>
+          </div>
+          <span class="rail-meta">${escapeHtml(badge)}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function openServersPopup() {
+    if (onlineServers.length === 0) {
+      showToast('No active servers online');
+      return;
+    }
+    document.getElementById('modalTitle').textContent = `Active Servers (${onlineServers.length})`;
+    const list = document.getElementById('modalList');
+    list.innerHTML = onlineServers.map(srv => {
+      const isCur = srv.id === selectedServerId;
+      const metaParts = [];
+      if (srv.videoCount > 0) metaParts.push(`${srv.videoCount} videos`);
+      if (srv.totalSizeLabel) metaParts.push(srv.totalSizeLabel);
+      if (srv.updatedAt) metaParts.push(`Active ${srv.updatedAt}`);
+      return `
+        <div class="modal-option ${isCur ? 'selected' : ''}" role="button" tabindex="0" onclick="selectServerFromModal('${escapeJs(srv.id)}')">
+          <div class="opt-main">
+            <div class="opt-title" style="display:flex; align-items:center; gap:8px;">
+              <span class="live-dot"></span>
+              <span>${escapeHtml(srv.name)}</span>
+            </div>
+            <div class="opt-sub">${escapeHtml(metaParts.join(' · ') || 'Online HLS Host')}</div>
+          </div>
+          <div class="opt-check">✓</div>
+        </div>
+      `;
+    }).join('');
+    document.getElementById('modalBackdrop').classList.add('open');
+  }
+
+  function selectServerFromModal(srvId) {
+    closeModal();
+    switchToServer(srvId, true);
+  }
+
+  function switchToServer(srvId, notify = true) {
+    const target = onlineServers.find(s => s.id === srvId);
+    if (!target) return;
+
+    if (document.getElementById('playerScreen').classList.contains('open')) {
+      closePlayer();
+    }
+
+    selectedServerId = target.id;
+    API_BASE = target.url;
+    historyStack = [''];
+    historyIndex = 0;
+    document.getElementById('sideRail').classList.remove('open');
+
+    renderServersRailAndPill();
+    if (notify) {
+      showToast(`Connected to ${target.name}`);
+    }
+    loadFolder('', false);
+  }
+
+  /* ============================================================
+     DIRECTORY BROWSING & EXPLORER
+     ============================================================ */
   async function loadFolder(path, pushHistory = true) {
     currentPath = path;
     document.getElementById('searchInput').value = '';
@@ -1442,12 +1627,16 @@
 
       renderContent();
     } catch (e) {
-      renderState('Unreachable', 'Cannot connect to host server.');
+      renderState('Host Unreachable', 'This server stopped responding or closed its tunnel.');
     }
   }
 
   function renderRailFolders(folders) {
     const box = document.getElementById('railFolders');
+    if (!folders.length) {
+      box.innerHTML = `<div style="padding:6px 14px; font-size:12px; color:var(--text-2);">No subfolders</div>`;
+      return;
+    }
     box.innerHTML = folders.map(f => `
       <div class="rail-row rail-folder" data-path="${escapeHtml(f.path)}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
         <div class="rail-left">
@@ -1461,8 +1650,10 @@
 
   function renderBreadcrumbs() {
     const strip = document.getElementById('crumbStrip');
+    const activeSrv = onlineServers.find(s => s.id === selectedServerId);
+    const rootLabel = activeSrv ? activeSrv.name : 'Root';
     const parts = currentPath ? currentPath.split('/') : [];
-    let html = `<div class="crumb-item ${parts.length === 0 ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('')">Internal storage</div>`;
+    let html = `<div class="crumb-item ${parts.length === 0 ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('')">${escapeHtml(rootLabel)}</div>`;
     let acc = '';
     parts.forEach((p, idx) => {
       acc += (idx === 0 ? '' : '/') + p;
@@ -1488,9 +1679,13 @@
     return filename.replace(/\.[^/.]+$/, '').replace(/\./g, ' ');
   }
 
+  function progressKey(path) {
+    return `oneui_prog_${selectedServerId || 'host'}_${path}`;
+  }
+
   function getSavedProgress(path) {
     try {
-      return JSON.parse(localStorage.getItem('oneui_prog_' + path) || 'null');
+      return JSON.parse(localStorage.getItem(progressKey(path)) || 'null');
     } catch (e) {
       return null;
     }
@@ -1502,14 +1697,15 @@
     const files = sortList(currentItems.filter(i => i.type === 'file'));
     const total = folders.length + files.length;
 
+    const activeSrv = onlineServers.find(s => s.id === selectedServerId);
     const parts = currentPath ? currentPath.split('/') : [];
-    const heading = parts.length ? parts[parts.length - 1] : 'Internal storage';
+    const heading = parts.length ? parts[parts.length - 1] : (activeSrv ? activeSrv.name : 'Media Library');
     const totalBytes = [...folders, ...files].reduce((acc, x) => acc + (x.size || 0), 0);
 
     document.getElementById('footerStats').textContent = `${total} ${total === 1 ? 'item' : 'items'}`;
 
     if (total === 0) {
-      area.innerHTML = `<div class="state-box"><h2>No files</h2><p>This folder contains no playable videos.</p></div>`;
+      area.innerHTML = `<div class="state-box"><h2>No videos found</h2><p>This folder contains no playable video files.</p></div>`;
       return;
     }
 
@@ -1934,7 +2130,7 @@
 
     if (activeMedia && Math.abs(current - lastSavedTick) >= 5) {
       lastSavedTick = current;
-      localStorage.setItem('oneui_prog_' + activeMedia.path, JSON.stringify({ pos: current, dur: total }));
+      localStorage.setItem(progressKey(activeMedia.path), JSON.stringify({ pos: current, dur: total }));
     }
   });
 
