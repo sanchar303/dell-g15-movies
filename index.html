@@ -135,18 +135,6 @@
     .sig-bars.s2 i:nth-child(2) { background: var(--steel); }
     .sig-bars.s1 i:nth-child(1) { background: var(--amber); }
 
-    .telemetry-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 2px 8px;
-      border-radius: 8px;
-      background: var(--navy-soft);
-      color: var(--text-2);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
     .status-dot {
       width: 7px;
       height: 7px;
@@ -229,7 +217,7 @@
 
     .search-well {
       width: 100%;
-      max-width: 250px;
+      max-width: 270px;
       height: 38px;
       border-radius: 19px;
       background: var(--surface);
@@ -256,7 +244,7 @@
 
     .morph-btn {
       height: 38px;
-      padding: 0 13px;
+      padding: 0 14px;
       border-radius: 19px;
       background: var(--surface);
       box-shadow: var(--neu-out-sm);
@@ -287,10 +275,6 @@
       color: #ffffff;
       border-color: transparent;
       box-shadow: var(--brand-shadow);
-    }
-    .morph-btn.party-live {
-      border-color: var(--green);
-      color: var(--green);
     }
 
     /* ============================================================
@@ -756,22 +740,6 @@
       pointer-events: none;
     }
 
-    .party-badge-pill {
-      padding: 3px 9px;
-      border-radius: 9px;
-      background: rgba(46, 204, 128, 0.16);
-      border: 1px solid rgba(46, 204, 128, 0.38);
-      color: #2ecc80;
-      font-size: 10.5px;
-      font-weight: 800;
-      display: none;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .party-badge-pill.show { display: inline-flex; }
-
     .player-pills {
       display: flex;
       align-items: center;
@@ -847,27 +815,6 @@
       outline: none;
       pointer-events: none;
       display: block;
-    }
-
-    /* Floating Watch Party Reactions Layer */
-    .reaction-layer {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 110;
-    }
-    .float-emoji {
-      position: absolute;
-      bottom: 24px;
-      font-size: 26px;
-      animation: floatUp 2.1s ease-out forwards;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
-    }
-    @keyframes floatUp {
-      0% { opacity: 0; transform: translateY(10px) scale(0.7); }
-      15% { opacity: 1; transform: translateY(-12px) scale(1.08); }
-      100% { opacity: 0; transform: translateY(-170px) scale(0.95); }
     }
 
     /* Exclusive Fullscreen Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
@@ -1169,7 +1116,7 @@
       gap: 6px;
     }
 
-    /* Popup Modal (Audio, Speed, Overflow Menu, Watch Party) */
+    /* Popup Modal (Audio, Speed, Overflow Menu) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1274,59 +1221,6 @@
       flex-shrink: 0;
     }
     .modal-option.selected .opt-check { display: inline-flex; }
-
-    /* Watch Party Controls inside Modal */
-    .party-code-box {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(91, 155, 213, 0.12);
-      border: 1px solid rgba(91, 155, 213, 0.28);
-      text-align: center;
-    }
-    .party-code-val {
-      font-family: ui-monospace, Consolas, monospace;
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 5px;
-      color: #edf2f8;
-    }
-    .party-input-row {
-      display: flex;
-      gap: 8px;
-    }
-    .party-input {
-      flex: 1;
-      height: 40px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(139, 188, 232, 0.2);
-      padding: 0 14px;
-      color: #ffffff;
-      font-family: ui-monospace, Consolas, monospace;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      outline: none;
-    }
-    .reaction-bar {
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-    }
-    .react-btn {
-      flex: 1;
-      height: 38px;
-      border-radius: 13px;
-      background: rgba(139, 188, 232, 0.09);
-      border: 1px solid rgba(139, 188, 232, 0.14);
-      font-size: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .react-btn:active { transform: scale(0.92); }
 
     .toast {
       position: fixed;
@@ -1438,11 +1332,6 @@
         <input type="text" id="searchInput" placeholder="Search..." oninput="handleSearchInput(this.value)">
       </div>
 
-      <div class="morph-btn" id="btnPartyTop" role="button" tabindex="0" onclick="openWatchPartyModal()" title="Watch Party">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span id="partyTopLabel">Party</span>
-      </div>
-
       <div class="morph-btn icon-sq" id="btnView" role="button" tabindex="0" onclick="toggleViewMode()" title="Switch View">
         <svg id="viewIconSvg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </div>
@@ -1499,10 +1388,6 @@
       <div class="player-title-wrap">
         <div class="player-name" id="playerName">Video</div>
         <div class="quality-badge mono" id="qualityBadge">HD</div>
-        <div class="party-badge-pill mono" id="playerPartyPill" role="button" tabindex="0" onclick="openWatchPartyModal()">
-          <span class="status-dot"></span>
-          <span id="playerPartyCode">PARTY</span>
-        </div>
       </div>
 
       <div class="player-pills">
@@ -1521,9 +1406,6 @@
       <div class="player-main">
         <div class="video-stage" id="videoStage" onclick="handleVideoStageTap(event)">
           <video id="videoEl" playsinline webkit-playsinline preload="auto"></video>
-
-          <!-- Floating Watch Party Reactions -->
-          <div class="reaction-layer" id="reactionLayer"></div>
 
           <!-- Exclusive Fullscreen Exit Button (Shown ONLY in Fullscreen Mode, toggled by tapping video screen) -->
           <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0" onclick="handleExitFullscreenClick(event)">
@@ -1581,7 +1463,7 @@
     </div>
   </div>
 
-  <!-- Multi-Purpose Sheet Modal (Audio, Speed, Overflow, Watch Party) -->
+  <!-- Multi-Purpose Sheet Modal (Audio, Speed, Overflow) -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -1612,6 +1494,7 @@
   let serverTimeOffsetMs = 0;
   let latestServersObj = {};
   let latestLegacyObj = null;
+  let rtdbCleanedOnce = false;
 
   let allRootItems = [];
   let typeFilter = 'ALL';
@@ -1641,16 +1524,6 @@
   let fsButtonVisible = true;
   let orientationLockedByPlayer = false;
 
-  /* Self-Cleaning Watch Party State */
-  const myPeerId = `p_${Math.random().toString(36).slice(2, 9)}`;
-  let partyRoomCode = null;
-  let partyRoomRef = null;
-  let partyMemberRef = null;
-  let partyMembersCount = 0;
-  let partyLastSeq = 0;
-  let suppressPartyBroadcast = false;
-  let partyDriftTimer = null;
-
   const SPEED_OPTIONS = [
     { value: 0.5, label: '0.5x', sub: 'Slow' },
     { value: 0.75, label: '0.75x', sub: 'Relaxed' },
@@ -1661,6 +1534,39 @@
   ];
 
   /* ============================================================
+     RTDB CLEANUP OF IRRELEVANT / STALE DATA
+     ============================================================ */
+  function cleanupDatabaseLeftovers() {
+    if (!rtdbCleanedOnce) {
+      rtdbCleanedOnce = true;
+      db.ref('watch-parties').remove().catch(() => {});
+    }
+
+    const nowSec = Math.floor(getServerNowMs() / 1000);
+    if (nowSec < 1700000000) return;
+
+    if (latestServersObj && typeof latestServersObj === 'object') {
+      Object.entries(latestServersObj).forEach(([key, srv]) => {
+        if (!srv || typeof srv !== 'object') {
+          db.ref(`servers/${key}`).remove().catch(() => {});
+          return;
+        }
+        const lastSeen = Number(srv.lastSeen || 0);
+        if (!srv.url || (lastSeen > 0 && (nowSec - lastSeen) > 900)) {
+          db.ref(`servers/${key}`).remove().catch(() => {});
+        }
+      });
+    }
+
+    if (latestLegacyObj && typeof latestLegacyObj === 'object') {
+      const legacySeen = Number(latestLegacyObj.lastSeen || 0);
+      if (!latestLegacyObj.url || (legacySeen > 0 && (nowSec - legacySeen) > 900)) {
+        db.ref('server-js').remove().catch(() => {});
+      }
+    }
+  }
+
+  /* ============================================================
      SMART FILENAME PARSER (EXTRACTS CLEAN TITLE, YEAR, RES, CODEC, AUDIO)
      ============================================================ */
   function parseMediaMetadata(rawFilename, isFolder = false) {
@@ -1668,17 +1574,14 @@
     const ext = extMatch ? extMatch[1].toUpperCase() : '';
     let base = !isFolder ? rawFilename.replace(/\.[^/.]+$/, '') : rawFilename;
 
-    // Normalize dots, underscores, and bracket noise into spaces for parsing
     let working = base.replace(/[._]+/g, ' ').replace(/\[[^\]]*\]/g, ' ').replace(/\s+/g, ' ').trim();
 
-    // Detect Season/Episode pattern (e.g., S01E04 or 1x04)
     let seasonEp = '';
     const seMatch = working.match(/\bS(\d{1,2})\s*E(\d{1,3})\b/i) || working.match(/\b(\d{1,2})x(\d{2})\b/i);
     if (seMatch) {
       seasonEp = `S${seMatch[1].padStart(2, '0')}·E${seMatch[2].padStart(2, '0')}`;
     }
 
-    // Detect Resolution
     let res = '';
     if (/\b(2160p|4K|UHD)\b/i.test(working)) res = '4K';
     else if (/\b1440p\b/i.test(working)) res = '2K';
@@ -1686,26 +1589,22 @@
     else if (/\b720p\b/i.test(working)) res = '720p';
     else if (/\b480p\b/i.test(working)) res = '480p';
 
-    // Detect Codec / HDR
     let codec = '';
     if (/\b(HDR10|HDR|DV|Dolby\s*Vision)\b/i.test(working)) codec = 'HDR';
     else if (/\b(HEVC|x265|H\s*265)\b/i.test(working)) codec = 'HEVC';
 
-    // Detect Audio Track Hint
     let audioTag = '';
     if (/\b(Dual\s*Audio|Multi\s*Audio)\b/i.test(working)) audioTag = 'DUAL';
     else if (/\bHindi\b/i.test(working)) audioTag = 'HIN';
     else if (/\bJapanese\b/i.test(working)) audioTag = 'JPN';
     else if (/\bKorean\b/i.test(working)) audioTag = 'KOR';
 
-    // Detect Year (1930 - 2029)
     let year = '';
     const yearMatch = working.match(/\b(19[3-9]\d|20[0-2]\d)\b/);
     if (yearMatch) {
       year = yearMatch[1];
     }
 
-    // Strip technical release tags to get crisp title
     let stripped = working
       .replace(/\b(2160p|1440p|1080p|720p|480p|4K|UHD|WEB-?DL|WEBRip|BluRay|BRRip|BDRip|HDRip|DVDRip|HDTV|CAMRip|CAM|TS|HEVC|x265|x264|H264|H265|10bit|10-bit|8bit|AAC|AC3|DTS|DDP5\s*1|DD5\s*1|Atmos|TrueHD|Dual\s*Audio|Multi\s*Audio|ESub|ESubs|YIFY|RARBG|PSA|EVO|FGT|SPARKS|AMIABLE|EXTENDED|REMASTERED|UNRATED|DIRECTORS\s*CUT)\b/gi, ' ')
       .replace(/\(\s*\)/g, ' ')
@@ -1735,7 +1634,7 @@
   }
 
   /* ============================================================
-     UPGRADED PROCEDURAL POSTERS (SERIES STACKS & MOVIE FRAMES)
+     PROCEDURAL POSTERS (SERIES STACKS & MOVIE FRAMES)
      ============================================================ */
   const POSTER_PALETTES = [
     { c1: '#162f4f', c2: '#356a9c', accent: '#90cdf4' },
@@ -1776,7 +1675,6 @@
 
     const topRightBadge = meta.year || (isSeries ? 'SERIES' : meta.ext);
 
-    // Watch progress bar at bottom of thumbnail
     let progressPct = 0;
     if (item.type === 'file') {
       const prog = getSavedProgress(item.serverId, item.path);
@@ -1803,7 +1701,6 @@
       `;
     }
 
-    // Distinct visual silhouette: Layered iOS/One UI Folder Stack for Series vs Cinema Play Disc for Movies
     const centerArtwork = isSeries
       ? `
         <rect x="128" y="48" width="64" height="14" rx="6" fill="#ffffff" fill-opacity="0.24"/>
@@ -1974,6 +1871,7 @@
      ============================================================ */
   db.ref('.info/serverTimeOffset').on('value', (snap) => {
     serverTimeOffsetMs = snap.val() || 0;
+    cleanupDatabaseLeftovers();
   });
 
   function getServerNowMs() {
@@ -1981,6 +1879,7 @@
   }
 
   function reconcileServers() {
+    cleanupDatabaseLeftovers();
     const nowSec = Math.floor(getServerNowMs() / 1000);
     const list = [];
 
@@ -2461,363 +2360,6 @@
   }
 
   /* ============================================================
-     SELF-CLEANING SYNCHRONIZED WATCH PARTY ROOMS (FIREBASE RTDB)
-     ============================================================ */
-  function generateRoomCode() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let code = '';
-    for (let i = 0; i < 4; i++) {
-      code += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return code;
-  }
-
-  function updatePartyBadgesUI() {
-    const active = Boolean(partyRoomCode);
-    const topBtn = document.getElementById('btnPartyTop');
-    const topLbl = document.getElementById('partyTopLabel');
-    const playerPill = document.getElementById('playerPartyPill');
-    const playerCode = document.getElementById('playerPartyCode');
-
-    topBtn.classList.toggle('party-live', active);
-    topLbl.textContent = active ? `${partyRoomCode} (${Math.max(1, partyMembersCount)})` : 'Party';
-
-    playerPill.classList.toggle('show', active);
-    if (active) {
-      playerCode.textContent = `${partyRoomCode} · ${Math.max(1, partyMembersCount)}`;
-    }
-  }
-
-  async function createWatchParty() {
-    if (partyRoomCode) await leaveWatchParty(true);
-    const code = generateRoomCode();
-    await connectToWatchParty(code, true);
-    showToast(`Party ${code} created`);
-    openWatchPartyModal();
-  }
-
-  async function joinWatchPartyFromInput() {
-    const inp = document.getElementById('partyCodeInput');
-    if (!inp) return;
-    const code = inp.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
-    if (code.length < 3) {
-      showToast('Enter room code');
-      return;
-    }
-    if (partyRoomCode === code) {
-      openWatchPartyModal();
-      return;
-    }
-    if (partyRoomCode) await leaveWatchParty(true);
-
-    const snap = await db.ref(`watch-parties/${code}`).once('value');
-    if (!snap.exists()) {
-      showToast('Room not found');
-      return;
-    }
-    await connectToWatchParty(code, false);
-    closeModal();
-    showToast(`Joined ${code}`);
-  }
-
-  async function connectToWatchParty(code, isCreator) {
-    partyRoomCode = code;
-    partyLastSeq = 0;
-    partyRoomRef = db.ref(`watch-parties/${code}`);
-    partyMemberRef = partyRoomRef.child(`members/${myPeerId}`);
-
-    // Guarantee server-side removal of this member on tab close or network drop
-    await partyMemberRef.onDisconnect().remove();
-    await partyMemberRef.set({
-      joinedAt: firebase.database.ServerValue.TIMESTAMP,
-      creator: isCreator
-    });
-
-    if (isCreator) {
-      await partyRoomRef.child('createdAt').set(firebase.database.ServerValue.TIMESTAMP);
-      // If creator is alone in the room, server-side onDisconnect deletes the entire room
-      await partyRoomRef.onDisconnect().remove();
-      if (activeMedia) {
-        broadcastPartyState(true);
-      }
-    }
-
-    // Monitor room membership to dynamically arm/disarm full-room onDisconnect cleanup
-    partyRoomRef.child('members').on('value', (snap) => {
-      if (!partyRoomCode || partyRoomCode !== code) return;
-      const members = snap.val() || {};
-      const ids = Object.keys(members);
-      partyMembersCount = ids.length;
-      updatePartyBadgesUI();
-
-      if (partyMembersCount === 0) {
-        partyRoomRef.remove().catch(() => {});
-        return;
-      }
-
-      if (partyMembersCount === 1 && ids[0] === myPeerId) {
-        // Sole remaining member -> arm room-level onDisconnect so room vanishes when they leave
-        partyRoomRef.onDisconnect().remove().catch(() => {});
-      } else {
-        // Multiple members active -> cancel room-level onDisconnect so one person leaving doesn't kill the room
-        partyRoomRef.onDisconnect().cancel().catch(() => {});
-      }
-    });
-
-    // Listen to synchronized playback state changes
-    partyRoomRef.child('state').on('value', (snap) => {
-      if (!partyRoomCode || partyRoomCode !== code) return;
-      const st = snap.val();
-      if (!st || !st.path) return;
-      if (st.updatedBy === myPeerId) return;
-      if (st.seq && st.seq <= partyLastSeq) return;
-      partyLastSeq = st.seq || (partyLastSeq + 1);
-      applyRemotePartyState(st);
-    });
-
-    // Listen to transient live reactions
-    partyRoomRef.child('reaction').on('value', (snap) => {
-      const rx = snap.val();
-      if (!rx || !rx.emoji || rx.by === myPeerId) return;
-      spawnFloatingReaction(rx.emoji);
-    });
-
-    // Periodic drift check (every 4s) for guests
-    clearInterval(partyDriftTimer);
-    partyDriftTimer = setInterval(checkPartyDrift, 4000);
-    updatePartyBadgesUI();
-  }
-
-  async function leaveWatchParty(silent = false) {
-    clearInterval(partyDriftTimer);
-    partyDriftTimer = null;
-
-    if (partyRoomRef) {
-      const refToClean = partyRoomRef;
-      const memToClean = partyMemberRef;
-      const wasLast = partyMembersCount <= 1;
-
-      refToClean.child('members').off();
-      refToClean.child('state').off();
-      refToClean.child('reaction').off();
-
-      try {
-        await refToClean.onDisconnect().cancel();
-        if (memToClean) {
-          await memToClean.onDisconnect().cancel();
-          await memToClean.remove();
-        }
-        if (wasLast) {
-          await refToClean.remove();
-        }
-      } catch (e) {}
-    }
-
-    partyRoomCode = null;
-    partyRoomRef = null;
-    partyMemberRef = null;
-    partyMembersCount = 0;
-    partyLastSeq = 0;
-    updatePartyBadgesUI();
-    if (!silent) {
-      closeModal();
-      showToast('Left party');
-    }
-  }
-
-  function broadcastPartyState(forceImmediate = false) {
-    if (!partyRoomCode || !partyRoomRef || !activeMedia || suppressPartyBroadcast) return;
-    const now = getServerNowMs();
-    const curPos = streamOffsetSec + (videoEl.currentTime || 0);
-    const nextSeq = (partyLastSeq || 0) + 1;
-    partyLastSeq = nextSeq;
-
-    partyRoomRef.child('state').set({
-      serverId: activeMedia.serverId,
-      serverName: activeMedia.serverName,
-      path: activeMedia.path,
-      name: activeMedia.name,
-      cleanName: activeMedia.cleanName,
-      ext: activeMedia.ext || '',
-      sizeLabel: activeMedia.sizeLabel || '',
-      type: 'file',
-      playing: !videoEl.paused,
-      position: Number(curPos.toFixed(2)),
-      updatedAt: now,
-      updatedBy: myPeerId,
-      seq: nextSeq
-    }).catch(() => {});
-  }
-
-  async function applyRemotePartyState(st) {
-    const srv = onlineServers.find(s => s.id === st.serverId) || onlineServers.find(s => s.name === st.serverName);
-    if (!srv) {
-      showToast(`Host ${st.serverName || ''} offline`);
-      return;
-    }
-
-    const elapsedSec = st.playing ? Math.max(0, (getServerNowMs() - (st.updatedAt || getServerNowMs())) / 1000) : 0;
-    const targetPos = Math.max(0, (st.position || 0) + elapsedSec);
-
-    const isSameVideo = activeMedia && activeMedia.path === st.path && activeMedia.serverId === srv.id;
-
-    suppressPartyBroadcast = true;
-    try {
-      if (!isSameVideo) {
-        const meta = parseMediaMetadata(st.name || st.cleanName, false);
-        const mediaObj = {
-          name: st.name || st.cleanName,
-          cleanName: st.cleanName || meta.cleanName,
-          meta,
-          path: st.path,
-          ext: st.ext || meta.ext,
-          sizeLabel: st.sizeLabel || '',
-          type: 'file',
-          serverId: srv.id,
-          serverName: srv.name,
-          serverUrl: srv.url,
-          serverLatency: srv.latencyMs
-        };
-        activePlayerList = [mediaObj];
-        await openMediaAtIndex(0, false, true, Math.floor(targetPos));
-        if (!st.playing) {
-          videoEl.pause();
-        }
-      } else {
-        const localPos = streamOffsetSec + (videoEl.currentTime || 0);
-        if (Math.abs(localPos - targetPos) > 2.5) {
-          jumpToPosition(targetPos);
-        }
-        if (st.playing && videoEl.paused) {
-          videoEl.play().catch(() => {});
-        } else if (!st.playing && !videoEl.paused) {
-          videoEl.pause();
-        }
-      }
-    } finally {
-      setTimeout(() => { suppressPartyBroadcast = false; }, 450);
-    }
-  }
-
-  function checkPartyDrift() {
-    if (!partyRoomCode || !partyRoomRef || !activeMedia || suppressPartyBroadcast) return;
-    partyRoomRef.child('state').once('value', (snap) => {
-      const st = snap.val();
-      if (!st || st.updatedBy === myPeerId || st.path !== activeMedia.path) return;
-      if (!st.playing || videoEl.paused) return;
-      const elapsed = Math.max(0, (getServerNowMs() - (st.updatedAt || getServerNowMs())) / 1000);
-      const expected = (st.position || 0) + elapsed;
-      const actual = streamOffsetSec + (videoEl.currentTime || 0);
-      if (Math.abs(actual - expected) > 3.8) {
-        suppressPartyBroadcast = true;
-        jumpToPosition(expected);
-        setTimeout(() => { suppressPartyBroadcast = false; }, 600);
-      }
-    });
-  }
-
-  function sendPartyReaction(emoji) {
-    spawnFloatingReaction(emoji);
-    if (!partyRoomCode || !partyRoomRef) return;
-    const rxRef = partyRoomRef.child('reaction');
-    rxRef.onDisconnect().remove().catch(() => {});
-    rxRef.set({
-      emoji,
-      by: myPeerId,
-      ts: getServerNowMs()
-    }).catch(() => {});
-  }
-
-  function spawnFloatingReaction(emoji) {
-    const layer = document.getElementById('reactionLayer');
-    if (!layer) return;
-    const el = document.createElement('div');
-    el.className = 'float-emoji';
-    el.textContent = emoji;
-    el.style.left = `${18 + Math.random() * 64}%`;
-    layer.appendChild(el);
-    setTimeout(() => el.remove(), 2150);
-  }
-
-  function copyPartyLink() {
-    if (!partyRoomCode) return;
-    const url = `${window.location.origin}${window.location.pathname}?party=${partyRoomCode}`;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(url).then(() => showToast('Link copied')).catch(() => showToast(`Code: ${partyRoomCode}`));
-    } else {
-      showToast(`Code: ${partyRoomCode}`);
-    }
-  }
-
-  function openWatchPartyModal() {
-    document.getElementById('modalTitle').textContent = 'Watch Party';
-    const list = document.getElementById('modalList');
-
-    if (partyRoomCode) {
-      list.innerHTML = `
-        <div class="party-code-box">
-          <div class="opt-sub" style="margin-bottom:4px;">ROOM CODE · ${Math.max(1, partyMembersCount)} CONNECTED</div>
-          <div class="party-code-val">${escapeHtml(partyRoomCode)}</div>
-        </div>
-        <div class="reaction-bar">
-          ${['🔥', '😂', '😮', '👏', '❤️'].map(em => `
-            <div class="react-btn" role="button" tabindex="0" onclick="sendPartyReaction('${em}')">${em}</div>
-          `).join('')}
-        </div>
-        <div class="modal-option" role="button" tabindex="0" onclick="copyPartyLink()">
-          <div class="opt-main">
-            <div class="opt-title">Copy Invite Link</div>
-            <div class="opt-sub">Auto-cleans when everyone leaves</div>
-          </div>
-          <span class="mono" style="color:#8bbce8; font-weight:800;">↗</span>
-        </div>
-        <div class="modal-option" role="button" tabindex="0" onclick="leaveWatchParty(false)">
-          <div class="opt-main">
-            <div class="opt-title" style="color:#f59e0b;">Leave Party</div>
-          </div>
-        </div>
-      `;
-    } else {
-      list.innerHTML = `
-        <div class="modal-option selected" role="button" tabindex="0" onclick="createWatchParty()">
-          <div class="opt-main">
-            <div class="opt-title">Create Watch Party</div>
-            <div class="opt-sub">Sync playback live with friends</div>
-          </div>
-          <span class="mono" style="color:#8bbce8; font-weight:800;">+</span>
-        </div>
-        <div class="party-input-row">
-          <input type="text" class="party-input" id="partyCodeInput" maxlength="6" placeholder="CODE" onkeydown="if(event.key==='Enter') joinWatchPartyFromInput()">
-          <div class="p-pill steel-pill" style="height:40px; padding:0 16px;" role="button" tabindex="0" onclick="joinWatchPartyFromInput()">Join</div>
-        </div>
-      `;
-    }
-
-    document.getElementById('modalBackdrop').classList.add('open');
-  }
-
-  // Auto-join Watch Party if opened via ?party=CODE
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const joinCode = (params.get('party') || '').trim().toUpperCase();
-    if (joinCode) {
-      setTimeout(async () => {
-        const snap = await db.ref(`watch-parties/${joinCode}`).once('value');
-        if (snap.exists()) {
-          await connectToWatchParty(joinCode, false);
-          showToast(`Joined ${joinCode}`);
-        }
-      }, 900);
-    }
-  });
-
-  window.addEventListener('beforeunload', () => {
-    if (partyRoomRef && partyMembersCount <= 1) {
-      try { partyRoomRef.remove(); } catch (e) {}
-    }
-  });
-
-  /* ============================================================
      SERIES EPISODE NAVIGATION (SHOWN ONLY FOR MULTI-EPISODE SERIES)
      ============================================================ */
   function isPlayingSeriesFolder() {
@@ -2963,7 +2505,6 @@
   }
 
   function handleVideoStageTap(e) {
-    // Only toggles the Exit Fullscreen button when in Fullscreen Mode; does nothing in normal mode
     if (!isFullscreenMode) return;
     if (e.target && e.target.closest('#fsExitBtn')) return;
 
@@ -2982,13 +2523,35 @@
   document.addEventListener('webkitfullscreenchange', handleNativeFullscreenChange);
 
   /* ============================================================
-     CINEMA PLAYER CORE
+     CINEMA PLAYER CORE (CRYSTAL-CLEAR AUDIO & SEAMLESS HLS)
      ============================================================ */
+  function enforceCleanAudioPitch(video) {
+    if (!video) return;
+    video.defaultPlaybackRate = 1;
+    video.playbackRate = activeSpeed;
+    video.preservesPitch = true;
+    video.webkitPreservesPitch = true;
+    video.mozPreservesPitch = true;
+  }
+
+  function resetVideoPipeline(video) {
+    if (hlsInstance) {
+      try { hlsInstance.destroy(); } catch (e) {}
+      hlsInstance = null;
+    }
+    try {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    } catch (e) {}
+    enforceCleanAudioPitch(video);
+  }
+
   function updateQualityBadge(label) {
     document.getElementById('qualityBadge').textContent = label || 'HD';
   }
 
-  async function openMediaAtIndex(idx, isSeries, forceStartZero = false, explicitStartSec = null) {
+  async function openMediaAtIndex(idx, isSeries, forceStartZero = false) {
     const item = activePlayerList[idx];
     if (!item || !item.serverUrl) return;
 
@@ -3000,9 +2563,7 @@
     activeAudioTrack = 0;
 
     let initialStart = 0;
-    if (typeof explicitStartSec === 'number') {
-      initialStart = Math.max(0, Math.floor(explicitStartSec));
-    } else if (!forceStartZero) {
+    if (!forceStartZero) {
       const saved = getSavedProgress(item.serverId, item.path);
       initialStart = saved && saved.pos > 15 && (!saved.dur || saved.pos < saved.dur - 30) ? Math.floor(saved.pos) : 0;
     }
@@ -3021,13 +2582,8 @@
     audioBtn.style.display = 'none';
 
     updateEpisodeNavigationUI();
-    updatePartyBadgesUI();
     setLoader(true);
     screenEl.classList.add('open');
-
-    if (partyRoomCode && !suppressPartyBroadcast) {
-      broadcastPartyState(true);
-    }
 
     try {
       activeProbe = await apiFetchFromServer(item.serverUrl, `/api/probe?path=${encodeURIComponent(item.path)}`);
@@ -3050,11 +2606,7 @@
     setLoader(true);
 
     const video = document.getElementById('videoEl');
-    if (hlsInstance) {
-      hlsInstance.destroy();
-      hlsInstance = null;
-    }
-    video.pause();
+    resetVideoPipeline(video);
 
     try {
       const qs = new URLSearchParams({
@@ -3078,9 +2630,15 @@
 
       if (window.Hls && Hls.isSupported()) {
         hlsInstance = new Hls({
-          enableWorker: true,
+          enableWorker: false,
+          lowLatencyMode: false,
           maxBufferLength: 30,
           maxMaxBufferLength: 60,
+          maxBufferHole: 0.5,
+          maxAudioFramesDrift: 1,
+          forceKeyFrameOnDiscontinuity: true,
+          nudgeOffset: 0.1,
+          nudgeMaxRetry: 5,
           manifestLoadingMaxRetry: 6,
           levelLoadingMaxRetry: 6,
           fragLoadingMaxRetry: 8
@@ -3088,7 +2646,7 @@
         hlsInstance.loadSource(fullPlaylistUrl);
         hlsInstance.attachMedia(video);
         hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
-          video.playbackRate = activeSpeed;
+          enforceCleanAudioPitch(video);
           video.play().catch(() => {});
         });
         hlsInstance.on(Hls.Events.ERROR, (_, data) => {
@@ -3106,7 +2664,7 @@
       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
         video.src = fullPlaylistUrl;
         video.load();
-        video.playbackRate = activeSpeed;
+        enforceCleanAudioPitch(video);
         video.play().catch(() => {});
       }
     } catch (e) {
@@ -3122,13 +2680,6 @@
     document.getElementById('modalTitle').textContent = 'Options';
     const list = document.getElementById('modalList');
     list.innerHTML = `
-      <div class="modal-option ${partyRoomCode ? 'selected' : ''}" role="button" tabindex="0" onclick="openWatchPartyModal()">
-        <div class="opt-main">
-          <div class="opt-title">${partyRoomCode ? `Watch Party (${partyRoomCode})` : 'Start Watch Party'}</div>
-          <div class="opt-sub">${partyRoomCode ? `${Math.max(1, partyMembersCount)} connected · Auto-cleans on exit` : 'Watch in sync with friends'}</div>
-        </div>
-        <span class="mono" style="color:#8bbce8; font-weight:800;">›</span>
-      </div>
       <div class="modal-option" role="button" tabindex="0" onclick="restartFromZero()">
         <div class="opt-main">
           <div class="opt-title">Restart</div>
@@ -3150,7 +2701,6 @@
   function restartFromZero() {
     closeModal();
     jumpToPosition(0);
-    if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState(true);
   }
 
   function openAudioPopup() {
@@ -3204,7 +2754,7 @@
     closeModal();
     activeSpeed = val;
     const video = document.getElementById('videoEl');
-    video.playbackRate = val;
+    enforceCleanAudioPitch(video);
     document.getElementById('speedBtn').textContent = `${val}x`;
   }
 
@@ -3218,6 +2768,7 @@
   const videoEl = document.getElementById('videoEl');
 
   videoEl.addEventListener('loadedmetadata', () => {
+    enforceCleanAudioPitch(videoEl);
     if (videoEl.videoHeight > 0) {
       const h = videoEl.videoHeight;
       const label = h >= 2160 ? '4K' : (h >= 1440 ? '2K' : (h >= 1080 ? '1080p' : (h >= 720 ? '720p' : (h >= 480 ? '480p' : `${h}p`))));
@@ -3226,14 +2777,13 @@
   });
 
   videoEl.addEventListener('playing', () => {
+    enforceCleanAudioPitch(videoEl);
     setLoader(false);
     document.getElementById('playBtn').textContent = 'Pause';
-    if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
   });
 
   videoEl.addEventListener('pause', () => {
     document.getElementById('playBtn').textContent = 'Play';
-    if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
   });
 
   videoEl.addEventListener('waiting', () => {
@@ -3268,13 +2818,10 @@
       const bufEnd = videoEl.seekable.end(videoEl.seekable.length - 1);
       if (relTarget <= bufEnd) {
         videoEl.currentTime = relTarget;
-        if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
         return;
       }
     }
-    startHlsSession(targetSec).then(() => {
-      if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
-    });
+    startHlsSession(targetSec);
   }
 
   function seekFromBar(e) {
@@ -3293,8 +2840,12 @@
   }
 
   function togglePlayPause() {
-    if (videoEl.paused) videoEl.play().catch(() => {});
-    else videoEl.pause();
+    if (videoEl.paused) {
+      enforceCleanAudioPitch(videoEl);
+      videoEl.play().catch(() => {});
+    } else {
+      videoEl.pause();
+    }
   }
 
   let savedVol = 1;
@@ -3331,13 +2882,7 @@
   function closePlayer() {
     exitFullscreenMode(false);
     closeModal();
-    if (hlsInstance) {
-      hlsInstance.destroy();
-      hlsInstance = null;
-    }
-    videoEl.pause();
-    videoEl.removeAttribute('src');
-    videoEl.load();
+    resetVideoPipeline(videoEl);
 
     if (activeSessionId && activeMedia && activeMedia.serverUrl) {
       fetch(`${activeMedia.serverUrl}/api/stop?id=${encodeURIComponent(activeSessionId)}`).catch(() => {});
