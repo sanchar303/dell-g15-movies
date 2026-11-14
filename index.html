@@ -5,32 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Dell G15 Movise</title>
-  <meta name="description" content="My Files Media Explorer by Sanchar Koirala — Federated HLS cinema streaming across live community servers with multi-audio selection and folder playlists.">
-  <meta name="keywords" content="My Files, Media Explorer, Sanchar Koirala, HLS Movie Streaming, Personal Cinema">
+  <title>Dell G15 Movies — Global Neumorphic Cloud Cinema by Sanchar Koirala</title>
+  <meta name="description" content="Dell G15 Movies by Sanchar Koirala — Stream movies and series live across community hosts with adaptive HLS playback, multi-audio selection, and neumorphic Netflix design.">
+  <meta name="keywords" content="Dell G15 Movies, My Files, Sanchar Koirala, HLS Movie Streaming, Cloud Cinema">
   <meta name="author" content="Sanchar Koirala">
   <meta name="publisher" content="Sanchar Koirala">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow">
-  <meta name="application-name" content="My Files">
+  <meta name="application-name" content="Dell G15 Movies">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="My Files">
-  <meta name="theme-color" content="#000000" id="metaThemeColor">
+  <meta name="apple-mobile-web-app-title" content="Dell G15 Movies">
+  <meta name="theme-color" content="#121318" id="metaThemeColor">
 
   <!-- Open Graph / Social SEO -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="My Files">
-  <meta property="og:title" content="My Files — Global Cinema &amp; Media Explorer">
-  <meta property="og:description" content="Federated HLS cinema streaming across live servers with multi-audio selection and folder playlists by Sanchar Koirala.">
+  <meta property="og:site_name" content="Dell G15 Movies">
+  <meta property="og:title" content="Dell G15 Movies — Global Neumorphic Cloud Cinema">
+  <meta property="og:description" content="Stream movies and series live across active Windows hosts with adaptive HLS playback and multi-audio tracks.">
   <meta property="og:image" content="favicon.png">
   <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card SEO -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="My Files — Global Cinema &amp; Media Explorer">
-  <meta name="twitter:description" content="Federated HLS cinema streaming across live servers with multi-audio selection and folder playlists by Sanchar Koirala.">
+  <meta name="twitter:title" content="Dell G15 Movies — Global Neumorphic Cloud Cinema">
+  <meta name="twitter:description" content="Stream movies and series live across active Windows hosts with adaptive HLS playback and multi-audio tracks.">
   <meta name="twitter:image" content="favicon.png">
 
   <!-- Favicon & App Icons -->
@@ -44,9 +44,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "My Files",
-    "alternateName": "Global Cinema & Media Explorer",
-    "description": "Federated HLS cinema streaming across live servers with multi-audio selection and folder playlists by Sanchar Koirala.",
+    "name": "Dell G15 Movies",
+    "alternateName": "Global Neumorphic Cloud Cinema",
+    "description": "Stream movies and series live across active Windows hosts with adaptive HLS playback and multi-audio selection.",
     "author": {
       "@type": "Person",
       "name": "Sanchar Koirala"
@@ -60,32 +60,57 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
 
   <style>
+    /* ============================================================
+       NEUMORPHIC NETFLIX DESIGN TOKENS (DARK & LIGHT THEMES)
+       ============================================================ */
     :root[data-theme="dark"] {
-      --bg: #000000;
-      --surface: #151518;
-      --surface-2: #202025;
-      --surface-hover: #29292f;
-      --stroke: rgba(255, 255, 255, 0.085);
-      --text: #fafafa;
-      --text-2: #9a9aa4;
-      --blue: #3e8bff;
-      --blue-soft: rgba(62, 139, 255, 0.16);
+      --bg: #121318;
+      --surface: #171920;
+      --surface-elevated: #1c1f28;
+      --neu-out: 7px 7px 16px #090a0d, -6px -6px 14px #21242e;
+      --neu-out-sm: 4px 4px 10px #090a0d, -4px -4px 10px #21242e;
+      --neu-in: inset 4px 4px 9px #090a0d, inset -4px -4px 9px #21242e;
+      --stroke: rgba(255, 255, 255, 0.055);
+      --text: #f5f6fa;
+      --text-2: #9ca3af;
+      --text-muted: #6b7280;
+      --accent: #e50914;
+      --accent-hover: #f6121d;
+      --accent-soft: rgba(229, 9, 20, 0.16);
+      --accent-glow: 0 6px 20px rgba(229, 9, 20, 0.35);
+      --series-bg: rgba(59, 130, 246, 0.16);
+      --series-fg: #60a5fa;
+      --movie-bg: rgba(229, 9, 20, 0.16);
+      --movie-fg: #ff6b72;
+      --host-bg: rgba(16, 185, 129, 0.14);
+      --host-fg: #34d399;
       --green: #22c55e;
-      --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      --hero-grad: linear-gradient(135deg, rgba(229, 9, 20, 0.18) 0%, rgba(23, 25, 32, 0.96) 55%, rgba(18, 19, 24, 1) 100%);
     }
 
     :root[data-theme="light"] {
-      --bg: #f4f4f6;
-      --surface: #ffffff;
-      --surface-2: #ececf0;
-      --surface-hover: #e4e4e9;
-      --stroke: rgba(0, 0, 0, 0.07);
-      --text: #111114;
-      --text-2: #666670;
-      --blue: #0381fe;
-      --blue-soft: rgba(3, 129, 254, 0.12);
+      --bg: #e6ebf2;
+      --surface: #ebf0f7;
+      --surface-elevated: #f2f6fc;
+      --neu-out: 7px 7px 16px #c5cbd4, -7px -7px 16px #ffffff;
+      --neu-out-sm: 4px 4px 9px #c5cbd4, -4px -4px 9px #ffffff;
+      --neu-in: inset 4px 4px 9px #c5cbd4, inset -4px -4px 9px #ffffff;
+      --stroke: rgba(0, 0, 0, 0.045);
+      --text: #14161f;
+      --text-2: #525866;
+      --text-muted: #7b8291;
+      --accent: #e50914;
+      --accent-hover: #c80711;
+      --accent-soft: rgba(229, 9, 20, 0.11);
+      --accent-glow: 0 6px 18px rgba(229, 9, 20, 0.25);
+      --series-bg: rgba(37, 99, 235, 0.12);
+      --series-fg: #1d4ed8;
+      --movie-bg: rgba(229, 9, 20, 0.12);
+      --movie-fg: #c80711;
+      --host-bg: rgba(5, 150, 105, 0.12);
+      --host-fg: #047857;
       --green: #16a34a;
-      --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      --hero-grad: linear-gradient(135deg, rgba(229, 9, 20, 0.11) 0%, rgba(235, 240, 247, 0.96) 55%, rgba(230, 235, 242, 1) 100%);
     }
 
     * {
@@ -103,7 +128,7 @@
       max-height: 100dvh;
       background: var(--bg);
       color: var(--text);
-      font-family: "One UI Sans", "SamsungOne", "Inter", system-ui, -apple-system, sans-serif;
+      font-family: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
       font-size: 14px;
       overflow: hidden;
       overscroll-behavior: none;
@@ -117,410 +142,514 @@
       padding-bottom: env(safe-area-inset-bottom, 0px);
       padding-left: env(safe-area-inset-left, 0px);
       padding-right: env(safe-area-inset-right, 0px);
-      transition: background 0.2s ease, color 0.2s ease;
+      transition: background 0.22s ease, color 0.22s ease;
     }
 
-    .ui-btn {
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: 999px;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 13px;
+    /* ============================================================
+       TOP NAVIGATION BAR (NEUMORPHIC)
+       ============================================================ */
+    .top-nav {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+      z-index: 20;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 11px;
       cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .brand-emblem {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--accent);
+      box-shadow: var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 19px;
+      letter-spacing: -1px;
+      flex-shrink: 0;
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: var(--text);
+      line-height: 1.1;
+    }
+
+    .brand-name span {
+      color: var(--accent);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .live-dot.off {
+      background: #ef4444;
+      box-shadow: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .neu-search {
+      width: 100%;
+      max-width: 290px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: var(--neu-in);
+      border: 1px solid var(--stroke);
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--text-2);
+    }
+    .neu-search:focus-within {
+      border-color: rgba(229, 9, 20, 0.45);
+    }
+    .neu-search input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+    }
+    .neu-search input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .neu-btn {
+      height: 40px;
+      padding: 0 15px;
+      border-radius: 999px;
+      background: var(--surface);
+      box-shadow: var(--neu-out-sm);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: transform 0.14s ease, background 0.14s ease, color 0.14s ease;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.14s ease, box-shadow 0.14s ease, color 0.14s ease;
     }
-    .ui-btn:hover:not(.disabled) { background: var(--surface-hover); }
-    .ui-btn:active:not(.disabled) { transform: scale(0.96); }
-    .ui-btn.disabled { opacity: 0.32; pointer-events: none; }
+    .neu-btn:hover {
+      color: var(--accent);
+    }
+    .neu-btn:active {
+      transform: scale(0.96);
+      box-shadow: var(--neu-in);
+    }
+    .neu-btn.icon-only {
+      width: 40px;
+      padding: 0;
+    }
+    .neu-btn.primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: var(--accent-glow);
+    }
+    .neu-btn.primary:hover {
+      background: var(--accent-hover);
+      color: #ffffff;
+    }
 
-    .app-bar {
-      padding: 12px 18px 8px;
+    /* ============================================================
+       MAIN SCROLLABLE CATALOG CONTAINER
+       ============================================================ */
+    .main-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 4px 20px 20px;
+    }
+    .main-scroll::-webkit-scrollbar { width: 6px; }
+    .main-scroll::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.22);
+      border-radius: 99px;
+    }
+
+    /* Featured Cinema Hero Card */
+    .hero-card {
+      background: var(--hero-grad);
+      box-shadow: var(--neu-out);
+      border: 1px solid var(--stroke);
+      border-radius: 26px;
+      padding: 22px 24px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
-      gap: 9px;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .hero-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .badge-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-transform: uppercase;
+    }
+    .badge-series {
+      background: var(--series-bg);
+      color: var(--series-fg);
+    }
+    .badge-movie {
+      background: var(--movie-bg);
+      color: var(--movie-fg);
+    }
+    .badge-host {
+      background: var(--host-bg);
+      color: var(--host-fg);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: var(--text);
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .hero-meta-low {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       flex-shrink: 0;
     }
 
-    .icon-btn { width: 38px; height: 38px; flex-shrink: 0; }
-    .pill-btn { height: 38px; padding: 0 15px; flex-shrink: 0; }
+    /* Host Server Filter Bar */
+    .filter-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
 
-    .server-pill {
-      height: 38px;
+    .host-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      max-width: 100%;
+    }
+    .host-tabs::-webkit-scrollbar { display: none; }
+
+    .host-chip {
+      height: 34px;
       padding: 0 14px;
       border-radius: 999px;
       background: var(--surface);
+      box-shadow: var(--neu-out-sm);
       border: 1px solid var(--stroke);
-      color: var(--text);
-      font-size: 12.5px;
+      color: var(--text-2);
+      font-size: 12px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 7px;
       cursor: pointer;
-      flex-shrink: 0;
-      max-width: 210px;
-      transition: 0.14s ease;
-    }
-    .server-pill:hover { background: var(--surface-hover); border-color: var(--blue); }
-    .server-pill-name {
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      transition: 0.15s ease;
     }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green);
-      flex-shrink: 0;
-    }
-    .live-dot.offline {
-      background: #ef4444;
-      box-shadow: none;
-    }
-
-    .crumb-strip {
-      flex: 1;
-      height: 38px;
+    .host-chip:hover { color: var(--text); }
+    .host-chip.active {
       background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: 999px;
-      padding: 0 14px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      overflow-x: auto;
-      white-space: nowrap;
-      min-width: 90px;
-    }
-    .crumb-strip::-webkit-scrollbar { display: none; }
-
-    .crumb-item {
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-2);
-      cursor: pointer;
-      transition: 0.14s;
-    }
-    .crumb-item:hover, .crumb-item.current {
-      color: var(--text);
-      background: var(--surface-2);
-    }
-    .crumb-arrow { color: var(--text-2); opacity: 0.45; font-size: 12px; }
-
-    .search-field {
-      width: 210px;
-      height: 38px;
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: 999px;
-      padding: 0 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .search-field:focus-within { border-color: var(--blue); }
-    .search-field input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text);
-      font-size: 13.5px;
-      width: 100%;
-      font-family: inherit;
-    }
-    .search-field input::placeholder { color: var(--text-2); }
-
-    .workspace {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      gap: 16px;
-      padding: 6px 18px 10px;
-      overflow: hidden;
-      position: relative;
+      box-shadow: var(--neu-in);
+      color: var(--accent);
+      border-color: rgba(229, 9, 20, 0.35);
     }
 
-    .side-rail {
-      width: 260px;
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: 26px;
-      padding: 14px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      overflow-y: auto;
-      flex-shrink: 0;
-    }
-    .side-rail::-webkit-scrollbar { width: 4px; }
-    .side-rail::-webkit-scrollbar-thumb { background: var(--stroke); border-radius: 99px; }
-
-    .rail-header {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--text-2);
-      padding: 8px 14px 4px;
-      letter-spacing: 0.4px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .rail-row {
-      padding: 10px 14px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 13px;
-      color: var(--text);
-      transition: 0.14s ease;
-    }
-    .rail-row:hover { background: var(--surface-2); }
-    .rail-row.active { background: var(--blue-soft); color: var(--blue); }
-    .rail-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      overflow: hidden;
-      min-width: 0;
-    }
-    .rail-left span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .rail-meta { font-size: 11px; color: var(--text-2); flex-shrink: 0; }
-
-    .content-area {
-      flex: 1;
-      min-height: 0;
-      overflow-y: auto;
-      padding-right: 4px;
-    }
-    .content-area::-webkit-scrollbar { width: 5px; }
-    .content-area::-webkit-scrollbar-thumb { background: var(--stroke); border-radius: 99px; }
-
-    .view-hero {
-      padding: 8px 6px 16px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .hero-title {
-      margin: 0;
-      font-size: 25px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-    .hero-sub {
-      margin-top: 4px;
-      font-size: 13px;
-      color: var(--text-2);
-      font-weight: 500;
-    }
-
-    .group-label {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--text-2);
-      padding: 4px 6px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .oneui-group {
-      background: var(--surface);
-      border: 1px solid var(--stroke);
-      border-radius: 26px;
-      overflow: hidden;
-      margin-bottom: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .oneui-row {
-      padding: 13px 16px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      cursor: pointer;
-      position: relative;
-      transition: background 0.14s ease, transform 0.12s ease;
-    }
-    .oneui-row:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      left: 70px;
-      right: 16px;
-      bottom: 0;
-      height: 1px;
-      background: var(--stroke);
-    }
-    .oneui-row:hover { background: var(--surface-hover); }
-    .oneui-row:active { transform: scale(0.992); }
-
-    .sam-folder {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: rgba(255, 184, 0, 0.14);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .sam-video {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: var(--blue-soft);
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .row-body { flex: 1; min-width: 0; }
-    .row-title {
-      font-weight: 600;
-      font-size: 14.5px;
-      color: var(--text);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .row-details {
-      margin-top: 4px;
+    .catalog-summary {
       font-size: 12px;
-      color: var(--text-2);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .dot-sep { opacity: 0.45; }
-    .resume-tag { color: var(--blue); font-weight: 700; }
-
-    .row-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
-    .chip-action {
-      height: 32px;
-      padding: 0 13px;
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      transition: 0.14s;
-    }
-    .chip-action:hover { background: var(--blue); color: #fff; }
-
-    .uniform-grid {
+    /* ============================================================
+       UNIFIED CATALOG GRID & LIST (NEUMORPHIC NETFLIX CARDS)
+       ============================================================ */
+    .netflix-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 16px;
     }
 
-    .grid-tile {
+    .media-card {
       background: var(--surface);
+      box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
-      border-radius: 24px;
-      padding: 15px;
-      cursor: pointer;
+      border-radius: 22px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 140px;
-      box-shadow: var(--shadow);
-      transition: transform 0.15s ease, background 0.15s ease;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+      position: relative;
     }
-    .grid-tile:hover { background: var(--surface-hover); transform: translateY(-2px); }
-    .grid-tile:active { transform: scale(0.985); }
-    .tile-top {
+    .media-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(229, 9, 20, 0.38);
+    }
+    .media-card:active {
+      transform: scale(0.985);
+      box-shadow: var(--neu-in);
+    }
+
+    .card-top-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
+      flex-wrap: wrap;
     }
-    .tile-badge {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--text-2);
-      font-size: 11px;
+
+    .card-title {
+      font-size: 15px;
       font-weight: 700;
-    }
-    .tile-name {
-      font-weight: 600;
-      font-size: 13.5px;
       line-height: 1.35;
+      color: var(--text);
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       word-break: break-word;
     }
-    .tile-sub {
-      font-size: 11.5px;
-      color: var(--text-2);
+
+    .card-bottom-row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--stroke);
     }
 
-    .state-box {
-      max-width: 400px;
-      margin: 60px auto;
+    .low-priority-meta {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .resume-pill {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .play-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       background: var(--surface);
+      box-shadow: var(--neu-out-sm);
+      border: 1px solid var(--stroke);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.15s ease;
+    }
+    .media-card:hover .play-circle {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: var(--accent-glow);
+    }
+
+    /* Neumorphic List View */
+    .netflix-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .media-row {
+      background: var(--surface);
+      box-shadow: var(--neu-out-sm);
+      border: 1px solid var(--stroke);
+      border-radius: 20px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      cursor: pointer;
+      transition: transform 0.14s ease, border-color 0.14s ease;
+    }
+    .media-row:hover {
+      border-color: rgba(229, 9, 20, 0.38);
+    }
+    .media-row:active {
+      transform: scale(0.992);
+      box-shadow: var(--neu-in);
+    }
+
+    .row-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .row-header-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .row-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Series Episode Drawer / View */
+    .series-banner {
+      background: var(--surface);
+      box-shadow: var(--neu-out);
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .state-panel {
+      max-width: 420px;
+      margin: 48px auto;
+      background: var(--surface);
+      box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
       border-radius: 28px;
       padding: 32px 24px;
       text-align: center;
-      box-shadow: var(--shadow);
     }
-    .state-box h2 { margin: 0 0 8px; font-size: 18px; font-weight: 700; }
-    .state-box p { margin: 0 0 20px; color: var(--text-2); font-size: 13.5px; line-height: 1.45; }
+    .state-panel h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .state-panel p {
+      margin: 0 0 20px;
+      color: var(--text-2);
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
     footer {
-      padding: 7px 18px 10px;
+      padding: 8px 20px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-2);
+      font-size: 11.5px;
+      color: var(--text-muted);
       flex-shrink: 0;
     }
 
     /* ============================================================
-       CINEMA PLAYER — ZERO-OVERFLOW PORTRAIT & LANDSCAPE ARCHITECTURE
+       CINEMA PLAYER & EXCLUSIVE FULLSCREEN MODE
        ============================================================ */
     .player-screen {
       display: none;
@@ -530,7 +659,7 @@
       height: 100dvh;
       height: var(--app-height, 100dvh);
       max-height: 100dvh;
-      background: #050507;
+      background: #060609;
       z-index: 100;
       flex-direction: column;
       overflow: hidden;
@@ -547,9 +676,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      background: rgba(18, 18, 22, 0.94);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(16, 17, 23, 0.95);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       flex-shrink: 0;
       min-height: 52px;
@@ -558,7 +685,7 @@
     .player-title-wrap {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       min-width: 0;
       flex: 1;
     }
@@ -576,12 +703,11 @@
     .quality-badge {
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(62, 139, 255, 0.16);
-      border: 1px solid rgba(62, 139, 255, 0.35);
-      color: #7ab2ff;
+      background: rgba(229, 9, 20, 0.16);
+      border: 1px solid rgba(229, 9, 20, 0.38);
+      color: #ff7a80;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+      font-weight: 800;
       white-space: nowrap;
       flex-shrink: 0;
       pointer-events: none;
@@ -598,7 +724,7 @@
       height: 34px;
       padding: 0 13px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: #ffffff;
       font-size: 12px;
@@ -609,26 +735,19 @@
       gap: 6px;
       cursor: pointer;
       white-space: nowrap;
-      transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.12s ease, background 0.15s ease;
     }
-    .p-pill:hover:not(.disabled) {
-      background: rgba(255, 255, 255, 0.18);
-      border-color: rgba(255, 255, 255, 0.22);
-    }
+    .p-pill:hover:not(.disabled) { background: rgba(255, 255, 255, 0.18); }
     .p-pill:active:not(.disabled) { transform: scale(0.95); }
-    .p-pill.disabled { opacity: 0.34; pointer-events: none; }
-    .p-pill.blue {
-      background: #0381fe;
-      border-color: rgba(62, 139, 255, 0.6);
+    .p-pill.disabled { opacity: 0.32; pointer-events: none; }
+    .p-pill.red {
+      background: #e50914;
+      border-color: rgba(255, 90, 95, 0.45);
     }
     .p-pill.danger-pill {
       background: rgba(255, 75, 75, 0.16);
       border-color: rgba(255, 75, 75, 0.3);
-      color: #ff8080;
-    }
-    .p-pill.danger-pill:hover {
-      background: rgba(255, 75, 75, 0.28);
-      color: #ffffff;
+      color: #ff8585;
     }
 
     .player-workspace {
@@ -671,6 +790,87 @@
       display: block;
     }
 
+    /* Floating Exit Fullscreen Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
+    .fs-exit-btn {
+      display: none;
+      position: absolute;
+      top: max(16px, env(safe-area-inset-top, 16px));
+      right: max(18px, env(safe-area-inset-right, 18px));
+      z-index: 140;
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(15, 16, 22, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      font-size: 12.5px;
+      font-weight: 700;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+      transition: opacity 0.22s ease, transform 0.22s ease, background 0.15s ease;
+    }
+    .fs-exit-btn:hover {
+      background: rgba(229, 9, 20, 0.9);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .fs-exit-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ============================================================
+       EXCLUSIVE FULLSCREEN STATE (.fs-active)
+       Hides EVERYTHING except video and the single Exit Fullscreen button
+       ============================================================ */
+    .player-screen.fs-active {
+      padding: 0 !important;
+      background: #000000 !important;
+    }
+    .player-screen.fs-active .player-header,
+    .player-screen.fs-active .player-controls,
+    .player-screen.fs-active .episode-pane {
+      display: none !important;
+    }
+    .player-screen.fs-active .player-workspace,
+    .player-screen.fs-active .player-main {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+    }
+    .player-screen.fs-active .video-stage {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100dvh !important;
+      max-height: none !important;
+      aspect-ratio: auto !important;
+      z-index: 125 !important;
+      cursor: pointer;
+    }
+    /* Fallback landscape rotation if mobile browser blocks screen.orientation.lock('landscape') while held upright */
+    .player-screen.fs-active.fs-rotate-fallback .video-stage {
+      width: 100dvh !important;
+      height: 100vw !important;
+      top: 50% !important;
+      left: 50% !important;
+      right: auto !important;
+      bottom: auto !important;
+      transform: translate(-50%, -50%) rotate(90deg) !important;
+    }
+    .player-screen.fs-active .fs-exit-btn {
+      display: inline-flex;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .player-screen.fs-active .fs-exit-btn.fs-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+    }
+
     .loader-box {
       position: absolute;
       inset: 0;
@@ -689,7 +889,7 @@
       height: 42px;
       border-radius: 50%;
       border: 3px solid rgba(255, 255, 255, 0.16);
-      border-top-color: #3e8bff;
+      border-top-color: #e50914;
       animation: spin 0.72s linear infinite;
     }
     .loader-label {
@@ -705,7 +905,7 @@
 
     .player-controls {
       padding: 10px 16px 12px;
-      background: rgba(16, 16, 20, 0.96);
+      background: rgba(16, 17, 23, 0.96);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       flex-direction: column;
@@ -734,7 +934,7 @@
       height: 100%;
       width: 0%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #2563eb, #3e8bff);
+      background: linear-gradient(90deg, #b91c1c, #e50914);
       position: relative;
     }
     .seek-knob {
@@ -746,7 +946,7 @@
       height: 14px;
       border-radius: 50%;
       background: #ffffff;
-      box-shadow: 0 0 10px rgba(62, 139, 255, 0.85);
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.9);
     }
 
     .ctrl-row {
@@ -791,16 +991,17 @@
       cursor: pointer;
     }
     .vol-range {
-      width: 72px;
-      accent-color: #3e8bff;
+      width: 68px;
+      accent-color: #e50914;
       cursor: pointer;
       margin: 0;
     }
 
+    /* Series Episode List Alongside Video */
     .episode-pane {
       width: 300px;
       flex-shrink: 0;
-      background: #101014;
+      background: #101116;
       border-left: 1px solid rgba(255, 255, 255, 0.08);
       display: none;
       flex-direction: column;
@@ -829,7 +1030,7 @@
     .ep-pane-count {
       font-size: 11px;
       font-weight: 700;
-      color: #9a9aa4;
+      color: #9ca3af;
       background: rgba(255, 255, 255, 0.08);
       padding: 3px 9px;
       border-radius: 999px;
@@ -850,20 +1051,19 @@
 
     .ep-card {
       padding: 10px 11px;
-      border-radius: 16px;
+      border-radius: 15px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       gap: 10px;
       cursor: pointer;
-      transition: background 0.14s ease, border-color 0.14s ease, transform 0.12s ease;
+      transition: background 0.14s ease, border-color 0.14s ease;
     }
     .ep-card:hover { background: rgba(255, 255, 255, 0.09); }
-    .ep-card:active { transform: scale(0.985); }
     .ep-card.active {
-      background: rgba(62, 139, 255, 0.16);
-      border-color: rgba(62, 139, 255, 0.48);
+      background: rgba(229, 9, 20, 0.16);
+      border-color: rgba(229, 9, 20, 0.5);
     }
 
     .ep-num {
@@ -880,7 +1080,7 @@
       flex-shrink: 0;
     }
     .ep-card.active .ep-num {
-      background: #3e8bff;
+      background: #e50914;
       color: #ffffff;
     }
 
@@ -893,7 +1093,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .ep-card.active .ep-name { color: #ffffff; }
     .ep-meta {
       margin-top: 3px;
       font-size: 11px;
@@ -902,33 +1101,31 @@
       align-items: center;
       gap: 6px;
     }
-    .ep-playing-tag {
-      color: #60a5fa;
-      font-weight: 700;
-    }
+    .ep-playing-tag { color: #ff6b72; font-weight: 700; }
 
+    /* Custom Glass/Neumorphic Popup Modal (Audio & Speed) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.68);
+      background: rgba(0, 0, 0, 0.72);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 18px;
-      z-index: 160;
+      z-index: 180;
     }
     .modal-backdrop.open { display: flex; }
 
     .modal-sheet {
       width: 100%;
-      max-width: 410px;
+      max-width: 400px;
       max-height: 76dvh;
-      background: #18181d;
+      background: #171920;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 26px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -948,11 +1145,7 @@
       gap: 10px;
       flex-shrink: 0;
     }
-    .modal-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-    }
+    .modal-title { font-size: 15px; font-weight: 700; color: #ffffff; }
     .modal-close {
       width: 30px;
       height: 30px;
@@ -966,7 +1159,6 @@
       font-weight: 700;
       cursor: pointer;
     }
-    .modal-close:hover { background: rgba(255, 255, 255, 0.18); color: #ffffff; }
 
     .modal-list {
       padding: 10px;
@@ -986,12 +1178,11 @@
       justify-content: space-between;
       gap: 12px;
       cursor: pointer;
-      transition: 0.14s ease;
     }
     .modal-option:hover { background: rgba(255, 255, 255, 0.1); }
     .modal-option.selected {
-      background: rgba(62, 139, 255, 0.18);
-      border-color: rgba(62, 139, 255, 0.55);
+      background: rgba(229, 9, 20, 0.18);
+      border-color: rgba(229, 9, 20, 0.55);
     }
 
     .opt-main { min-width: 0; flex: 1; }
@@ -1003,16 +1194,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .opt-sub {
-      margin-top: 2px;
-      font-size: 11.5px;
-      color: #9a9aa4;
-    }
+    .opt-sub { margin-top: 2px; font-size: 11.5px; color: #9ca3af; }
     .opt-check {
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: #3e8bff;
+      background: #e50914;
       color: #ffffff;
       font-size: 12px;
       font-weight: 700;
@@ -1028,14 +1215,14 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(14px);
-      background: #222228;
+      background: #1c1f28;
       color: #fafafa;
       border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 9px 18px;
       border-radius: 999px;
       font-size: 12.5px;
       font-weight: 600;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
       opacity: 0;
       pointer-events: none;
       transition: all 0.2s ease;
@@ -1044,63 +1231,55 @@
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    .mobile-only { display: none; }
-
-    @media (max-width: 900px) {
-      .app-bar { padding: 10px 12px 6px; flex-wrap: wrap; gap: 7px; }
-      .crumb-strip { order: 3; flex-basis: 100%; height: 34px; }
-      .search-field { flex: 1; width: auto; height: 36px; min-width: 110px; }
-      .server-pill { height: 36px; padding: 0 11px; max-width: 155px; font-size: 12px; }
-      .icon-btn { width: 36px; height: 36px; }
-      .pill-btn { height: 36px; padding: 0 12px; font-size: 12.5px; }
-      .workspace { padding: 4px 12px 8px; }
-      .side-rail {
-        position: absolute;
-        top: 0; bottom: 8px; left: 12px;
-        z-index: 30;
-        transform: translateX(-120%);
-        transition: transform 0.2s ease;
-        box-shadow: 12px 0 32px rgba(0, 0, 0, 0.65);
-      }
-      .side-rail.open { transform: translateX(0); }
-      .mobile-only { display: inline-flex; }
-      .uniform-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .grid-tile { height: 132px; padding: 13px; }
+    /* ============================================================
+       RESPONSIVE MOBILE PORTRAIT & LANDSCAPE FIT
+       ============================================================ */
+    @media (max-width: 820px) {
+      .top-nav { padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
+      .nav-actions { flex-basis: 100%; justify-content: space-between; }
+      .neu-search { max-width: none; flex: 1; height: 38px; }
+      .neu-btn { height: 38px; padding: 0 12px; font-size: 12px; }
+      .neu-btn.icon-only { width: 38px; }
+      .main-scroll { padding: 4px 14px 14px; }
+      .hero-card { padding: 16px; border-radius: 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero-title { font-size: 19px; }
+      .netflix-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .media-card { padding: 13px; border-radius: 18px; }
       .hide-sm { display: none; }
-      footer { flex-direction: column; gap: 3px; text-align: center; font-size: 11px; padding: 6px 12px 8px; }
+      footer { flex-direction: column; gap: 3px; text-align: center; font-size: 11px; padding: 6px 14px 8px; }
     }
 
     @media (max-width: 900px) and (orientation: portrait) {
-      .player-header {
+      .player-screen:not(.fs-active) .player-header {
         padding: 8px 12px;
         flex-wrap: wrap;
         gap: 6px;
         min-height: 0;
       }
-      .player-title-wrap { flex-basis: 100%; }
-      .player-pills {
+      .player-screen:not(.fs-active) .player-title-wrap { flex-basis: 100%; }
+      .player-screen:not(.fs-active) .player-pills {
         width: 100%;
         justify-content: flex-start;
         overflow-x: auto;
         gap: 6px;
       }
-      .player-pills::-webkit-scrollbar { display: none; }
-      .p-pill { height: 31px; padding: 0 11px; font-size: 11.5px; }
+      .player-screen:not(.fs-active) .player-pills::-webkit-scrollbar { display: none; }
+      .player-screen:not(.fs-active) .p-pill { height: 31px; padding: 0 11px; font-size: 11.5px; }
 
-      .player-workspace { flex-direction: column; }
-      .player-main { flex: none; }
-      .player-workspace.no-episodes .player-main { flex: 1; }
-      .player-workspace:not(.no-episodes) .video-stage {
+      .player-screen:not(.fs-active) .player-workspace { flex-direction: column; }
+      .player-screen:not(.fs-active) .player-main { flex: none; }
+      .player-screen:not(.fs-active) .player-workspace.no-episodes .player-main { flex: 1; }
+      .player-screen:not(.fs-active) .player-workspace:not(.no-episodes) .video-stage {
         flex: none;
         width: 100%;
         aspect-ratio: 16 / 9;
         max-height: 34dvh;
       }
-      .player-controls { padding: 8px 12px 10px; gap: 7px; }
-      .ctrl-row { flex-wrap: wrap; gap: 6px; }
-      .vol-range { width: 58px; }
+      .player-screen:not(.fs-active) .player-controls { padding: 8px 12px 10px; gap: 7px; }
+      .player-screen:not(.fs-active) .ctrl-row { flex-wrap: wrap; gap: 6px; }
+      .player-screen:not(.fs-active) .vol-range { width: 54px; }
 
-      .episode-pane.show {
+      .player-screen:not(.fs-active) .episode-pane.show {
         width: 100%;
         flex: 1;
         min-height: 0;
@@ -1110,77 +1289,54 @@
     }
 
     @media (orientation: landscape) and (max-height: 560px) {
-      .app-bar { padding: 6px 12px; gap: 6px; }
-      .crumb-strip { order: 0; flex-basis: auto; height: 34px; }
+      .top-nav { padding: 7px 14px; }
       footer { display: none; }
 
-      .player-header { padding: 5px 12px; min-height: 40px; gap: 8px; }
-      .player-name { font-size: 13px; }
-      .p-pill { height: 29px; padding: 0 10px; font-size: 11px; }
-
-      .player-workspace { flex-direction: row; }
-      .player-controls { padding: 5px 12px 7px; gap: 4px; }
-      .seek-area { height: 15px; }
-      .clock-text { font-size: 11px; }
-      .vol-box { height: 29px; padding: 0 8px 0 6px; }
-      .vol-range { width: 54px; }
-
-      .episode-pane { width: 235px; }
-      .ep-pane-head { padding: 8px 10px; }
-      .ep-card { padding: 8px 9px; border-radius: 12px; }
+      .player-screen:not(.fs-active) .player-header { padding: 5px 12px; min-height: 40px; gap: 8px; }
+      .player-screen:not(.fs-active) .player-name { font-size: 13px; }
+      .player-screen:not(.fs-active) .p-pill { height: 29px; padding: 0 10px; font-size: 11px; }
+      .player-screen:not(.fs-active) .player-workspace { flex-direction: row; }
+      .player-screen:not(.fs-active) .player-controls { padding: 5px 12px 7px; gap: 4px; }
+      .player-screen:not(.fs-active) .seek-area { height: 15px; }
+      .player-screen:not(.fs-active) .clock-text { font-size: 11px; }
+      .player-screen:not(.fs-active) .vol-box { height: 29px; padding: 0 8px 0 6px; }
+      .player-screen:not(.fs-active) .vol-range { width: 50px; }
+      .player-screen:not(.fs-active) .episode-pane { width: 235px; }
     }
   </style>
 </head>
 <body>
 
-  <header class="app-bar">
-    <div class="ui-btn icon-btn mobile-only" role="button" tabindex="0" onclick="toggleRail()" title="Servers & Folders">☰</div>
-    <div class="ui-btn icon-btn disabled" id="btnBack" role="button" tabindex="0" onclick="goBack()" title="Back">←</div>
-    <div class="ui-btn icon-btn disabled" id="btnUp" role="button" tabindex="0" onclick="goUp()" title="Up">↑</div>
-    <div class="ui-btn icon-btn" role="button" tabindex="0" onclick="refreshCurrent()" title="Refresh">↻</div>
-
-    <div class="server-pill" id="serverPill" role="button" tabindex="0" onclick="openServersPopup()" title="Switch Active Server">
-      <span class="live-dot offline" id="serverPillDot"></span>
-      <span class="server-pill-name" id="serverPillName">Offline</span>
-      <span style="opacity:0.65;">▾</span>
-    </div>
-
-    <div class="crumb-strip" id="crumbStrip"></div>
-
-    <div class="search-field">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="searchInput" placeholder="Search" oninput="handleSearch(this.value)">
-    </div>
-
-    <div class="ui-btn pill-btn" id="btnSort" role="button" tabindex="0" onclick="cycleSort()">Name</div>
-    <div class="ui-btn pill-btn" id="btnView" role="button" tabindex="0" onclick="toggleView()">Grid</div>
-    <div class="ui-btn icon-btn" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Theme">☀</div>
-  </header>
-
-  <main class="workspace">
-    <aside class="side-rail" id="sideRail">
-      <div class="rail-header">
-        <span>Online Servers</span>
-        <span id="onlineServersCount">0</span>
-      </div>
-      <div id="railServers"></div>
-
-      <div class="rail-header" style="margin-top:8px;">Current Library</div>
-      <div class="rail-row active" id="railRoot" role="button" tabindex="0" onclick="navigateTo('')">
-        <div class="rail-left">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--blue)"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-          <span>Root Directory</span>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="brand-cluster" role="button" tabindex="0" onclick="returnToAllCatalog()">
+      <div class="brand-emblem">G15</div>
+      <div class="brand-titles">
+        <div class="brand-name">DELL G15 <span>MOVIES</span></div>
+        <div class="brand-sub">
+          <span class="live-dot off" id="globalLiveDot"></span>
+          <span id="globalHostStatus">Connecting to live hosts...</span>
         </div>
       </div>
-      <div class="rail-header" style="margin-top:8px;">Folders</div>
-      <div id="railFolders"></div>
-    </aside>
+    </div>
 
-    <section class="content-area" id="contentArea"></section>
-  </main>
+    <div class="nav-actions">
+      <div class="neu-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Search movies & series..." oninput="handleSearchInput(this.value)">
+      </div>
+
+      <div class="neu-btn" id="btnView" role="button" tabindex="0" onclick="toggleViewMode()">List</div>
+      <div class="neu-btn icon-only" role="button" tabindex="0" onclick="refreshAllCatalog()" title="Refresh">↻</div>
+      <div class="neu-btn icon-only" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Toggle Theme">☀</div>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Netflix Catalog -->
+  <main class="main-scroll" id="mainScroll"></main>
 
   <footer>
-    <span id="footerStats">0 items</span>
+    <span id="footerStats">0 titles available</span>
     <span>© 2026 Sanchar Koirala | All rights reserved</span>
   </footer>
 
@@ -1199,15 +1355,22 @@
         </div>
         <div class="p-pill" id="prevEpBtn" role="button" tabindex="0" onclick="playPrevEpisode()" style="display:none;">‹ Prev</div>
         <div class="p-pill" id="nextEpBtn" role="button" tabindex="0" onclick="playNextEpisode()" style="display:none;">Next ›</div>
-        <div class="p-pill blue" role="button" tabindex="0" onclick="openExternalVLC()">VLC</div>
+        <div class="p-pill red" role="button" tabindex="0" onclick="openExternalVLC()">VLC</div>
         <div class="p-pill danger-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
       </div>
     </div>
 
     <div class="player-workspace no-episodes" id="playerWorkspace">
       <div class="player-main">
-        <div class="video-stage">
+        <div class="video-stage" id="videoStage" onclick="handleVideoStageTap(event)">
           <video id="videoEl" playsinline webkit-playsinline preload="auto"></video>
+
+          <!-- Exclusive Fullscreen Exit Button (Shown ONLY in Fullscreen Mode, toggled by tapping video screen) -->
+          <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0" onclick="exitFullscreenMode(event)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+            <span>Exit Fullscreen</span>
+          </div>
+
           <div class="loader-box" id="loaderBox">
             <div class="loader-circle"></div>
             <div class="loader-label" id="loaderLabel">Preparing stream...</div>
@@ -1225,7 +1388,7 @@
 
           <div class="ctrl-row">
             <div class="ctrl-group">
-              <div class="p-pill blue" id="playBtn" role="button" tabindex="0" onclick="togglePlayPause()">Pause</div>
+              <div class="p-pill red" id="playBtn" role="button" tabindex="0" onclick="togglePlayPause()">Pause</div>
               <div class="p-pill" role="button" tabindex="0" onclick="skipBy(-10)">-10s</div>
               <div class="p-pill" role="button" tabindex="0" onclick="skipBy(10)">+10s</div>
               <div class="clock-text" id="clockText">00:00 / 00:00</div>
@@ -1239,14 +1402,19 @@
                 </div>
                 <input type="range" class="vol-range" id="volRange" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
               </div>
+              <div class="p-pill" id="fsEnterBtn" role="button" tabindex="0" onclick="enterFullscreenMode()" title="Fullscreen Landscape">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <span>Fullscreen</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Series Episodes List Alongside Video -->
       <aside class="episode-pane" id="episodePane">
         <div class="ep-pane-head">
-          <div class="ep-pane-title" id="epPaneTitle">Folder Videos</div>
+          <div class="ep-pane-title" id="epPaneTitle">Series Episodes</div>
           <div class="ep-pane-count" id="epPaneCount">1 / 1</div>
         </div>
         <div class="ep-list" id="epList"></div>
@@ -1254,7 +1422,7 @@
     </div>
   </div>
 
-  <!-- Custom Popup Modal (Servers, Audio Track & Speed Selection) -->
+  <!-- Custom Popup Modal (Audio Track & Speed Selection) -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -1281,23 +1449,22 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
-  const FOLDER_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="#FFB800"><path d="M10.41 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.59-2z"/></svg>`;
-  const VIDEO_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
-
   let onlineServers = [];
-  let selectedServerId = '';
-  let API_BASE = '';
   let serverTimeOffsetMs = 0;
+  let latestServersObj = {};
+  let latestLegacyObj = null;
 
-  let currentPath = '';
-  let historyStack = [''];
-  let historyIndex = 0;
-  let currentItems = [];
-  let sortBy = 'name';
-  let sortAsc = true;
-  let viewMode = 'list';
-  let searchTimer = null;
+  let unifiedCatalog = [];
+  let hostFilterId = 'ALL';
+  let viewMode = 'grid';
+  let searchQuery = '';
 
+  /* Active Series Folder View State (null = Unified Root Catalog) */
+  let activeSeriesFolder = null;
+  let activeSeriesEpisodes = [];
+
+  /* Active Player State */
+  let activePlayerList = [];
   let activeIndex = -1;
   let activeMedia = null;
   let activeProbe = { duration: 0, resolutionLabel: 'HD', audioTracks: [] };
@@ -1307,6 +1474,11 @@
   let streamOffsetSec = 0;
   let hlsInstance = null;
   let lastSavedTick = 0;
+
+  /* Exclusive Fullscreen State */
+  let isFullscreenMode = false;
+  let fsButtonVisible = true;
+  let orientationLockedByPlayer = false;
 
   const SPEED_OPTIONS = [
     { value: 0.5, label: '0.5x', sub: 'Slow motion' },
@@ -1318,16 +1490,30 @@
   ];
 
   /* ============================================================
-     MOBILE AUTO-ROTATION & VIEWPORT SYNC
+     VIEWPORT & ACCELEROMETER / ORIENTATION SYNC
      ============================================================ */
   function syncViewportLayout() {
     document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
     if (window.scrollY !== 0 || window.scrollX !== 0) {
       window.scrollTo(0, 0);
     }
+    if (isFullscreenMode) {
+      updateFullscreenRotationFallback();
+    }
+  }
+
+  function updateFullscreenRotationFallback() {
+    const screenEl = document.getElementById('playerScreen');
+    if (!isFullscreenMode) {
+      screenEl.classList.remove('fs-rotate-fallback');
+      return;
+    }
+    const isPortraitViewport = window.innerHeight > window.innerWidth;
+    screenEl.classList.toggle('fs-rotate-fallback', !orientationLockedByPlayer && isPortraitViewport);
   }
 
   function unlockMobileOrientation() {
+    orientationLockedByPlayer = false;
     try {
       if (screen.orientation && typeof screen.orientation.unlock === 'function') {
         screen.orientation.unlock();
@@ -1349,12 +1535,11 @@
     }
   }
 
-  unlockMobileOrientation();
   syncViewportLayout();
   window.addEventListener('resize', syncViewportLayout, { passive: true });
   window.addEventListener('orientationchange', () => {
     setTimeout(syncViewportLayout, 60);
-    setTimeout(syncViewportLayout, 250);
+    setTimeout(syncViewportLayout, 260);
   }, { passive: true });
   if (screen.orientation && screen.orientation.addEventListener) {
     screen.orientation.addEventListener('change', syncViewportLayout);
@@ -1362,13 +1547,13 @@
   window.addEventListener('devicemotion', handleAccelerometerMotion, { passive: true });
 
   /* ============================================================
-     THEME & KEYBOARD ACCESSIBILITY
+     THEME & ACCESSIBILITY
      ============================================================ */
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('oneui_files_theme', theme);
+    localStorage.setItem('g15_movies_theme', theme);
     document.getElementById('btnTheme').textContent = theme === 'dark' ? '☀' : '☾';
-    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#000000' : '#f4f4f6');
+    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#121318' : '#e6ebf2');
   }
 
   function toggleTheme() {
@@ -1376,7 +1561,7 @@
     applyTheme(cur === 'dark' ? 'light' : 'dark');
   }
 
-  applyTheme(localStorage.getItem('oneui_files_theme') || 'dark');
+  applyTheme(localStorage.getItem('g15_movies_theme') || 'dark');
 
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
@@ -1399,34 +1584,20 @@
     box.classList.toggle('show', show);
   }
 
-  function renderState(title, msg) {
-    document.getElementById('contentArea').innerHTML = `
-      <div class="state-box">
-        <h2>${escapeHtml(title)}</h2>
-        <p>${escapeHtml(msg)}</p>
-        <div class="ui-btn pill-btn" role="button" tabindex="0" onclick="refreshCurrent()">Retry</div>
-      </div>
-    `;
-    document.getElementById('footerStats').textContent = 'Offline';
-  }
-
-  async function apiFetch(endpoint) {
-    if (!API_BASE) throw new Error('Offline');
-    const res = await fetch(`${API_BASE}${endpoint}`);
+  async function apiFetchFromServer(serverUrl, endpoint) {
+    if (!serverUrl) throw new Error('Server offline');
+    const res = await fetch(`${serverUrl}${endpoint}`);
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
     return data;
   }
 
   /* ============================================================
-     FEDERATED MULTI-SERVER DIRECTORY (FIREBASE RTDB)
+     FEDERATED MULTI-SERVER DISCOVERY & UNIFIED CATALOG FETCH
      ============================================================ */
   db.ref('.info/serverTimeOffset').on('value', (snap) => {
     serverTimeOffsetMs = snap.val() || 0;
   });
-
-  let latestServersObj = {};
-  let latestLegacyObj = null;
 
   function reconcileServers() {
     const nowSec = Math.floor((Date.now() + serverTimeOffsetMs) / 1000);
@@ -1444,9 +1615,7 @@
           name: srv.name || key,
           url: cleanUrl,
           videoCount: Number(srv.videoCount || 0),
-          totalSizeLabel: srv.totalSizeLabel || '',
-          encoder: srv.encoder || '',
-          updatedAt: srv.updatedAt || ''
+          totalSizeLabel: srv.totalSizeLabel || ''
         });
       });
     }
@@ -1456,35 +1625,41 @@
       if (cleanLegacy) {
         list.push({
           id: 'default-host',
-          name: 'Primary Host',
+          name: 'DELL-G15',
           url: cleanLegacy,
           videoCount: 0,
-          totalSizeLabel: '',
-          encoder: '',
-          updatedAt: latestLegacyObj.updatedAt || ''
+          totalSizeLabel: ''
         });
       }
     }
 
     list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
-    onlineServers = list;
-    renderServersRailAndPill();
 
+    const prevSignature = onlineServers.map(s => `${s.id}:${s.url}`).join('|');
+    const nextSignature = list.map(s => `${s.id}:${s.url}`).join('|');
+    onlineServers = list;
+
+    const dot = document.getElementById('globalLiveDot');
+    const status = document.getElementById('globalHostStatus');
     if (onlineServers.length === 0) {
-      selectedServerId = '';
-      API_BASE = '';
-      renderRailFolders([]);
-      renderState('No Active Servers Online', 'Run dell-g15-movies.pages.dev.exe on any PC to share movies and appear live here.');
+      dot.classList.add('off');
+      status.textContent = 'No hosts online';
+      unifiedCatalog = [];
+      renderCurrentScreen();
       return;
     }
 
-    const currentMatch = onlineServers.find(s => s.id === selectedServerId);
-    if (!currentMatch) {
-      const nextSrv = onlineServers[0];
-      switchToServer(nextSrv.id, false);
-    } else if (API_BASE !== currentMatch.url) {
-      API_BASE = currentMatch.url;
-      loadFolder(currentPath, false);
+    dot.classList.remove('off');
+    status.textContent = onlineServers.length === 1
+      ? `Live Host: ${onlineServers[0].name}`
+      : `${onlineServers.length} Live Hosts Online`;
+
+    if (hostFilterId !== 'ALL' && !onlineServers.some(s => s.id === hostFilterId)) {
+      hostFilterId = 'ALL';
+    }
+
+    if (prevSignature !== nextSignature) {
+      fetchUnifiedCatalog();
     }
   }
 
@@ -1500,331 +1675,402 @@
 
   setInterval(reconcileServers, 15000);
 
-  function renderServersRailAndPill() {
-    document.getElementById('onlineServersCount').textContent = String(onlineServers.length);
-    const pillDot = document.getElementById('serverPillDot');
-    const pillName = document.getElementById('serverPillName');
+  async function fetchUnifiedCatalog() {
+    if (onlineServers.length === 0) {
+      unifiedCatalog = [];
+      renderCurrentScreen();
+      return;
+    }
 
-    const activeSrv = onlineServers.find(s => s.id === selectedServerId);
-    if (!activeSrv) {
-      pillDot.classList.add('offline');
-      pillName.textContent = 'No Servers';
+    const results = await Promise.all(
+      onlineServers.map(async (srv) => {
+        try {
+          const data = await apiFetchFromServer(srv.url, '/api/list?path=');
+          const items = data.items || [];
+          return items.map(item => ({
+            ...item,
+            cleanName: cleanTitle(item.name),
+            serverId: srv.id,
+            serverName: srv.name,
+            serverUrl: srv.url
+          }));
+        } catch (e) {
+          return [];
+        }
+      })
+    );
+
+    const merged = results.flat();
+    // Strict alphabetical ascending order (A -> Z) mixing Movies & Series together
+    merged.sort((a, b) => a.cleanName.localeCompare(b.cleanName, undefined, { numeric: true, sensitivity: 'base' }));
+    unifiedCatalog = merged;
+    renderCurrentScreen();
+  }
+
+  function refreshAllCatalog() {
+    if (activeSeriesFolder) {
+      openSeriesFolder(activeSeriesFolder, false);
     } else {
-      pillDot.classList.remove('offline');
-      pillName.textContent = onlineServers.length > 1
-        ? `${activeSrv.name} (${onlineServers.length})`
-        : activeSrv.name;
+      fetchUnifiedCatalog();
     }
-
-    const railBox = document.getElementById('railServers');
-    if (onlineServers.length === 0) {
-      railBox.innerHTML = `<div style="padding:8px 14px; font-size:12px; color:var(--text-2);">No servers online</div>`;
-      return;
-    }
-
-    railBox.innerHTML = onlineServers.map(srv => {
-      const isCur = srv.id === selectedServerId;
-      const badge = srv.videoCount > 0 ? `${srv.videoCount} vid` : 'Live';
-      return `
-        <div class="rail-row ${isCur ? 'active' : ''}" role="button" tabindex="0" onclick="switchToServer('${escapeJs(srv.id)}', true)">
-          <div class="rail-left">
-            <span class="live-dot"></span>
-            <span title="${escapeHtml(srv.name)}">${escapeHtml(srv.name)}</span>
-          </div>
-          <span class="rail-meta">${escapeHtml(badge)}</span>
-        </div>
-      `;
-    }).join('');
-  }
-
-  function openServersPopup() {
-    if (onlineServers.length === 0) {
-      showToast('No active servers online');
-      return;
-    }
-    document.getElementById('modalTitle').textContent = `Active Servers (${onlineServers.length})`;
-    const list = document.getElementById('modalList');
-    list.innerHTML = onlineServers.map(srv => {
-      const isCur = srv.id === selectedServerId;
-      const metaParts = [];
-      if (srv.videoCount > 0) metaParts.push(`${srv.videoCount} videos`);
-      if (srv.totalSizeLabel) metaParts.push(srv.totalSizeLabel);
-      if (srv.updatedAt) metaParts.push(`Active ${srv.updatedAt}`);
-      return `
-        <div class="modal-option ${isCur ? 'selected' : ''}" role="button" tabindex="0" onclick="selectServerFromModal('${escapeJs(srv.id)}')">
-          <div class="opt-main">
-            <div class="opt-title" style="display:flex; align-items:center; gap:8px;">
-              <span class="live-dot"></span>
-              <span>${escapeHtml(srv.name)}</span>
-            </div>
-            <div class="opt-sub">${escapeHtml(metaParts.join(' · ') || 'Online HLS Host')}</div>
-          </div>
-          <div class="opt-check">✓</div>
-        </div>
-      `;
-    }).join('');
-    document.getElementById('modalBackdrop').classList.add('open');
-  }
-
-  function selectServerFromModal(srvId) {
-    closeModal();
-    switchToServer(srvId, true);
-  }
-
-  function switchToServer(srvId, notify = true) {
-    const target = onlineServers.find(s => s.id === srvId);
-    if (!target) return;
-
-    if (document.getElementById('playerScreen').classList.contains('open')) {
-      closePlayer();
-    }
-
-    selectedServerId = target.id;
-    API_BASE = target.url;
-    historyStack = [''];
-    historyIndex = 0;
-    document.getElementById('sideRail').classList.remove('open');
-
-    renderServersRailAndPill();
-    if (notify) {
-      showToast(`Connected to ${target.name}`);
-    }
-    loadFolder('', false);
+    showToast('Catalog refreshed');
   }
 
   /* ============================================================
-     DIRECTORY BROWSING & EXPLORER
+     SERIES FOLDER DRILLING & NAVIGATION
      ============================================================ */
-  async function loadFolder(path, pushHistory = true) {
-    currentPath = path;
-    document.getElementById('searchInput').value = '';
-
-    if (pushHistory) {
-      historyStack = historyStack.slice(0, historyIndex + 1);
-      if (historyStack[historyStack.length - 1] !== path) {
-        historyStack.push(path);
-        historyIndex = historyStack.length - 1;
-      }
-    }
-
-    updateNavState();
-    renderBreadcrumbs();
-
-    if (!API_BASE) return;
+  async function openSeriesFolder(seriesItem, scrollTop = true) {
+    activeSeriesFolder = seriesItem;
+    const container = document.getElementById('mainScroll');
+    container.innerHTML = `<div class="state-panel"><h2>Loading Series...</h2><p>Fetching episodes from ${escapeHtml(seriesItem.serverName)}</p></div>`;
 
     try {
-      const data = await apiFetch(`/api/list?path=${encodeURIComponent(path)}`);
-      currentItems = data.items || [];
+      const data = await apiFetchFromServer(seriesItem.serverUrl, `/api/list?path=${encodeURIComponent(seriesItem.path)}`);
+      const rawItems = (data.items || []).filter(i => i.type === 'file');
+      rawItems.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
-      if (path === '') {
-        renderRailFolders(currentItems.filter(i => i.type === 'folder'));
-      }
+      activeSeriesEpisodes = rawItems.map(ep => ({
+        ...ep,
+        cleanName: cleanTitle(ep.name),
+        serverId: seriesItem.serverId,
+        serverName: seriesItem.serverName,
+        serverUrl: seriesItem.serverUrl
+      }));
 
-      document.getElementById('railRoot').classList.toggle('active', path === '');
-      document.querySelectorAll('.rail-folder').forEach(el => {
-        el.classList.toggle('active', el.dataset.path === path);
-      });
-
-      renderContent();
+      renderCurrentScreen();
+      if (scrollTop) container.scrollTop = 0;
     } catch (e) {
-      renderState('Host Unreachable', 'This server stopped responding or closed its tunnel.');
-    }
-  }
-
-  function renderRailFolders(folders) {
-    const box = document.getElementById('railFolders');
-    if (!folders.length) {
-      box.innerHTML = `<div style="padding:6px 14px; font-size:12px; color:var(--text-2);">No subfolders</div>`;
-      return;
-    }
-    box.innerHTML = folders.map(f => `
-      <div class="rail-row rail-folder" data-path="${escapeHtml(f.path)}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
-        <div class="rail-left">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="#FFB800"><path d="M10.41 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-1.59-2z"/></svg>
-          <span title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</span>
+      container.innerHTML = `
+        <div class="state-panel">
+          <h2>Host Unreachable</h2>
+          <p>Could not load episodes from ${escapeHtml(seriesItem.serverName)}.</p>
+          <div class="neu-btn" role="button" tabindex="0" onclick="returnToAllCatalog()">← Back to Catalog</div>
         </div>
-        <span class="rail-meta">${escapeHtml(f.sizeLabel)}</span>
-      </div>
-    `).join('');
+      `;
+    }
   }
 
-  function renderBreadcrumbs() {
-    const strip = document.getElementById('crumbStrip');
-    const activeSrv = onlineServers.find(s => s.id === selectedServerId);
-    const rootLabel = activeSrv ? activeSrv.name : 'Root';
-    const parts = currentPath ? currentPath.split('/') : [];
-    let html = `<div class="crumb-item ${parts.length === 0 ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('')">${escapeHtml(rootLabel)}</div>`;
-    let acc = '';
-    parts.forEach((p, idx) => {
-      acc += (idx === 0 ? '' : '/') + p;
-      const target = acc;
-      const isLast = idx === parts.length - 1;
-      html += `<span class="crumb-arrow">›</span><div class="crumb-item ${isLast ? 'current' : ''}" role="button" tabindex="0" onclick="navigateTo('${escapeJs(target)}')">${escapeHtml(p)}</div>`;
-    });
-    strip.innerHTML = html;
-    strip.scrollLeft = strip.scrollWidth;
+  function returnToAllCatalog() {
+    activeSeriesFolder = null;
+    activeSeriesEpisodes = [];
+    renderCurrentScreen();
   }
 
-  function sortList(items) {
-    return [...items].sort((a, b) => {
-      let cmp = 0;
-      if (sortBy === 'name') cmp = a.name.localeCompare(b.name, undefined, { numeric: true });
-      else if (sortBy === 'size') cmp = a.size - b.size;
-      else if (sortBy === 'mtime') cmp = a.mtime - b.mtime;
-      return sortAsc ? cmp : -cmp;
-    });
+  function setHostFilter(srvId) {
+    hostFilterId = srvId;
+    renderCurrentScreen();
   }
 
+  function toggleViewMode() {
+    viewMode = viewMode === 'grid' ? 'list' : 'grid';
+    document.getElementById('btnView').textContent = viewMode === 'grid' ? 'List' : 'Grid';
+    renderCurrentScreen();
+  }
+
+  function handleSearchInput(val) {
+    searchQuery = val.trim().toLowerCase();
+    renderCurrentScreen();
+  }
+
+  /* ============================================================
+     RENDERING: UNIFIED NETFLIX CATALOG & SERIES EPISODE VIEW
+     ============================================================ */
   function cleanTitle(filename) {
-    return filename.replace(/\.[^/.]+$/, '').replace(/\./g, ' ');
+    return filename.replace(/\.[^/.]+$/, '').replace(/[._]+/g, ' ').trim();
   }
 
-  function progressKey(path) {
-    return `oneui_prog_${selectedServerId || 'host'}_${path}`;
+  function progressKey(serverId, path) {
+    return `g15_prog_${serverId || 'host'}_${path}`;
   }
 
-  function getSavedProgress(path) {
+  function getSavedProgress(serverId, path) {
     try {
-      return JSON.parse(localStorage.getItem(progressKey(path)) || 'null');
+      return JSON.parse(localStorage.getItem(progressKey(serverId, path)) || 'null');
     } catch (e) {
       return null;
     }
   }
 
-  function renderContent() {
-    const area = document.getElementById('contentArea');
-    const folders = sortList(currentItems.filter(i => i.type === 'folder'));
-    const files = sortList(currentItems.filter(i => i.type === 'file'));
-    const total = folders.length + files.length;
+  function renderCurrentScreen() {
+    const container = document.getElementById('mainScroll');
 
-    const activeSrv = onlineServers.find(s => s.id === selectedServerId);
-    const parts = currentPath ? currentPath.split('/') : [];
-    const heading = parts.length ? parts[parts.length - 1] : (activeSrv ? activeSrv.name : 'Media Library');
-    const totalBytes = [...folders, ...files].reduce((acc, x) => acc + (x.size || 0), 0);
-
-    document.getElementById('footerStats').textContent = `${total} ${total === 1 ? 'item' : 'items'}`;
-
-    if (total === 0) {
-      area.innerHTML = `<div class="state-box"><h2>No videos found</h2><p>This folder contains no playable video files.</p></div>`;
+    if (onlineServers.length === 0) {
+      document.getElementById('footerStats').textContent = 'Offline';
+      container.innerHTML = `
+        <div class="state-panel">
+          <h2>No Hosts Online</h2>
+          <p>Run <strong>MyFilesServer.exe</strong> on any Windows PC to stream your movie &amp; series library live here.</p>
+          <div class="neu-btn" role="button" tabindex="0" onclick="refreshAllCatalog()">Check Again</div>
+        </div>
+      `;
       return;
     }
 
-    let html = `
-      <div class="view-hero">
-        <div>
-          <h1 class="hero-title">${escapeHtml(heading)}</h1>
-          <div class="hero-sub">${folders.length} folders · ${files.length} videos · ${formatBytes(totalBytes)}</div>
+    // 1. Inside a Series Folder -> Render Series Header & Episode Cards
+    if (activeSeriesFolder) {
+      const s = activeSeriesFolder;
+      const eps = searchQuery
+        ? activeSeriesEpisodes.filter(e => e.cleanName.toLowerCase().includes(searchQuery))
+        : activeSeriesEpisodes;
+
+      document.getElementById('footerStats').textContent = `${eps.length} ${eps.length === 1 ? 'episode' : 'episodes'} · Hosted on ${s.serverName}`;
+
+      let html = `
+        <div class="series-banner">
+          <div style="min-width:0; flex:1;">
+            <div class="hero-badges">
+              <div class="neu-btn" style="height:30px; padding:0 12px; font-size:11.5px;" role="button" tabindex="0" onclick="returnToAllCatalog()">← All Movies &amp; Series</div>
+              <span class="badge-pill badge-series">SERIES · ${activeSeriesEpisodes.length} EP</span>
+              <span class="badge-pill badge-host">HOST: ${escapeHtml(s.serverName)}</span>
+            </div>
+            <h1 class="hero-title">${escapeHtml(s.cleanName)}</h1>
+            <div class="hero-meta-low">
+              <span>Total Size: ${escapeHtml(s.sizeLabel)}</span>
+              <span>•</span>
+              <span>Updated: ${escapeHtml(s.modified)}</span>
+            </div>
+          </div>
+          ${activeSeriesEpisodes.length > 0 ? `
+            <div class="hero-cta">
+              <div class="neu-btn primary" role="button" tabindex="0" onclick="launchSeriesEpisode(0)">▶ Play Episode 1</div>
+            </div>
+          ` : ''}
         </div>
+      `;
+
+      if (eps.length === 0) {
+        html += `<div class="state-panel"><h2>No Episodes Found</h2><p>No playable videos match your filter inside this series.</p></div>`;
+        container.innerHTML = html;
+        return;
+      }
+
+      html += `<div class="${viewMode === 'grid' ? 'netflix-grid' : 'netflix-list'}">`;
+      eps.forEach((ep) => {
+        const realIdx = activeSeriesEpisodes.indexOf(ep);
+        const prog = getSavedProgress(ep.serverId, ep.path);
+        const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-pill">Resume ${formatClock(prog.pos)}</span><span>•</span>` : '';
+
+        if (viewMode === 'grid') {
+          html += `
+            <div class="media-card" role="button" tabindex="0" onclick="launchSeriesEpisode(${realIdx})">
+              <div class="card-top-row">
+                <span class="badge-pill badge-series">EP ${String(realIdx + 1).padStart(2, '0')}</span>
+                <span class="badge-pill badge-host">${escapeHtml(ep.serverName)}</span>
+              </div>
+              <div class="card-title" title="${escapeHtml(ep.name)}">${escapeHtml(ep.cleanName)}</div>
+              <div class="card-bottom-row">
+                <div class="low-priority-meta">
+                  ${resumeHtml}
+                  <span>${escapeHtml(ep.sizeLabel)}</span>
+                  <span>•</span>
+                  <span>${escapeHtml(ep.ext)}</span>
+                </div>
+                <div class="play-circle">▶</div>
+              </div>
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="media-row" role="button" tabindex="0" onclick="launchSeriesEpisode(${realIdx})">
+              <div class="row-main">
+                <div class="row-header-line">
+                  <span class="badge-pill badge-series">EP ${String(realIdx + 1).padStart(2, '0')}</span>
+                  <span class="badge-pill badge-host">${escapeHtml(ep.serverName)}</span>
+                </div>
+                <div class="row-title" title="${escapeHtml(ep.name)}">${escapeHtml(ep.cleanName)}</div>
+                <div class="low-priority-meta" style="margin-top:4px;">
+                  ${resumeHtml}
+                  <span>${escapeHtml(ep.sizeLabel)}</span>
+                  <span>•</span>
+                  <span>${escapeHtml(ep.ext)}</span>
+                  <span class="hide-sm">•</span>
+                  <span class="hide-sm">${escapeHtml(ep.modified)}</span>
+                </div>
+              </div>
+              <div class="play-circle">▶</div>
+            </div>
+          `;
+        }
+      });
+      html += `</div>`;
+      container.innerHTML = html;
+      return;
+    }
+
+    // 2. Unified Root Catalog (All Movies & Series Mixed Alphabetically A -> Z)
+    let filtered = unifiedCatalog;
+    if (hostFilterId !== 'ALL') {
+      filtered = filtered.filter(item => item.serverId === hostFilterId);
+    }
+    if (searchQuery) {
+      filtered = filtered.filter(item =>
+        item.cleanName.toLowerCase().includes(searchQuery) ||
+        item.serverName.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    // Guarantee alphabetical ascending order
+    filtered = [...filtered].sort((a, b) =>
+      a.cleanName.localeCompare(b.cleanName, undefined, { numeric: true, sensitivity: 'base' })
+    );
+    window._visibleUnifiedItems = filtered;
+
+    const movieCount = filtered.filter(i => i.type === 'file').length;
+    const seriesCount = filtered.filter(i => i.type === 'folder').length;
+    document.getElementById('footerStats').textContent = `${filtered.length} titles (${movieCount} movies, ${seriesCount} series) · Sorted A–Z`;
+
+    // Build Featured Hero from first item (or most recently resumable item)
+    let heroItem = filtered[0] || null;
+    for (const candidate of filtered) {
+      if (candidate.type === 'file') {
+        const p = getSavedProgress(candidate.serverId, candidate.path);
+        if (p && p.pos > 15) {
+          heroItem = candidate;
+          break;
+        }
+      }
+    }
+
+    let html = '';
+    if (heroItem) {
+      const heroIdx = filtered.indexOf(heroItem);
+      const isSeries = heroItem.type === 'folder';
+      const heroProg = !isSeries ? getSavedProgress(heroItem.serverId, heroItem.path) : null;
+      const ctaText = isSeries
+        ? `Browse ${heroItem.count} Episodes`
+        : (heroProg && heroProg.pos > 15 ? `▶ Resume (${formatClock(heroProg.pos)})` : '▶ Watch Now');
+
+      html += `
+        <div class="hero-card">
+          <div class="hero-left">
+            <div class="hero-badges">
+              <span class="badge-pill ${isSeries ? 'badge-series' : 'badge-movie'}">
+                ${isSeries ? `SERIES · ${heroItem.count} ${heroItem.count === 1 ? 'EP' : 'EPS'}` : `MOVIE · ${escapeHtml(heroItem.ext)}`}
+              </span>
+              <span class="badge-pill badge-host">HOSTED BY ${escapeHtml(heroItem.serverName)}</span>
+            </div>
+            <h1 class="hero-title">${escapeHtml(heroItem.cleanName)}</h1>
+            <div class="hero-meta-low">
+              <span>Size: ${escapeHtml(heroItem.sizeLabel)}</span>
+              <span>•</span>
+              <span>Added: ${escapeHtml(heroItem.modified)}</span>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <div class="neu-btn primary" role="button" tabindex="0" onclick="handleCatalogItemClick(${heroIdx})">${escapeHtml(ctaText)}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Host Filter Pills
+    html += `
+      <div class="filter-strip">
+        <div class="host-tabs">
+          <div class="host-chip ${hostFilterId === 'ALL' ? 'active' : ''}" role="button" tabindex="0" onclick="setHostFilter('ALL')">
+            <span class="live-dot"></span>
+            <span>All Hosts (${onlineServers.length})</span>
+          </div>
+          ${onlineServers.map(srv => `
+            <div class="host-chip ${hostFilterId === srv.id ? 'active' : ''}" role="button" tabindex="0" onclick="setHostFilter('${escapeJs(srv.id)}')">
+              <span class="live-dot"></span>
+              <span>${escapeHtml(srv.name)}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="catalog-summary">Sorted A → Z · ${filtered.length} ${filtered.length === 1 ? 'Title' : 'Titles'}</div>
       </div>
     `;
 
-    if (folders.length > 0) {
-      html += `<div class="group-label"><span>Folders</span><span>${folders.length}</span></div>`;
-      if (viewMode === 'list') {
-        html += `<div class="oneui-group">`;
-        folders.forEach(f => {
-          html += `
-            <div class="oneui-row" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
-              <div class="sam-folder">${FOLDER_ICON}</div>
-              <div class="row-body">
-                <div class="row-title" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
-                <div class="row-details">
-                  <span>${escapeHtml(f.typeLabel)}</span>
-                  <span class="dot-sep">•</span>
-                  <span>${escapeHtml(f.sizeLabel)}</span>
-                  <span class="dot-sep hide-sm">•</span>
-                  <span class="hide-sm">${escapeHtml(f.modified)}</span>
-                </div>
-              </div>
-              <span style="color:var(--text-2); font-size:16px;">›</span>
-            </div>
-          `;
-        });
-        html += `</div>`;
-      } else {
-        html += `<div class="uniform-grid">`;
-        folders.forEach(f => {
-          html += `
-            <div class="grid-tile" role="button" tabindex="0" onclick="navigateTo('${escapeJs(f.path)}')">
-              <div class="tile-top">
-                <div class="sam-folder">${FOLDER_ICON}</div>
-                <span class="tile-badge">${escapeHtml(f.typeLabel)}</span>
-              </div>
-              <div class="tile-name" title="${escapeHtml(f.name)}">${escapeHtml(f.name)}</div>
-              <div class="tile-sub">
-                <span>${escapeHtml(f.sizeLabel)}</span>
-                <span>${escapeHtml(f.modified)}</span>
-              </div>
-            </div>
-          `;
-        });
-        html += `</div>`;
-      }
+    if (filtered.length === 0) {
+      html += `<div class="state-panel"><h2>No Matching Titles</h2><p>No movies or series match your current search or host filter.</p></div>`;
+      container.innerHTML = html;
+      return;
     }
 
-    if (files.length > 0) {
-      html += `<div class="group-label"><span>Videos</span><span>${files.length}</span></div>`;
-      if (viewMode === 'list') {
-        html += `<div class="oneui-group">`;
-        files.forEach((m, idx) => {
-          const prog = getSavedProgress(m.path);
-          const resumeBadge = prog && prog.pos > 15 ? `<span class="dot-sep">•</span><span class="resume-tag">Resume ${formatClock(prog.pos)}</span>` : '';
-          html += `
-            <div class="oneui-row" role="button" tabindex="0" onclick="openMedia(${idx})">
-              <div class="sam-video">${VIDEO_ICON}</div>
-              <div class="row-body">
-                <div class="row-title" title="${escapeHtml(m.name)}">${escapeHtml(cleanTitle(m.name))}</div>
-                <div class="row-details">
-                  <span>${escapeHtml(m.ext)}</span>
-                  <span class="dot-sep">•</span>
-                  <span>${escapeHtml(m.sizeLabel)}</span>
-                  <span class="dot-sep hide-sm">•</span>
-                  <span class="hide-sm">${escapeHtml(m.modified)}</span>
-                  ${resumeBadge}
-                </div>
-              </div>
-              <div class="row-actions" onclick="event.stopPropagation()">
-                <div class="chip-action hide-sm" role="button" tabindex="0" onclick="downloadM3U(${idx})">VLC</div>
-                <div class="chip-action" role="button" tabindex="0" onclick="openMedia(${idx})">${prog && prog.pos > 15 ? 'Resume' : 'Play'}</div>
-              </div>
-            </div>
-          `;
-        });
-        html += `</div>`;
-      } else {
-        html += `<div class="uniform-grid">`;
-        files.forEach((m, idx) => {
-          html += `
-            <div class="grid-tile" role="button" tabindex="0" onclick="openMedia(${idx})">
-              <div class="tile-top">
-                <div class="sam-video">${VIDEO_ICON}</div>
-                <span class="tile-badge">${escapeHtml(m.ext)}</span>
-              </div>
-              <div class="tile-name" title="${escapeHtml(m.name)}">${escapeHtml(cleanTitle(m.name))}</div>
-              <div class="tile-sub">
-                <span>${escapeHtml(m.sizeLabel)}</span>
-                <span>${escapeHtml(m.modified)}</span>
-              </div>
-            </div>
-          `;
-        });
-        html += `</div>`;
-      }
-    }
+    html += `<div class="${viewMode === 'grid' ? 'netflix-grid' : 'netflix-list'}">`;
+    filtered.forEach((item, idx) => {
+      const isSeries = item.type === 'folder';
+      const typeBadge = isSeries
+        ? `<span class="badge-pill badge-series">SERIES · ${item.count} ${item.count === 1 ? 'EP' : 'EPS'}</span>`
+        : `<span class="badge-pill badge-movie">MOVIE · ${escapeHtml(item.ext)}</span>`;
+      const hostBadge = `<span class="badge-pill badge-host">${escapeHtml(item.serverName)}</span>`;
 
-    window._renderedFiles = files;
-    area.innerHTML = html;
+      const prog = !isSeries ? getSavedProgress(item.serverId, item.path) : null;
+      const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-pill">Resume ${formatClock(prog.pos)}</span><span>•</span>` : '';
+
+      if (viewMode === 'grid') {
+        html += `
+          <div class="media-card" role="button" tabindex="0" onclick="handleCatalogItemClick(${idx})">
+            <div class="card-top-row">
+              ${typeBadge}
+              ${hostBadge}
+            </div>
+            <div class="card-title" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
+            <div class="card-bottom-row">
+              <div class="low-priority-meta">
+                ${resumeHtml}
+                <span>${escapeHtml(item.sizeLabel)}</span>
+                <span>•</span>
+                <span>${escapeHtml(item.modified)}</span>
+              </div>
+              <div class="play-circle">${isSeries ? '☰' : '▶'}</div>
+            </div>
+          </div>
+        `;
+      } else {
+        html += `
+          <div class="media-row" role="button" tabindex="0" onclick="handleCatalogItemClick(${idx})">
+            <div class="row-main">
+              <div class="row-header-line">
+                ${typeBadge}
+                ${hostBadge}
+              </div>
+              <div class="row-title" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
+              <div class="low-priority-meta" style="margin-top:4px;">
+                ${resumeHtml}
+                <span>${escapeHtml(item.sizeLabel)}</span>
+                <span>•</span>
+                <span>${escapeHtml(item.modified)}</span>
+              </div>
+            </div>
+            <div class="play-circle">${isSeries ? '☰' : '▶'}</div>
+          </div>
+        `;
+      }
+    });
+    html += `</div>`;
+    container.innerHTML = html;
+  }
+
+  function handleCatalogItemClick(idx) {
+    const item = window._visibleUnifiedItems[idx];
+    if (!item) return;
+
+    if (item.type === 'folder') {
+      openSeriesFolder(item, true);
+    } else {
+      // Singular Movie from Root -> Play without Prev/Next or Episode list
+      activePlayerList = [item];
+      openMediaAtIndex(0, false, false);
+    }
+  }
+
+  function launchSeriesEpisode(epIdx) {
+    if (!activeSeriesEpisodes.length) return;
+    activePlayerList = activeSeriesEpisodes;
+    openMediaAtIndex(epIdx, true, false);
   }
 
   /* ============================================================
-     FOLDER SERIES DETECTION & SIDE/BOTTOM PLAYLIST
+     SERIES EPISODE NAVIGATION (SHOWN ONLY FOR MULTI-EPISODE SERIES)
      ============================================================ */
-  function isFolderSeries() {
-    return currentPath.trim() !== '' && Array.isArray(window._renderedFiles) && window._renderedFiles.length > 1;
+  function isPlayingSeriesFolder() {
+    return activeSeriesFolder !== null && Array.isArray(activePlayerList) && activePlayerList.length > 1;
   }
 
   function updateEpisodeNavigationUI() {
-    const showSeriesUI = isFolderSeries();
+    const showSeriesUI = isPlayingSeriesFolder();
     const prevBtn = document.getElementById('prevEpBtn');
     const nextBtn = document.getElementById('nextEpBtn');
     const epPane = document.getElementById('episodePane');
@@ -1838,23 +2084,21 @@
       return;
     }
 
-    const files = window._renderedFiles;
     prevBtn.style.display = 'inline-flex';
     nextBtn.style.display = 'inline-flex';
     prevBtn.classList.toggle('disabled', activeIndex <= 0);
-    nextBtn.classList.toggle('disabled', activeIndex >= files.length - 1);
+    nextBtn.classList.toggle('disabled', activeIndex >= activePlayerList.length - 1);
 
     epPane.classList.add('show');
     workspace.classList.remove('no-episodes');
 
-    const parts = currentPath.split('/');
-    document.getElementById('epPaneTitle').textContent = parts[parts.length - 1] || 'Folder Videos';
-    document.getElementById('epPaneCount').textContent = `${activeIndex + 1} / ${files.length}`;
+    document.getElementById('epPaneTitle').textContent = activeSeriesFolder.cleanName;
+    document.getElementById('epPaneCount').textContent = `${activeIndex + 1} / ${activePlayerList.length}`;
 
     const listEl = document.getElementById('epList');
-    listEl.innerHTML = files.map((f, i) => {
+    listEl.innerHTML = activePlayerList.map((f, i) => {
       const isCur = i === activeIndex;
-      const prog = getSavedProgress(f.path);
+      const prog = getSavedProgress(f.serverId, f.path);
       const statusHtml = isCur
         ? `<span class="ep-playing-tag">Playing</span>`
         : (prog && prog.pos > 15 ? `<span>Resume ${formatClock(prog.pos)}</span>` : `<span>${escapeHtml(f.ext)}</span>`);
@@ -1862,7 +2106,7 @@
         <div class="ep-card ${isCur ? 'active' : ''}" id="epCard_${i}" role="button" tabindex="0" onclick="selectEpisode(${i})">
           <div class="ep-num">${String(i + 1).padStart(2, '0')}</div>
           <div class="ep-info">
-            <div class="ep-name" title="${escapeHtml(f.name)}">${escapeHtml(cleanTitle(f.name))}</div>
+            <div class="ep-name" title="${escapeHtml(f.name)}">${escapeHtml(f.cleanName)}</div>
             <div class="ep-meta">
               ${statusHtml}
               <span>•</span>
@@ -1883,18 +2127,103 @@
 
   function selectEpisode(idx) {
     if (idx === activeIndex) return;
-    openMedia(idx, false);
+    openMediaAtIndex(idx, true, false);
   }
 
   function playPrevEpisode() {
-    if (!isFolderSeries() || activeIndex <= 0) return;
-    openMedia(activeIndex - 1, false);
+    if (!isPlayingSeriesFolder() || activeIndex <= 0) return;
+    openMediaAtIndex(activeIndex - 1, true, false);
   }
 
   function playNextEpisode() {
-    if (!isFolderSeries() || activeIndex >= window._renderedFiles.length - 1) return;
-    openMedia(activeIndex + 1, false);
+    if (!isPlayingSeriesFolder() || activeIndex >= activePlayerList.length - 1) return;
+    openMediaAtIndex(activeIndex + 1, true, false);
   }
+
+  /* ============================================================
+     EXCLUSIVE FULLSCREEN MODE & SCREEN TAP TOGGLE
+     ============================================================ */
+  function enterFullscreenMode() {
+    if (!activeMedia) return;
+    isFullscreenMode = true;
+    fsButtonVisible = true;
+
+    const screenEl = document.getElementById('playerScreen');
+    const exitBtn = document.getElementById('fsExitBtn');
+    screenEl.classList.add('fs-active');
+    exitBtn.classList.remove('fs-hidden');
+
+    const reqFs = screenEl.requestFullscreen || screenEl.webkitRequestFullscreen || screenEl.msRequestFullscreen;
+    if (typeof reqFs === 'function') {
+      try {
+        const promise = reqFs.call(screenEl);
+        if (promise && typeof promise.catch === 'function') {
+          promise.catch(() => {});
+        }
+      } catch (e) {}
+    }
+
+    if (screen.orientation && typeof screen.orientation.lock === 'function') {
+      screen.orientation.lock('landscape')
+        .then(() => {
+          orientationLockedByPlayer = true;
+          updateFullscreenRotationFallback();
+        })
+        .catch(() => {
+          orientationLockedByPlayer = false;
+          updateFullscreenRotationFallback();
+        });
+    } else {
+      orientationLockedByPlayer = false;
+      updateFullscreenRotationFallback();
+    }
+  }
+
+  function exitFullscreenMode(fromBrowserEvent = false) {
+    if (!isFullscreenMode && !fromBrowserEvent) return;
+    isFullscreenMode = false;
+    fsButtonVisible = true;
+
+    const screenEl = document.getElementById('playerScreen');
+    const exitBtn = document.getElementById('fsExitBtn');
+    screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
+    exitBtn.classList.remove('fs-hidden');
+
+    if (!fromBrowserEvent) {
+      const fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+      if (fsEl) {
+        const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+        if (typeof exitFn === 'function') {
+          try {
+            const p = exitFn.call(document);
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+          } catch (e) {}
+        }
+      }
+    }
+
+    unlockMobileOrientation();
+    setTimeout(syncViewportLayout, 60);
+  }
+
+  function handleVideoStageTap(e) {
+    // Only toggles the Exit Fullscreen button when in Fullscreen Mode; does nothing in normal mode
+    if (!isFullscreenMode) return;
+    if (e.target && e.target.closest('#fsExitBtn')) return;
+
+    fsButtonVisible = !fsButtonVisible;
+    document.getElementById('fsExitBtn').classList.toggle('fs-hidden', !fsButtonVisible);
+  }
+
+  function handleNativeFullscreenChange() {
+    const fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    if (!fsEl && isFullscreenMode) {
+      exitFullscreenMode(true);
+    }
+  }
+
+  document.addEventListener('fullscreenchange', handleNativeFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleNativeFullscreenChange);
 
   /* ============================================================
      CINEMA PLAYER CORE
@@ -1903,9 +2232,9 @@
     document.getElementById('qualityBadge').textContent = `${label || 'HD'} · Auto`;
   }
 
-  async function openMedia(idx, forceStartZero = false) {
-    const item = window._renderedFiles[idx];
-    if (!item || !API_BASE) return;
+  async function openMediaAtIndex(idx, isSeries, forceStartZero = false) {
+    const item = activePlayerList[idx];
+    if (!item || !item.serverUrl) return;
 
     unlockMobileOrientation();
     syncViewportLayout();
@@ -1914,25 +2243,28 @@
     activeMedia = item;
     activeAudioTrack = 0;
 
-    const saved = !forceStartZero ? getSavedProgress(item.path) : null;
+    const saved = !forceStartZero ? getSavedProgress(item.serverId, item.path) : null;
     const initialStart = saved && saved.pos > 15 && (!saved.dur || saved.pos < saved.dur - 30) ? Math.floor(saved.pos) : 0;
     streamOffsetSec = initialStart;
 
-    const screen = document.getElementById('playerScreen');
+    const screenEl = document.getElementById('playerScreen');
     const audioBtn = document.getElementById('audioBtn');
 
-    document.getElementById('playerName').textContent = cleanTitle(item.name);
+    isFullscreenMode = false;
+    screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
+
+    document.getElementById('playerName').textContent = `${item.cleanName} (${item.serverName})`;
     document.getElementById('seekProgress').style.width = '0%';
     document.getElementById('clockText').textContent = '00:00 / --:--';
     updateQualityBadge('HD');
     audioBtn.style.display = 'none';
 
     updateEpisodeNavigationUI();
-    setLoader(true, 'Analyzing stream...');
-    screen.classList.add('open');
+    setLoader(true, `Connecting to ${item.serverName}...`);
+    screenEl.classList.add('open');
 
     try {
-      activeProbe = await apiFetch(`/api/probe?path=${encodeURIComponent(item.path)}`);
+      activeProbe = await apiFetchFromServer(item.serverUrl, `/api/probe?path=${encodeURIComponent(item.path)}`);
     } catch (e) {
       activeProbe = { duration: 0, resolutionLabel: 'HD', audioTracks: [] };
     }
@@ -1952,7 +2284,7 @@
   }
 
   async function startHlsSession(startSec) {
-    if (!activeMedia || !API_BASE) return;
+    if (!activeMedia || !activeMedia.serverUrl) return;
     setLoader(true, 'Buffering stream...');
 
     const video = document.getElementById('videoEl');
@@ -1970,7 +2302,7 @@
         prev: activeSessionId || ''
       });
 
-      const sess = await apiFetch(`/api/session?${qs.toString()}`);
+      const sess = await apiFetchFromServer(activeMedia.serverUrl, `/api/session?${qs.toString()}`);
       activeSessionId = sess.sessionId;
       streamOffsetSec = Math.max(0, Math.floor(startSec));
       if (sess.duration && !activeProbe.duration) {
@@ -1980,7 +2312,7 @@
         updateQualityBadge(sess.resolutionLabel);
       }
 
-      const fullPlaylistUrl = `${API_BASE}${sess.playlistUrl}`;
+      const fullPlaylistUrl = `${activeMedia.serverUrl}${sess.playlistUrl}`;
 
       if (window.Hls && Hls.isSupported()) {
         hlsInstance = new Hls({
@@ -2112,7 +2444,7 @@
   });
 
   videoEl.addEventListener('ended', () => {
-    if (isFolderSeries() && activeIndex < window._renderedFiles.length - 1) {
+    if (isPlayingSeriesFolder() && activeIndex < activePlayerList.length - 1) {
       showToast('Playing next episode...');
       playNextEpisode();
     }
@@ -2130,7 +2462,7 @@
 
     if (activeMedia && Math.abs(current - lastSavedTick) >= 5) {
       lastSavedTick = current;
-      localStorage.setItem(progressKey(activeMedia.path), JSON.stringify({ pos: current, dur: total }));
+      localStorage.setItem(progressKey(activeMedia.serverId, activeMedia.path), JSON.stringify({ pos: current, dur: total }));
     }
   });
 
@@ -2198,6 +2530,9 @@
   }
 
   function closePlayer() {
+    if (isFullscreenMode) {
+      exitFullscreenMode(false);
+    }
     closeModal();
     if (hlsInstance) {
       hlsInstance.destroy();
@@ -2207,106 +2542,21 @@
     videoEl.removeAttribute('src');
     videoEl.load();
 
-    if (activeSessionId && API_BASE) {
-      fetch(`${API_BASE}/api/stop?id=${encodeURIComponent(activeSessionId)}`).catch(() => {});
+    if (activeSessionId && activeMedia && activeMedia.serverUrl) {
+      fetch(`${activeMedia.serverUrl}/api/stop?id=${encodeURIComponent(activeSessionId)}`).catch(() => {});
       activeSessionId = '';
     }
 
     activeMedia = null;
     setLoader(false);
     document.getElementById('playerScreen').classList.remove('open');
-    renderContent();
+    renderCurrentScreen();
   }
 
   function openExternalVLC() {
-    if (!activeMedia || !API_BASE) return;
-    window.location.href = `${API_BASE}/api/playlist?path=${encodeURIComponent(activeMedia.path)}`;
+    if (!activeMedia || !activeMedia.serverUrl) return;
+    window.location.href = `${activeMedia.serverUrl}/api/playlist?path=${encodeURIComponent(activeMedia.path)}`;
     showToast('Playlist downloaded — open with VLC');
-  }
-
-  function downloadM3U(idx) {
-    const item = window._renderedFiles[idx];
-    if (!item || !API_BASE) return;
-    window.location.href = `${API_BASE}/api/playlist?path=${encodeURIComponent(item.path)}`;
-    showToast('Playlist downloaded — open with VLC');
-  }
-
-  function navigateTo(path) {
-    document.getElementById('sideRail').classList.remove('open');
-    loadFolder(path, true);
-  }
-
-  function goBack() {
-    if (historyIndex > 0) {
-      historyIndex--;
-      loadFolder(historyStack[historyIndex], false);
-    }
-  }
-
-  function goUp() {
-    if (!currentPath) return;
-    const parts = currentPath.split('/');
-    parts.pop();
-    navigateTo(parts.join('/'));
-  }
-
-  function refreshCurrent() {
-    loadFolder(currentPath, false);
-    showToast('Refreshed');
-  }
-
-  function updateNavState() {
-    document.getElementById('btnBack').classList.toggle('disabled', historyIndex <= 0);
-    document.getElementById('btnUp').classList.toggle('disabled', currentPath === '');
-  }
-
-  function cycleSort() {
-    const modes = [
-      { key: 'name', asc: true, label: 'Name' },
-      { key: 'size', asc: false, label: 'Size' },
-      { key: 'mtime', asc: false, label: 'Date' }
-    ];
-    const idx = modes.findIndex(m => m.key === sortBy);
-    const next = modes[(idx + 1) % modes.length];
-    sortBy = next.key;
-    sortAsc = next.asc;
-    document.getElementById('btnSort').textContent = next.label;
-    renderContent();
-  }
-
-  function toggleView() {
-    viewMode = viewMode === 'list' ? 'grid' : 'list';
-    document.getElementById('btnView').textContent = viewMode === 'list' ? 'Grid' : 'List';
-    renderContent();
-  }
-
-  function toggleRail() {
-    document.getElementById('sideRail').classList.toggle('open');
-  }
-
-  function handleSearch(val) {
-    clearTimeout(searchTimer);
-    if (!val.trim()) {
-      loadFolder(currentPath, false);
-      return;
-    }
-    searchTimer = setTimeout(async () => {
-      try {
-        const data = await apiFetch(`/api/search?q=${encodeURIComponent(val)}`);
-        currentItems = data.items || [];
-        document.getElementById('crumbStrip').innerHTML = `<div class="crumb-item current">Search: ${escapeHtml(val)}</div>`;
-        renderContent();
-      } catch (e) {}
-    }, 220);
-  }
-
-  function formatBytes(bytes) {
-    if (!bytes) return '0 KB';
-    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-    let i = 0;
-    let n = bytes;
-    while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
-    return `${n.toFixed(i > 1 ? 2 : 0)} ${units[i]}`;
   }
 
   function formatClock(sec) {
@@ -2330,6 +2580,7 @@
     if (!document.getElementById('playerScreen').classList.contains('open')) return;
     if (e.key === 'Escape') {
       if (document.getElementById('modalBackdrop').classList.contains('open')) closeModal();
+      else if (isFullscreenMode) exitFullscreenMode(false);
       else closePlayer();
     } else if (e.key === ' ' && document.activeElement.getAttribute('role') !== 'button') {
       e.preventDefault();
