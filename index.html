@@ -1,59 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Dell G15 Movies — Global Neumorphic Cloud Cinema by Sanchar Koirala</title>
-  <meta name="description" content="Dell G15 Movies by Sanchar Koirala — Stream movies and series live across community hosts with adaptive HLS playback, multi-audio selection, and neumorphic Netflix design.">
-  <meta name="keywords" content="Dell G15 Movies, My Files, Sanchar Koirala, HLS Movie Streaming, Cloud Cinema">
+  <title>Dell G15 Movies</title>
+  <meta name="description" content="Dell G15 Movies — Stream movies and series live across hosted Windows devices.">
   <meta name="author" content="Sanchar Koirala">
-  <meta name="publisher" content="Sanchar Koirala">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow">
-  <meta name="application-name" content="Dell G15 Movies">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Dell G15 Movies">
-  <meta name="theme-color" content="#121318" id="metaThemeColor">
+  <meta name="theme-color" content="#e3e8ef" id="metaThemeColor">
 
-  <!-- Open Graph / Social SEO -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Dell G15 Movies">
-  <meta property="og:title" content="Dell G15 Movies — Global Neumorphic Cloud Cinema">
-  <meta property="og:description" content="Stream movies and series live across active Windows hosts with adaptive HLS playback and multi-audio tracks.">
-  <meta property="og:image" content="favicon.png">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter Card SEO -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dell G15 Movies — Global Neumorphic Cloud Cinema">
-  <meta name="twitter:description" content="Stream movies and series live across active Windows hosts with adaptive HLS playback and multi-audio tracks.">
-  <meta name="twitter:image" content="favicon.png">
-
-  <!-- Favicon & App Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-  <link rel="shortcut icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Dell G15 Movies",
-    "alternateName": "Global Neumorphic Cloud Cinema",
-    "description": "Stream movies and series live across active Windows hosts with adaptive HLS playback and multi-audio selection.",
-    "author": {
-      "@type": "Person",
-      "name": "Sanchar Koirala"
-    },
-    "inLanguage": "en"
-  }
-  </script>
 
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
@@ -61,56 +23,53 @@
 
   <style>
     /* ============================================================
-       NEUMORPHIC NETFLIX DESIGN TOKENS (DARK & LIGHT THEMES)
+       THEME 1 (LIGHT): SOFT COOL GREY, STEEL BLUE & NAVY BLUE
        ============================================================ */
-    :root[data-theme="dark"] {
-      --bg: #121318;
-      --surface: #171920;
-      --surface-elevated: #1c1f28;
-      --neu-out: 7px 7px 16px #090a0d, -6px -6px 14px #21242e;
-      --neu-out-sm: 4px 4px 10px #090a0d, -4px -4px 10px #21242e;
-      --neu-in: inset 4px 4px 9px #090a0d, inset -4px -4px 9px #21242e;
-      --stroke: rgba(255, 255, 255, 0.055);
-      --text: #f5f6fa;
-      --text-2: #9ca3af;
-      --text-muted: #6b7280;
-      --accent: #e50914;
-      --accent-hover: #f6121d;
-      --accent-soft: rgba(229, 9, 20, 0.16);
-      --accent-glow: 0 6px 20px rgba(229, 9, 20, 0.35);
-      --series-bg: rgba(59, 130, 246, 0.16);
-      --series-fg: #60a5fa;
-      --movie-bg: rgba(229, 9, 20, 0.16);
-      --movie-fg: #ff6b72;
-      --host-bg: rgba(16, 185, 129, 0.14);
-      --host-fg: #34d399;
-      --green: #22c55e;
-      --hero-grad: linear-gradient(135deg, rgba(229, 9, 20, 0.18) 0%, rgba(23, 25, 32, 0.96) 55%, rgba(18, 19, 24, 1) 100%);
+    :root[data-theme="light"] {
+      --bg: #e3e8ef;
+      --surface: #ebf0f6;
+      --surface-alt: #f3f7fc;
+      --neu-out: 7px 7px 15px #c1cad6, -7px -7px 15px #ffffff;
+      --neu-out-sm: 4px 4px 9px #c1cad6, -4px -4px 9px #ffffff;
+      --neu-in: inset 4px 4px 8px #c1cad6, inset -4px -4px 8px #ffffff;
+      --stroke: rgba(255, 255, 255, 0.72);
+      --divider: rgba(16, 35, 60, 0.08);
+      --text: #10233c;
+      --text-2: #445a74;
+      --text-muted: #6c8099;
+      --steel: #2f6394;
+      --steel-bright: #3d79b0;
+      --steel-soft: rgba(47, 99, 148, 0.12);
+      --navy: #142b47;
+      --navy-soft: rgba(20, 43, 71, 0.1);
+      --brand-grad: linear-gradient(135deg, #2f6394 0%, #10233c 100%);
+      --brand-shadow: 0 6px 16px rgba(16, 35, 60, 0.25);
+      --green: #169c5b;
     }
 
-    :root[data-theme="light"] {
-      --bg: #e6ebf2;
-      --surface: #ebf0f7;
-      --surface-elevated: #f2f6fc;
-      --neu-out: 7px 7px 16px #c5cbd4, -7px -7px 16px #ffffff;
-      --neu-out-sm: 4px 4px 9px #c5cbd4, -4px -4px 9px #ffffff;
-      --neu-in: inset 4px 4px 9px #c5cbd4, inset -4px -4px 9px #ffffff;
-      --stroke: rgba(0, 0, 0, 0.045);
-      --text: #14161f;
-      --text-2: #525866;
-      --text-muted: #7b8291;
-      --accent: #e50914;
-      --accent-hover: #c80711;
-      --accent-soft: rgba(229, 9, 20, 0.11);
-      --accent-glow: 0 6px 18px rgba(229, 9, 20, 0.25);
-      --series-bg: rgba(37, 99, 235, 0.12);
-      --series-fg: #1d4ed8;
-      --movie-bg: rgba(229, 9, 20, 0.12);
-      --movie-fg: #c80711;
-      --host-bg: rgba(5, 150, 105, 0.12);
-      --host-fg: #047857;
-      --green: #16a34a;
-      --hero-grad: linear-gradient(135deg, rgba(229, 9, 20, 0.11) 0%, rgba(235, 240, 247, 0.96) 55%, rgba(230, 235, 242, 1) 100%);
+    /* ============================================================
+       THEME 2 (DARK): DEEP NAVY, MIDNIGHT SLATE & LUMINOUS STEEL BLUE
+       ============================================================ */
+    :root[data-theme="dark"] {
+      --bg: #0c1320;
+      --surface: #121c2e;
+      --surface-alt: #17243b;
+      --neu-out: 7px 7px 16px #060a12, -6px -6px 14px #1a2842;
+      --neu-out-sm: 4px 4px 10px #060a12, -4px -4px 10px #1a2842;
+      --neu-in: inset 4px 4px 9px #060a12, inset -4px -4px 9px #1a2842;
+      --stroke: rgba(139, 188, 232, 0.08);
+      --divider: rgba(139, 188, 232, 0.09);
+      --text: #edf2f8;
+      --text-2: #9db2cc;
+      --text-muted: #69809c;
+      --steel: #5b9bd5;
+      --steel-bright: #75b0e6;
+      --steel-soft: rgba(91, 155, 213, 0.16);
+      --navy: #8bbce8;
+      --navy-soft: rgba(139, 188, 232, 0.12);
+      --brand-grad: linear-gradient(135deg, #5b9bd5 0%, #244b78 100%);
+      --brand-shadow: 0 6px 18px rgba(6, 10, 18, 0.55);
+      --green: #2ecc80;
     }
 
     * {
@@ -128,7 +87,7 @@
       max-height: 100dvh;
       background: var(--bg);
       color: var(--text);
-      font-family: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
       font-size: 14px;
       overflow: hidden;
       overscroll-behavior: none;
@@ -142,14 +101,14 @@
       padding-bottom: env(safe-area-inset-bottom, 0px);
       padding-left: env(safe-area-inset-left, 0px);
       padding-right: env(safe-area-inset-right, 0px);
-      transition: background 0.22s ease, color 0.22s ease;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     /* ============================================================
-       TOP NAVIGATION BAR (NEUMORPHIC)
+       ONE UI + iOS FILES HEADER BAR
        ============================================================ */
-    .top-nav {
-      padding: 12px 20px;
+    .top-bar {
+      padding: 12px 18px 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -158,7 +117,7 @@
       z-index: 20;
     }
 
-    .brand-cluster {
+    .brand-box {
       display: flex;
       align-items: center;
       gap: 11px;
@@ -166,90 +125,82 @@
       flex-shrink: 0;
     }
 
-    .brand-emblem {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: var(--accent);
-      box-shadow: var(--accent-glow);
+    .squircle-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: var(--brand-grad);
+      box-shadow: var(--brand-shadow);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      font-weight: 900;
-      font-size: 19px;
-      letter-spacing: -1px;
       flex-shrink: 0;
     }
 
-    .brand-titles {
+    .brand-meta {
       display: flex;
       flex-direction: column;
     }
 
-    .brand-name {
-      font-size: 16px;
+    .brand-title {
+      font-size: 16.5px;
       font-weight: 800;
-      letter-spacing: 0.4px;
+      letter-spacing: -0.2px;
       color: var(--text);
-      line-height: 1.1;
+      line-height: 1.15;
     }
 
-    .brand-name span {
-      color: var(--accent);
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
+    .host-pill-status {
       margin-top: 2px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-2);
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
-    .live-dot {
+    .status-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 8px var(--green);
+      box-shadow: 0 0 7px var(--green);
       display: inline-block;
-      flex-shrink: 0;
     }
-    .live-dot.off {
-      background: #ef4444;
+    .status-dot.off {
+      background: var(--text-muted);
       box-shadow: none;
     }
 
-    .nav-actions {
+    .top-controls {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       flex: 1;
       justify-content: flex-end;
       min-width: 0;
     }
 
-    .neu-search {
+    .search-well {
       width: 100%;
-      max-width: 290px;
-      height: 40px;
-      border-radius: 999px;
+      max-width: 270px;
+      height: 38px;
+      border-radius: 19px;
       background: var(--surface);
       box-shadow: var(--neu-in);
       border: 1px solid var(--stroke);
-      padding: 0 15px;
+      padding: 0 14px;
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       color: var(--text-2);
     }
-    .neu-search:focus-within {
-      border-color: rgba(229, 9, 20, 0.45);
+    .search-well:focus-within {
+      border-color: var(--steel);
     }
-    .neu-search input {
+    .search-well input {
       width: 100%;
       background: transparent;
       border: none;
@@ -259,14 +210,14 @@
       font-weight: 500;
       font-family: inherit;
     }
-    .neu-search input::placeholder {
+    .search-well input::placeholder {
       color: var(--text-muted);
     }
 
-    .neu-btn {
-      height: 40px;
-      padding: 0 15px;
-      border-radius: 999px;
+    .morph-btn {
+      height: 38px;
+      padding: 0 14px;
+      border-radius: 19px;
       background: var(--surface);
       box-shadow: var(--neu-out-sm);
       border: 1px solid var(--stroke);
@@ -279,226 +230,210 @@
       gap: 6px;
       cursor: pointer;
       flex-shrink: 0;
-      transition: transform 0.14s ease, box-shadow 0.14s ease, color 0.14s ease;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, color 0.12s ease;
     }
-    .neu-btn:hover {
-      color: var(--accent);
-    }
-    .neu-btn:active {
+    .morph-btn:hover { color: var(--steel); }
+    .morph-btn:active {
       transform: scale(0.96);
       box-shadow: var(--neu-in);
     }
-    .neu-btn.icon-only {
-      width: 40px;
+    .morph-btn.icon-sq {
+      width: 38px;
       padding: 0;
+      border-radius: 14px;
     }
-    .neu-btn.primary {
-      background: var(--accent);
+    .morph-btn.accent {
+      background: var(--brand-grad);
       color: #ffffff;
       border-color: transparent;
-      box-shadow: var(--accent-glow);
-    }
-    .neu-btn.primary:hover {
-      background: var(--accent-hover);
-      color: #ffffff;
+      box-shadow: var(--brand-shadow);
     }
 
     /* ============================================================
-       MAIN SCROLLABLE CATALOG CONTAINER
+       ONE UI / iOS FILES FILTER RIBBON
        ============================================================ */
-    .main-scroll {
-      flex: 1;
-      min-height: 0;
-      overflow-y: auto;
-      padding: 4px 20px 20px;
-    }
-    .main-scroll::-webkit-scrollbar { width: 6px; }
-    .main-scroll::-webkit-scrollbar-thumb {
-      background: rgba(156, 163, 175, 0.22);
-      border-radius: 99px;
-    }
-
-    /* Featured Cinema Hero Card */
-    .hero-card {
-      background: var(--hero-grad);
-      box-shadow: var(--neu-out);
-      border: 1px solid var(--stroke);
-      border-radius: 26px;
-      padding: 22px 24px;
-      margin-bottom: 18px;
+    .filter-bar {
+      padding: 4px 18px 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left {
-      min-width: 0;
-      flex: 1;
-    }
-
-    .hero-badges {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .badge-pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      text-transform: uppercase;
-    }
-    .badge-series {
-      background: var(--series-bg);
-      color: var(--series-fg);
-    }
-    .badge-movie {
-      background: var(--movie-bg);
-      color: var(--movie-fg);
-    }
-    .badge-host {
-      background: var(--host-bg);
-      color: var(--host-fg);
-    }
-
-    .hero-title {
-      margin: 0;
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      color: var(--text);
-      line-height: 1.25;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .hero-meta-low {
-      margin-top: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .hero-cta {
-      display: flex;
-      align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
       flex-shrink: 0;
     }
 
-    /* Host Server Filter Bar */
-    .filter-strip {
-      display: flex;
+    .segmented-group {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
+      padding: 3px;
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--neu-in);
+      border: 1px solid var(--stroke);
+      gap: 3px;
     }
 
-    .host-tabs {
+    .seg-tab {
+      height: 30px;
+      padding: 0 13px;
+      border-radius: 13px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .seg-tab:hover { color: var(--text); }
+    .seg-tab.active {
+      background: var(--surface-alt);
+      box-shadow: var(--neu-out-sm);
+      color: var(--steel);
+    }
+
+    .select-filters {
       display: flex;
       align-items: center;
       gap: 8px;
-      overflow-x: auto;
-      padding: 4px 2px;
-      max-width: 100%;
+      flex-wrap: wrap;
     }
-    .host-tabs::-webkit-scrollbar { display: none; }
 
-    .host-chip {
-      height: 34px;
-      padding: 0 14px;
-      border-radius: 999px;
+    .morph-select-wrap {
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 14px;
       background: var(--surface);
       box-shadow: var(--neu-out-sm);
       border: 1px solid var(--stroke);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       color: var(--text-2);
       font-size: 12px;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: 0.15s ease;
-    }
-    .host-chip:hover { color: var(--text); }
-    .host-chip.active {
-      background: var(--surface);
-      box-shadow: var(--neu-in);
-      color: var(--accent);
-      border-color: rgba(229, 9, 20, 0.35);
     }
 
-    .catalog-summary {
+    .morph-select-wrap select {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
       font-size: 12px;
       font-weight: 700;
-      color: var(--text-muted);
-      white-space: nowrap;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .morph-select-wrap select option {
+      background: var(--surface);
+      color: var(--text);
     }
 
     /* ============================================================
-       UNIFIED CATALOG GRID & LIST (NEUMORPHIC NETFLIX CARDS)
+       MAIN SCROLLABLE EXPLORER WORKSPACE
        ============================================================ */
-    .netflix-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-      gap: 16px;
+    .explorer-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 4px 18px 20px;
+    }
+    .explorer-scroll::-webkit-scrollbar { width: 5px; }
+    .explorer-scroll::-webkit-scrollbar-thumb {
+      background: var(--divider);
+      border-radius: 99px;
     }
 
-    .media-card {
+    .category-section {
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 4px 10px;
+    }
+
+    .section-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-heading {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+
+    .count-badge {
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--steel-soft);
+      color: var(--steel);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+
+    /* iOS Files Squircle Grid */
+    .files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 15px;
+    }
+
+    .file-tile {
       background: var(--surface);
       box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
-      border-radius: 22px;
-      padding: 16px;
+      border-radius: 24px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
-      position: relative;
+      transition: transform 0.14s ease, border-color 0.14s ease;
     }
-    .media-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(229, 9, 20, 0.38);
+    .file-tile:hover {
+      transform: translateY(-2px);
+      border-color: var(--steel);
     }
-    .media-card:active {
+    .file-tile:active {
       transform: scale(0.985);
       box-shadow: var(--neu-in);
     }
 
-    .card-top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      flex-wrap: wrap;
+    .thumb-frame {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+      background: var(--navy);
+    }
+    .thumb-frame svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
-    .card-title {
-      font-size: 15px;
+    .tile-body {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0 2px;
+    }
+
+    .tile-name {
+      font-size: 13.5px;
       font-weight: 700;
-      line-height: 1.35;
       color: var(--text);
+      line-height: 1.3;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -506,94 +441,78 @@
       word-break: break-word;
     }
 
-    .card-bottom-row {
+    .tile-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--stroke);
-    }
-
-    .low-priority-meta {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
       gap: 6px;
       flex-wrap: wrap;
-      min-width: 0;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
     }
 
-    .resume-pill {
-      color: var(--accent);
-      font-weight: 700;
+    .host-tag {
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: var(--navy-soft);
+      color: var(--navy);
+      font-size: 10.5px;
+      font-weight: 800;
+      max-width: 115px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .play-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+    .resume-tag {
+      color: var(--steel);
+      font-weight: 800;
+    }
+
+    /* Samsung One UI Grouped List View */
+    .oneui-list-card {
       background: var(--surface);
-      box-shadow: var(--neu-out-sm);
+      box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: 0.15s ease;
-    }
-    .media-card:hover .play-circle {
-      background: var(--accent);
-      color: #ffffff;
-      box-shadow: var(--accent-glow);
+      border-radius: 26px;
+      overflow: hidden;
     }
 
-    /* Neumorphic List View */
-    .netflix-list {
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .media-row {
-      background: var(--surface);
-      box-shadow: var(--neu-out-sm);
-      border: 1px solid var(--stroke);
-      border-radius: 20px;
-      padding: 13px 16px;
+    .oneui-row {
+      padding: 11px 15px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+      gap: 13px;
       cursor: pointer;
-      transition: transform 0.14s ease, border-color 0.14s ease;
+      border-bottom: 1px solid var(--divider);
+      transition: background 0.12s ease;
     }
-    .media-row:hover {
-      border-color: rgba(229, 9, 20, 0.38);
+    .oneui-row:last-child { border-bottom: none; }
+    .oneui-row:hover { background: var(--steel-soft); }
+    .oneui-row:active { background: var(--navy-soft); }
+
+    .row-thumb {
+      width: 68px;
+      height: 46px;
+      border-radius: 13px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: var(--neu-out-sm);
     }
-    .media-row:active {
-      transform: scale(0.992);
-      box-shadow: var(--neu-in);
+    .row-thumb svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
-    .row-main {
+    .row-info {
       flex: 1;
       min-width: 0;
     }
 
-    .row-header-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 4px;
-    }
-
-    .row-title {
-      font-size: 14.5px;
+    .row-name {
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--text);
       white-space: nowrap;
@@ -601,13 +520,38 @@
       text-overflow: ellipsis;
     }
 
-    /* Series Episode Drawer / View */
-    .series-banner {
+    .row-sub {
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .row-chevron {
+      width: 30px;
+      height: 30px;
+      border-radius: 11px;
+      background: var(--surface-alt);
+      box-shadow: var(--neu-out-sm);
+      color: var(--steel);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+
+    /* Series Header Card (Inside a Series Folder) */
+    .series-head-card {
       background: var(--surface);
       box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
-      border-radius: 24px;
-      padding: 18px 20px;
+      border-radius: 26px;
+      padding: 16px 18px;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -616,34 +560,53 @@
       flex-wrap: wrap;
     }
 
-    .state-panel {
-      max-width: 420px;
-      margin: 48px auto;
+    .series-head-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .series-head-thumb {
+      width: 84px;
+      height: 56px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: var(--neu-out-sm);
+    }
+    .series-head-thumb svg { width: 100%; height: 100%; display: block; }
+
+    .empty-card {
+      max-width: 380px;
+      margin: 44px auto;
       background: var(--surface);
       box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
       border-radius: 28px;
-      padding: 32px 24px;
+      padding: 30px 22px;
       text-align: center;
     }
-    .state-panel h2 {
-      margin: 0 0 8px;
-      font-size: 18px;
+    .empty-card h3 {
+      margin: 0 0 6px;
+      font-size: 16.5px;
       font-weight: 800;
     }
-    .state-panel p {
-      margin: 0 0 20px;
+    .empty-card p {
+      margin: 0 0 18px;
       color: var(--text-2);
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 12.5px;
+      line-height: 1.45;
     }
 
     footer {
-      padding: 8px 20px 10px;
+      padding: 7px 18px 9px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 11.5px;
+      font-size: 11px;
+      font-weight: 600;
       color: var(--text-muted);
       flex-shrink: 0;
     }
@@ -659,7 +622,7 @@
       height: 100dvh;
       height: var(--app-height, 100dvh);
       max-height: 100dvh;
-      background: #060609;
+      background: #070b14;
       z-index: 100;
       flex-direction: column;
       overflow: hidden;
@@ -671,15 +634,15 @@
     .player-screen.open { display: flex; }
 
     .player-header {
-      padding: 10px 16px;
+      padding: 9px 15px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      background: rgba(16, 17, 23, 0.95);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0e1626;
+      border-bottom: 1px solid rgba(139, 188, 232, 0.12);
       flex-shrink: 0;
-      min-height: 52px;
+      min-height: 50px;
     }
 
     .player-title-wrap {
@@ -692,8 +655,8 @@
 
     .player-name {
       font-weight: 700;
-      font-size: 14.5px;
-      color: #ffffff;
+      font-size: 14px;
+      color: #edf2f8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -703,9 +666,9 @@
     .quality-badge {
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(229, 9, 20, 0.16);
-      border: 1px solid rgba(229, 9, 20, 0.38);
-      color: #ff7a80;
+      background: rgba(91, 155, 213, 0.18);
+      border: 1px solid rgba(91, 155, 213, 0.36);
+      color: #8bbce8;
       font-size: 11px;
       font-weight: 800;
       white-space: nowrap;
@@ -721,12 +684,12 @@
     }
 
     .p-pill {
-      height: 34px;
+      height: 33px;
       padding: 0 13px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      border-radius: 14px;
+      background: rgba(139, 188, 232, 0.1);
+      border: 1px solid rgba(139, 188, 232, 0.14);
+      color: #edf2f8;
       font-size: 12px;
       font-weight: 600;
       display: inline-flex;
@@ -737,17 +700,13 @@
       white-space: nowrap;
       transition: transform 0.12s ease, background 0.15s ease;
     }
-    .p-pill:hover:not(.disabled) { background: rgba(255, 255, 255, 0.18); }
+    .p-pill:hover:not(.disabled) { background: rgba(139, 188, 232, 0.2); }
     .p-pill:active:not(.disabled) { transform: scale(0.95); }
     .p-pill.disabled { opacity: 0.32; pointer-events: none; }
-    .p-pill.red {
-      background: #e50914;
-      border-color: rgba(255, 90, 95, 0.45);
-    }
-    .p-pill.danger-pill {
-      background: rgba(255, 75, 75, 0.16);
-      border-color: rgba(255, 75, 75, 0.3);
-      color: #ff8585;
+    .p-pill.steel-pill {
+      background: linear-gradient(135deg, #3b74a8, #1f446e);
+      border-color: rgba(139, 188, 232, 0.3);
+      color: #ffffff;
     }
 
     .player-workspace {
@@ -790,7 +749,7 @@
       display: block;
     }
 
-    /* Floating Exit Fullscreen Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
+    /* Exclusive Fullscreen Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
     .fs-exit-btn {
       display: none;
       position: absolute;
@@ -799,32 +758,29 @@
       z-index: 140;
       height: 40px;
       padding: 0 16px;
-      border-radius: 999px;
-      background: rgba(15, 16, 22, 0.78);
+      border-radius: 16px;
+      background: rgba(12, 19, 32, 0.82);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      color: #ffffff;
+      border: 1px solid rgba(139, 188, 232, 0.3);
+      color: #edf2f8;
       font-size: 12.5px;
       font-weight: 700;
       align-items: center;
       gap: 7px;
       cursor: pointer;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
-      transition: opacity 0.22s ease, transform 0.22s ease, background 0.15s ease;
+      transition: opacity 0.2s ease, transform 0.2s ease, background 0.15s ease;
     }
     .fs-exit-btn:hover {
-      background: rgba(229, 9, 20, 0.9);
-      border-color: rgba(255, 255, 255, 0.35);
+      background: #2f6394;
+      color: #ffffff;
     }
     .fs-exit-btn:active {
       transform: scale(0.95);
     }
 
-    /* ============================================================
-       EXCLUSIVE FULLSCREEN STATE (.fs-active)
-       Hides EVERYTHING except video and the single Exit Fullscreen button
-       ============================================================ */
+    /* Exclusive Fullscreen State */
     .player-screen.fs-active {
       padding: 0 !important;
       background: #000000 !important;
@@ -850,7 +806,6 @@
       z-index: 125 !important;
       cursor: pointer;
     }
-    /* Fallback landscape rotation if mobile browser blocks screen.orientation.lock('landscape') while held upright */
     .player-screen.fs-active.fs-rotate-fallback .video-stage {
       width: 100dvh !important;
       height: 100vw !important;
@@ -879,42 +834,42 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(7, 11, 20, 0.45);
       pointer-events: none;
       z-index: 15;
     }
     .loader-box.show { display: flex; }
     .loader-circle {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.16);
-      border-top-color: #e50914;
+      border: 3px solid rgba(139, 188, 232, 0.18);
+      border-top-color: #5b9bd5;
       animation: spin 0.72s linear infinite;
     }
     .loader-label {
       padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(15, 15, 18, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #e4e4e7;
+      border-radius: 14px;
+      background: rgba(14, 22, 38, 0.9);
+      border: 1px solid rgba(139, 188, 232, 0.16);
+      color: #edf2f8;
       font-size: 12px;
       font-weight: 600;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .player-controls {
-      padding: 10px 16px 12px;
-      background: rgba(16, 17, 23, 0.96);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 9px 15px 11px;
+      background: #0e1626;
+      border-top: 1px solid rgba(139, 188, 232, 0.12);
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 8px;
       flex-shrink: 0;
     }
 
     .seek-area {
-      height: 20px;
+      height: 18px;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -924,7 +879,7 @@
       width: 100%;
       height: 5px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(139, 188, 232, 0.18);
       position: relative;
       transition: height 0.12s ease;
     }
@@ -934,7 +889,7 @@
       height: 100%;
       width: 0%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #b91c1c, #e50914);
+      background: linear-gradient(90deg, #2f6394, #6aa9e3);
       position: relative;
     }
     .seek-knob {
@@ -945,8 +900,8 @@
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: #ffffff;
-      box-shadow: 0 0 10px rgba(229, 9, 20, 0.9);
+      background: #edf2f8;
+      box-shadow: 0 0 10px rgba(91, 155, 213, 0.95);
     }
 
     .ctrl-row {
@@ -965,7 +920,7 @@
     .clock-text {
       font-family: ui-monospace, Consolas, monospace;
       font-size: 12px;
-      color: #d4d4d8;
+      color: #9db2cc;
       padding: 0 4px;
       white-space: nowrap;
     }
@@ -974,11 +929,11 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 999px;
-      height: 34px;
-      padding: 0 11px 0 8px;
+      background: rgba(139, 188, 232, 0.1);
+      border: 1px solid rgba(139, 188, 232, 0.14);
+      border-radius: 14px;
+      height: 33px;
+      padding: 0 10px 0 8px;
     }
     .vol-mute {
       width: 22px;
@@ -987,22 +942,22 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
+      color: #edf2f8;
       cursor: pointer;
     }
     .vol-range {
-      width: 68px;
-      accent-color: #e50914;
+      width: 66px;
+      accent-color: #5b9bd5;
       cursor: pointer;
       margin: 0;
     }
 
     /* Series Episode List Alongside Video */
     .episode-pane {
-      width: 300px;
+      width: 295px;
       flex-shrink: 0;
-      background: #101116;
-      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      background: #0c1320;
+      border-left: 1px solid rgba(139, 188, 232, 0.12);
       display: none;
       flex-direction: column;
       min-height: 0;
@@ -1012,7 +967,7 @@
 
     .ep-pane-head {
       padding: 12px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(139, 188, 232, 0.12);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1022,7 +977,7 @@
     .ep-pane-title {
       font-size: 13px;
       font-weight: 700;
-      color: #ffffff;
+      color: #edf2f8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1030,10 +985,10 @@
     .ep-pane-count {
       font-size: 11px;
       font-weight: 700;
-      color: #9ca3af;
-      background: rgba(255, 255, 255, 0.08);
+      color: #8bbce8;
+      background: rgba(91, 155, 213, 0.16);
       padding: 3px 9px;
-      border-radius: 999px;
+      border-radius: 10px;
       flex-shrink: 0;
     }
 
@@ -1047,31 +1002,31 @@
       gap: 6px;
     }
     .ep-list::-webkit-scrollbar { width: 4px; }
-    .ep-list::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.14); border-radius: 99px; }
+    .ep-list::-webkit-scrollbar-thumb { background: rgba(139, 188, 232, 0.18); border-radius: 99px; }
 
     .ep-card {
       padding: 10px 11px;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      background: rgba(139, 188, 232, 0.05);
+      border: 1px solid rgba(139, 188, 232, 0.08);
       display: flex;
       align-items: center;
       gap: 10px;
       cursor: pointer;
       transition: background 0.14s ease, border-color 0.14s ease;
     }
-    .ep-card:hover { background: rgba(255, 255, 255, 0.09); }
+    .ep-card:hover { background: rgba(139, 188, 232, 0.12); }
     .ep-card.active {
-      background: rgba(229, 9, 20, 0.16);
-      border-color: rgba(229, 9, 20, 0.5);
+      background: rgba(91, 155, 213, 0.18);
+      border-color: rgba(91, 155, 213, 0.5);
     }
 
     .ep-num {
       width: 28px;
       height: 28px;
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #d4d4d8;
+      background: rgba(139, 188, 232, 0.12);
+      color: #9db2cc;
       font-size: 11.5px;
       font-weight: 700;
       display: flex;
@@ -1080,7 +1035,7 @@
       flex-shrink: 0;
     }
     .ep-card.active .ep-num {
-      background: #e50914;
+      background: #3b74a8;
       color: #ffffff;
     }
 
@@ -1088,7 +1043,7 @@
     .ep-name {
       font-size: 12.5px;
       font-weight: 600;
-      color: #f4f4f6;
+      color: #edf2f8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1096,18 +1051,18 @@
     .ep-meta {
       margin-top: 3px;
       font-size: 11px;
-      color: #8e8e98;
+      color: #69809c;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .ep-playing-tag { color: #ff6b72; font-weight: 700; }
+    .ep-playing-tag { color: #75b0e6; font-weight: 700; }
 
-    /* Custom Glass/Neumorphic Popup Modal (Audio & Speed) */
+    /* Popup Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.72);
+      background: rgba(6, 10, 18, 0.76);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       display: none;
@@ -1120,16 +1075,16 @@
 
     .modal-sheet {
       width: 100%;
-      max-width: 400px;
+      max-width: 390px;
       max-height: 76dvh;
-      background: #171920;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #121c2e;
+      border: 1px solid rgba(139, 188, 232, 0.18);
       border-radius: 26px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      animation: popIn 0.16s ease-out;
+      animation: popIn 0.15s ease-out;
     }
     @keyframes popIn {
       from { opacity: 0; transform: scale(0.95) translateY(8px); }
@@ -1137,25 +1092,24 @@
     }
 
     .modal-head {
-      padding: 15px 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(139, 188, 232, 0.12);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      flex-shrink: 0;
     }
-    .modal-title { font-size: 15px; font-weight: 700; color: #ffffff; }
+    .modal-title { font-size: 14.5px; font-weight: 700; color: #edf2f8; }
     .modal-close {
       width: 30px;
       height: 30px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.09);
-      color: #d4d4d8;
+      border-radius: 11px;
+      background: rgba(139, 188, 232, 0.12);
+      color: #9db2cc;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -1169,37 +1123,37 @@
     }
 
     .modal-option {
-      padding: 12px 14px;
+      padding: 11px 14px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(139, 188, 232, 0.06);
+      border: 1px solid rgba(139, 188, 232, 0.09);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       cursor: pointer;
     }
-    .modal-option:hover { background: rgba(255, 255, 255, 0.1); }
+    .modal-option:hover { background: rgba(139, 188, 232, 0.13); }
     .modal-option.selected {
-      background: rgba(229, 9, 20, 0.18);
-      border-color: rgba(229, 9, 20, 0.55);
+      background: rgba(91, 155, 213, 0.2);
+      border-color: rgba(91, 155, 213, 0.55);
     }
 
     .opt-main { min-width: 0; flex: 1; }
     .opt-title {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
-      color: #ffffff;
+      color: #edf2f8;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .opt-sub { margin-top: 2px; font-size: 11.5px; color: #9ca3af; }
+    .opt-sub { margin-top: 2px; font-size: 11px; color: #9db2cc; }
     .opt-check {
       width: 22px;
       height: 22px;
-      border-radius: 50%;
-      background: #e50914;
+      border-radius: 8px;
+      background: #3b74a8;
       color: #ffffff;
       font-size: 12px;
       font-weight: 700;
@@ -1215,14 +1169,14 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(14px);
-      background: #1c1f28;
-      color: #fafafa;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #142b47;
+      color: #edf2f8;
+      border: 1px solid rgba(139, 188, 232, 0.24);
       padding: 9px 18px;
-      border-radius: 999px;
-      font-size: 12.5px;
+      border-radius: 16px;
+      font-size: 12px;
       font-weight: 600;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
       opacity: 0;
       pointer-events: none;
       transition: all 0.2s ease;
@@ -1235,18 +1189,17 @@
        RESPONSIVE MOBILE PORTRAIT & LANDSCAPE FIT
        ============================================================ */
     @media (max-width: 820px) {
-      .top-nav { padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
-      .nav-actions { flex-basis: 100%; justify-content: space-between; }
-      .neu-search { max-width: none; flex: 1; height: 38px; }
-      .neu-btn { height: 38px; padding: 0 12px; font-size: 12px; }
-      .neu-btn.icon-only { width: 38px; }
-      .main-scroll { padding: 4px 14px 14px; }
-      .hero-card { padding: 16px; border-radius: 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
-      .hero-title { font-size: 19px; }
-      .netflix-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .media-card { padding: 13px; border-radius: 18px; }
+      .top-bar { padding: 10px 14px 6px; flex-wrap: wrap; gap: 8px; }
+      .top-controls { flex-basis: 100%; justify-content: space-between; }
+      .search-well { max-width: none; flex: 1; height: 36px; }
+      .morph-btn { height: 36px; padding: 0 12px; font-size: 12px; }
+      .morph-btn.icon-sq { width: 36px; }
+      .filter-bar { padding: 4px 14px 8px; gap: 7px; }
+      .explorer-scroll { padding: 4px 14px 14px; }
+      .files-grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+      .file-tile { padding: 10px; border-radius: 20px; }
       .hide-sm { display: none; }
-      footer { flex-direction: column; gap: 3px; text-align: center; font-size: 11px; padding: 6px 14px 8px; }
+      footer { padding: 6px 14px 8px; font-size: 10.5px; }
     }
 
     @media (max-width: 900px) and (orientation: portrait) {
@@ -1264,7 +1217,7 @@
         gap: 6px;
       }
       .player-screen:not(.fs-active) .player-pills::-webkit-scrollbar { display: none; }
-      .player-screen:not(.fs-active) .p-pill { height: 31px; padding: 0 11px; font-size: 11.5px; }
+      .player-screen:not(.fs-active) .p-pill { height: 30px; padding: 0 11px; font-size: 11.5px; }
 
       .player-screen:not(.fs-active) .player-workspace { flex-direction: column; }
       .player-screen:not(.fs-active) .player-main { flex: none; }
@@ -1284,22 +1237,22 @@
         flex: 1;
         min-height: 0;
         border-left: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(139, 188, 232, 0.14);
       }
     }
 
     @media (orientation: landscape) and (max-height: 560px) {
-      .top-nav { padding: 7px 14px; }
+      .top-bar { padding: 7px 14px 4px; }
       footer { display: none; }
 
       .player-screen:not(.fs-active) .player-header { padding: 5px 12px; min-height: 40px; gap: 8px; }
       .player-screen:not(.fs-active) .player-name { font-size: 13px; }
-      .player-screen:not(.fs-active) .p-pill { height: 29px; padding: 0 10px; font-size: 11px; }
+      .player-screen:not(.fs-active) .p-pill { height: 28px; padding: 0 10px; font-size: 11px; }
       .player-screen:not(.fs-active) .player-workspace { flex-direction: row; }
       .player-screen:not(.fs-active) .player-controls { padding: 5px 12px 7px; gap: 4px; }
       .player-screen:not(.fs-active) .seek-area { height: 15px; }
       .player-screen:not(.fs-active) .clock-text { font-size: 11px; }
-      .player-screen:not(.fs-active) .vol-box { height: 29px; padding: 0 8px 0 6px; }
+      .player-screen:not(.fs-active) .vol-box { height: 28px; padding: 0 8px 0 6px; }
       .player-screen:not(.fs-active) .vol-range { width: 50px; }
       .player-screen:not(.fs-active) .episode-pane { width: 235px; }
     }
@@ -1307,37 +1260,71 @@
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <header class="top-nav">
-    <div class="brand-cluster" role="button" tabindex="0" onclick="returnToAllCatalog()">
-      <div class="brand-emblem">G15</div>
-      <div class="brand-titles">
-        <div class="brand-name">DELL G15 <span>MOVIES</span></div>
-        <div class="brand-sub">
-          <span class="live-dot off" id="globalLiveDot"></span>
-          <span id="globalHostStatus">Connecting to live hosts...</span>
+  <!-- One UI / iOS Files Header -->
+  <header class="top-bar">
+    <div class="brand-box" role="button" tabindex="0" onclick="returnToRoot()">
+      <div class="squircle-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><polygon points="10 11 15 14 10 17 10 11" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="brand-meta">
+        <div class="brand-title">Dell G15 Movies</div>
+        <div class="host-pill-status">
+          <span class="status-dot off" id="globalLiveDot"></span>
+          <span id="globalHostStatus">Offline</span>
         </div>
       </div>
     </div>
 
-    <div class="nav-actions">
-      <div class="neu-search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="searchInput" placeholder="Search movies & series..." oninput="handleSearchInput(this.value)">
+    <div class="top-controls">
+      <div class="search-well">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="searchInput" placeholder="Search..." oninput="handleSearchInput(this.value)">
       </div>
 
-      <div class="neu-btn" id="btnView" role="button" tabindex="0" onclick="toggleViewMode()">List</div>
-      <div class="neu-btn icon-only" role="button" tabindex="0" onclick="refreshAllCatalog()" title="Refresh">↻</div>
-      <div class="neu-btn icon-only" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Toggle Theme">☀</div>
+      <div class="morph-btn icon-sq" id="btnView" role="button" tabindex="0" onclick="toggleViewMode()" title="Switch Grid / List">
+        <svg id="viewIconSvg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      </div>
+      <div class="morph-btn icon-sq" role="button" tabindex="0" onclick="refreshAllCatalog()" title="Refresh">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+      </div>
+      <div class="morph-btn icon-sq" id="btnTheme" role="button" tabindex="0" onclick="toggleTheme()" title="Switch Theme">☾</div>
     </div>
   </header>
 
-  <!-- Main Scrollable Netflix Catalog -->
-  <main class="main-scroll" id="mainScroll"></main>
+  <!-- Filter Bar: Type (Movies / Series) + Device + Size -->
+  <div class="filter-bar" id="filterBar">
+    <div class="segmented-group">
+      <div class="seg-tab active" id="typeTab_ALL" role="button" tabindex="0" onclick="setTypeFilter('ALL')">All</div>
+      <div class="seg-tab" id="typeTab_MOVIES" role="button" tabindex="0" onclick="setTypeFilter('MOVIES')">Movies</div>
+      <div class="seg-tab" id="typeTab_SERIES" role="button" tabindex="0" onclick="setTypeFilter('SERIES')">Series</div>
+    </div>
+
+    <div class="select-filters">
+      <div class="morph-select-wrap">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <select id="deviceSelect" onchange="setHostFilter(this.value)" aria-label="Device Filter">
+          <option value="ALL">All Devices</option>
+        </select>
+      </div>
+
+      <div class="morph-select-wrap">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <select id="sizeSelect" onchange="setSizeFilter(this.value)" aria-label="Size Filter">
+          <option value="ALL">Any Size</option>
+          <option value="SMALL">&lt; 1 GB</option>
+          <option value="MEDIUM">1 – 3 GB</option>
+          <option value="LARGE">&gt; 3 GB</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main File Explorer Scroll Area -->
+  <main class="explorer-scroll" id="explorerScroll"></main>
 
   <footer>
-    <span id="footerStats">0 titles available</span>
-    <span>© 2026 Sanchar Koirala | All rights reserved</span>
+    <span id="footerStats">0 items</span>
+    <span>© 2026 Sanchar Koirala</span>
   </footer>
 
   <!-- Cinema Player -->
@@ -1355,8 +1342,8 @@
         </div>
         <div class="p-pill" id="prevEpBtn" role="button" tabindex="0" onclick="playPrevEpisode()" style="display:none;">‹ Prev</div>
         <div class="p-pill" id="nextEpBtn" role="button" tabindex="0" onclick="playNextEpisode()" style="display:none;">Next ›</div>
-        <div class="p-pill red" role="button" tabindex="0" onclick="openExternalVLC()">VLC</div>
-        <div class="p-pill danger-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
+        <div class="p-pill steel-pill" role="button" tabindex="0" onclick="openExternalVLC()">VLC</div>
+        <div class="p-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
       </div>
     </div>
 
@@ -1366,14 +1353,14 @@
           <video id="videoEl" playsinline webkit-playsinline preload="auto"></video>
 
           <!-- Exclusive Fullscreen Exit Button (Shown ONLY in Fullscreen Mode, toggled by tapping video screen) -->
-          <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0" onclick="exitFullscreenMode(event)">
+          <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0" onclick="handleExitFullscreenClick(event)">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
             <span>Exit Fullscreen</span>
           </div>
 
           <div class="loader-box" id="loaderBox">
             <div class="loader-circle"></div>
-            <div class="loader-label" id="loaderLabel">Preparing stream...</div>
+            <div class="loader-label" id="loaderLabel">Connecting...</div>
           </div>
         </div>
 
@@ -1388,7 +1375,7 @@
 
           <div class="ctrl-row">
             <div class="ctrl-group">
-              <div class="p-pill red" id="playBtn" role="button" tabindex="0" onclick="togglePlayPause()">Pause</div>
+              <div class="p-pill steel-pill" id="playBtn" role="button" tabindex="0" onclick="togglePlayPause()">Pause</div>
               <div class="p-pill" role="button" tabindex="0" onclick="skipBy(-10)">-10s</div>
               <div class="p-pill" role="button" tabindex="0" onclick="skipBy(10)">+10s</div>
               <div class="clock-text" id="clockText">00:00 / 00:00</div>
@@ -1402,7 +1389,7 @@
                 </div>
                 <input type="range" class="vol-range" id="volRange" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
               </div>
-              <div class="p-pill" id="fsEnterBtn" role="button" tabindex="0" onclick="enterFullscreenMode()" title="Fullscreen Landscape">
+              <div class="p-pill" id="fsEnterBtn" role="button" tabindex="0" onclick="enterFullscreenMode()" title="Fullscreen">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
                 <span>Fullscreen</span>
               </div>
@@ -1414,7 +1401,7 @@
       <!-- Series Episodes List Alongside Video -->
       <aside class="episode-pane" id="episodePane">
         <div class="ep-pane-head">
-          <div class="ep-pane-title" id="epPaneTitle">Series Episodes</div>
+          <div class="ep-pane-title" id="epPaneTitle">Episodes</div>
           <div class="ep-pane-count" id="epPaneCount">1 / 1</div>
         </div>
         <div class="ep-list" id="epList"></div>
@@ -1422,11 +1409,11 @@
     </div>
   </div>
 
-  <!-- Custom Popup Modal (Audio Track & Speed Selection) -->
+  <!-- Popup Modal -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-head">
-        <div class="modal-title" id="modalTitle">Select Option</div>
+        <div class="modal-title" id="modalTitle">Select</div>
         <div class="modal-close" role="button" tabindex="0" onclick="closeModal()">✕</div>
       </div>
       <div class="modal-list" id="modalList"></div>
@@ -1454,12 +1441,14 @@
   let latestServersObj = {};
   let latestLegacyObj = null;
 
-  let unifiedCatalog = [];
-  let hostFilterId = 'ALL';
-  let viewMode = 'grid';
+  let allRootItems = [];
+  let typeFilter = 'ALL';     // 'ALL' | 'MOVIES' | 'SERIES'
+  let hostFilterId = 'ALL';   // 'ALL' | serverId
+  let sizeFilter = 'ALL';     // 'ALL' | 'SMALL' (<1GB) | 'MEDIUM' (1-3GB) | 'LARGE' (>3GB)
+  let viewMode = 'grid';      // 'grid' | 'list'
   let searchQuery = '';
 
-  /* Active Series Folder View State (null = Unified Root Catalog) */
+  /* Active Series Folder State */
   let activeSeriesFolder = null;
   let activeSeriesEpisodes = [];
 
@@ -1481,16 +1470,102 @@
   let orientationLockedByPlayer = false;
 
   const SPEED_OPTIONS = [
-    { value: 0.5, label: '0.5x', sub: 'Slow motion' },
-    { value: 0.75, label: '0.75x', sub: 'Slightly slower' },
-    { value: 1, label: '1x (Normal)', sub: 'Standard playback speed' },
-    { value: 1.25, label: '1.25x', sub: 'Faster' },
-    { value: 1.5, label: '1.5x', sub: 'Quick review' },
-    { value: 2, label: '2x', sub: 'Double speed' }
+    { value: 0.5, label: '0.5x', sub: 'Slow' },
+    { value: 0.75, label: '0.75x', sub: 'Relaxed' },
+    { value: 1, label: '1x', sub: 'Normal' },
+    { value: 1.25, label: '1.25x', sub: 'Brisk' },
+    { value: 1.5, label: '1.5x', sub: 'Fast' },
+    { value: 2, label: '2x', sub: 'Double' }
   ];
 
   /* ============================================================
-     VIEWPORT & ACCELEROMETER / ORIENTATION SYNC
+     CODED PROCEDURAL THUMBNAIL GENERATOR (SVG ARTWORK)
+     ============================================================ */
+  const THUMB_PALETTES = [
+    { c1: '#1a365d', c2: '#3b74a8', accent: '#90cdf4' },
+    { c1: '#10233c', c2: '#2f6394', accent: '#75b0e6' },
+    { c1: '#1e3a5f', c2: '#4a7c9b', accent: '#bee3f8' },
+    { c1: '#152c47', c2: '#36688d', accent: '#8bbce8' },
+    { c1: '#1c314e', c2: '#456990', accent: '#a3cef1' },
+    { c1: '#0f253e', c2: '#2c5e8a', accent: '#6aa9e3' }
+  ];
+
+  function hashString(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  function getMonogram(title) {
+    const words = title.replace(/[^a-zA-Z0-9\s]/g, '').trim().split(/\s+/).filter(Boolean);
+    if (words.length === 0) return 'G15';
+    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+    return (words[0][0] + words[1][0]).toUpperCase();
+  }
+
+  function buildCodedThumbnailSvg(item, epNumber = null) {
+    const seed = hashString(`${item.cleanName}_${item.serverName}`);
+    const pal = THUMB_PALETTES[seed % THUMB_PALETTES.length];
+    const patternType = seed % 3;
+    const isSeries = item.type === 'folder';
+    const mono = epNumber !== null ? `E${String(epNumber).padStart(2, '0')}` : getMonogram(item.cleanName);
+    const badgeLabel = epNumber !== null
+      ? `EP ${String(epNumber).padStart(2, '0')}`
+      : (isSeries ? `${item.count || 0} EP` : (item.ext || 'VIDEO'));
+
+    let motifSvg = '';
+    if (patternType === 0) {
+      motifSvg = `
+        <circle cx="245" cy="24" r="78" fill="none" stroke="${pal.accent}" stroke-opacity="0.14" stroke-width="14"/>
+        <circle cx="245" cy="24" r="46" fill="none" stroke="${pal.accent}" stroke-opacity="0.18" stroke-width="6"/>
+      `;
+    } else if (patternType === 1) {
+      motifSvg = `
+        <path d="M-20 140 Q 90 60, 180 120 T 340 70 L 340 200 L -20 200 Z" fill="${pal.accent}" fill-opacity="0.11"/>
+        <path d="M-20 165 Q 110 95, 210 145 T 340 105 L 340 200 L -20 200 Z" fill="${pal.accent}" fill-opacity="0.09"/>
+      `;
+    } else {
+      motifSvg = `
+        <rect x="195" y="-18" width="120" height="120" rx="28" transform="rotate(22 195 -18)" fill="${pal.accent}" fill-opacity="0.1"/>
+        <rect x="220" y="18" width="95" height="95" rx="22" transform="rotate(22 220 18)" fill="none" stroke="${pal.accent}" stroke-opacity="0.18" stroke-width="2"/>
+      `;
+    }
+
+    const centerGlyph = isSeries
+      ? `
+        <rect x="122" y="54" width="76" height="54" rx="14" fill="#ffffff" fill-opacity="0.14"/>
+        <path d="M126 66 C126 60 130 56 136 56 L151 56 L157 63 L184 63 C190 63 194 67 194 73 L194 102 C194 108 190 112 184 112 L136 112 C130 112 126 108 126 102 Z" fill="#ffffff" fill-opacity="0.92"/>
+      `
+      : `
+        <circle cx="160" cy="84" r="26" fill="#ffffff" fill-opacity="0.18"/>
+        <circle cx="160" cy="84" r="20" fill="#ffffff" fill-opacity="0.94"/>
+        <polygon points="155,75 170,84 155,93" fill="${pal.c1}"/>
+      `;
+
+    const gradId = `tg_${seed}`;
+    return `
+      <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${pal.c1}"/>
+            <stop offset="100%" stop-color="${pal.c2}"/>
+          </linearGradient>
+        </defs>
+        <rect width="320" height="180" fill="url(#${gradId})"/>
+        ${motifSvg}
+        <text x="18" y="160" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900" fill="#ffffff" fill-opacity="0.12" letter-spacing="-1">${escapeHtml(mono)}</text>
+        ${centerGlyph}
+        <rect x="14" y="14" width="66" height="24" rx="9" fill="#0c1320" fill-opacity="0.52"/>
+        <text x="47" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#edf2f8" letter-spacing="0.4">${escapeHtml(badgeLabel)}</text>
+      </svg>
+    `;
+  }
+
+  /* ============================================================
+     VIEWPORT & ORIENTATION SYNC
      ============================================================ */
   function syncViewportLayout() {
     document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
@@ -1547,21 +1622,21 @@
   window.addEventListener('devicemotion', handleAccelerometerMotion, { passive: true });
 
   /* ============================================================
-     THEME & ACCESSIBILITY
+     THEME & KEYBOARD ACCESSIBILITY
      ============================================================ */
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('g15_movies_theme', theme);
-    document.getElementById('btnTheme').textContent = theme === 'dark' ? '☀' : '☾';
-    document.getElementById('metaThemeColor').setAttribute('content', theme === 'dark' ? '#121318' : '#e6ebf2');
+    document.getElementById('btnTheme').textContent = theme === 'light' ? '☾' : '☀';
+    document.getElementById('metaThemeColor').setAttribute('content', theme === 'light' ? '#e3e8ef' : '#0c1320');
   }
 
   function toggleTheme() {
-    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-    applyTheme(cur === 'dark' ? 'light' : 'dark');
+    const cur = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(cur === 'light' ? 'dark' : 'light');
   }
 
-  applyTheme(localStorage.getItem('g15_movies_theme') || 'dark');
+  applyTheme(localStorage.getItem('g15_movies_theme') || 'light');
 
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
@@ -1575,17 +1650,17 @@
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(t._timer);
-    t._timer = setTimeout(() => t.classList.remove('show'), 2400);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2300);
   }
 
-  function setLoader(show, text = 'Preparing stream...') {
+  function setLoader(show, text = 'Buffering...') {
     const box = document.getElementById('loaderBox');
     document.getElementById('loaderLabel').textContent = text;
     box.classList.toggle('show', show);
   }
 
   async function apiFetchFromServer(serverUrl, endpoint) {
-    if (!serverUrl) throw new Error('Server offline');
+    if (!serverUrl) throw new Error('Offline');
     const res = await fetch(`${serverUrl}${endpoint}`);
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
@@ -1593,7 +1668,7 @@
   }
 
   /* ============================================================
-     FEDERATED MULTI-SERVER DISCOVERY & UNIFIED CATALOG FETCH
+     MULTI-SERVER DISCOVERY & CATALOG AGGREGATION
      ============================================================ */
   db.ref('.info/serverTimeOffset').on('value', (snap) => {
     serverTimeOffsetMs = snap.val() || 0;
@@ -1613,9 +1688,7 @@
         list.push({
           id: srv.id || key,
           name: srv.name || key,
-          url: cleanUrl,
-          videoCount: Number(srv.videoCount || 0),
-          totalSizeLabel: srv.totalSizeLabel || ''
+          url: cleanUrl
         });
       });
     }
@@ -1626,9 +1699,7 @@
         list.push({
           id: 'default-host',
           name: 'DELL-G15',
-          url: cleanLegacy,
-          videoCount: 0,
-          totalSizeLabel: ''
+          url: cleanLegacy
         });
       }
     }
@@ -1639,28 +1710,38 @@
     const nextSignature = list.map(s => `${s.id}:${s.url}`).join('|');
     onlineServers = list;
 
+    updateDeviceDropdown();
+
     const dot = document.getElementById('globalLiveDot');
     const status = document.getElementById('globalHostStatus');
     if (onlineServers.length === 0) {
       dot.classList.add('off');
-      status.textContent = 'No hosts online';
-      unifiedCatalog = [];
-      renderCurrentScreen();
+      status.textContent = 'Offline';
+      allRootItems = [];
+      renderExplorer();
       return;
     }
 
     dot.classList.remove('off');
     status.textContent = onlineServers.length === 1
-      ? `Live Host: ${onlineServers[0].name}`
-      : `${onlineServers.length} Live Hosts Online`;
+      ? onlineServers[0].name
+      : `${onlineServers.length} Devices Online`;
 
+    if (prevSignature !== nextSignature) {
+      fetchAllCatalog();
+    }
+  }
+
+  function updateDeviceDropdown() {
+    const sel = document.getElementById('deviceSelect');
     if (hostFilterId !== 'ALL' && !onlineServers.some(s => s.id === hostFilterId)) {
       hostFilterId = 'ALL';
     }
-
-    if (prevSignature !== nextSignature) {
-      fetchUnifiedCatalog();
-    }
+    const opts = [`<option value="ALL">All Devices</option>`].concat(
+      onlineServers.map(s => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`)
+    );
+    sel.innerHTML = opts.join('');
+    sel.value = hostFilterId;
   }
 
   db.ref('servers').on('value', (snap) => {
@@ -1675,10 +1756,21 @@
 
   setInterval(reconcileServers, 15000);
 
-  async function fetchUnifiedCatalog() {
+  function parseItemBytes(item) {
+    if (typeof item.size === 'number' && !isNaN(item.size)) return item.size;
+    const lbl = String(item.sizeLabel || '').trim().toUpperCase();
+    const m = lbl.match(/^([\d.]+)\s*(B|KB|MB|GB|TB)$/);
+    if (!m) return 0;
+    const num = parseFloat(m[1]);
+    const unit = m[2];
+    const mult = { B: 1, KB: 1024, MB: 1024 ** 2, GB: 1024 ** 3, TB: 1024 ** 4 }[unit] || 1;
+    return Math.round(num * mult);
+  }
+
+  async function fetchAllCatalog() {
     if (onlineServers.length === 0) {
-      unifiedCatalog = [];
-      renderCurrentScreen();
+      allRootItems = [];
+      renderExplorer();
       return;
     }
 
@@ -1686,10 +1778,10 @@
       onlineServers.map(async (srv) => {
         try {
           const data = await apiFetchFromServer(srv.url, '/api/list?path=');
-          const items = data.items || [];
-          return items.map(item => ({
+          return (data.items || []).map(item => ({
             ...item,
             cleanName: cleanTitle(item.name),
+            bytes: parseItemBytes(item),
             serverId: srv.id,
             serverName: srv.name,
             serverUrl: srv.url
@@ -1701,79 +1793,115 @@
     );
 
     const merged = results.flat();
-    // Strict alphabetical ascending order (A -> Z) mixing Movies & Series together
     merged.sort((a, b) => a.cleanName.localeCompare(b.cleanName, undefined, { numeric: true, sensitivity: 'base' }));
-    unifiedCatalog = merged;
-    renderCurrentScreen();
+    allRootItems = merged;
+    renderExplorer();
   }
 
   function refreshAllCatalog() {
     if (activeSeriesFolder) {
       openSeriesFolder(activeSeriesFolder, false);
     } else {
-      fetchUnifiedCatalog();
+      fetchAllCatalog();
     }
-    showToast('Catalog refreshed');
+    showToast('Refreshed');
   }
 
   /* ============================================================
-     SERIES FOLDER DRILLING & NAVIGATION
+     FILTERS & NAVIGATION
      ============================================================ */
+  function setTypeFilter(t) {
+    typeFilter = t;
+    ['ALL', 'MOVIES', 'SERIES'].forEach(key => {
+      document.getElementById(`typeTab_${key}`).classList.toggle('active', key === t);
+    });
+    if (activeSeriesFolder) {
+      activeSeriesFolder = null;
+      activeSeriesEpisodes = [];
+    }
+    renderExplorer();
+  }
+
+  function setHostFilter(id) {
+    hostFilterId = id;
+    if (activeSeriesFolder) {
+      activeSeriesFolder = null;
+      activeSeriesEpisodes = [];
+    }
+    renderExplorer();
+  }
+
+  function setSizeFilter(sz) {
+    sizeFilter = sz;
+    renderExplorer();
+  }
+
+  function toggleViewMode() {
+    viewMode = viewMode === 'grid' ? 'list' : 'grid';
+    const iconSvg = document.getElementById('viewIconSvg');
+    if (viewMode === 'list') {
+      iconSvg.innerHTML = `<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>`;
+    } else {
+      iconSvg.innerHTML = `<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>`;
+    }
+    renderExplorer();
+  }
+
+  function handleSearchInput(val) {
+    searchQuery = val.trim().toLowerCase();
+    renderExplorer();
+  }
+
+  function matchesSizeFilter(bytes) {
+    if (sizeFilter === 'ALL') return true;
+    const oneGb = 1024 ** 3;
+    const threeGb = 3 * oneGb;
+    if (sizeFilter === 'SMALL') return bytes > 0 && bytes < oneGb;
+    if (sizeFilter === 'MEDIUM') return bytes >= oneGb && bytes <= threeGb;
+    if (sizeFilter === 'LARGE') return bytes > threeGb;
+    return true;
+  }
+
   async function openSeriesFolder(seriesItem, scrollTop = true) {
     activeSeriesFolder = seriesItem;
-    const container = document.getElementById('mainScroll');
-    container.innerHTML = `<div class="state-panel"><h2>Loading Series...</h2><p>Fetching episodes from ${escapeHtml(seriesItem.serverName)}</p></div>`;
+    const container = document.getElementById('explorerScroll');
+    container.innerHTML = `<div class="empty-card"><h3>Loading...</h3><p>${escapeHtml(seriesItem.cleanName)}</p></div>`;
 
     try {
       const data = await apiFetchFromServer(seriesItem.serverUrl, `/api/list?path=${encodeURIComponent(seriesItem.path)}`);
-      const rawItems = (data.items || []).filter(i => i.type === 'file');
-      rawItems.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+      const raw = (data.items || []).filter(i => i.type === 'file');
+      raw.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
-      activeSeriesEpisodes = rawItems.map(ep => ({
+      activeSeriesEpisodes = raw.map(ep => ({
         ...ep,
         cleanName: cleanTitle(ep.name),
+        bytes: parseItemBytes(ep),
         serverId: seriesItem.serverId,
         serverName: seriesItem.serverName,
         serverUrl: seriesItem.serverUrl
       }));
 
-      renderCurrentScreen();
+      renderExplorer();
       if (scrollTop) container.scrollTop = 0;
     } catch (e) {
       container.innerHTML = `
-        <div class="state-panel">
-          <h2>Host Unreachable</h2>
-          <p>Could not load episodes from ${escapeHtml(seriesItem.serverName)}.</p>
-          <div class="neu-btn" role="button" tabindex="0" onclick="returnToAllCatalog()">← Back to Catalog</div>
+        <div class="empty-card">
+          <h3>Host Offline</h3>
+          <p>${escapeHtml(seriesItem.serverName)} could not be reached.</p>
+          <div class="morph-btn" role="button" tabindex="0" onclick="returnToRoot()">Back</div>
         </div>
       `;
     }
   }
 
-  function returnToAllCatalog() {
+  function returnToRoot() {
     activeSeriesFolder = null;
     activeSeriesEpisodes = [];
-    renderCurrentScreen();
-  }
-
-  function setHostFilter(srvId) {
-    hostFilterId = srvId;
-    renderCurrentScreen();
-  }
-
-  function toggleViewMode() {
-    viewMode = viewMode === 'grid' ? 'list' : 'grid';
-    document.getElementById('btnView').textContent = viewMode === 'grid' ? 'List' : 'Grid';
-    renderCurrentScreen();
-  }
-
-  function handleSearchInput(val) {
-    searchQuery = val.trim().toLowerCase();
-    renderCurrentScreen();
+    renderExplorer();
   }
 
   /* ============================================================
-     RENDERING: UNIFIED NETFLIX CATALOG & SERIES EPISODE VIEW
+     RENDER EXPLORER: SEPARATED SERIES & MOVIES SECTIONS
      ============================================================ */
   function cleanTitle(filename) {
     return filename.replace(/\.[^/.]+$/, '').replace(/[._]+/g, ' ').trim();
@@ -1791,275 +1919,204 @@
     }
   }
 
-  function renderCurrentScreen() {
-    const container = document.getElementById('mainScroll');
+  function renderItemCollection(items, clickFnName, isEpisodeList = false) {
+    if (viewMode === 'grid') {
+      return `
+        <div class="files-grid">
+          ${items.map((item, idx) => {
+            const epNum = isEpisodeList ? (activeSeriesEpisodes.indexOf(item) + 1) : null;
+            const prog = item.type === 'file' ? getSavedProgress(item.serverId, item.path) : null;
+            const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-tag">${formatClock(prog.pos)}</span>` : '';
+            return `
+              <div class="file-tile" role="button" tabindex="0" onclick="${clickFnName}(${idx})">
+                <div class="thumb-frame">
+                  ${buildCodedThumbnailSvg(item, epNum)}
+                </div>
+                <div class="tile-body">
+                  <div class="tile-name" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
+                  <div class="tile-meta">
+                    <span class="host-tag">${escapeHtml(item.serverName)}</span>
+                    <span>${resumeHtml ? `${resumeHtml} · ` : ''}${escapeHtml(item.sizeLabel)}</span>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    return `
+      <div class="oneui-list-card">
+        ${items.map((item, idx) => {
+          const epNum = isEpisodeList ? (activeSeriesEpisodes.indexOf(item) + 1) : null;
+          const prog = item.type === 'file' ? getSavedProgress(item.serverId, item.path) : null;
+          const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-tag">Resume ${formatClock(prog.pos)}</span><span>•</span>` : '';
+          return `
+            <div class="oneui-row" role="button" tabindex="0" onclick="${clickFnName}(${idx})">
+              <div class="row-thumb">
+                ${buildCodedThumbnailSvg(item, epNum)}
+              </div>
+              <div class="row-info">
+                <div class="row-name" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
+                <div class="row-sub">
+                  <span class="host-tag">${escapeHtml(item.serverName)}</span>
+                  ${resumeHtml}
+                  <span>${escapeHtml(item.sizeLabel)}</span>
+                  <span class="hide-sm">•</span>
+                  <span class="hide-sm">${escapeHtml(item.modified)}</span>
+                </div>
+              </div>
+              <div class="row-chevron">${item.type === 'folder' ? '›' : '▶'}</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  function renderExplorer() {
+    const container = document.getElementById('explorerScroll');
+    const filterBar = document.getElementById('filterBar');
 
     if (onlineServers.length === 0) {
+      filterBar.style.display = 'none';
       document.getElementById('footerStats').textContent = 'Offline';
       container.innerHTML = `
-        <div class="state-panel">
-          <h2>No Hosts Online</h2>
-          <p>Run <strong>MyFilesServer.exe</strong> on any Windows PC to stream your movie &amp; series library live here.</p>
-          <div class="neu-btn" role="button" tabindex="0" onclick="refreshAllCatalog()">Check Again</div>
+        <div class="empty-card">
+          <h3>No Devices Online</h3>
+          <p>Launch MyFilesServer.exe on Windows to share movies and series here.</p>
+          <div class="morph-btn" role="button" tabindex="0" onclick="refreshAllCatalog()">Retry</div>
         </div>
       `;
       return;
     }
 
-    // 1. Inside a Series Folder -> Render Series Header & Episode Cards
+    filterBar.style.display = 'flex';
+
+    // 1. Inside a Series Folder
     if (activeSeriesFolder) {
       const s = activeSeriesFolder;
-      const eps = searchQuery
-        ? activeSeriesEpisodes.filter(e => e.cleanName.toLowerCase().includes(searchQuery))
-        : activeSeriesEpisodes;
+      const filteredEps = activeSeriesEpisodes.filter(ep => {
+        if (searchQuery && !ep.cleanName.toLowerCase().includes(searchQuery)) return false;
+        if (!matchesSizeFilter(ep.bytes)) return false;
+        return true;
+      });
+      window._visibleEpisodes = filteredEps;
 
-      document.getElementById('footerStats').textContent = `${eps.length} ${eps.length === 1 ? 'episode' : 'episodes'} · Hosted on ${s.serverName}`;
+      document.getElementById('footerStats').textContent = `${filteredEps.length} ${filteredEps.length === 1 ? 'Episode' : 'Episodes'}`;
 
       let html = `
-        <div class="series-banner">
-          <div style="min-width:0; flex:1;">
-            <div class="hero-badges">
-              <div class="neu-btn" style="height:30px; padding:0 12px; font-size:11.5px;" role="button" tabindex="0" onclick="returnToAllCatalog()">← All Movies &amp; Series</div>
-              <span class="badge-pill badge-series">SERIES · ${activeSeriesEpisodes.length} EP</span>
-              <span class="badge-pill badge-host">HOST: ${escapeHtml(s.serverName)}</span>
-            </div>
-            <h1 class="hero-title">${escapeHtml(s.cleanName)}</h1>
-            <div class="hero-meta-low">
-              <span>Total Size: ${escapeHtml(s.sizeLabel)}</span>
-              <span>•</span>
-              <span>Updated: ${escapeHtml(s.modified)}</span>
+        <div class="series-head-card">
+          <div class="series-head-left">
+            <div class="morph-btn icon-sq" role="button" tabindex="0" onclick="returnToRoot()" title="Back">←</div>
+            <div class="series-head-thumb">${buildCodedThumbnailSvg(s)}</div>
+            <div style="min-width:0;">
+              <div class="section-heading" style="font-size:16px;">${escapeHtml(s.cleanName)}</div>
+              <div class="row-sub" style="margin-top:5px;">
+                <span class="host-tag">${escapeHtml(s.serverName)}</span>
+                <span>${activeSeriesEpisodes.length} Episodes</span>
+                <span>•</span>
+                <span>${escapeHtml(s.sizeLabel)}</span>
+              </div>
             </div>
           </div>
           ${activeSeriesEpisodes.length > 0 ? `
-            <div class="hero-cta">
-              <div class="neu-btn primary" role="button" tabindex="0" onclick="launchSeriesEpisode(0)">▶ Play Episode 1</div>
-            </div>
+            <div class="morph-btn accent" role="button" tabindex="0" onclick="launchSeriesEpisodeByRealIndex(0)">▶ Play Ep 1</div>
           ` : ''}
         </div>
       `;
 
-      if (eps.length === 0) {
-        html += `<div class="state-panel"><h2>No Episodes Found</h2><p>No playable videos match your filter inside this series.</p></div>`;
-        container.innerHTML = html;
-        return;
+      if (filteredEps.length === 0) {
+        html += `<div class="empty-card"><h3>No Episodes</h3><p>No episodes match the current filter.</p></div>`;
+      } else {
+        html += renderItemCollection(filteredEps, 'handleVisibleEpisodeClick', true);
       }
-
-      html += `<div class="${viewMode === 'grid' ? 'netflix-grid' : 'netflix-list'}">`;
-      eps.forEach((ep) => {
-        const realIdx = activeSeriesEpisodes.indexOf(ep);
-        const prog = getSavedProgress(ep.serverId, ep.path);
-        const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-pill">Resume ${formatClock(prog.pos)}</span><span>•</span>` : '';
-
-        if (viewMode === 'grid') {
-          html += `
-            <div class="media-card" role="button" tabindex="0" onclick="launchSeriesEpisode(${realIdx})">
-              <div class="card-top-row">
-                <span class="badge-pill badge-series">EP ${String(realIdx + 1).padStart(2, '0')}</span>
-                <span class="badge-pill badge-host">${escapeHtml(ep.serverName)}</span>
-              </div>
-              <div class="card-title" title="${escapeHtml(ep.name)}">${escapeHtml(ep.cleanName)}</div>
-              <div class="card-bottom-row">
-                <div class="low-priority-meta">
-                  ${resumeHtml}
-                  <span>${escapeHtml(ep.sizeLabel)}</span>
-                  <span>•</span>
-                  <span>${escapeHtml(ep.ext)}</span>
-                </div>
-                <div class="play-circle">▶</div>
-              </div>
-            </div>
-          `;
-        } else {
-          html += `
-            <div class="media-row" role="button" tabindex="0" onclick="launchSeriesEpisode(${realIdx})">
-              <div class="row-main">
-                <div class="row-header-line">
-                  <span class="badge-pill badge-series">EP ${String(realIdx + 1).padStart(2, '0')}</span>
-                  <span class="badge-pill badge-host">${escapeHtml(ep.serverName)}</span>
-                </div>
-                <div class="row-title" title="${escapeHtml(ep.name)}">${escapeHtml(ep.cleanName)}</div>
-                <div class="low-priority-meta" style="margin-top:4px;">
-                  ${resumeHtml}
-                  <span>${escapeHtml(ep.sizeLabel)}</span>
-                  <span>•</span>
-                  <span>${escapeHtml(ep.ext)}</span>
-                  <span class="hide-sm">•</span>
-                  <span class="hide-sm">${escapeHtml(ep.modified)}</span>
-                </div>
-              </div>
-              <div class="play-circle">▶</div>
-            </div>
-          `;
-        }
-      });
-      html += `</div>`;
       container.innerHTML = html;
       return;
     }
 
-    // 2. Unified Root Catalog (All Movies & Series Mixed Alphabetically A -> Z)
-    let filtered = unifiedCatalog;
-    if (hostFilterId !== 'ALL') {
-      filtered = filtered.filter(item => item.serverId === hostFilterId);
-    }
-    if (searchQuery) {
-      filtered = filtered.filter(item =>
-        item.cleanName.toLowerCase().includes(searchQuery) ||
-        item.serverName.toLowerCase().includes(searchQuery)
-      );
-    }
+    // 2. Root Explorer: Separated Series & Movies across all devices
+    const matching = allRootItems.filter(item => {
+      if (hostFilterId !== 'ALL' && item.serverId !== hostFilterId) return false;
+      if (searchQuery && !item.cleanName.toLowerCase().includes(searchQuery) && !item.serverName.toLowerCase().includes(searchQuery)) return false;
+      if (!matchesSizeFilter(item.bytes)) return false;
+      return true;
+    });
 
-    // Guarantee alphabetical ascending order
-    filtered = [...filtered].sort((a, b) =>
-      a.cleanName.localeCompare(b.cleanName, undefined, { numeric: true, sensitivity: 'base' })
-    );
-    window._visibleUnifiedItems = filtered;
+    const seriesList = matching.filter(i => i.type === 'folder');
+    const moviesList = matching.filter(i => i.type === 'file');
 
-    const movieCount = filtered.filter(i => i.type === 'file').length;
-    const seriesCount = filtered.filter(i => i.type === 'folder').length;
-    document.getElementById('footerStats').textContent = `${filtered.length} titles (${movieCount} movies, ${seriesCount} series) · Sorted A–Z`;
+    window._visibleSeries = seriesList;
+    window._visibleMovies = moviesList;
 
-    // Build Featured Hero from first item (or most recently resumable item)
-    let heroItem = filtered[0] || null;
-    for (const candidate of filtered) {
-      if (candidate.type === 'file') {
-        const p = getSavedProgress(candidate.serverId, candidate.path);
-        if (p && p.pos > 15) {
-          heroItem = candidate;
-          break;
-        }
-      }
+    const showSeries = (typeFilter === 'ALL' || typeFilter === 'SERIES');
+    const showMovies = (typeFilter === 'ALL' || typeFilter === 'MOVIES');
+
+    const visibleCount = (showSeries ? seriesList.length : 0) + (showMovies ? moviesList.length : 0);
+    document.getElementById('footerStats').textContent = `${visibleCount} ${visibleCount === 1 ? 'item' : 'items'}`;
+
+    if (visibleCount === 0) {
+      container.innerHTML = `<div class="empty-card"><h3>No Items Found</h3><p>Adjust your search or filter criteria.</p></div>`;
+      return;
     }
 
     let html = '';
-    if (heroItem) {
-      const heroIdx = filtered.indexOf(heroItem);
-      const isSeries = heroItem.type === 'folder';
-      const heroProg = !isSeries ? getSavedProgress(heroItem.serverId, heroItem.path) : null;
-      const ctaText = isSeries
-        ? `Browse ${heroItem.count} Episodes`
-        : (heroProg && heroProg.pos > 15 ? `▶ Resume (${formatClock(heroProg.pos)})` : '▶ Watch Now');
 
+    if (showSeries && seriesList.length > 0) {
       html += `
-        <div class="hero-card">
-          <div class="hero-left">
-            <div class="hero-badges">
-              <span class="badge-pill ${isSeries ? 'badge-series' : 'badge-movie'}">
-                ${isSeries ? `SERIES · ${heroItem.count} ${heroItem.count === 1 ? 'EP' : 'EPS'}` : `MOVIE · ${escapeHtml(heroItem.ext)}`}
-              </span>
-              <span class="badge-pill badge-host">HOSTED BY ${escapeHtml(heroItem.serverName)}</span>
-            </div>
-            <h1 class="hero-title">${escapeHtml(heroItem.cleanName)}</h1>
-            <div class="hero-meta-low">
-              <span>Size: ${escapeHtml(heroItem.sizeLabel)}</span>
-              <span>•</span>
-              <span>Added: ${escapeHtml(heroItem.modified)}</span>
+        <section class="category-section">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-heading">Series</span>
+              <span class="count-badge">${seriesList.length}</span>
             </div>
           </div>
-          <div class="hero-cta">
-            <div class="neu-btn primary" role="button" tabindex="0" onclick="handleCatalogItemClick(${heroIdx})">${escapeHtml(ctaText)}</div>
-          </div>
-        </div>
+          ${renderItemCollection(seriesList, 'handleSeriesClick', false)}
+        </section>
       `;
     }
 
-    // Host Filter Pills
-    html += `
-      <div class="filter-strip">
-        <div class="host-tabs">
-          <div class="host-chip ${hostFilterId === 'ALL' ? 'active' : ''}" role="button" tabindex="0" onclick="setHostFilter('ALL')">
-            <span class="live-dot"></span>
-            <span>All Hosts (${onlineServers.length})</span>
-          </div>
-          ${onlineServers.map(srv => `
-            <div class="host-chip ${hostFilterId === srv.id ? 'active' : ''}" role="button" tabindex="0" onclick="setHostFilter('${escapeJs(srv.id)}')">
-              <span class="live-dot"></span>
-              <span>${escapeHtml(srv.name)}</span>
+    if (showMovies && moviesList.length > 0) {
+      html += `
+        <section class="category-section">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-heading">Movies</span>
+              <span class="count-badge">${moviesList.length}</span>
             </div>
-          `).join('')}
-        </div>
-        <div class="catalog-summary">Sorted A → Z · ${filtered.length} ${filtered.length === 1 ? 'Title' : 'Titles'}</div>
-      </div>
-    `;
-
-    if (filtered.length === 0) {
-      html += `<div class="state-panel"><h2>No Matching Titles</h2><p>No movies or series match your current search or host filter.</p></div>`;
-      container.innerHTML = html;
-      return;
+          </div>
+          ${renderItemCollection(moviesList, 'handleMovieClick', false)}
+        </section>
+      `;
     }
 
-    html += `<div class="${viewMode === 'grid' ? 'netflix-grid' : 'netflix-list'}">`;
-    filtered.forEach((item, idx) => {
-      const isSeries = item.type === 'folder';
-      const typeBadge = isSeries
-        ? `<span class="badge-pill badge-series">SERIES · ${item.count} ${item.count === 1 ? 'EP' : 'EPS'}</span>`
-        : `<span class="badge-pill badge-movie">MOVIE · ${escapeHtml(item.ext)}</span>`;
-      const hostBadge = `<span class="badge-pill badge-host">${escapeHtml(item.serverName)}</span>`;
-
-      const prog = !isSeries ? getSavedProgress(item.serverId, item.path) : null;
-      const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-pill">Resume ${formatClock(prog.pos)}</span><span>•</span>` : '';
-
-      if (viewMode === 'grid') {
-        html += `
-          <div class="media-card" role="button" tabindex="0" onclick="handleCatalogItemClick(${idx})">
-            <div class="card-top-row">
-              ${typeBadge}
-              ${hostBadge}
-            </div>
-            <div class="card-title" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
-            <div class="card-bottom-row">
-              <div class="low-priority-meta">
-                ${resumeHtml}
-                <span>${escapeHtml(item.sizeLabel)}</span>
-                <span>•</span>
-                <span>${escapeHtml(item.modified)}</span>
-              </div>
-              <div class="play-circle">${isSeries ? '☰' : '▶'}</div>
-            </div>
-          </div>
-        `;
-      } else {
-        html += `
-          <div class="media-row" role="button" tabindex="0" onclick="handleCatalogItemClick(${idx})">
-            <div class="row-main">
-              <div class="row-header-line">
-                ${typeBadge}
-                ${hostBadge}
-              </div>
-              <div class="row-title" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
-              <div class="low-priority-meta" style="margin-top:4px;">
-                ${resumeHtml}
-                <span>${escapeHtml(item.sizeLabel)}</span>
-                <span>•</span>
-                <span>${escapeHtml(item.modified)}</span>
-              </div>
-            </div>
-            <div class="play-circle">${isSeries ? '☰' : '▶'}</div>
-          </div>
-        `;
-      }
-    });
-    html += `</div>`;
     container.innerHTML = html;
   }
 
-  function handleCatalogItemClick(idx) {
-    const item = window._visibleUnifiedItems[idx];
-    if (!item) return;
-
-    if (item.type === 'folder') {
-      openSeriesFolder(item, true);
-    } else {
-      // Singular Movie from Root -> Play without Prev/Next or Episode list
-      activePlayerList = [item];
-      openMediaAtIndex(0, false, false);
-    }
+  function handleSeriesClick(idx) {
+    const series = window._visibleSeries[idx];
+    if (series) openSeriesFolder(series, true);
   }
 
-  function launchSeriesEpisode(epIdx) {
+  function handleMovieClick(idx) {
+    const movie = window._visibleMovies[idx];
+    if (!movie) return;
+    activePlayerList = [movie];
+    openMediaAtIndex(0, false, false);
+  }
+
+  function handleVisibleEpisodeClick(idx) {
+    const ep = window._visibleEpisodes[idx];
+    if (!ep) return;
+    const realIdx = activeSeriesEpisodes.indexOf(ep);
+    launchSeriesEpisodeByRealIndex(realIdx >= 0 ? realIdx : 0);
+  }
+
+  function launchSeriesEpisodeByRealIndex(realIdx) {
     if (!activeSeriesEpisodes.length) return;
     activePlayerList = activeSeriesEpisodes;
-    openMediaAtIndex(epIdx, true, false);
+    openMediaAtIndex(realIdx, true, false);
   }
 
   /* ============================================================
@@ -2101,7 +2158,7 @@
       const prog = getSavedProgress(f.serverId, f.path);
       const statusHtml = isCur
         ? `<span class="ep-playing-tag">Playing</span>`
-        : (prog && prog.pos > 15 ? `<span>Resume ${formatClock(prog.pos)}</span>` : `<span>${escapeHtml(f.ext)}</span>`);
+        : (prog && prog.pos > 15 ? `<span>${formatClock(prog.pos)}</span>` : `<span>${escapeHtml(f.ext)}</span>`);
       return `
         <div class="ep-card ${isCur ? 'active' : ''}" id="epCard_${i}" role="button" tabindex="0" onclick="selectEpisode(${i})">
           <div class="ep-num">${String(i + 1).padStart(2, '0')}</div>
@@ -2141,7 +2198,7 @@
   }
 
   /* ============================================================
-     EXCLUSIVE FULLSCREEN MODE & SCREEN TAP TOGGLE
+     EXCLUSIVE FULLSCREEN MODE (EXITS BOTH PLAYER & BROWSER FULLSCREEN)
      ============================================================ */
   function enterFullscreenMode() {
     if (!activeMedia) return;
@@ -2179,8 +2236,14 @@
     }
   }
 
-  function exitFullscreenMode(fromBrowserEvent = false) {
-    if (!isFullscreenMode && !fromBrowserEvent) return;
+  function handleExitFullscreenClick(e) {
+    if (e && typeof e.stopPropagation === 'function') {
+      e.stopPropagation();
+    }
+    exitFullscreenMode(false);
+  }
+
+  function exitFullscreenMode(triggeredByNativeEvent = false) {
     isFullscreenMode = false;
     fsButtonVisible = true;
 
@@ -2189,16 +2252,15 @@
     screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
     exitBtn.classList.remove('fs-hidden');
 
-    if (!fromBrowserEvent) {
-      const fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-      if (fsEl) {
-        const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
-        if (typeof exitFn === 'function') {
-          try {
-            const p = exitFn.call(document);
-            if (p && typeof p.catch === 'function') p.catch(() => {});
-          } catch (e) {}
-        }
+    // Always exit native browser fullscreen if document is currently fullscreened
+    const nativeFsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    if (nativeFsEl && !triggeredByNativeEvent) {
+      const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+      if (typeof exitFn === 'function') {
+        try {
+          const p = exitFn.call(document);
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        } catch (e) {}
       }
     }
 
@@ -2216,8 +2278,8 @@
   }
 
   function handleNativeFullscreenChange() {
-    const fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-    if (!fsEl && isFullscreenMode) {
+    const nativeFsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    if (!nativeFsEl && isFullscreenMode) {
       exitFullscreenMode(true);
     }
   }
@@ -2253,7 +2315,7 @@
     isFullscreenMode = false;
     screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
 
-    document.getElementById('playerName').textContent = `${item.cleanName} (${item.serverName})`;
+    document.getElementById('playerName').textContent = `${item.cleanName} · ${item.serverName}`;
     document.getElementById('seekProgress').style.width = '0%';
     document.getElementById('clockText').textContent = '00:00 / --:--';
     updateQualityBadge('HD');
@@ -2277,7 +2339,7 @@
     }
 
     if (initialStart > 0) {
-      showToast(`Resuming at ${formatClock(initialStart)}`);
+      showToast(`Resuming ${formatClock(initialStart)}`);
     }
 
     await startHlsSession(initialStart);
@@ -2285,7 +2347,7 @@
 
   async function startHlsSession(startSec) {
     if (!activeMedia || !activeMedia.serverUrl) return;
-    setLoader(true, 'Buffering stream...');
+    setLoader(true, 'Buffering...');
 
     const video = document.getElementById('videoEl');
     if (hlsInstance) {
@@ -2349,18 +2411,18 @@
       }
     } catch (e) {
       setLoader(false);
-      showToast(`Stream error: ${e.message}`);
+      showToast(`Error: ${e.message}`);
     }
   }
 
   /* ============================================================
-     POPUP MODALS (AUDIO TRACK / LANGUAGE & PLAYBACK SPEED)
+     POPUP MODALS
      ============================================================ */
   function openAudioPopup() {
     const tracks = activeProbe.audioTracks || [];
     if (tracks.length === 0) return;
 
-    document.getElementById('modalTitle').textContent = 'Audio Track & Language';
+    document.getElementById('modalTitle').textContent = 'Audio Track';
     const list = document.getElementById('modalList');
     list.innerHTML = tracks.map(tr => `
       <div class="modal-option ${tr.index === activeAudioTrack ? 'selected' : ''}" role="button" tabindex="0" onclick="selectAudioTrack(${tr.index})">
@@ -2445,7 +2507,6 @@
 
   videoEl.addEventListener('ended', () => {
     if (isPlayingSeriesFolder() && activeIndex < activePlayerList.length - 1) {
-      showToast('Playing next episode...');
       playNextEpisode();
     }
   });
@@ -2530,9 +2591,7 @@
   }
 
   function closePlayer() {
-    if (isFullscreenMode) {
-      exitFullscreenMode(false);
-    }
+    exitFullscreenMode(false);
     closeModal();
     if (hlsInstance) {
       hlsInstance.destroy();
@@ -2550,13 +2609,13 @@
     activeMedia = null;
     setLoader(false);
     document.getElementById('playerScreen').classList.remove('open');
-    renderCurrentScreen();
+    renderExplorer();
   }
 
   function openExternalVLC() {
     if (!activeMedia || !activeMedia.serverUrl) return;
     window.location.href = `${activeMedia.serverUrl}/api/playlist?path=${encodeURIComponent(activeMedia.path)}`;
-    showToast('Playlist downloaded — open with VLC');
+    showToast('VLC playlist downloaded');
   }
 
   function formatClock(sec) {
@@ -2570,10 +2629,6 @@
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  }
-
-  function escapeJs(s) {
-    return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
   }
 
   document.addEventListener('keydown', (e) => {
