@@ -28,11 +28,11 @@
     :root[data-theme="light"] {
       --bg: #e3e8ef;
       --surface: #ebf0f6;
-      --surface-alt: #f3f7fc;
+      --surface-alt: #f4f7fc;
       --neu-out: 7px 7px 15px #c1cad6, -7px -7px 15px #ffffff;
       --neu-out-sm: 4px 4px 9px #c1cad6, -4px -4px 9px #ffffff;
       --neu-in: inset 4px 4px 8px #c1cad6, inset -4px -4px 8px #ffffff;
-      --stroke: rgba(255, 255, 255, 0.72);
+      --stroke: rgba(255, 255, 255, 0.74);
       --divider: rgba(16, 35, 60, 0.08);
       --text: #10233c;
       --text-2: #445a74;
@@ -41,10 +41,11 @@
       --steel-bright: #3d79b0;
       --steel-soft: rgba(47, 99, 148, 0.12);
       --navy: #142b47;
-      --navy-soft: rgba(20, 43, 71, 0.1);
+      --navy-soft: rgba(20, 43, 71, 0.09);
       --brand-grad: linear-gradient(135deg, #2f6394 0%, #10233c 100%);
-      --brand-shadow: 0 6px 16px rgba(16, 35, 60, 0.25);
+      --brand-shadow: 0 6px 16px rgba(16, 35, 60, 0.24);
       --green: #169c5b;
+      --amber: #d97706;
     }
 
     /* ============================================================
@@ -53,7 +54,7 @@
     :root[data-theme="dark"] {
       --bg: #0c1320;
       --surface: #121c2e;
-      --surface-alt: #17243b;
+      --surface-alt: #18253d;
       --neu-out: 7px 7px 16px #060a12, -6px -6px 14px #1a2842;
       --neu-out-sm: 4px 4px 10px #060a12, -4px -4px 10px #1a2842;
       --neu-in: inset 4px 4px 9px #060a12, inset -4px -4px 9px #1a2842;
@@ -70,6 +71,7 @@
       --brand-grad: linear-gradient(135deg, #5b9bd5 0%, #244b78 100%);
       --brand-shadow: 0 6px 18px rgba(6, 10, 18, 0.55);
       --green: #2ecc80;
+      --amber: #f59e0b;
     }
 
     * {
@@ -104,8 +106,63 @@
       transition: background 0.2s ease, color 0.2s ease;
     }
 
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: -0.2px;
+    }
+
     /* ============================================================
-       ONE UI + iOS FILES HEADER BAR
+       TACTILE MICRO-INDICATORS (SIGNAL BARS & TELEMETRY PILLS)
+       ============================================================ */
+    .sig-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 11px;
+      flex-shrink: 0;
+    }
+    .sig-bars i {
+      width: 2.5px;
+      border-radius: 1.5px;
+      background: var(--divider);
+      display: block;
+    }
+    .sig-bars i:nth-child(1) { height: 4px; }
+    .sig-bars i:nth-child(2) { height: 7.5px; }
+    .sig-bars i:nth-child(3) { height: 11px; }
+    .sig-bars.s3 i { background: var(--green); }
+    .sig-bars.s2 i:nth-child(1),
+    .sig-bars.s2 i:nth-child(2) { background: var(--steel); }
+    .sig-bars.s1 i:nth-child(1) { background: var(--amber); }
+
+    .telemetry-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: var(--navy-soft);
+      color: var(--text-2);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 7px var(--green);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .status-dot.off {
+      background: var(--text-muted);
+      box-shadow: none;
+    }
+
+    /* ============================================================
+       ONE UI + iOS FILES TOP BAR
        ============================================================ */
     .top-bar {
       padding: 12px 18px 8px;
@@ -151,33 +208,20 @@
       line-height: 1.15;
     }
 
-    .host-pill-status {
-      margin-top: 2px;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-2);
+    .telemetry-strip {
+      margin-top: 3px;
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 7px var(--green);
-      display: inline-block;
-    }
-    .status-dot.off {
-      background: var(--text-muted);
-      box-shadow: none;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-2);
     }
 
     .top-controls {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       flex: 1;
       justify-content: flex-end;
       min-width: 0;
@@ -185,7 +229,7 @@
 
     .search-well {
       width: 100%;
-      max-width: 270px;
+      max-width: 250px;
       height: 38px;
       border-radius: 19px;
       background: var(--surface);
@@ -197,9 +241,7 @@
       gap: 8px;
       color: var(--text-2);
     }
-    .search-well:focus-within {
-      border-color: var(--steel);
-    }
+    .search-well:focus-within { border-color: var(--steel); }
     .search-well input {
       width: 100%;
       background: transparent;
@@ -210,19 +252,17 @@
       font-weight: 500;
       font-family: inherit;
     }
-    .search-well input::placeholder {
-      color: var(--text-muted);
-    }
+    .search-well input::placeholder { color: var(--text-muted); }
 
     .morph-btn {
       height: 38px;
-      padding: 0 14px;
+      padding: 0 13px;
       border-radius: 19px;
       background: var(--surface);
       box-shadow: var(--neu-out-sm);
       border: 1px solid var(--stroke);
       color: var(--text);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
@@ -247,6 +287,10 @@
       color: #ffffff;
       border-color: transparent;
       box-shadow: var(--brand-shadow);
+    }
+    .morph-btn.party-live {
+      border-color: var(--green);
+      color: var(--green);
     }
 
     /* ============================================================
@@ -283,7 +327,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
       cursor: pointer;
       transition: 0.15s ease;
     }
@@ -375,7 +418,7 @@
       border-radius: 999px;
       background: var(--steel-soft);
       color: var(--steel);
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
     }
 
@@ -391,7 +434,7 @@
       box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
       border-radius: 24px;
-      padding: 12px;
+      padding: 11px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -425,7 +468,7 @@
     .tile-body {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       padding: 0 2px;
     }
 
@@ -441,33 +484,48 @@
       word-break: break-word;
     }
 
+    .tile-tags {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .spec-pill {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: var(--steel-soft);
+      color: var(--steel);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
     .tile-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 6px;
-      flex-wrap: wrap;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10.5px;
+      font-weight: 700;
       color: var(--text-muted);
     }
 
     .host-tag {
-      padding: 2px 8px;
-      border-radius: 8px;
+      padding: 2px 7px;
+      border-radius: 7px;
       background: var(--navy-soft);
       color: var(--navy);
       font-size: 10.5px;
       font-weight: 800;
-      max-width: 115px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      max-width: 125px;
+    }
+    .host-tag span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    .resume-tag {
-      color: var(--steel);
-      font-weight: 800;
     }
 
     /* Samsung One UI Grouped List View */
@@ -493,8 +551,8 @@
     .oneui-row:active { background: var(--navy-soft); }
 
     .row-thumb {
-      width: 68px;
-      height: 46px;
+      width: 72px;
+      height: 48px;
       border-radius: 13px;
       overflow: hidden;
       flex-shrink: 0;
@@ -524,10 +582,10 @@
       margin-top: 4px;
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       flex-wrap: wrap;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
     }
 
@@ -551,7 +609,7 @@
       box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
       border-radius: 26px;
-      padding: 16px 18px;
+      padding: 15px 18px;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -563,14 +621,14 @@
     .series-head-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
       min-width: 0;
       flex: 1;
     }
 
     .series-head-thumb {
       width: 84px;
-      height: 56px;
+      height: 54px;
       border-radius: 16px;
       overflow: hidden;
       flex-shrink: 0;
@@ -579,18 +637,18 @@
     .series-head-thumb svg { width: 100%; height: 100%; display: block; }
 
     .empty-card {
-      max-width: 380px;
+      max-width: 360px;
       margin: 44px auto;
       background: var(--surface);
       box-shadow: var(--neu-out);
       border: 1px solid var(--stroke);
       border-radius: 28px;
-      padding: 30px 22px;
+      padding: 28px 22px;
       text-align: center;
     }
     .empty-card h3 {
       margin: 0 0 6px;
-      font-size: 16.5px;
+      font-size: 16px;
       font-weight: 800;
     }
     .empty-card p {
@@ -606,9 +664,30 @@
       align-items: center;
       justify-content: space-between;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
       flex-shrink: 0;
+    }
+
+    .storage-meter {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .storage-track {
+      width: 56px;
+      height: 5px;
+      border-radius: 99px;
+      background: var(--surface);
+      box-shadow: var(--neu-in);
+      overflow: hidden;
+    }
+    .storage-fill {
+      height: 100%;
+      width: 45%;
+      border-radius: 99px;
+      background: var(--steel);
+      transition: width 0.3s ease;
     }
 
     /* ============================================================
@@ -633,6 +712,7 @@
     }
     .player-screen.open { display: flex; }
 
+    /* Decluttered Player Top Bar */
     .player-header {
       padding: 9px 15px;
       display: flex;
@@ -648,7 +728,7 @@
     .player-title-wrap {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
       min-width: 0;
       flex: 1;
     }
@@ -664,17 +744,33 @@
     }
 
     .quality-badge {
-      padding: 4px 10px;
-      border-radius: 999px;
+      padding: 3px 9px;
+      border-radius: 9px;
       background: rgba(91, 155, 213, 0.18);
-      border: 1px solid rgba(91, 155, 213, 0.36);
+      border: 1px solid rgba(91, 155, 213, 0.34);
       color: #8bbce8;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       white-space: nowrap;
       flex-shrink: 0;
       pointer-events: none;
     }
+
+    .party-badge-pill {
+      padding: 3px 9px;
+      border-radius: 9px;
+      background: rgba(46, 204, 128, 0.16);
+      border: 1px solid rgba(46, 204, 128, 0.38);
+      color: #2ecc80;
+      font-size: 10.5px;
+      font-weight: 800;
+      display: none;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .party-badge-pill.show { display: inline-flex; }
 
     .player-pills {
       display: flex;
@@ -685,8 +781,8 @@
 
     .p-pill {
       height: 33px;
-      padding: 0 13px;
-      border-radius: 14px;
+      padding: 0 12px;
+      border-radius: 13px;
       background: rgba(139, 188, 232, 0.1);
       border: 1px solid rgba(139, 188, 232, 0.14);
       color: #edf2f8;
@@ -695,7 +791,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
       cursor: pointer;
       white-space: nowrap;
       transition: transform 0.12s ease, background 0.15s ease;
@@ -707,6 +803,10 @@
       background: linear-gradient(135deg, #3b74a8, #1f446e);
       border-color: rgba(139, 188, 232, 0.3);
       color: #ffffff;
+    }
+    .p-pill.icon-pill {
+      width: 33px;
+      padding: 0;
     }
 
     .player-workspace {
@@ -747,6 +847,27 @@
       outline: none;
       pointer-events: none;
       display: block;
+    }
+
+    /* Floating Watch Party Reactions Layer */
+    .reaction-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 110;
+    }
+    .float-emoji {
+      position: absolute;
+      bottom: 24px;
+      font-size: 26px;
+      animation: floatUp 2.1s ease-out forwards;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+    }
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(10px) scale(0.7); }
+      15% { opacity: 1; transform: translateY(-12px) scale(1.08); }
+      100% { opacity: 0; transform: translateY(-170px) scale(0.95); }
     }
 
     /* Exclusive Fullscreen Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
@@ -840,21 +961,12 @@
     }
     .loader-box.show { display: flex; }
     .loader-circle {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       border: 3px solid rgba(139, 188, 232, 0.18);
       border-top-color: #5b9bd5;
       animation: spin 0.72s linear infinite;
-    }
-    .loader-label {
-      padding: 6px 14px;
-      border-radius: 14px;
-      background: rgba(14, 22, 38, 0.9);
-      border: 1px solid rgba(139, 188, 232, 0.16);
-      color: #edf2f8;
-      font-size: 12px;
-      font-weight: 600;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -931,7 +1043,7 @@
       gap: 7px;
       background: rgba(139, 188, 232, 0.1);
       border: 1px solid rgba(139, 188, 232, 0.14);
-      border-radius: 14px;
+      border-radius: 13px;
       height: 33px;
       padding: 0 10px 0 8px;
     }
@@ -984,11 +1096,11 @@
     }
     .ep-pane-count {
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
       color: #8bbce8;
       background: rgba(91, 155, 213, 0.16);
       padding: 3px 9px;
-      border-radius: 10px;
+      border-radius: 9px;
       flex-shrink: 0;
     }
 
@@ -1027,8 +1139,8 @@
       border-radius: 10px;
       background: rgba(139, 188, 232, 0.12);
       color: #9db2cc;
-      font-size: 11.5px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1050,15 +1162,14 @@
     }
     .ep-meta {
       margin-top: 3px;
-      font-size: 11px;
+      font-size: 10.5px;
       color: #69809c;
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    .ep-playing-tag { color: #75b0e6; font-weight: 700; }
 
-    /* Popup Modal */
+    /* Popup Modal (Audio, Speed, Overflow Menu, Watch Party) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1076,7 +1187,7 @@
     .modal-sheet {
       width: 100%;
       max-width: 390px;
-      max-height: 76dvh;
+      max-height: 78dvh;
       background: #121c2e;
       border: 1px solid rgba(139, 188, 232, 0.18);
       border-radius: 26px;
@@ -1115,11 +1226,11 @@
     }
 
     .modal-list {
-      padding: 10px;
+      padding: 12px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .modal-option {
@@ -1164,6 +1275,59 @@
     }
     .modal-option.selected .opt-check { display: inline-flex; }
 
+    /* Watch Party Controls inside Modal */
+    .party-code-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(91, 155, 213, 0.12);
+      border: 1px solid rgba(91, 155, 213, 0.28);
+      text-align: center;
+    }
+    .party-code-val {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      color: #edf2f8;
+    }
+    .party-input-row {
+      display: flex;
+      gap: 8px;
+    }
+    .party-input {
+      flex: 1;
+      height: 40px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(139, 188, 232, 0.2);
+      padding: 0 14px;
+      color: #ffffff;
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      outline: none;
+    }
+    .reaction-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .react-btn {
+      flex: 1;
+      height: 38px;
+      border-radius: 13px;
+      background: rgba(139, 188, 232, 0.09);
+      border: 1px solid rgba(139, 188, 232, 0.14);
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .react-btn:active { transform: scale(0.92); }
+
     .toast {
       position: fixed;
       bottom: 24px;
@@ -1192,12 +1356,12 @@
       .top-bar { padding: 10px 14px 6px; flex-wrap: wrap; gap: 8px; }
       .top-controls { flex-basis: 100%; justify-content: space-between; }
       .search-well { max-width: none; flex: 1; height: 36px; }
-      .morph-btn { height: 36px; padding: 0 12px; font-size: 12px; }
+      .morph-btn { height: 36px; padding: 0 11px; font-size: 11.5px; }
       .morph-btn.icon-sq { width: 36px; }
       .filter-bar { padding: 4px 14px 8px; gap: 7px; }
       .explorer-scroll { padding: 4px 14px 14px; }
       .files-grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }
-      .file-tile { padding: 10px; border-radius: 20px; }
+      .file-tile { padding: 9px; border-radius: 20px; }
       .hide-sm { display: none; }
       footer { padding: 6px 14px 8px; font-size: 10.5px; }
     }
@@ -1205,19 +1369,11 @@
     @media (max-width: 900px) and (orientation: portrait) {
       .player-screen:not(.fs-active) .player-header {
         padding: 8px 12px;
-        flex-wrap: wrap;
-        gap: 6px;
-        min-height: 0;
+        gap: 8px;
+        min-height: 46px;
       }
-      .player-screen:not(.fs-active) .player-title-wrap { flex-basis: 100%; }
-      .player-screen:not(.fs-active) .player-pills {
-        width: 100%;
-        justify-content: flex-start;
-        overflow-x: auto;
-        gap: 6px;
-      }
-      .player-screen:not(.fs-active) .player-pills::-webkit-scrollbar { display: none; }
-      .player-screen:not(.fs-active) .p-pill { height: 30px; padding: 0 11px; font-size: 11.5px; }
+      .player-screen:not(.fs-active) .p-pill { height: 30px; padding: 0 10px; font-size: 11.5px; }
+      .player-screen:not(.fs-active) .p-pill.icon-pill { width: 30px; padding: 0; }
 
       .player-screen:not(.fs-active) .player-workspace { flex-direction: column; }
       .player-screen:not(.fs-active) .player-main { flex: none; }
@@ -1248,6 +1404,7 @@
       .player-screen:not(.fs-active) .player-header { padding: 5px 12px; min-height: 40px; gap: 8px; }
       .player-screen:not(.fs-active) .player-name { font-size: 13px; }
       .player-screen:not(.fs-active) .p-pill { height: 28px; padding: 0 10px; font-size: 11px; }
+      .player-screen:not(.fs-active) .p-pill.icon-pill { width: 28px; padding: 0; }
       .player-screen:not(.fs-active) .player-workspace { flex-direction: row; }
       .player-screen:not(.fs-active) .player-controls { padding: 5px 12px 7px; gap: 4px; }
       .player-screen:not(.fs-active) .seek-area { height: 15px; }
@@ -1268,9 +1425,9 @@
       </div>
       <div class="brand-meta">
         <div class="brand-title">Dell G15 Movies</div>
-        <div class="host-pill-status">
-          <span class="status-dot off" id="globalLiveDot"></span>
-          <span id="globalHostStatus">Offline</span>
+        <div class="telemetry-strip" id="globalTelemetry">
+          <span class="status-dot off"></span>
+          <span class="mono">0 HOST</span>
         </div>
       </div>
     </div>
@@ -1281,7 +1438,12 @@
         <input type="text" id="searchInput" placeholder="Search..." oninput="handleSearchInput(this.value)">
       </div>
 
-      <div class="morph-btn icon-sq" id="btnView" role="button" tabindex="0" onclick="toggleViewMode()" title="Switch Grid / List">
+      <div class="morph-btn" id="btnPartyTop" role="button" tabindex="0" onclick="openWatchPartyModal()" title="Watch Party">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span id="partyTopLabel">Party</span>
+      </div>
+
+      <div class="morph-btn icon-sq" id="btnView" role="button" tabindex="0" onclick="toggleViewMode()" title="Switch View">
         <svg id="viewIconSvg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </div>
       <div class="morph-btn icon-sq" role="button" tabindex="0" onclick="refreshAllCatalog()" title="Refresh">
@@ -1302,14 +1464,14 @@
     <div class="select-filters">
       <div class="morph-select-wrap">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        <select id="deviceSelect" onchange="setHostFilter(this.value)" aria-label="Device Filter">
+        <select id="deviceSelect" onchange="setHostFilter(this.value)" aria-label="Device">
           <option value="ALL">All Devices</option>
         </select>
       </div>
 
       <div class="morph-select-wrap">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        <select id="sizeSelect" onchange="setSizeFilter(this.value)" aria-label="Size Filter">
+        <select id="sizeSelect" onchange="setSizeFilter(this.value)" aria-label="Size">
           <option value="ALL">Any Size</option>
           <option value="SMALL">&lt; 1 GB</option>
           <option value="MEDIUM">1 – 3 GB</option>
@@ -1323,26 +1485,34 @@
   <main class="explorer-scroll" id="explorerScroll"></main>
 
   <footer>
-    <span id="footerStats">0 items</span>
+    <div class="storage-meter">
+      <div class="storage-track"><div class="storage-fill" id="storageFillBar"></div></div>
+      <span class="mono" id="footerTelemetry">0 · 0 B</span>
+    </div>
     <span>© 2026 Sanchar Koirala</span>
   </footer>
 
   <!-- Cinema Player -->
   <div class="player-screen" id="playerScreen">
+    <!-- Decluttered Player Top Bar -->
     <div class="player-header">
       <div class="player-title-wrap">
         <div class="player-name" id="playerName">Video</div>
-        <div class="quality-badge" id="qualityBadge">HD · Auto</div>
+        <div class="quality-badge mono" id="qualityBadge">HD</div>
+        <div class="party-badge-pill mono" id="playerPartyPill" role="button" tabindex="0" onclick="openWatchPartyModal()">
+          <span class="status-dot"></span>
+          <span id="playerPartyCode">PARTY</span>
+        </div>
       </div>
 
       <div class="player-pills">
         <div class="p-pill" id="audioBtn" role="button" tabindex="0" onclick="openAudioPopup()" style="display:none;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
           <span id="audioBtnLabel">Audio</span>
         </div>
         <div class="p-pill" id="prevEpBtn" role="button" tabindex="0" onclick="playPrevEpisode()" style="display:none;">‹ Prev</div>
         <div class="p-pill" id="nextEpBtn" role="button" tabindex="0" onclick="playNextEpisode()" style="display:none;">Next ›</div>
-        <div class="p-pill steel-pill" role="button" tabindex="0" onclick="openExternalVLC()">VLC</div>
+        <div class="p-pill icon-pill" role="button" tabindex="0" onclick="openPlayerOverflowMenu()" title="More">•••</div>
         <div class="p-pill" role="button" tabindex="0" onclick="closePlayer()">Close</div>
       </div>
     </div>
@@ -1352,6 +1522,9 @@
         <div class="video-stage" id="videoStage" onclick="handleVideoStageTap(event)">
           <video id="videoEl" playsinline webkit-playsinline preload="auto"></video>
 
+          <!-- Floating Watch Party Reactions -->
+          <div class="reaction-layer" id="reactionLayer"></div>
+
           <!-- Exclusive Fullscreen Exit Button (Shown ONLY in Fullscreen Mode, toggled by tapping video screen) -->
           <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0" onclick="handleExitFullscreenClick(event)">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
@@ -1360,7 +1533,6 @@
 
           <div class="loader-box" id="loaderBox">
             <div class="loader-circle"></div>
-            <div class="loader-label" id="loaderLabel">Connecting...</div>
           </div>
         </div>
 
@@ -1384,7 +1556,7 @@
             <div class="ctrl-group">
               <div class="p-pill" id="speedBtn" role="button" tabindex="0" onclick="openSpeedPopup()">1x</div>
               <div class="vol-box">
-                <div class="vol-mute" id="muteBtn" role="button" tabindex="0" onclick="toggleMute()" title="Mute/Unmute">
+                <div class="vol-mute" id="muteBtn" role="button" tabindex="0" onclick="toggleMute()" title="Mute">
                   <svg id="volIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
                 </div>
                 <input type="range" class="vol-range" id="volRange" min="0" max="1" step="0.05" value="1" oninput="setVolume(this.value)">
@@ -1402,18 +1574,18 @@
       <aside class="episode-pane" id="episodePane">
         <div class="ep-pane-head">
           <div class="ep-pane-title" id="epPaneTitle">Episodes</div>
-          <div class="ep-pane-count" id="epPaneCount">1 / 1</div>
+          <div class="ep-pane-count mono" id="epPaneCount">1/1</div>
         </div>
         <div class="ep-list" id="epList"></div>
       </aside>
     </div>
   </div>
 
-  <!-- Popup Modal -->
+  <!-- Multi-Purpose Sheet Modal (Audio, Speed, Overflow, Watch Party) -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-head">
-        <div class="modal-title" id="modalTitle">Select</div>
+        <div class="modal-title" id="modalTitle">Menu</div>
         <div class="modal-close" role="button" tabindex="0" onclick="closeModal()">✕</div>
       </div>
       <div class="modal-list" id="modalList"></div>
@@ -1442,10 +1614,10 @@
   let latestLegacyObj = null;
 
   let allRootItems = [];
-  let typeFilter = 'ALL';     // 'ALL' | 'MOVIES' | 'SERIES'
-  let hostFilterId = 'ALL';   // 'ALL' | serverId
-  let sizeFilter = 'ALL';     // 'ALL' | 'SMALL' (<1GB) | 'MEDIUM' (1-3GB) | 'LARGE' (>3GB)
-  let viewMode = 'grid';      // 'grid' | 'list'
+  let typeFilter = 'ALL';
+  let hostFilterId = 'ALL';
+  let sizeFilter = 'ALL';
+  let viewMode = 'grid';
   let searchQuery = '';
 
   /* Active Series Folder State */
@@ -1469,6 +1641,16 @@
   let fsButtonVisible = true;
   let orientationLockedByPlayer = false;
 
+  /* Self-Cleaning Watch Party State */
+  const myPeerId = `p_${Math.random().toString(36).slice(2, 9)}`;
+  let partyRoomCode = null;
+  let partyRoomRef = null;
+  let partyMemberRef = null;
+  let partyMembersCount = 0;
+  let partyLastSeq = 0;
+  let suppressPartyBroadcast = false;
+  let partyDriftTimer = null;
+
   const SPEED_OPTIONS = [
     { value: 0.5, label: '0.5x', sub: 'Slow' },
     { value: 0.75, label: '0.75x', sub: 'Relaxed' },
@@ -1479,15 +1661,89 @@
   ];
 
   /* ============================================================
-     CODED PROCEDURAL THUMBNAIL GENERATOR (SVG ARTWORK)
+     SMART FILENAME PARSER (EXTRACTS CLEAN TITLE, YEAR, RES, CODEC, AUDIO)
      ============================================================ */
-  const THUMB_PALETTES = [
-    { c1: '#1a365d', c2: '#3b74a8', accent: '#90cdf4' },
-    { c1: '#10233c', c2: '#2f6394', accent: '#75b0e6' },
-    { c1: '#1e3a5f', c2: '#4a7c9b', accent: '#bee3f8' },
-    { c1: '#152c47', c2: '#36688d', accent: '#8bbce8' },
-    { c1: '#1c314e', c2: '#456990', accent: '#a3cef1' },
-    { c1: '#0f253e', c2: '#2c5e8a', accent: '#6aa9e3' }
+  function parseMediaMetadata(rawFilename, isFolder = false) {
+    const extMatch = !isFolder ? rawFilename.match(/\.([a-zA-Z0-9]{2,5})$/) : null;
+    const ext = extMatch ? extMatch[1].toUpperCase() : '';
+    let base = !isFolder ? rawFilename.replace(/\.[^/.]+$/, '') : rawFilename;
+
+    // Normalize dots, underscores, and bracket noise into spaces for parsing
+    let working = base.replace(/[._]+/g, ' ').replace(/\[[^\]]*\]/g, ' ').replace(/\s+/g, ' ').trim();
+
+    // Detect Season/Episode pattern (e.g., S01E04 or 1x04)
+    let seasonEp = '';
+    const seMatch = working.match(/\bS(\d{1,2})\s*E(\d{1,3})\b/i) || working.match(/\b(\d{1,2})x(\d{2})\b/i);
+    if (seMatch) {
+      seasonEp = `S${seMatch[1].padStart(2, '0')}·E${seMatch[2].padStart(2, '0')}`;
+    }
+
+    // Detect Resolution
+    let res = '';
+    if (/\b(2160p|4K|UHD)\b/i.test(working)) res = '4K';
+    else if (/\b1440p\b/i.test(working)) res = '2K';
+    else if (/\b1080p\b/i.test(working)) res = '1080p';
+    else if (/\b720p\b/i.test(working)) res = '720p';
+    else if (/\b480p\b/i.test(working)) res = '480p';
+
+    // Detect Codec / HDR
+    let codec = '';
+    if (/\b(HDR10|HDR|DV|Dolby\s*Vision)\b/i.test(working)) codec = 'HDR';
+    else if (/\b(HEVC|x265|H\s*265)\b/i.test(working)) codec = 'HEVC';
+
+    // Detect Audio Track Hint
+    let audioTag = '';
+    if (/\b(Dual\s*Audio|Multi\s*Audio)\b/i.test(working)) audioTag = 'DUAL';
+    else if (/\bHindi\b/i.test(working)) audioTag = 'HIN';
+    else if (/\bJapanese\b/i.test(working)) audioTag = 'JPN';
+    else if (/\bKorean\b/i.test(working)) audioTag = 'KOR';
+
+    // Detect Year (1930 - 2029)
+    let year = '';
+    const yearMatch = working.match(/\b(19[3-9]\d|20[0-2]\d)\b/);
+    if (yearMatch) {
+      year = yearMatch[1];
+    }
+
+    // Strip technical release tags to get crisp title
+    let stripped = working
+      .replace(/\b(2160p|1440p|1080p|720p|480p|4K|UHD|WEB-?DL|WEBRip|BluRay|BRRip|BDRip|HDRip|DVDRip|HDTV|CAMRip|CAM|TS|HEVC|x265|x264|H264|H265|10bit|10-bit|8bit|AAC|AC3|DTS|DDP5\s*1|DD5\s*1|Atmos|TrueHD|Dual\s*Audio|Multi\s*Audio|ESub|ESubs|YIFY|RARBG|PSA|EVO|FGT|SPARKS|AMIABLE|EXTENDED|REMASTERED|UNRATED|DIRECTORS\s*CUT)\b/gi, ' ')
+      .replace(/\(\s*\)/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    if (year) {
+      const withoutYear = stripped.replace(new RegExp(`\\(?\\b${year}\\b\\)?`, 'g'), ' ').replace(/\s+/g, ' ').trim();
+      if (withoutYear.length >= 2) {
+        stripped = withoutYear;
+      }
+    }
+
+    const cleanName = stripped.length >= 1 ? stripped : working;
+    const specs = [year, res, audioTag, codec].filter(Boolean);
+
+    return {
+      cleanName,
+      year,
+      res,
+      codec,
+      audioTag,
+      seasonEp,
+      ext,
+      specs
+    };
+  }
+
+  /* ============================================================
+     UPGRADED PROCEDURAL POSTERS (SERIES STACKS & MOVIE FRAMES)
+     ============================================================ */
+  const POSTER_PALETTES = [
+    { c1: '#162f4f', c2: '#356a9c', accent: '#90cdf4' },
+    { c1: '#10233c', c2: '#2b5b88', accent: '#75b0e6' },
+    { c1: '#1b3658', c2: '#42769c', accent: '#bee3f8' },
+    { c1: '#132842', c2: '#316085', accent: '#8bbce8' },
+    { c1: '#1a2f4b', c2: '#44688e', accent: '#a3cef1' },
+    { c1: '#0e2239', c2: '#275580', accent: '#6aa9e3' }
   ];
 
   function hashString(str) {
@@ -1507,45 +1763,68 @@
   }
 
   function buildCodedThumbnailSvg(item, epNumber = null) {
-    const seed = hashString(`${item.cleanName}_${item.serverName}`);
-    const pal = THUMB_PALETTES[seed % THUMB_PALETTES.length];
+    const meta = item.meta || parseMediaMetadata(item.name, item.type === 'folder');
+    const seed = hashString(`${meta.cleanName}_${item.serverName}`);
+    const pal = POSTER_PALETTES[seed % POSTER_PALETTES.length];
     const patternType = seed % 3;
     const isSeries = item.type === 'folder';
-    const mono = epNumber !== null ? `E${String(epNumber).padStart(2, '0')}` : getMonogram(item.cleanName);
-    const badgeLabel = epNumber !== null
-      ? `EP ${String(epNumber).padStart(2, '0')}`
-      : (isSeries ? `${item.count || 0} EP` : (item.ext || 'VIDEO'));
+    const mono = epNumber !== null ? `E${String(epNumber).padStart(2, '0')}` : getMonogram(meta.cleanName);
+
+    const topLeftBadge = epNumber !== null
+      ? (meta.seasonEp || `EP ${String(epNumber).padStart(2, '0')}`)
+      : (isSeries ? `${item.count || 0} EP` : (meta.res || meta.ext || 'HD'));
+
+    const topRightBadge = meta.year || (isSeries ? 'SERIES' : meta.ext);
+
+    // Watch progress bar at bottom of thumbnail
+    let progressPct = 0;
+    if (item.type === 'file') {
+      const prog = getSavedProgress(item.serverId, item.path);
+      if (prog && prog.pos > 10 && prog.dur > 0) {
+        progressPct = Math.min(100, Math.max(4, Math.round((prog.pos / prog.dur) * 100)));
+      }
+    }
 
     let motifSvg = '';
     if (patternType === 0) {
       motifSvg = `
-        <circle cx="245" cy="24" r="78" fill="none" stroke="${pal.accent}" stroke-opacity="0.14" stroke-width="14"/>
-        <circle cx="245" cy="24" r="46" fill="none" stroke="${pal.accent}" stroke-opacity="0.18" stroke-width="6"/>
+        <circle cx="255" cy="22" r="82" fill="none" stroke="${pal.accent}" stroke-opacity="0.14" stroke-width="14"/>
+        <circle cx="255" cy="22" r="46" fill="none" stroke="${pal.accent}" stroke-opacity="0.18" stroke-width="5"/>
       `;
     } else if (patternType === 1) {
       motifSvg = `
-        <path d="M-20 140 Q 90 60, 180 120 T 340 70 L 340 200 L -20 200 Z" fill="${pal.accent}" fill-opacity="0.11"/>
-        <path d="M-20 165 Q 110 95, 210 145 T 340 105 L 340 200 L -20 200 Z" fill="${pal.accent}" fill-opacity="0.09"/>
+        <path d="M-20 142 Q 95 58, 185 118 T 340 68 L 340 200 L -20 200 Z" fill="${pal.accent}" fill-opacity="0.12"/>
+        <path d="M-20 166 Q 115 96, 215 144 T 340 104 L 340 200 L -20 200 Z" fill="${pal.accent}" fill-opacity="0.09"/>
       `;
     } else {
       motifSvg = `
-        <rect x="195" y="-18" width="120" height="120" rx="28" transform="rotate(22 195 -18)" fill="${pal.accent}" fill-opacity="0.1"/>
-        <rect x="220" y="18" width="95" height="95" rx="22" transform="rotate(22 220 18)" fill="none" stroke="${pal.accent}" stroke-opacity="0.18" stroke-width="2"/>
+        <rect x="200" y="-20" width="122" height="122" rx="28" transform="rotate(22 200 -20)" fill="${pal.accent}" fill-opacity="0.1"/>
+        <rect x="225" y="16" width="96" height="96" rx="22" transform="rotate(22 225 16)" fill="none" stroke="${pal.accent}" stroke-opacity="0.2" stroke-width="2"/>
       `;
     }
 
-    const centerGlyph = isSeries
+    // Distinct visual silhouette: Layered iOS/One UI Folder Stack for Series vs Cinema Play Disc for Movies
+    const centerArtwork = isSeries
       ? `
-        <rect x="122" y="54" width="76" height="54" rx="14" fill="#ffffff" fill-opacity="0.14"/>
-        <path d="M126 66 C126 60 130 56 136 56 L151 56 L157 63 L184 63 C190 63 194 67 194 73 L194 102 C194 108 190 112 184 112 L136 112 C130 112 126 108 126 102 Z" fill="#ffffff" fill-opacity="0.92"/>
+        <rect x="128" y="48" width="64" height="14" rx="6" fill="#ffffff" fill-opacity="0.24"/>
+        <rect x="122" y="54" width="76" height="16" rx="7" fill="#ffffff" fill-opacity="0.38"/>
+        <path d="M116 70 C116 64 120 60 126 60 L145 60 L152 67 L194 67 C200 67 204 71 204 77 L204 112 C204 118 200 122 194 122 L126 122 C120 122 116 118 116 112 Z" fill="#ffffff" fill-opacity="0.94"/>
+        <polygon points="154,84 171,94 154,104" fill="${pal.c1}"/>
       `
       : `
-        <circle cx="160" cy="84" r="26" fill="#ffffff" fill-opacity="0.18"/>
-        <circle cx="160" cy="84" r="20" fill="#ffffff" fill-opacity="0.94"/>
-        <polygon points="155,75 170,84 155,93" fill="${pal.c1}"/>
+        <circle cx="160" cy="88" r="27" fill="#ffffff" fill-opacity="0.18"/>
+        <circle cx="160" cy="88" r="20" fill="#ffffff" fill-opacity="0.95"/>
+        <polygon points="155,79 170,88 155,97" fill="${pal.c1}"/>
       `;
 
-    const gradId = `tg_${seed}`;
+    const progressBarSvg = progressPct > 0
+      ? `
+        <rect x="0" y="174" width="320" height="6" fill="#070b14" fill-opacity="0.65"/>
+        <rect x="0" y="174" width="${Math.round((progressPct / 100) * 320)}" height="6" fill="#75b0e6"/>
+      `
+      : '';
+
+    const gradId = `pg_${seed}`;
     return `
       <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -1556,12 +1835,37 @@
         </defs>
         <rect width="320" height="180" fill="url(#${gradId})"/>
         ${motifSvg}
-        <text x="18" y="160" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900" fill="#ffffff" fill-opacity="0.12" letter-spacing="-1">${escapeHtml(mono)}</text>
-        ${centerGlyph}
-        <rect x="14" y="14" width="66" height="24" rx="9" fill="#0c1320" fill-opacity="0.52"/>
-        <text x="47" y="30" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" fill="#edf2f8" letter-spacing="0.4">${escapeHtml(badgeLabel)}</text>
+        <text x="16" y="158" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="44" font-weight="900" fill="#ffffff" fill-opacity="0.12" letter-spacing="-1">${escapeHtml(mono)}</text>
+        ${centerArtwork}
+        <rect x="13" y="13" width="66" height="23" rx="8" fill="#0c1320" fill-opacity="0.54"/>
+        <text x="46" y="28.5" text-anchor="middle" font-family="ui-monospace, Consolas, sans-serif" font-size="11" font-weight="800" fill="#edf2f8">${escapeHtml(topLeftBadge)}</text>
+        ${topRightBadge ? `
+          <rect x="245" y="13" width="62" height="23" rx="8" fill="#0c1320" fill-opacity="0.42"/>
+          <text x="276" y="28.5" text-anchor="middle" font-family="ui-monospace, Consolas, sans-serif" font-size="10.5" font-weight="800" fill="#bee3f8">${escapeHtml(topRightBadge)}</text>
+        ` : ''}
+        ${progressBarSvg}
       </svg>
     `;
+  }
+
+  /* ============================================================
+     SIGNAL BARS & BYTE FORMATTING HELPERS
+     ============================================================ */
+  function renderSignalBarsHtml(latencyMs) {
+    let cls = 's3';
+    if (typeof latencyMs === 'number') {
+      if (latencyMs > 1200) cls = 's1';
+      else if (latencyMs > 450) cls = 's2';
+    }
+    return `<span class="sig-bars ${cls}" title="${latencyMs ? latencyMs + ' ms' : 'Live'}"><i></i><i></i><i></i></span>`;
+  }
+
+  function formatCompactBytes(bytes) {
+    if (!bytes || bytes <= 0) return '0 B';
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.min(units.length - 1, Math.floor(Math.log(bytes) / Math.log(1024)));
+    const val = bytes / Math.pow(1024, i);
+    return `${val >= 100 || i === 0 ? Math.round(val) : val.toFixed(1)} ${units[i]}`;
   }
 
   /* ============================================================
@@ -1653,10 +1957,8 @@
     t._timer = setTimeout(() => t.classList.remove('show'), 2300);
   }
 
-  function setLoader(show, text = 'Buffering...') {
-    const box = document.getElementById('loaderBox');
-    document.getElementById('loaderLabel').textContent = text;
-    box.classList.toggle('show', show);
+  function setLoader(show) {
+    document.getElementById('loaderBox').classList.toggle('show', show);
   }
 
   async function apiFetchFromServer(serverUrl, endpoint) {
@@ -1674,8 +1976,12 @@
     serverTimeOffsetMs = snap.val() || 0;
   });
 
+  function getServerNowMs() {
+    return Date.now() + serverTimeOffsetMs;
+  }
+
   function reconcileServers() {
-    const nowSec = Math.floor((Date.now() + serverTimeOffsetMs) / 1000);
+    const nowSec = Math.floor(getServerNowMs() / 1000);
     const list = [];
 
     if (latestServersObj && typeof latestServersObj === 'object') {
@@ -1685,10 +1991,12 @@
         if (!cleanUrl) return;
         const lastSeen = Number(srv.lastSeen || 0);
         if (lastSeen > 0 && (nowSec - lastSeen) > 85) return;
+        const existing = onlineServers.find(s => s.id === (srv.id || key));
         list.push({
           id: srv.id || key,
           name: srv.name || key,
-          url: cleanUrl
+          url: cleanUrl,
+          latencyMs: existing ? existing.latencyMs : 180
         });
       });
     }
@@ -1696,10 +2004,12 @@
     if (list.length === 0 && latestLegacyObj && latestLegacyObj.url) {
       const cleanLegacy = String(latestLegacyObj.url).trim().replace(/\/+$/, '');
       if (cleanLegacy) {
+        const existing = onlineServers.find(s => s.id === 'default-host');
         list.push({
           id: 'default-host',
           name: 'DELL-G15',
-          url: cleanLegacy
+          url: cleanLegacy,
+          latencyMs: existing ? existing.latencyMs : 180
         });
       }
     }
@@ -1711,25 +2021,32 @@
     onlineServers = list;
 
     updateDeviceDropdown();
+    updateGlobalTelemetry();
 
-    const dot = document.getElementById('globalLiveDot');
-    const status = document.getElementById('globalHostStatus');
     if (onlineServers.length === 0) {
-      dot.classList.add('off');
-      status.textContent = 'Offline';
       allRootItems = [];
       renderExplorer();
       return;
     }
 
-    dot.classList.remove('off');
-    status.textContent = onlineServers.length === 1
-      ? onlineServers[0].name
-      : `${onlineServers.length} Devices Online`;
-
     if (prevSignature !== nextSignature) {
       fetchAllCatalog();
     }
+  }
+
+  function updateGlobalTelemetry() {
+    const el = document.getElementById('globalTelemetry');
+    if (onlineServers.length === 0) {
+      el.innerHTML = `<span class="status-dot off"></span><span class="mono">0 HOST</span>`;
+      return;
+    }
+    const avgLatency = Math.round(onlineServers.reduce((sum, s) => sum + (s.latencyMs || 200), 0) / onlineServers.length);
+    const label = onlineServers.length === 1 ? onlineServers[0].name : `${onlineServers.length} HOSTS`;
+    el.innerHTML = `
+      <span class="status-dot"></span>
+      <span>${escapeHtml(label)}</span>
+      ${renderSignalBarsHtml(avgLatency)}
+    `;
   }
 
   function updateDeviceDropdown() {
@@ -1777,21 +2094,30 @@
     const results = await Promise.all(
       onlineServers.map(async (srv) => {
         try {
+          const t0 = performance.now();
           const data = await apiFetchFromServer(srv.url, '/api/list?path=');
-          return (data.items || []).map(item => ({
-            ...item,
-            cleanName: cleanTitle(item.name),
-            bytes: parseItemBytes(item),
-            serverId: srv.id,
-            serverName: srv.name,
-            serverUrl: srv.url
-          }));
+          srv.latencyMs = Math.max(25, Math.round(performance.now() - t0));
+          return (data.items || []).map(item => {
+            const meta = parseMediaMetadata(item.name, item.type === 'folder');
+            return {
+              ...item,
+              meta,
+              cleanName: meta.cleanName,
+              bytes: parseItemBytes(item),
+              serverId: srv.id,
+              serverName: srv.name,
+              serverUrl: srv.url,
+              serverLatency: srv.latencyMs
+            };
+          });
         } catch (e) {
+          srv.latencyMs = 1800;
           return [];
         }
       })
     );
 
+    updateGlobalTelemetry();
     const merged = results.flat();
     merged.sort((a, b) => a.cleanName.localeCompare(b.cleanName, undefined, { numeric: true, sensitivity: 'base' }));
     allRootItems = merged;
@@ -1865,21 +2191,26 @@
   async function openSeriesFolder(seriesItem, scrollTop = true) {
     activeSeriesFolder = seriesItem;
     const container = document.getElementById('explorerScroll');
-    container.innerHTML = `<div class="empty-card"><h3>Loading...</h3><p>${escapeHtml(seriesItem.cleanName)}</p></div>`;
+    container.innerHTML = `<div class="empty-card"><h3>Loading</h3><p>${escapeHtml(seriesItem.cleanName)}</p></div>`;
 
     try {
       const data = await apiFetchFromServer(seriesItem.serverUrl, `/api/list?path=${encodeURIComponent(seriesItem.path)}`);
       const raw = (data.items || []).filter(i => i.type === 'file');
       raw.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
-      activeSeriesEpisodes = raw.map(ep => ({
-        ...ep,
-        cleanName: cleanTitle(ep.name),
-        bytes: parseItemBytes(ep),
-        serverId: seriesItem.serverId,
-        serverName: seriesItem.serverName,
-        serverUrl: seriesItem.serverUrl
-      }));
+      activeSeriesEpisodes = raw.map(ep => {
+        const meta = parseMediaMetadata(ep.name, false);
+        return {
+          ...ep,
+          meta,
+          cleanName: meta.cleanName,
+          bytes: parseItemBytes(ep),
+          serverId: seriesItem.serverId,
+          serverName: seriesItem.serverName,
+          serverUrl: seriesItem.serverUrl,
+          serverLatency: seriesItem.serverLatency
+        };
+      });
 
       renderExplorer();
       if (scrollTop) container.scrollTop = 0;
@@ -1887,7 +2218,7 @@
       container.innerHTML = `
         <div class="empty-card">
           <h3>Host Offline</h3>
-          <p>${escapeHtml(seriesItem.serverName)} could not be reached.</p>
+          <p>${escapeHtml(seriesItem.serverName)}</p>
           <div class="morph-btn" role="button" tabindex="0" onclick="returnToRoot()">Back</div>
         </div>
       `;
@@ -1901,12 +2232,8 @@
   }
 
   /* ============================================================
-     RENDER EXPLORER: SEPARATED SERIES & MOVIES SECTIONS
+     RENDER EXPLORER: SEPARATED SERIES & MOVIES + TACTILE INDICATORS
      ============================================================ */
-  function cleanTitle(filename) {
-    return filename.replace(/\.[^/.]+$/, '').replace(/[._]+/g, ' ').trim();
-  }
-
   function progressKey(serverId, path) {
     return `g15_prog_${serverId || 'host'}_${path}`;
   }
@@ -1919,14 +2246,25 @@
     }
   }
 
+  function updateFooterTelemetry(items) {
+    const totalBytes = items.reduce((acc, it) => acc + (it.bytes || 0), 0);
+    document.getElementById('footerTelemetry').textContent = `${items.length} · ${formatCompactBytes(totalBytes)}`;
+    const pct = items.length === 0 ? 0 : Math.min(100, Math.max(12, Math.round((totalBytes / (50 * (1024 ** 3))) * 100)));
+    document.getElementById('storageFillBar').style.width = `${pct}%`;
+  }
+
   function renderItemCollection(items, clickFnName, isEpisodeList = false) {
     if (viewMode === 'grid') {
       return `
         <div class="files-grid">
           ${items.map((item, idx) => {
             const epNum = isEpisodeList ? (activeSeriesEpisodes.indexOf(item) + 1) : null;
-            const prog = item.type === 'file' ? getSavedProgress(item.serverId, item.path) : null;
-            const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-tag">${formatClock(prog.pos)}</span>` : '';
+            const meta = item.meta || parseMediaMetadata(item.name, item.type === 'folder');
+            const specPills = meta.specs.slice(0, 3).map(sp => `<span class="spec-pill mono">${escapeHtml(sp)}</span>`).join('');
+            const fileBadge = item.type === 'folder'
+              ? `${item.count || 0} EP · ${item.sizeLabel}`
+              : `${meta.ext || 'VID'} · ${item.sizeLabel}`;
+
             return `
               <div class="file-tile" role="button" tabindex="0" onclick="${clickFnName}(${idx})">
                 <div class="thumb-frame">
@@ -1934,9 +2272,10 @@
                 </div>
                 <div class="tile-body">
                   <div class="tile-name" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
+                  ${specPills ? `<div class="tile-tags">${specPills}</div>` : ''}
                   <div class="tile-meta">
-                    <span class="host-tag">${escapeHtml(item.serverName)}</span>
-                    <span>${resumeHtml ? `${resumeHtml} · ` : ''}${escapeHtml(item.sizeLabel)}</span>
+                    <span class="host-tag">${renderSignalBarsHtml(item.serverLatency)}<span>${escapeHtml(item.serverName)}</span></span>
+                    <span class="mono">${escapeHtml(fileBadge)}</span>
                   </div>
                 </div>
               </div>
@@ -1950,8 +2289,12 @@
       <div class="oneui-list-card">
         ${items.map((item, idx) => {
           const epNum = isEpisodeList ? (activeSeriesEpisodes.indexOf(item) + 1) : null;
-          const prog = item.type === 'file' ? getSavedProgress(item.serverId, item.path) : null;
-          const resumeHtml = prog && prog.pos > 15 ? `<span class="resume-tag">Resume ${formatClock(prog.pos)}</span><span>•</span>` : '';
+          const meta = item.meta || parseMediaMetadata(item.name, item.type === 'folder');
+          const specPills = meta.specs.slice(0, 3).map(sp => `<span class="spec-pill mono">${escapeHtml(sp)}</span>`).join('');
+          const fileBadge = item.type === 'folder'
+            ? `${item.count || 0} EP · ${item.sizeLabel}`
+            : `${meta.ext || 'VID'} · ${item.sizeLabel}`;
+
           return `
             <div class="oneui-row" role="button" tabindex="0" onclick="${clickFnName}(${idx})">
               <div class="row-thumb">
@@ -1960,11 +2303,9 @@
               <div class="row-info">
                 <div class="row-name" title="${escapeHtml(item.name)}">${escapeHtml(item.cleanName)}</div>
                 <div class="row-sub">
-                  <span class="host-tag">${escapeHtml(item.serverName)}</span>
-                  ${resumeHtml}
-                  <span>${escapeHtml(item.sizeLabel)}</span>
-                  <span class="hide-sm">•</span>
-                  <span class="hide-sm">${escapeHtml(item.modified)}</span>
+                  <span class="host-tag">${renderSignalBarsHtml(item.serverLatency)}<span>${escapeHtml(item.serverName)}</span></span>
+                  ${specPills}
+                  <span class="mono">${escapeHtml(fileBadge)}</span>
                 </div>
               </div>
               <div class="row-chevron">${item.type === 'folder' ? '›' : '▶'}</div>
@@ -1981,11 +2322,11 @@
 
     if (onlineServers.length === 0) {
       filterBar.style.display = 'none';
-      document.getElementById('footerStats').textContent = 'Offline';
+      updateFooterTelemetry([]);
       container.innerHTML = `
         <div class="empty-card">
-          <h3>No Devices Online</h3>
-          <p>Launch MyFilesServer.exe on Windows to share movies and series here.</p>
+          <h3>No Hosts Online</h3>
+          <p>Run MyFilesServer.exe on Windows to share movies and series here.</p>
           <div class="morph-btn" role="button" tabindex="0" onclick="refreshAllCatalog()">Retry</div>
         </div>
       `;
@@ -1998,13 +2339,12 @@
     if (activeSeriesFolder) {
       const s = activeSeriesFolder;
       const filteredEps = activeSeriesEpisodes.filter(ep => {
-        if (searchQuery && !ep.cleanName.toLowerCase().includes(searchQuery)) return false;
+        if (searchQuery && !ep.cleanName.toLowerCase().includes(searchQuery) && !ep.name.toLowerCase().includes(searchQuery)) return false;
         if (!matchesSizeFilter(ep.bytes)) return false;
         return true;
       });
       window._visibleEpisodes = filteredEps;
-
-      document.getElementById('footerStats').textContent = `${filteredEps.length} ${filteredEps.length === 1 ? 'Episode' : 'Episodes'}`;
+      updateFooterTelemetry(filteredEps);
 
       let html = `
         <div class="series-head-card">
@@ -2014,21 +2354,19 @@
             <div style="min-width:0;">
               <div class="section-heading" style="font-size:16px;">${escapeHtml(s.cleanName)}</div>
               <div class="row-sub" style="margin-top:5px;">
-                <span class="host-tag">${escapeHtml(s.serverName)}</span>
-                <span>${activeSeriesEpisodes.length} Episodes</span>
-                <span>•</span>
-                <span>${escapeHtml(s.sizeLabel)}</span>
+                <span class="host-tag">${renderSignalBarsHtml(s.serverLatency)}<span>${escapeHtml(s.serverName)}</span></span>
+                <span class="mono">${activeSeriesEpisodes.length} EP · ${escapeHtml(s.sizeLabel)}</span>
               </div>
             </div>
           </div>
           ${activeSeriesEpisodes.length > 0 ? `
-            <div class="morph-btn accent" role="button" tabindex="0" onclick="launchSeriesEpisodeByRealIndex(0)">▶ Play Ep 1</div>
+            <div class="morph-btn accent" role="button" tabindex="0" onclick="launchSeriesEpisodeByRealIndex(0)">▶ Play</div>
           ` : ''}
         </div>
       `;
 
       if (filteredEps.length === 0) {
-        html += `<div class="empty-card"><h3>No Episodes</h3><p>No episodes match the current filter.</p></div>`;
+        html += `<div class="empty-card"><h3>Empty</h3><p>No matching episodes.</p></div>`;
       } else {
         html += renderItemCollection(filteredEps, 'handleVisibleEpisodeClick', true);
       }
@@ -2039,7 +2377,7 @@
     // 2. Root Explorer: Separated Series & Movies across all devices
     const matching = allRootItems.filter(item => {
       if (hostFilterId !== 'ALL' && item.serverId !== hostFilterId) return false;
-      if (searchQuery && !item.cleanName.toLowerCase().includes(searchQuery) && !item.serverName.toLowerCase().includes(searchQuery)) return false;
+      if (searchQuery && !item.cleanName.toLowerCase().includes(searchQuery) && !item.name.toLowerCase().includes(searchQuery) && !item.serverName.toLowerCase().includes(searchQuery)) return false;
       if (!matchesSizeFilter(item.bytes)) return false;
       return true;
     });
@@ -2053,11 +2391,14 @@
     const showSeries = (typeFilter === 'ALL' || typeFilter === 'SERIES');
     const showMovies = (typeFilter === 'ALL' || typeFilter === 'MOVIES');
 
-    const visibleCount = (showSeries ? seriesList.length : 0) + (showMovies ? moviesList.length : 0);
-    document.getElementById('footerStats').textContent = `${visibleCount} ${visibleCount === 1 ? 'item' : 'items'}`;
+    const visibleItems = [
+      ...(showSeries ? seriesList : []),
+      ...(showMovies ? moviesList : [])
+    ];
+    updateFooterTelemetry(visibleItems);
 
-    if (visibleCount === 0) {
-      container.innerHTML = `<div class="empty-card"><h3>No Items Found</h3><p>Adjust your search or filter criteria.</p></div>`;
+    if (visibleItems.length === 0) {
+      container.innerHTML = `<div class="empty-card"><h3>No Matches</h3><p>Adjust search or filter selection.</p></div>`;
       return;
     }
 
@@ -2069,7 +2410,7 @@
           <div class="section-header">
             <div class="section-title-group">
               <span class="section-heading">Series</span>
-              <span class="count-badge">${seriesList.length}</span>
+              <span class="count-badge mono">${seriesList.length}</span>
             </div>
           </div>
           ${renderItemCollection(seriesList, 'handleSeriesClick', false)}
@@ -2083,7 +2424,7 @@
           <div class="section-header">
             <div class="section-title-group">
               <span class="section-heading">Movies</span>
-              <span class="count-badge">${moviesList.length}</span>
+              <span class="count-badge mono">${moviesList.length}</span>
             </div>
           </div>
           ${renderItemCollection(moviesList, 'handleMovieClick', false)}
@@ -2120,6 +2461,363 @@
   }
 
   /* ============================================================
+     SELF-CLEANING SYNCHRONIZED WATCH PARTY ROOMS (FIREBASE RTDB)
+     ============================================================ */
+  function generateRoomCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < 4; i++) {
+      code += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return code;
+  }
+
+  function updatePartyBadgesUI() {
+    const active = Boolean(partyRoomCode);
+    const topBtn = document.getElementById('btnPartyTop');
+    const topLbl = document.getElementById('partyTopLabel');
+    const playerPill = document.getElementById('playerPartyPill');
+    const playerCode = document.getElementById('playerPartyCode');
+
+    topBtn.classList.toggle('party-live', active);
+    topLbl.textContent = active ? `${partyRoomCode} (${Math.max(1, partyMembersCount)})` : 'Party';
+
+    playerPill.classList.toggle('show', active);
+    if (active) {
+      playerCode.textContent = `${partyRoomCode} · ${Math.max(1, partyMembersCount)}`;
+    }
+  }
+
+  async function createWatchParty() {
+    if (partyRoomCode) await leaveWatchParty(true);
+    const code = generateRoomCode();
+    await connectToWatchParty(code, true);
+    showToast(`Party ${code} created`);
+    openWatchPartyModal();
+  }
+
+  async function joinWatchPartyFromInput() {
+    const inp = document.getElementById('partyCodeInput');
+    if (!inp) return;
+    const code = inp.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (code.length < 3) {
+      showToast('Enter room code');
+      return;
+    }
+    if (partyRoomCode === code) {
+      openWatchPartyModal();
+      return;
+    }
+    if (partyRoomCode) await leaveWatchParty(true);
+
+    const snap = await db.ref(`watch-parties/${code}`).once('value');
+    if (!snap.exists()) {
+      showToast('Room not found');
+      return;
+    }
+    await connectToWatchParty(code, false);
+    closeModal();
+    showToast(`Joined ${code}`);
+  }
+
+  async function connectToWatchParty(code, isCreator) {
+    partyRoomCode = code;
+    partyLastSeq = 0;
+    partyRoomRef = db.ref(`watch-parties/${code}`);
+    partyMemberRef = partyRoomRef.child(`members/${myPeerId}`);
+
+    // Guarantee server-side removal of this member on tab close or network drop
+    await partyMemberRef.onDisconnect().remove();
+    await partyMemberRef.set({
+      joinedAt: firebase.database.ServerValue.TIMESTAMP,
+      creator: isCreator
+    });
+
+    if (isCreator) {
+      await partyRoomRef.child('createdAt').set(firebase.database.ServerValue.TIMESTAMP);
+      // If creator is alone in the room, server-side onDisconnect deletes the entire room
+      await partyRoomRef.onDisconnect().remove();
+      if (activeMedia) {
+        broadcastPartyState(true);
+      }
+    }
+
+    // Monitor room membership to dynamically arm/disarm full-room onDisconnect cleanup
+    partyRoomRef.child('members').on('value', (snap) => {
+      if (!partyRoomCode || partyRoomCode !== code) return;
+      const members = snap.val() || {};
+      const ids = Object.keys(members);
+      partyMembersCount = ids.length;
+      updatePartyBadgesUI();
+
+      if (partyMembersCount === 0) {
+        partyRoomRef.remove().catch(() => {});
+        return;
+      }
+
+      if (partyMembersCount === 1 && ids[0] === myPeerId) {
+        // Sole remaining member -> arm room-level onDisconnect so room vanishes when they leave
+        partyRoomRef.onDisconnect().remove().catch(() => {});
+      } else {
+        // Multiple members active -> cancel room-level onDisconnect so one person leaving doesn't kill the room
+        partyRoomRef.onDisconnect().cancel().catch(() => {});
+      }
+    });
+
+    // Listen to synchronized playback state changes
+    partyRoomRef.child('state').on('value', (snap) => {
+      if (!partyRoomCode || partyRoomCode !== code) return;
+      const st = snap.val();
+      if (!st || !st.path) return;
+      if (st.updatedBy === myPeerId) return;
+      if (st.seq && st.seq <= partyLastSeq) return;
+      partyLastSeq = st.seq || (partyLastSeq + 1);
+      applyRemotePartyState(st);
+    });
+
+    // Listen to transient live reactions
+    partyRoomRef.child('reaction').on('value', (snap) => {
+      const rx = snap.val();
+      if (!rx || !rx.emoji || rx.by === myPeerId) return;
+      spawnFloatingReaction(rx.emoji);
+    });
+
+    // Periodic drift check (every 4s) for guests
+    clearInterval(partyDriftTimer);
+    partyDriftTimer = setInterval(checkPartyDrift, 4000);
+    updatePartyBadgesUI();
+  }
+
+  async function leaveWatchParty(silent = false) {
+    clearInterval(partyDriftTimer);
+    partyDriftTimer = null;
+
+    if (partyRoomRef) {
+      const refToClean = partyRoomRef;
+      const memToClean = partyMemberRef;
+      const wasLast = partyMembersCount <= 1;
+
+      refToClean.child('members').off();
+      refToClean.child('state').off();
+      refToClean.child('reaction').off();
+
+      try {
+        await refToClean.onDisconnect().cancel();
+        if (memToClean) {
+          await memToClean.onDisconnect().cancel();
+          await memToClean.remove();
+        }
+        if (wasLast) {
+          await refToClean.remove();
+        }
+      } catch (e) {}
+    }
+
+    partyRoomCode = null;
+    partyRoomRef = null;
+    partyMemberRef = null;
+    partyMembersCount = 0;
+    partyLastSeq = 0;
+    updatePartyBadgesUI();
+    if (!silent) {
+      closeModal();
+      showToast('Left party');
+    }
+  }
+
+  function broadcastPartyState(forceImmediate = false) {
+    if (!partyRoomCode || !partyRoomRef || !activeMedia || suppressPartyBroadcast) return;
+    const now = getServerNowMs();
+    const curPos = streamOffsetSec + (videoEl.currentTime || 0);
+    const nextSeq = (partyLastSeq || 0) + 1;
+    partyLastSeq = nextSeq;
+
+    partyRoomRef.child('state').set({
+      serverId: activeMedia.serverId,
+      serverName: activeMedia.serverName,
+      path: activeMedia.path,
+      name: activeMedia.name,
+      cleanName: activeMedia.cleanName,
+      ext: activeMedia.ext || '',
+      sizeLabel: activeMedia.sizeLabel || '',
+      type: 'file',
+      playing: !videoEl.paused,
+      position: Number(curPos.toFixed(2)),
+      updatedAt: now,
+      updatedBy: myPeerId,
+      seq: nextSeq
+    }).catch(() => {});
+  }
+
+  async function applyRemotePartyState(st) {
+    const srv = onlineServers.find(s => s.id === st.serverId) || onlineServers.find(s => s.name === st.serverName);
+    if (!srv) {
+      showToast(`Host ${st.serverName || ''} offline`);
+      return;
+    }
+
+    const elapsedSec = st.playing ? Math.max(0, (getServerNowMs() - (st.updatedAt || getServerNowMs())) / 1000) : 0;
+    const targetPos = Math.max(0, (st.position || 0) + elapsedSec);
+
+    const isSameVideo = activeMedia && activeMedia.path === st.path && activeMedia.serverId === srv.id;
+
+    suppressPartyBroadcast = true;
+    try {
+      if (!isSameVideo) {
+        const meta = parseMediaMetadata(st.name || st.cleanName, false);
+        const mediaObj = {
+          name: st.name || st.cleanName,
+          cleanName: st.cleanName || meta.cleanName,
+          meta,
+          path: st.path,
+          ext: st.ext || meta.ext,
+          sizeLabel: st.sizeLabel || '',
+          type: 'file',
+          serverId: srv.id,
+          serverName: srv.name,
+          serverUrl: srv.url,
+          serverLatency: srv.latencyMs
+        };
+        activePlayerList = [mediaObj];
+        await openMediaAtIndex(0, false, true, Math.floor(targetPos));
+        if (!st.playing) {
+          videoEl.pause();
+        }
+      } else {
+        const localPos = streamOffsetSec + (videoEl.currentTime || 0);
+        if (Math.abs(localPos - targetPos) > 2.5) {
+          jumpToPosition(targetPos);
+        }
+        if (st.playing && videoEl.paused) {
+          videoEl.play().catch(() => {});
+        } else if (!st.playing && !videoEl.paused) {
+          videoEl.pause();
+        }
+      }
+    } finally {
+      setTimeout(() => { suppressPartyBroadcast = false; }, 450);
+    }
+  }
+
+  function checkPartyDrift() {
+    if (!partyRoomCode || !partyRoomRef || !activeMedia || suppressPartyBroadcast) return;
+    partyRoomRef.child('state').once('value', (snap) => {
+      const st = snap.val();
+      if (!st || st.updatedBy === myPeerId || st.path !== activeMedia.path) return;
+      if (!st.playing || videoEl.paused) return;
+      const elapsed = Math.max(0, (getServerNowMs() - (st.updatedAt || getServerNowMs())) / 1000);
+      const expected = (st.position || 0) + elapsed;
+      const actual = streamOffsetSec + (videoEl.currentTime || 0);
+      if (Math.abs(actual - expected) > 3.8) {
+        suppressPartyBroadcast = true;
+        jumpToPosition(expected);
+        setTimeout(() => { suppressPartyBroadcast = false; }, 600);
+      }
+    });
+  }
+
+  function sendPartyReaction(emoji) {
+    spawnFloatingReaction(emoji);
+    if (!partyRoomCode || !partyRoomRef) return;
+    const rxRef = partyRoomRef.child('reaction');
+    rxRef.onDisconnect().remove().catch(() => {});
+    rxRef.set({
+      emoji,
+      by: myPeerId,
+      ts: getServerNowMs()
+    }).catch(() => {});
+  }
+
+  function spawnFloatingReaction(emoji) {
+    const layer = document.getElementById('reactionLayer');
+    if (!layer) return;
+    const el = document.createElement('div');
+    el.className = 'float-emoji';
+    el.textContent = emoji;
+    el.style.left = `${18 + Math.random() * 64}%`;
+    layer.appendChild(el);
+    setTimeout(() => el.remove(), 2150);
+  }
+
+  function copyPartyLink() {
+    if (!partyRoomCode) return;
+    const url = `${window.location.origin}${window.location.pathname}?party=${partyRoomCode}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => showToast('Link copied')).catch(() => showToast(`Code: ${partyRoomCode}`));
+    } else {
+      showToast(`Code: ${partyRoomCode}`);
+    }
+  }
+
+  function openWatchPartyModal() {
+    document.getElementById('modalTitle').textContent = 'Watch Party';
+    const list = document.getElementById('modalList');
+
+    if (partyRoomCode) {
+      list.innerHTML = `
+        <div class="party-code-box">
+          <div class="opt-sub" style="margin-bottom:4px;">ROOM CODE · ${Math.max(1, partyMembersCount)} CONNECTED</div>
+          <div class="party-code-val">${escapeHtml(partyRoomCode)}</div>
+        </div>
+        <div class="reaction-bar">
+          ${['🔥', '😂', '😮', '👏', '❤️'].map(em => `
+            <div class="react-btn" role="button" tabindex="0" onclick="sendPartyReaction('${em}')">${em}</div>
+          `).join('')}
+        </div>
+        <div class="modal-option" role="button" tabindex="0" onclick="copyPartyLink()">
+          <div class="opt-main">
+            <div class="opt-title">Copy Invite Link</div>
+            <div class="opt-sub">Auto-cleans when everyone leaves</div>
+          </div>
+          <span class="mono" style="color:#8bbce8; font-weight:800;">↗</span>
+        </div>
+        <div class="modal-option" role="button" tabindex="0" onclick="leaveWatchParty(false)">
+          <div class="opt-main">
+            <div class="opt-title" style="color:#f59e0b;">Leave Party</div>
+          </div>
+        </div>
+      `;
+    } else {
+      list.innerHTML = `
+        <div class="modal-option selected" role="button" tabindex="0" onclick="createWatchParty()">
+          <div class="opt-main">
+            <div class="opt-title">Create Watch Party</div>
+            <div class="opt-sub">Sync playback live with friends</div>
+          </div>
+          <span class="mono" style="color:#8bbce8; font-weight:800;">+</span>
+        </div>
+        <div class="party-input-row">
+          <input type="text" class="party-input" id="partyCodeInput" maxlength="6" placeholder="CODE" onkeydown="if(event.key==='Enter') joinWatchPartyFromInput()">
+          <div class="p-pill steel-pill" style="height:40px; padding:0 16px;" role="button" tabindex="0" onclick="joinWatchPartyFromInput()">Join</div>
+        </div>
+      `;
+    }
+
+    document.getElementById('modalBackdrop').classList.add('open');
+  }
+
+  // Auto-join Watch Party if opened via ?party=CODE
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const joinCode = (params.get('party') || '').trim().toUpperCase();
+    if (joinCode) {
+      setTimeout(async () => {
+        const snap = await db.ref(`watch-parties/${joinCode}`).once('value');
+        if (snap.exists()) {
+          await connectToWatchParty(joinCode, false);
+          showToast(`Joined ${joinCode}`);
+        }
+      }, 900);
+    }
+  });
+
+  window.addEventListener('beforeunload', () => {
+    if (partyRoomRef && partyMembersCount <= 1) {
+      try { partyRoomRef.remove(); } catch (e) {}
+    }
+  });
+
+  /* ============================================================
      SERIES EPISODE NAVIGATION (SHOWN ONLY FOR MULTI-EPISODE SERIES)
      ============================================================ */
   function isPlayingSeriesFolder() {
@@ -2150,22 +2848,19 @@
     workspace.classList.remove('no-episodes');
 
     document.getElementById('epPaneTitle').textContent = activeSeriesFolder.cleanName;
-    document.getElementById('epPaneCount').textContent = `${activeIndex + 1} / ${activePlayerList.length}`;
+    document.getElementById('epPaneCount').textContent = `${activeIndex + 1}/${activePlayerList.length}`;
 
     const listEl = document.getElementById('epList');
     listEl.innerHTML = activePlayerList.map((f, i) => {
       const isCur = i === activeIndex;
-      const prog = getSavedProgress(f.serverId, f.path);
-      const statusHtml = isCur
-        ? `<span class="ep-playing-tag">Playing</span>`
-        : (prog && prog.pos > 15 ? `<span>${formatClock(prog.pos)}</span>` : `<span>${escapeHtml(f.ext)}</span>`);
+      const meta = f.meta || parseMediaMetadata(f.name, false);
       return `
         <div class="ep-card ${isCur ? 'active' : ''}" id="epCard_${i}" role="button" tabindex="0" onclick="selectEpisode(${i})">
-          <div class="ep-num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="ep-num mono">${String(i + 1).padStart(2, '0')}</div>
           <div class="ep-info">
             <div class="ep-name" title="${escapeHtml(f.name)}">${escapeHtml(f.cleanName)}</div>
-            <div class="ep-meta">
-              ${statusHtml}
+            <div class="ep-meta mono">
+              <span>${escapeHtml(meta.res || meta.ext || 'VID')}</span>
               <span>•</span>
               <span>${escapeHtml(f.sizeLabel)}</span>
             </div>
@@ -2252,7 +2947,6 @@
     screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
     exitBtn.classList.remove('fs-hidden');
 
-    // Always exit native browser fullscreen if document is currently fullscreened
     const nativeFsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
     if (nativeFsEl && !triggeredByNativeEvent) {
       const exitFn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
@@ -2291,10 +2985,10 @@
      CINEMA PLAYER CORE
      ============================================================ */
   function updateQualityBadge(label) {
-    document.getElementById('qualityBadge').textContent = `${label || 'HD'} · Auto`;
+    document.getElementById('qualityBadge').textContent = label || 'HD';
   }
 
-  async function openMediaAtIndex(idx, isSeries, forceStartZero = false) {
+  async function openMediaAtIndex(idx, isSeries, forceStartZero = false, explicitStartSec = null) {
     const item = activePlayerList[idx];
     if (!item || !item.serverUrl) return;
 
@@ -2305,8 +2999,13 @@
     activeMedia = item;
     activeAudioTrack = 0;
 
-    const saved = !forceStartZero ? getSavedProgress(item.serverId, item.path) : null;
-    const initialStart = saved && saved.pos > 15 && (!saved.dur || saved.pos < saved.dur - 30) ? Math.floor(saved.pos) : 0;
+    let initialStart = 0;
+    if (typeof explicitStartSec === 'number') {
+      initialStart = Math.max(0, Math.floor(explicitStartSec));
+    } else if (!forceStartZero) {
+      const saved = getSavedProgress(item.serverId, item.path);
+      initialStart = saved && saved.pos > 15 && (!saved.dur || saved.pos < saved.dur - 30) ? Math.floor(saved.pos) : 0;
+    }
     streamOffsetSec = initialStart;
 
     const screenEl = document.getElementById('playerScreen');
@@ -2315,15 +3014,20 @@
     isFullscreenMode = false;
     screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
 
-    document.getElementById('playerName').textContent = `${item.cleanName} · ${item.serverName}`;
+    document.getElementById('playerName').textContent = item.cleanName;
     document.getElementById('seekProgress').style.width = '0%';
     document.getElementById('clockText').textContent = '00:00 / --:--';
-    updateQualityBadge('HD');
+    updateQualityBadge((item.meta && item.meta.res) || 'HD');
     audioBtn.style.display = 'none';
 
     updateEpisodeNavigationUI();
-    setLoader(true, `Connecting to ${item.serverName}...`);
+    updatePartyBadgesUI();
+    setLoader(true);
     screenEl.classList.add('open');
+
+    if (partyRoomCode && !suppressPartyBroadcast) {
+      broadcastPartyState(true);
+    }
 
     try {
       activeProbe = await apiFetchFromServer(item.serverUrl, `/api/probe?path=${encodeURIComponent(item.path)}`);
@@ -2331,15 +3035,11 @@
       activeProbe = { duration: 0, resolutionLabel: 'HD', audioTracks: [] };
     }
 
-    updateQualityBadge(activeProbe.resolutionLabel || 'HD');
+    updateQualityBadge(activeProbe.resolutionLabel || (item.meta && item.meta.res) || 'HD');
 
     if (activeProbe.audioTracks && activeProbe.audioTracks.length > 0) {
       audioBtn.style.display = 'inline-flex';
-      document.getElementById('audioBtnLabel').textContent = `Audio: ${activeProbe.audioTracks[0].shortLabel}`;
-    }
-
-    if (initialStart > 0) {
-      showToast(`Resuming ${formatClock(initialStart)}`);
+      document.getElementById('audioBtnLabel').textContent = activeProbe.audioTracks[0].shortLabel;
     }
 
     await startHlsSession(initialStart);
@@ -2347,7 +3047,7 @@
 
   async function startHlsSession(startSec) {
     if (!activeMedia || !activeMedia.serverUrl) return;
-    setLoader(true, 'Buffering...');
+    setLoader(true);
 
     const video = document.getElementById('videoEl');
     if (hlsInstance) {
@@ -2416,13 +3116,48 @@
   }
 
   /* ============================================================
-     POPUP MODALS
+     DECLUTTERED OVERFLOW MENU & POPUP SHEETS
      ============================================================ */
+  function openPlayerOverflowMenu() {
+    document.getElementById('modalTitle').textContent = 'Options';
+    const list = document.getElementById('modalList');
+    list.innerHTML = `
+      <div class="modal-option ${partyRoomCode ? 'selected' : ''}" role="button" tabindex="0" onclick="openWatchPartyModal()">
+        <div class="opt-main">
+          <div class="opt-title">${partyRoomCode ? `Watch Party (${partyRoomCode})` : 'Start Watch Party'}</div>
+          <div class="opt-sub">${partyRoomCode ? `${Math.max(1, partyMembersCount)} connected · Auto-cleans on exit` : 'Watch in sync with friends'}</div>
+        </div>
+        <span class="mono" style="color:#8bbce8; font-weight:800;">›</span>
+      </div>
+      <div class="modal-option" role="button" tabindex="0" onclick="restartFromZero()">
+        <div class="opt-main">
+          <div class="opt-title">Restart</div>
+          <div class="opt-sub">Play from 00:00</div>
+        </div>
+        <span class="mono" style="color:#8bbce8; font-weight:800;">↺</span>
+      </div>
+      <div class="modal-option" role="button" tabindex="0" onclick="openExternalVLC()">
+        <div class="opt-main">
+          <div class="opt-title">Open in VLC</div>
+          <div class="opt-sub">Download .m3u stream playlist</div>
+        </div>
+        <span class="mono" style="color:#8bbce8; font-weight:800;">↗</span>
+      </div>
+    `;
+    document.getElementById('modalBackdrop').classList.add('open');
+  }
+
+  function restartFromZero() {
+    closeModal();
+    jumpToPosition(0);
+    if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState(true);
+  }
+
   function openAudioPopup() {
     const tracks = activeProbe.audioTracks || [];
     if (tracks.length === 0) return;
 
-    document.getElementById('modalTitle').textContent = 'Audio Track';
+    document.getElementById('modalTitle').textContent = 'Audio';
     const list = document.getElementById('modalList');
     list.innerHTML = tracks.map(tr => `
       <div class="modal-option ${tr.index === activeAudioTrack ? 'selected' : ''}" role="button" tabindex="0" onclick="selectAudioTrack(${tr.index})">
@@ -2444,15 +3179,14 @@
     if (!chosen) return;
 
     activeAudioTrack = trackIdx;
-    document.getElementById('audioBtnLabel').textContent = `Audio: ${chosen.shortLabel}`;
-    showToast(`Audio: ${chosen.title}`);
+    document.getElementById('audioBtnLabel').textContent = chosen.shortLabel;
 
     const cur = streamOffsetSec + (document.getElementById('videoEl').currentTime || 0);
     startHlsSession(cur);
   }
 
   function openSpeedPopup() {
-    document.getElementById('modalTitle').textContent = 'Playback Speed';
+    document.getElementById('modalTitle').textContent = 'Speed';
     const list = document.getElementById('modalList');
     list.innerHTML = SPEED_OPTIONS.map(opt => `
       <div class="modal-option ${opt.value === activeSpeed ? 'selected' : ''}" role="button" tabindex="0" onclick="selectPlaybackSpeed(${opt.value})">
@@ -2472,7 +3206,6 @@
     const video = document.getElementById('videoEl');
     video.playbackRate = val;
     document.getElementById('speedBtn').textContent = `${val}x`;
-    showToast(`Speed ${val}x`);
   }
 
   function closeModal() {
@@ -2487,7 +3220,7 @@
   videoEl.addEventListener('loadedmetadata', () => {
     if (videoEl.videoHeight > 0) {
       const h = videoEl.videoHeight;
-      const label = h >= 2160 ? '2160p 4K' : (h >= 1440 ? '1440p QHD' : (h >= 1080 ? '1080p FHD' : (h >= 720 ? '720p HD' : (h >= 480 ? '480p SD' : `${h}p`))));
+      const label = h >= 2160 ? '4K' : (h >= 1440 ? '2K' : (h >= 1080 ? '1080p' : (h >= 720 ? '720p' : (h >= 480 ? '480p' : `${h}p`))));
       updateQualityBadge(label);
     }
   });
@@ -2495,14 +3228,16 @@
   videoEl.addEventListener('playing', () => {
     setLoader(false);
     document.getElementById('playBtn').textContent = 'Pause';
+    if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
   });
 
   videoEl.addEventListener('pause', () => {
     document.getElementById('playBtn').textContent = 'Play';
+    if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
   });
 
   videoEl.addEventListener('waiting', () => {
-    setLoader(true, 'Buffering...');
+    setLoader(true);
   });
 
   videoEl.addEventListener('ended', () => {
@@ -2533,10 +3268,13 @@
       const bufEnd = videoEl.seekable.end(videoEl.seekable.length - 1);
       if (relTarget <= bufEnd) {
         videoEl.currentTime = relTarget;
+        if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
         return;
       }
     }
-    startHlsSession(targetSec);
+    startHlsSession(targetSec).then(() => {
+      if (partyRoomCode && !suppressPartyBroadcast) broadcastPartyState();
+    });
   }
 
   function seekFromBar(e) {
@@ -2613,6 +3351,7 @@
   }
 
   function openExternalVLC() {
+    closeModal();
     if (!activeMedia || !activeMedia.serverUrl) return;
     window.location.href = `${activeMedia.serverUrl}/api/playlist?path=${encodeURIComponent(activeMedia.path)}`;
     showToast('VLC playlist downloaded');
@@ -2637,7 +3376,7 @@
       if (document.getElementById('modalBackdrop').classList.contains('open')) closeModal();
       else if (isFullscreenMode) exitFullscreenMode(false);
       else closePlayer();
-    } else if (e.key === ' ' && document.activeElement.getAttribute('role') !== 'button') {
+    } else if (e.key === ' ' && document.activeElement.getAttribute('role') !== 'button' && document.activeElement.tagName !== 'INPUT') {
       e.preventDefault();
       togglePlayPause();
     } else if (e.key === 'ArrowRight') skipBy(10);
