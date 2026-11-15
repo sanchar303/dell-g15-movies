@@ -108,10 +108,14 @@
 
     html.fs-lock,
     body.fs-lock {
+      position: fixed !important;
+      inset: 0 !important;
       margin: 0 !important;
       padding: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      max-width: none !important;
       max-height: none !important;
       background: #000000 !important;
       overflow: hidden !important;
@@ -856,7 +860,7 @@
     }
 
     /* ============================================================
-       CINEMA PLAYER & EDGE-TO-EDGE MOBILE FULLSCREEN MODE
+       CINEMA PLAYER & TRUE EDGE-TO-EDGE FULLSCREEN MODE
        ============================================================ */
     .player-screen {
       display: none;
@@ -879,8 +883,8 @@
 
     .player-screen:fullscreen,
     .player-screen:-webkit-full-screen {
-      width: 100% !important;
-      height: 100% !important;
+      width: 100vw !important;
+      height: 100vh !important;
       margin: 0 !important;
       padding: 0 !important;
       background: #000000 !important;
@@ -996,6 +1000,7 @@
       justify-content: center;
       background: #000000;
       overflow: hidden;
+      touch-action: manipulation;
     }
 
     video {
@@ -1007,20 +1012,20 @@
       display: block;
     }
 
-    /* Exclusive Fullscreen Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
+    /* Exclusive Fullscreen Exit Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
     .fs-exit-btn {
       display: none;
       position: absolute;
-      top: max(16px, env(safe-area-inset-top, 16px));
-      right: max(18px, env(safe-area-inset-right, 18px));
-      z-index: 140;
+      top: max(18px, env(safe-area-inset-top, 18px));
+      right: max(20px, env(safe-area-inset-right, 20px));
+      z-index: 10020;
       height: 40px;
       padding: 0 16px;
       border-radius: 16px;
-      background: rgba(12, 19, 32, 0.82);
+      background: rgba(12, 19, 32, 0.84);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(139, 188, 232, 0.3);
+      border: 1px solid rgba(139, 188, 232, 0.34);
       color: #edf2f8;
       font-size: 12.5px;
       font-weight: 700;
@@ -1029,6 +1034,7 @@
       cursor: pointer;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
       transition: opacity 0.2s ease, transform 0.2s ease, background 0.15s ease;
+      touch-action: manipulation;
     }
     .fs-exit-btn:hover {
       background: #2f6394;
@@ -1041,16 +1047,16 @@
     /* Exclusive Fullscreen State — Complete Edge-to-Edge Coverage on Mobile & Desktop */
     .player-screen.fs-active {
       position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      max-width: none !important;
       max-height: none !important;
       margin: 0 !important;
       padding: 0 !important;
       background: #000000 !important;
+      z-index: 9999 !important;
     }
     .player-screen.fs-active .player-header,
     .player-screen.fs-active .player-controls,
@@ -1061,33 +1067,47 @@
     .player-screen.fs-active .player-main {
       width: 100% !important;
       height: 100% !important;
+      max-width: none !important;
       max-height: none !important;
       margin: 0 !important;
       padding: 0 !important;
     }
     .player-screen.fs-active .video-stage {
       position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      max-width: none !important;
       max-height: none !important;
       margin: 0 !important;
       padding: 0 !important;
       aspect-ratio: auto !important;
-      z-index: 125 !important;
+      z-index: 10000 !important;
       background: #000000 !important;
       cursor: pointer;
     }
+    .player-screen.fs-active video {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
     .player-screen.fs-active.fs-rotate-fallback .video-stage {
+      inset: auto !important;
       top: 50% !important;
       left: 50% !important;
-      right: auto !important;
-      bottom: auto !important;
+      width: 100vh !important;
+      width: 100dvh !important;
+      height: 100vw !important;
       transform: translate(-50%, -50%) rotate(90deg) !important;
       transform-origin: center center !important;
+    }
+    .player-screen.fs-active.fs-rotate-fallback .fs-exit-btn {
+      top: max(18px, env(safe-area-inset-top, 18px));
+      right: max(20px, env(safe-area-inset-bottom, 20px));
     }
     .player-screen.fs-active .fs-exit-btn {
       display: inline-flex;
@@ -1382,7 +1402,7 @@
       align-items: center;
       justify-content: center;
       padding: 18px;
-      z-index: 180;
+      z-index: 10050;
     }
     .modal-backdrop.open { display: flex; }
 
@@ -1493,7 +1513,7 @@
       opacity: 0;
       pointer-events: none;
       transition: all 0.2s ease;
-      z-index: 220;
+      z-index: 10080;
       white-space: nowrap;
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -1690,11 +1710,11 @@
 
     <div class="player-workspace no-episodes" id="playerWorkspace">
       <div class="player-main">
-        <div class="video-stage" id="videoStage" onclick="handleVideoStageTap(event)">
+        <div class="video-stage" id="videoStage">
           <video id="videoEl" playsinline webkit-playsinline preload="auto"></video>
 
           <!-- Exclusive Fullscreen Exit Button (Shown ONLY in Fullscreen Mode, toggled by tapping video screen) -->
-          <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0" onclick="handleExitFullscreenClick(event)">
+          <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
             <span>Exit Fullscreen</span>
           </div>
@@ -1779,6 +1799,7 @@
   const db = firebase.database();
 
   const WINDOWS_HOST_EXE_URL = 'https://github.com/sanchar303/dell-g15-movies/raw/refs/heads/main/dell-g15-movies.pages.dev.exe';
+  const VIEW_MODE_STORAGE_KEY = 'g15_movies_view_mode';
 
   let onlineServers = [];
   let serverTimeOffsetMs = 0;
@@ -1791,7 +1812,7 @@
   let hostFilterId = 'ALL';
   let sortField = 'DEFAULT';
   let sortDir = 'ASC'; // 'ASC' = ↓ (down arrow), 'DESC' = ↑ (up arrow)
-  let viewMode = 'grid';
+  let viewMode = localStorage.getItem(VIEW_MODE_STORAGE_KEY) === 'list' ? 'list' : 'grid';
   let searchQuery = '';
 
   /* Active Series Folder State */
@@ -2085,8 +2106,14 @@
   }
 
   /* ============================================================
-     VIEWPORT & EDGE-TO-EDGE FULLSCREEN SYNC
+     VIEWPORT & TRUE EDGE-TO-EDGE FULLSCREEN SYNC
      ============================================================ */
+  function getFullViewportDims() {
+    const w = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0);
+    const h = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0);
+    return { w, h };
+  }
+
   function syncViewportLayout() {
     document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
     if (window.scrollY !== 0 || window.scrollX !== 0) {
@@ -2106,13 +2133,15 @@
       stageEl.style.height = '';
       return;
     }
-    const isPortraitViewport = window.innerHeight > window.innerWidth;
+
+    const { w, h } = getFullViewportDims();
+    const isPortraitViewport = h > w;
     const needsRotateFallback = !orientationLockedByPlayer && isPortraitViewport;
     screenEl.classList.toggle('fs-rotate-fallback', needsRotateFallback);
 
     if (needsRotateFallback) {
-      stageEl.style.width = `${window.innerHeight}px`;
-      stageEl.style.height = `${window.innerWidth}px`;
+      stageEl.style.width = `${h}px`;
+      stageEl.style.height = `${w}px`;
     } else {
       stageEl.style.width = '';
       stageEl.style.height = '';
@@ -2157,7 +2186,7 @@
   window.addEventListener('devicemotion', handleAccelerometerMotion, { passive: true });
 
   /* ============================================================
-     THEME & KEYBOARD ACCESSIBILITY
+     THEME, VIEW MODE PERSISTENCE & KEYBOARD ACCESSIBILITY
      ============================================================ */
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
@@ -2172,6 +2201,21 @@
   }
 
   applyTheme(localStorage.getItem('g15_movies_theme') || 'light');
+
+  function syncViewModeButtonIcon() {
+    const iconSvg = document.getElementById('viewIconSvg');
+    const btnView = document.getElementById('btnView');
+    if (!iconSvg) return;
+    if (viewMode === 'list') {
+      iconSvg.innerHTML = `<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>`;
+      if (btnView) btnView.setAttribute('title', 'Switch to Grid View');
+    } else {
+      iconSvg.innerHTML = `<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>`;
+      if (btnView) btnView.setAttribute('title', 'Switch to List View');
+    }
+  }
+
+  syncViewModeButtonIcon();
 
   document.addEventListener('keydown', (e) => {
     if (e.target && e.target.getAttribute('role') === 'button' && (e.key === 'Enter' || e.key === ' ')) {
@@ -2468,12 +2512,8 @@
 
   function toggleViewMode() {
     viewMode = viewMode === 'grid' ? 'list' : 'grid';
-    const iconSvg = document.getElementById('viewIconSvg');
-    if (viewMode === 'list') {
-      iconSvg.innerHTML = `<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>`;
-    } else {
-      iconSvg.innerHTML = `<line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>`;
-    }
+    localStorage.setItem(VIEW_MODE_STORAGE_KEY, viewMode);
+    syncViewModeButtonIcon();
     renderExplorer();
   }
 
@@ -2832,25 +2872,36 @@
   }
 
   /* ============================================================
-     EXCLUSIVE FULLSCREEN MODE (TRUE EDGE-TO-EDGE ON MOBILE & DESKTOP)
+     EXCLUSIVE FULLSCREEN MODE (TRUE EDGE-TO-EDGE + TAP TO TOGGLE BUTTON)
      ============================================================ */
+  function setFsExitButtonVisible(visible) {
+    fsButtonVisible = Boolean(visible);
+    const exitBtn = document.getElementById('fsExitBtn');
+    if (exitBtn) {
+      exitBtn.classList.toggle('fs-hidden', !fsButtonVisible);
+    }
+  }
+
   function enterFullscreenMode() {
     if (!activeMedia) return;
     isFullscreenMode = true;
-    fsButtonVisible = true;
 
     document.documentElement.classList.add('fs-lock');
     document.body.classList.add('fs-lock');
 
     const screenEl = document.getElementById('playerScreen');
-    const exitBtn = document.getElementById('fsExitBtn');
     screenEl.classList.add('fs-active');
-    exitBtn.classList.remove('fs-hidden');
+    setFsExitButtonVisible(true);
 
     const reqFs = screenEl.requestFullscreen || screenEl.webkitRequestFullscreen || screenEl.msRequestFullscreen;
     if (typeof reqFs === 'function') {
       try {
-        const promise = reqFs.call(screenEl, { navigationUI: 'hide' });
+        let promise;
+        try {
+          promise = reqFs.call(screenEl, { navigationUI: 'hide' });
+        } catch (optErr) {
+          promise = reqFs.call(screenEl);
+        }
         if (promise && typeof promise.catch === 'function') {
           promise.catch(() => {});
         }
@@ -2869,18 +2920,11 @@
         });
     } else {
       orientationLockedByPlayer = false;
-      updateFullscreenRotationFallback();
     }
 
+    updateFullscreenRotationFallback();
     setTimeout(syncViewportLayout, 60);
     setTimeout(syncViewportLayout, 250);
-  }
-
-  function handleExitFullscreenClick(e) {
-    if (e && typeof e.stopPropagation === 'function') {
-      e.stopPropagation();
-    }
-    exitFullscreenMode(false);
   }
 
   function exitFullscreenMode(triggeredByNativeEvent = false) {
@@ -2892,11 +2936,10 @@
 
     const screenEl = document.getElementById('playerScreen');
     const stageEl = document.getElementById('videoStage');
-    const exitBtn = document.getElementById('fsExitBtn');
     screenEl.classList.remove('fs-active', 'fs-rotate-fallback');
     stageEl.style.width = '';
     stageEl.style.height = '';
-    exitBtn.classList.remove('fs-hidden');
+    setFsExitButtonVisible(true);
 
     const nativeFsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
     if (nativeFsEl && !triggeredByNativeEvent) {
@@ -2913,13 +2956,75 @@
     setTimeout(syncViewportLayout, 60);
   }
 
-  function handleVideoStageTap(e) {
-    if (!isFullscreenMode) return;
-    if (e.target && e.target.closest('#fsExitBtn')) return;
+  (function initFullscreenTapGestures() {
+    const stageEl = document.getElementById('videoStage');
+    const exitBtn = document.getElementById('fsExitBtn');
+    if (!stageEl || !exitBtn) return;
 
-    fsButtonVisible = !fsButtonVisible;
-    document.getElementById('fsExitBtn').classList.toggle('fs-hidden', !fsButtonVisible);
-  }
+    let downX = 0;
+    let downY = 0;
+    let pointerDownOnStage = false;
+    let lastStageToggleAt = 0;
+    let lastExitActionAt = 0;
+
+    function triggerExitFullscreen(e) {
+      if (e) {
+        e.stopPropagation();
+        if (typeof e.preventDefault === 'function') e.preventDefault();
+      }
+      const now = performance.now();
+      if (now - lastExitActionAt < 300) return;
+      lastExitActionAt = now;
+      exitFullscreenMode(false);
+    }
+
+    exitBtn.addEventListener('pointerdown', (e) => {
+      e.stopPropagation();
+    });
+    exitBtn.addEventListener('pointerup', triggerExitFullscreen);
+    exitBtn.addEventListener('click', triggerExitFullscreen);
+
+    stageEl.addEventListener('pointerdown', (e) => {
+      if (!isFullscreenMode) {
+        pointerDownOnStage = false;
+        return;
+      }
+      if (e.target && e.target.closest('#fsExitBtn')) {
+        pointerDownOnStage = false;
+        return;
+      }
+      if (typeof e.button === 'number' && e.button !== 0) {
+        pointerDownOnStage = false;
+        return;
+      }
+      pointerDownOnStage = true;
+      downX = e.clientX;
+      downY = e.clientY;
+    });
+
+    stageEl.addEventListener('pointerup', (e) => {
+      if (!isFullscreenMode || !pointerDownOnStage) return;
+      pointerDownOnStage = false;
+      if (e.target && e.target.closest('#fsExitBtn')) return;
+
+      const dist = Math.hypot((e.clientX || 0) - downX, (e.clientY || 0) - downY);
+      if (dist > 16) return;
+
+      lastStageToggleAt = performance.now();
+      setFsExitButtonVisible(!fsButtonVisible);
+    });
+
+    stageEl.addEventListener('pointercancel', () => {
+      pointerDownOnStage = false;
+    });
+
+    stageEl.addEventListener('click', (e) => {
+      if (!isFullscreenMode) return;
+      if (e.target && e.target.closest('#fsExitBtn')) return;
+      if (performance.now() - lastStageToggleAt < 350) return;
+      setFsExitButtonVisible(!fsButtonVisible);
+    });
+  })();
 
   function handleNativeFullscreenChange() {
     const nativeFsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
