@@ -474,6 +474,7 @@
       color: var(--text);
     }
 
+    /* Contextual Sort Direction Custom Div Button (↓ Ascending / ↑ Descending) */
     .sort-dir-btn {
       position: relative;
       width: 36px;
@@ -920,27 +921,17 @@
       min-width: 0;
     }
 
-    .quality-pill {
-      padding: 4px 10px;
-      border-radius: 10px;
+    .quality-badge {
+      padding: 3px 9px;
+      border-radius: 9px;
       background: rgba(91, 155, 213, 0.18);
-      border: 1px solid rgba(91, 155, 213, 0.36);
-      color: #90cdf4;
+      border: 1px solid rgba(91, 155, 213, 0.34);
+      color: #8bbce8;
       font-size: 10.5px;
       font-weight: 800;
       white-space: nowrap;
       flex-shrink: 0;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: background 0.15s ease, transform 0.12s ease;
-    }
-    .quality-pill:hover {
-      background: rgba(91, 155, 213, 0.3);
-    }
-    .quality-pill:active {
-      transform: scale(0.95);
+      pointer-events: none;
     }
 
     .player-pills {
@@ -1021,6 +1012,7 @@
       display: block;
     }
 
+    /* Exclusive Fullscreen Exit Button — Hidden in Normal Mode, Active Only in Fullscreen Mode */
     .fs-exit-btn {
       display: none;
       position: absolute;
@@ -1052,6 +1044,7 @@
       transform: scale(0.95);
     }
 
+    /* Exclusive Fullscreen State — Complete Edge-to-Edge Coverage on Mobile & Desktop */
     .player-screen.fs-active {
       position: fixed !important;
       inset: 0 !important;
@@ -1134,7 +1127,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       background: rgba(7, 11, 20, 0.45);
       pointer-events: none;
       z-index: 15;
@@ -1148,14 +1141,6 @@
       border-top-color: #5b9bd5;
       animation: spin 0.72s linear infinite;
     }
-    .loader-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #9db2cc;
-      background: rgba(12, 19, 32, 0.75);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     .player-controls {
@@ -1168,7 +1153,7 @@
       flex-shrink: 0;
     }
 
-    /* Seekbar with Buffer Bar + Exact HH:MM:SS Hover & Drag Scrubbing */
+    /* Seekbar with Subtle Exact HH:MM:SS Hover & Scrub Preview */
     .seek-area {
       position: relative;
       height: 20px;
@@ -1181,26 +1166,13 @@
       width: 100%;
       height: 5px;
       border-radius: 999px;
-      background: rgba(139, 188, 232, 0.16);
+      background: rgba(139, 188, 232, 0.18);
       position: relative;
       transition: height 0.12s ease;
     }
     .seek-area:hover .seek-bar,
     .seek-area:active .seek-bar,
     .seek-area.hovering .seek-bar { height: 7px; }
-
-    .seek-buffered {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 0%;
-      border-radius: 999px;
-      background: rgba(139, 188, 232, 0.34);
-      pointer-events: none;
-      z-index: 1;
-      transition: width 0.25s ease;
-    }
 
     .seek-hover-fill {
       position: absolute;
@@ -1419,7 +1391,7 @@
       gap: 6px;
     }
 
-    /* Popup Modal (Quality, Audio, Speed, Overflow) */
+    /* Popup Modal (Audio, Speed, Overflow) */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1696,6 +1668,7 @@
         </select>
       </div>
 
+      <!-- Contextual Direction Custom Div Button (↓ Ascending / ↑ Descending) -->
       <div class="sort-dir-btn" id="sortDirBtn" role="button" tabindex="0" onclick="toggleSortDirection()" aria-label="Ascending">
         <svg class="sort-dir-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         <div class="sort-dir-tip" id="sortDirTip" role="tooltip">Ascending</div>
@@ -1716,10 +1689,11 @@
 
   <!-- Cinema Player -->
   <div class="player-screen" id="playerScreen">
+    <!-- Decluttered Player Top Bar -->
     <div class="player-header">
       <div class="player-title-wrap">
         <div class="player-name" id="playerName">Video</div>
-        <div class="quality-pill mono" id="qualityBadge" role="button" tabindex="0" onclick="openQualityPopup()" title="Stream Quality">Auto</div>
+        <div class="quality-badge mono" id="qualityBadge">HD</div>
       </div>
 
       <div class="player-pills">
@@ -1739,6 +1713,7 @@
         <div class="video-stage" id="videoStage">
           <video id="videoEl" playsinline webkit-playsinline preload="auto"></video>
 
+          <!-- Exclusive Fullscreen Exit Button (Shown ONLY in Fullscreen Mode, toggled by tapping video screen) -->
           <div class="fs-exit-btn" id="fsExitBtn" role="button" tabindex="0">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
             <span>Exit Fullscreen</span>
@@ -1746,15 +1721,13 @@
 
           <div class="loader-box" id="loaderBox">
             <div class="loader-circle"></div>
-            <div class="loader-label mono" id="loaderLabel">Buffering...</div>
           </div>
         </div>
 
         <div class="player-controls">
-          <div class="seek-area" id="seekArea">
+          <div class="seek-area" id="seekArea" onclick="seekFromBar(event)">
             <div class="seek-tooltip mono" id="seekTooltip">00:00:00</div>
             <div class="seek-bar" id="seekBar">
-              <div class="seek-buffered" id="seekBuffered"></div>
               <div class="seek-hover-fill" id="seekHoverFill"></div>
               <div class="seek-progress" id="seekProgress">
                 <div class="seek-knob"></div>
@@ -1798,7 +1771,7 @@
     </div>
   </div>
 
-  <!-- Multi-Purpose Sheet Modal (Quality, Audio, Speed, Overflow) -->
+  <!-- Multi-Purpose Sheet Modal (Audio, Speed, Overflow) -->
   <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()">
     <div class="modal-sheet" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -1827,7 +1800,6 @@
 
   const WINDOWS_HOST_EXE_URL = 'https://github.com/sanchar303/dell-g15-movies/raw/refs/heads/main/dell-g15-movies.pages.dev.exe';
   const VIEW_MODE_STORAGE_KEY = 'g15_movies_view_mode';
-  const QUALITY_PREF_STORAGE_KEY = 'g15_movies_stream_quality';
 
   let onlineServers = [];
   let serverTimeOffsetMs = 0;
@@ -1839,7 +1811,7 @@
   let typeFilter = 'ALL';
   let hostFilterId = 'ALL';
   let sortField = 'DEFAULT';
-  let sortDir = 'ASC';
+  let sortDir = 'ASC'; // 'ASC' = ↓ (down arrow), 'DESC' = ↑ (up arrow)
   let viewMode = localStorage.getItem(VIEW_MODE_STORAGE_KEY) === 'list' ? 'list' : 'grid';
   let searchQuery = '';
 
@@ -1847,7 +1819,7 @@
   let activeSeriesFolder = null;
   let activeSeriesEpisodes = [];
 
-  /* Active Player & Anti-Buffer Adaptive Stream State */
+  /* Active Player State */
   let activePlayerList = [];
   let activeIndex = -1;
   let activeMedia = null;
@@ -1860,20 +1832,6 @@
   let lastSavedTick = 0;
   let savedVol = 1;
   let isMuted = false;
-
-  let preferredStreamQuality = localStorage.getItem(QUALITY_PREF_STORAGE_KEY) || 'auto';
-  let autoDownshiftTier = 0;
-  let stallCountInSession = 0;
-  let lastStallWindowStart = 0;
-  let isSeekScrubbing = false;
-
-  const QUALITY_PROFILES = [
-    { id: 'auto', label: 'Auto (Smart)', badge: 'Auto', maxrate: 6500, sub: 'Zero-buffer smart bitrate for 30–90 GB files' },
-    { id: '1080p', label: '1080p Smooth', badge: '1080p', maxrate: 6500, sub: 'Full HD · 6.5 Mbps (Recommended for large files)' },
-    { id: '720p', label: '720p Fast', badge: '720p', maxrate: 3200, sub: 'HD · 3.2 Mbps (Ultra-fast start & zero lag)' },
-    { id: '480p', label: '480p Data Saver', badge: '480p', maxrate: 1500, sub: 'SD · 1.5 Mbps (Weak Wi-Fi / mobile data)' },
-    { id: 'original', label: 'Original (Direct)', badge: 'Original', maxrate: 0, sub: 'Untouched source bitrate (Best for local Wi-Fi)' }
-  ];
 
   /* Exclusive Fullscreen State */
   let isFullscreenMode = false;
@@ -1908,42 +1866,10 @@
   }
 
   /* ============================================================
-     SMART EFFECTIVE STREAM QUALITY RESOLVER (ANTI-BUFFERING)
-     ============================================================ */
-  function resolveEffectiveStreamProfile(item) {
-    if (preferredStreamQuality !== 'auto') {
-      const explicit = QUALITY_PROFILES.find(q => q.id === preferredStreamQuality);
-      if (explicit) return explicit;
-    }
-
-    const sizeBytes = (item && item.bytes) || 0;
-    const isHugeFile = sizeBytes >= 18 * (1024 ** 3); // >= 18 GB (30GB, 50GB, 90GB remuxes)
-    const isMediumLargeFile = sizeBytes >= 8 * (1024 ** 3); // >= 8 GB
-
-    if (autoDownshiftTier >= 3) {
-      return { id: '480p', badge: 'Auto · 480p', maxrate: 1500 };
-    }
-    if (autoDownshiftTier === 2) {
-      return { id: '720p', badge: 'Auto · 720p', maxrate: 3200 };
-    }
-    if (autoDownshiftTier === 1 || isHugeFile) {
-      return { id: '1080p', badge: 'Auto · 1080p', maxrate: 6500 };
-    }
-    if (isMediumLargeFile) {
-      return { id: '1080p', badge: 'Auto · 1080p', maxrate: 8000 };
-    }
-    return { id: 'original', badge: 'Auto · Direct', maxrate: 0 };
-  }
-
-  function updateQualityBadgeDisplay() {
-    const badgeEl = document.getElementById('qualityBadge');
-    if (!badgeEl) return;
-    const eff = resolveEffectiveStreamProfile(activeMedia);
-    badgeEl.textContent = `${eff.badge} ▾`;
-  }
-
-  /* ============================================================
      MOBILE SCREEN WAKE LOCK & ANTI-DIM MANAGER
+     Prevents phone/tablet screens from auto-dimming or locking
+     while movies/series are actively playing, and releases cleanly
+     when paused or closed.
      ============================================================ */
   function startWakeKeepAliveFallback() {
     try {
@@ -2113,13 +2039,16 @@
   }
 
   /* ============================================================
-     SMART FILENAME PARSER (PARENTHESIZED RELEASE YEAR ONLY)
+     SMART FILENAME PARSER
+     Extracts release date ONLY when a 4-digit year is inside small brackets (...)
+     e.g. "1920 - Evil Returns (2012).mkv" -> release date 2012, title "1920 - Evil Returns"
      ============================================================ */
   function parseMediaMetadata(rawFilename, isFolder = false) {
     const extMatch = !isFolder ? rawFilename.match(/\.([a-zA-Z0-9]{2,5})$/) : null;
     const ext = extMatch ? extMatch[1].toUpperCase() : '';
     const base = !isFolder ? rawFilename.replace(/\.[^/.]+$/, '') : rawFilename;
 
+    // Only a 4-digit year inside small brackets (...) counts as the release date
     let year = '';
     const parenYearMatches = [...base.matchAll(/\(\s*(19\d{2}|20\d{2})\s*\)/g)];
     if (parenYearMatches.length > 0) {
@@ -2160,6 +2089,7 @@
       .trim();
 
     if (year) {
+      // Remove only the parenthesized release year e.g. "(2012)" so numbers in titles like "1920" or "2012 (2012)" stay intact
       const lastParenYearRegex = new RegExp(`\\(\\s*${year}\\s*\\)(?![\\s\\S]*\\(\\s*${year}\\s*\\))`);
       const withoutReleaseYear = stripped.replace(lastParenYearRegex, ' ').replace(/\(\s*\)/g, ' ').replace(/\s+/g, ' ').trim();
       if (withoutReleaseYear.length >= 1) {
@@ -2439,14 +2369,11 @@
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(t._timer);
-    t._timer = setTimeout(() => t.classList.remove('show'), 2500);
+    t._timer = setTimeout(() => t.classList.remove('show'), 2300);
   }
 
-  function setLoader(show, text = 'Buffering...') {
-    const box = document.getElementById('loaderBox');
-    const lbl = document.getElementById('loaderLabel');
-    if (lbl) lbl.textContent = text;
-    box.classList.toggle('show', show);
+  function setLoader(show) {
+    document.getElementById('loaderBox').classList.toggle('show', show);
   }
 
   async function apiFetchFromServer(serverUrl, endpoint) {
@@ -2625,7 +2552,7 @@
   }
 
   /* ============================================================
-     FILTERS, SMART SORT & DIRECTION
+     FILTERS, SMART SORT (DEFAULT / ALPHABET / SIZE / DATE) & DIRECTION
      ============================================================ */
   function setTypeFilter(t) {
     typeFilter = t;
@@ -2677,7 +2604,7 @@
     const prevField = sortField;
     sortField = field || 'DEFAULT';
     if (prevField === 'DEFAULT' && sortField !== 'DEFAULT') {
-      sortDir = 'ASC';
+      sortDir = 'ASC'; // ↓ Ascending by default when picking Alphabet, Size, or Date
     }
     updateSortDirectionUI();
     renderExplorer();
@@ -2781,7 +2708,7 @@
   }
 
   /* ============================================================
-     RENDER EXPLORER: SEPARATED SERIES & MOVIES
+     RENDER EXPLORER: SEPARATED SERIES & MOVIES + TACTILE INDICATORS
      ============================================================ */
   function progressKey(serverId, path) {
     return `g15_prog_${serverId || 'host'}_${path}`;
@@ -2887,6 +2814,7 @@
     filterBar.style.display = 'flex';
     updateSortDirectionUI();
 
+    // 1. Inside a Series Folder
     if (activeSeriesFolder) {
       const s = activeSeriesFolder;
       const filteredEps = sortMediaCollection(
@@ -2926,6 +2854,7 @@
       return;
     }
 
+    // 2. Root Explorer: Separated Series & Movies across all devices
     const matching = allRootItems.filter(item => {
       if (hostFilterId !== 'ALL' && item.serverId !== hostFilterId) return false;
       if (searchQuery && !item.cleanName.toLowerCase().includes(searchQuery) && !item.name.toLowerCase().includes(searchQuery) && !item.serverName.toLowerCase().includes(searchQuery)) return false;
@@ -3007,7 +2936,7 @@
   }
 
   /* ============================================================
-     SERIES EPISODE NAVIGATION
+     SERIES EPISODE NAVIGATION (SHOWN ONLY FOR MULTI-EPISODE SERIES)
      ============================================================ */
   function isPlayingSeriesFolder() {
     return activeSeriesFolder !== null && Array.isArray(activePlayerList) && activePlayerList.length > 1;
@@ -3083,7 +3012,7 @@
   }
 
   /* ============================================================
-     EXCLUSIVE FULLSCREEN MODE
+     EXCLUSIVE FULLSCREEN MODE (TRUE EDGE-TO-EDGE + TAP TO TOGGLE BUTTON)
      ============================================================ */
   function setFsExitButtonVisible(visible) {
     fsButtonVisible = Boolean(visible);
@@ -3253,19 +3182,11 @@
   document.addEventListener('webkitfullscreenchange', handleNativeFullscreenChange);
 
   /* ============================================================
-     SEEKBAR EXACT HH:MM:SS HOVER & DRAG SCRUBBING
+     SEEKBAR EXACT HH:MM:SS HOVER & SCRUB PREVIEW
      ============================================================ */
   function getTotalMediaDuration() {
     const video = getActiveVideo();
     return activeProbe.duration || (video && isFinite(video.duration) ? streamOffsetSec + video.duration : 0);
-  }
-
-  function getRatioFromClientX(clientX) {
-    const seekArea = document.getElementById('seekArea');
-    if (!seekArea) return 0;
-    const rect = seekArea.getBoundingClientRect();
-    if (rect.width <= 0) return 0;
-    return Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
   }
 
   function updateSeekHoverPreview(clientX) {
@@ -3278,7 +3199,7 @@
     const rect = seekArea.getBoundingClientRect();
     if (rect.width <= 0) return;
 
-    const ratio = getRatioFromClientX(clientX);
+    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
     const targetSec = ratio * total;
 
     tooltip.textContent = formatExactHMS(targetSec);
@@ -3298,94 +3219,51 @@
     }
   }
 
-  (function initSeekbarGestures() {
+  (function initSeekbarHoverListeners() {
     const seekArea = document.getElementById('seekArea');
     if (!seekArea) return;
 
-    seekArea.addEventListener('pointerdown', (e) => {
-      if (typeof e.button === 'number' && e.button !== 0) return;
-      isSeekScrubbing = true;
-      try { seekArea.setPointerCapture(e.pointerId); } catch (err) {}
+    seekArea.addEventListener('mousemove', (e) => {
       updateSeekHoverPreview(e.clientX);
-      const total = getTotalMediaDuration();
-      if (total > 0) {
-        const ratio = getRatioFromClientX(e.clientX);
-        document.getElementById('seekProgress').style.width = `${(ratio * 100).toFixed(2)}%`;
-      }
-    });
-
-    seekArea.addEventListener('pointermove', (e) => {
-      updateSeekHoverPreview(e.clientX);
-      if (isSeekScrubbing) {
-        const total = getTotalMediaDuration();
-        if (total > 0) {
-          const ratio = getRatioFromClientX(e.clientX);
-          document.getElementById('seekProgress').style.width = `${(ratio * 100).toFixed(2)}%`;
-        }
-      }
-    });
-
-    function commitScrub(clientX) {
-      if (!isSeekScrubbing) return;
-      isSeekScrubbing = false;
-      const total = getTotalMediaDuration();
-      if (total > 0) {
-        jumpToPosition(getRatioFromClientX(clientX) * total);
-      }
-    }
-
-    seekArea.addEventListener('pointerup', (e) => {
-      commitScrub(e.clientX);
-    });
-
-    seekArea.addEventListener('pointercancel', () => {
-      isSeekScrubbing = false;
-      hideSeekHoverPreview();
-    });
+    }, { passive: true });
 
     seekArea.addEventListener('mouseleave', () => {
-      if (!isSeekScrubbing) hideSeekHoverPreview();
+      hideSeekHoverPreview();
+    }, { passive: true });
+
+    seekArea.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        updateSeekHoverPreview(e.touches[0].clientX);
+      }
+    }, { passive: true });
+
+    seekArea.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches.length > 0) {
+        updateSeekHoverPreview(e.touches[0].clientX);
+      }
+    }, { passive: true });
+
+    seekArea.addEventListener('touchend', () => {
+      hideSeekHoverPreview();
+    }, { passive: true });
+
+    seekArea.addEventListener('touchcancel', () => {
+      hideSeekHoverPreview();
     }, { passive: true });
   })();
 
   /* ============================================================
-     ANTI-BUFFERING HLS PLAYER ENGINE
+     CINEMA PLAYER CORE (FRESH MEDIASOURCE PER SESSION, ZERO AUDIO DISTORTION)
      ============================================================ */
-  function handlePlaybackStallAutoAdapt() {
-    if (!activeMedia || preferredStreamQuality !== 'auto') return;
-    const now = performance.now();
-    if (now - lastStallWindowStart > 25000) {
-      lastStallWindowStart = now;
-      stallCountInSession = 1;
-      return;
-    }
-    stallCountInSession += 1;
-    if (stallCountInSession >= 3 && autoDownshiftTier < 3) {
-      stallCountInSession = 0;
-      autoDownshiftTier += 1;
-      updateQualityBadgeDisplay();
-      const eff = resolveEffectiveStreamProfile(activeMedia);
-      const video = getActiveVideo();
-      const cur = streamOffsetSec + (video ? video.currentTime || 0 : 0);
-      showToast(`Optimizing stream to ${eff.badge} for zero buffering...`);
-      startHlsSession(cur);
-    }
-  }
-
-  function updateBufferedBar(video) {
-    const bufEl = document.getElementById('seekBuffered');
-    if (!bufEl || !video) return;
-    const total = getTotalMediaDuration();
-    if (!total || total <= 0 || !video.buffered || video.buffered.length === 0) {
-      bufEl.style.width = '0%';
-      return;
-    }
-    const maxBufEnd = streamOffsetSec + video.buffered.end(video.buffered.length - 1);
-    const pct = Math.min(100, Math.max(0, (maxBufEnd / total) * 100));
-    bufEl.style.width = `${pct.toFixed(2)}%`;
-  }
-
   function attachVideoEvents(video) {
+    video.addEventListener('loadedmetadata', () => {
+      if (video.videoHeight > 0) {
+        const h = video.videoHeight;
+        const label = h >= 2160 ? '4K' : (h >= 1440 ? '2K' : (h >= 1080 ? '1080p' : (h >= 720 ? '720p' : (h >= 480 ? '480p' : `${h}p`))));
+        updateQualityBadge(label);
+      }
+    });
+
     video.addEventListener('play', () => {
       requestScreenWakeLock();
       updateMediaSessionState('playing', activeMedia);
@@ -3405,13 +3283,7 @@
     });
 
     video.addEventListener('waiting', () => {
-      const eff = resolveEffectiveStreamProfile(activeMedia);
-      setLoader(true, `Buffering (${eff.badge})...`);
-      handlePlaybackStallAutoAdapt();
-    });
-
-    video.addEventListener('progress', () => {
-      updateBufferedBar(video);
+      setLoader(true);
     });
 
     video.addEventListener('ended', () => {
@@ -3428,11 +3300,10 @@
       const current = streamOffsetSec + (video.currentTime || 0);
       document.getElementById('clockText').textContent = `${formatClock(current)} / ${total > 0 ? formatClock(total) : '--:--'}`;
 
-      if (!isSeekScrubbing && total > 0) {
+      if (total > 0) {
         const pct = Math.min(100, Math.max(0, (current / total) * 100));
         document.getElementById('seekProgress').style.width = `${pct}%`;
       }
-      updateBufferedBar(video);
 
       if (!video.paused && !video.ended && (!wakeLockSentinel || wakeLockSentinel.released)) {
         requestScreenWakeLock();
@@ -3478,6 +3349,10 @@
 
   attachVideoEvents(getActiveVideo());
 
+  function updateQualityBadge(label) {
+    document.getElementById('qualityBadge').textContent = label || 'HD';
+  }
+
   async function openMediaAtIndex(idx, isSeries, forceStartZero = false) {
     const item = activePlayerList[idx];
     if (!item || !item.serverUrl) return;
@@ -3488,9 +3363,6 @@
     activeIndex = idx;
     activeMedia = item;
     activeAudioTrack = 0;
-    autoDownshiftTier = 0;
-    stallCountInSession = 0;
-    lastStallWindowStart = 0;
 
     let initialStart = 0;
     if (!forceStartZero) {
@@ -3509,15 +3381,13 @@
 
     document.getElementById('playerName').textContent = item.cleanName;
     document.getElementById('seekProgress').style.width = '0%';
-    document.getElementById('seekBuffered').style.width = '0%';
     document.getElementById('clockText').textContent = '00:00 / --:--';
     hideSeekHoverPreview();
-    updateQualityBadgeDisplay();
+    updateQualityBadge((item.meta && item.meta.res) || 'HD');
     audioBtn.style.display = 'none';
 
     updateEpisodeNavigationUI();
-    const eff = resolveEffectiveStreamProfile(item);
-    setLoader(true, `Preparing ${eff.badge}...`);
+    setLoader(true);
     screenEl.classList.add('open');
     requestScreenWakeLock();
     updateMediaSessionState('playing', item);
@@ -3527,6 +3397,8 @@
     } catch (e) {
       activeProbe = { duration: 0, resolutionLabel: 'HD', audioTracks: [] };
     }
+
+    updateQualityBadge(activeProbe.resolutionLabel || (item.meta && item.meta.res) || 'HD');
 
     if (activeProbe.audioTracks && activeProbe.audioTracks.length > 0) {
       audioBtn.style.display = 'inline-flex';
@@ -3538,9 +3410,7 @@
 
   async function startHlsSession(startSec) {
     if (!activeMedia || !activeMedia.serverUrl) return;
-    const eff = resolveEffectiveStreamProfile(activeMedia);
-    updateQualityBadgeDisplay();
-    setLoader(true, `Loading ${eff.badge}...`);
+    setLoader(true);
     requestScreenWakeLock();
 
     const video = createFreshVideoElement();
@@ -3550,9 +3420,7 @@
         path: activeMedia.path,
         start: String(Math.max(0, Math.floor(startSec))),
         atrack: String(activeAudioTrack),
-        prev: activeSessionId || '',
-        quality: eff.id,
-        maxrate: String(eff.maxrate || 0)
+        prev: activeSessionId || ''
       });
 
       const sess = await apiFetchFromServer(activeMedia.serverUrl, `/api/session?${qs.toString()}`);
@@ -3561,29 +3429,21 @@
       if (sess.duration && !activeProbe.duration) {
         activeProbe.duration = sess.duration;
       }
+      if (sess.resolutionLabel) {
+        updateQualityBadge(sess.resolutionLabel);
+      }
 
       const fullPlaylistUrl = `${activeMedia.serverUrl}${sess.playlistUrl}`;
 
       if (window.Hls && Hls.isSupported()) {
         hlsInstance = new Hls({
           enableWorker: true,
-          lowLatencyMode: false,
-          startFragPrefetch: true,
           defaultAudioCodec: 'mp4a.40.2',
-          maxBufferLength: 45,
-          maxMaxBufferLength: 90,
-          maxBufferSize: 110 * 1000 * 1000,
-          backBufferLength: 20,
-          maxBufferHole: 0.5,
-          nudgeOffset: 0.1,
-          nudgeMaxRetry: 10,
-          manifestLoadingTimeOut: 20000,
+          maxBufferLength: 30,
+          maxMaxBufferLength: 60,
           manifestLoadingMaxRetry: 6,
-          levelLoadingTimeOut: 20000,
           levelLoadingMaxRetry: 6,
-          fragLoadingTimeOut: 30000,
-          fragLoadingMaxRetry: 10,
-          fragLoadingRetryDelay: 800
+          fragLoadingMaxRetry: 8
         });
         hlsInstance.loadSource(fullPlaylistUrl);
         hlsInstance.attachMedia(video);
@@ -3592,23 +3452,6 @@
           video.play().catch(() => {});
         });
         hlsInstance.on(Hls.Events.ERROR, (_, data) => {
-          if (data && data.details === Hls.ErrorDetails.BUFFER_STALLED_ERROR) {
-            handlePlaybackStallAutoAdapt();
-            return;
-          }
-          if (data && data.details === Hls.ErrorDetails.BUFFER_FULL_ERROR) {
-            try {
-              const cur = video.currentTime || 0;
-              if (cur > 8) {
-                hlsInstance.trigger(Hls.Events.BUFFER_FLUSHING, {
-                  startOffset: 0,
-                  endOffset: cur - 5,
-                  type: 'video'
-                });
-              }
-            } catch (err) {}
-            return;
-          }
           if (data.fatal) {
             if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
               hlsInstance.startLoad();
@@ -3633,49 +3476,12 @@
   }
 
   /* ============================================================
-     STREAM QUALITY, AUDIO, SPEED & OVERFLOW POPUP SHEETS
+     DECLUTTERED OVERFLOW MENU & POPUP SHEETS
      ============================================================ */
-  function openQualityPopup() {
-    document.getElementById('modalTitle').textContent = 'Stream Quality';
-    const list = document.getElementById('modalList');
-    list.innerHTML = QUALITY_PROFILES.map(q => `
-      <div class="modal-option ${q.id === preferredStreamQuality ? 'selected' : ''}" role="button" tabindex="0" onclick="selectStreamQuality('${q.id}')">
-        <div class="opt-main">
-          <div class="opt-title">${escapeHtml(q.label)}</div>
-          <div class="opt-sub">${escapeHtml(q.sub)}</div>
-        </div>
-        <div class="opt-check">✓</div>
-      </div>
-    `).join('');
-    document.getElementById('modalBackdrop').classList.add('open');
-  }
-
-  function selectStreamQuality(qualityId) {
-    closeModal();
-    if (qualityId === preferredStreamQuality && autoDownshiftTier === 0) return;
-
-    preferredStreamQuality = qualityId;
-    autoDownshiftTier = 0;
-    stallCountInSession = 0;
-    localStorage.setItem(QUALITY_PREF_STORAGE_KEY, qualityId);
-    updateQualityBadgeDisplay();
-
-    const video = getActiveVideo();
-    const cur = streamOffsetSec + (video ? video.currentTime || 0 : 0);
-    startHlsSession(cur);
-  }
-
   function openPlayerOverflowMenu() {
     document.getElementById('modalTitle').textContent = 'Options';
     const list = document.getElementById('modalList');
     list.innerHTML = `
-      <div class="modal-option" role="button" tabindex="0" onclick="openQualityPopup()">
-        <div class="opt-main">
-          <div class="opt-title">Stream Quality</div>
-          <div class="opt-sub">Switch between Auto, 1080p, 720p, 480p, or Original</div>
-        </div>
-        <span class="mono" style="color:#8bbce8; font-weight:800;">HD</span>
-      </div>
       <div class="modal-option" role="button" tabindex="0" onclick="restartFromZero()">
         <div class="opt-main">
           <div class="opt-title">Restart</div>
@@ -3760,20 +3566,27 @@
   }
 
   /* ============================================================
-     PLAYBACK CONTROLS & INSTANT BUFFERED SEEKING
+     PLAYBACK CONTROLS & TIMELINE
      ============================================================ */
   function jumpToPosition(targetSec) {
     const video = getActiveVideo();
     const relTarget = targetSec - streamOffsetSec;
-    if (video && relTarget >= 0 && video.buffered && video.buffered.length > 0) {
-      for (let i = 0; i < video.buffered.length; i++) {
-        if (relTarget >= video.buffered.start(i) && relTarget <= video.buffered.end(i)) {
-          video.currentTime = relTarget;
-          return;
-        }
+    if (video && relTarget >= 0 && video.seekable && video.seekable.length > 0) {
+      const bufEnd = video.seekable.end(video.seekable.length - 1);
+      if (relTarget <= bufEnd) {
+        video.currentTime = relTarget;
+        return;
       }
     }
     startHlsSession(targetSec);
+  }
+
+  function seekFromBar(e) {
+    const total = getTotalMediaDuration();
+    if (!total || total <= 0) return;
+    const rect = document.getElementById('seekArea').getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    jumpToPosition(ratio * total);
   }
 
   function skipBy(delta) {
